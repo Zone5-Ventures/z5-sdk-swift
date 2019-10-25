@@ -55,7 +55,7 @@ struct Request {
 			if !parameters.isEmpty {
 				request.setValue(encoding.rawValue, forHTTPHeaderField: "Content-Type")
 
-				if case .json = encoding, let body = try? JSONSerialization.data(withJSONObject: parameters, options: []) {
+				if case .json = encoding, let body = try? JSONEncoder().encode(parameters) {
 					request.httpBody = body
 				}
 				else if case .url = encoding, let body = queryItems.urlEncodedString.data(using: .utf8) {
