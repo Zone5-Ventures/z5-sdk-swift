@@ -2,7 +2,7 @@ import Foundation
 
 public struct User: Codable {
 
-	public var id: Int
+	public var id: Int?
 
 	public var uid: String?
 
@@ -14,15 +14,17 @@ public struct User: Codable {
 
 	public var avatar: URL?
 
+	public init() { }
+
 	// MARK: Codable
 
 	private enum CodingKeys: String, CodingKey {
-		case id = "id"
-		case uid = "uid"
-		case email = "email"
+		case id
+		case uid
+		case email
 		case firstName = "firstname"
 		case lastName = "lastname"
-		case avatar = "avatar"
+		case avatar
 	}
 
 	public init(from decoder: Decoder) throws {
