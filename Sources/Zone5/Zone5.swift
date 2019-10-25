@@ -36,38 +36,24 @@ final public class Zone5 {
 
 	let httpClient = HTTPClient()
 
-	// MARK: OAuth
+	public var accessToken: AccessToken?
 
-	public func requestToken(username: String, password: String, completion: @escaping (_ result: Result<AccessToken, Zone5.Error>) -> Void) {
-		guard let clientID = clientID, let clientSecret = clientSecret else {
-			return
-		}
+	// MARK: Views
 
-		var request = Request(endpoint: "/rest/oauth/access_token")
-		request.parameters = [
-			"username": username,
-			"password": password,
-			"client_id": clientID,
-			"client_secret": clientSecret,
-			"grant_type": "password",
-			"redirect_uri": redirectURI,
-		]
+	public lazy var oAuth: OAuthView = {
+		return OAuthView(zone5: self)
+	}()
 
-		httpClient.post(request, encoding: .url, expectedType: AccessToken.self, completion: completion)
-	}
-
-	public func user(for accessToken: AccessToken, completion: @escaping (_ result: Result<User, Zone5.Error>) -> Void) {
-		var request = Request(endpoint: "/rest/users/me")
-		request.accessToken = accessToken
-
-		httpClient.get(request, expectedType: User.self, completion: completion)
-	}
+	public lazy var users: UsersView = {
+		return UsersView(zone5: self)
+	}()
 
 	// MARK: Errors
 
 	public enum Error: Swift.Error {
 		case unknown
 		case invalidConfiguration
+		case requiresAccessToken
 		case failedEncodingParameters
 		case failedDecodingResponse(_ underlyingError: Swift.Error)
 		case transportFailure(_ underlyingError: Swift.Error)
