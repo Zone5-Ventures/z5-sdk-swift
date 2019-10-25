@@ -32,6 +32,13 @@ final public class Zone5 {
 		self.clientSecret = clientSecret
 	}
 
+	/// Flag that indicates if the receiver has been configured correctly. If the value of this property is `false`, the
+	/// `configure(for:,clientID:,clientSecret:)` method will need to be called to configure the client for access to
+	/// the Zone5 API.
+	public var isConfigured: Bool {
+		return baseURL != nil && clientID != nil && clientSecret != nil
+	}
+
 	// MARK: Communicating with the API
 
 	let httpClient = HTTPClient()
