@@ -1,21 +1,31 @@
 import Foundation
 
-final class HTTPClient {
+final internal class HTTPClient {
 
 	weak var zone5: Zone5?
 
 	var decoder = JSONDecoder()
 
-	let urlSession: URLSession
+	private let urlSession: HTTPClientURLSession
 
-	private let urlSessionDelegate: URLSessionDelegate
+	private let urlSessionDelegate: URLSessionDelegate?
 
 	init() {
 		let configuration = URLSessionConfiguration.default
-		urlSessionDelegate = URLSessionDelegate()
-		urlSession = URLSession(configuration: configuration, delegate: urlSessionDelegate, delegateQueue: nil)
+		let urlSessionDelegate = URLSessionDelegate()
+		let urlSession = URLSession(configuration: configuration, delegate: urlSessionDelegate, delegateQueue: nil)
+
+		self.urlSession = urlSession
+		self.urlSessionDelegate = urlSessionDelegate
 
 		urlSessionDelegate.httpClient = self
+	}
+
+	/// - Parameter urlSession: A `HTTPClientURLSession` instance to use for handling calls.
+	/// - Note: For testing purposes _only_.
+	init(urlSession: HTTPClientURLSession) {
+		self.urlSession = urlSession
+		self.urlSessionDelegate = nil
 	}
 
 	private class URLSessionDelegate: NSObject, Foundation.URLSessionDelegate {
@@ -113,3 +123,11 @@ final class HTTPClient {
 	}
 
 }
+
+internal protocol HTTPClientURLSession: class {
+
+	func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+
+}
+
+extension URLSession: HTTPClientURLSession { }
