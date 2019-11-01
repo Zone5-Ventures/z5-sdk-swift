@@ -57,13 +57,33 @@ final public class Zone5 {
 
 	// MARK: Errors
 
-	public enum Error: Swift.Error {
+	public enum Error: Swift.Error, CustomDebugStringConvertible {
 		case unknown
 		case invalidConfiguration
 		case requiresAccessToken
+		case serverError(_ message: ServerMessage)
 		case failedEncodingParameters
 		case failedDecodingResponse(_ underlyingError: Swift.Error)
 		case transportFailure(_ underlyingError: Swift.Error)
+
+		public struct ServerMessage: Swift.Error, Codable {
+
+			public let message: String
+
+		}
+
+		public var debugDescription: String {
+			switch self {
+			case .unknown: return ".unknown"
+			case .invalidConfiguration: return ".invalidConfiguration"
+			case .requiresAccessToken: return ".requiresAccessToken"
+			case .serverError(let serverMessage): return ".serverError(message: \(serverMessage.message))"
+			case .failedEncodingParameters: return ".failedEncodingParameters"
+			case .failedDecodingResponse(let underlyingError): return ".failedDecodingResponse(underlyingError: \(underlyingError.localizedDescription))"
+			case .transportFailure(let underlyingError): return ".transportFailure(underlyingError: \(underlyingError.localizedDescription))"
+			}
+		}
+
 	}
 
 }

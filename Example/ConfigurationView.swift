@@ -27,6 +27,14 @@ struct ConfigurationView: View {
 
 	@State var password: String = ""
 
+	@State private var isLoading = false
+
+	@State private var error: Zone5.Error? {
+		didSet { displayingError = (error != nil) }
+	}
+
+	@State private var displayingError = false
+
 	init(apiClient: Zone5 = .shared, userDefaults: UserDefaults = .standard) {
 		self.apiClient = apiClient
 		self.userDefaults = userDefaults
@@ -57,6 +65,14 @@ struct ConfigurationView: View {
 					})
 				}
 			}
+			.alert(isPresented: $displayingError) {
+				let title = Text("An Error Occurred")
+				let message = Text(error?.debugDescription ?? "nil")
+				return Alert(title: title,
+							 message: message,
+							 primaryButton: .cancel(),
+							 secondaryButton: .default(Text("Try Again"), action: self.configureAndDismiss))
+			}
 			.onAppear {
 				if let value = self.userDefaults.string(forKey: "Zone5_baseURL") ?? self.apiClient.baseURL?.absoluteString {
 					self.baseURL = value
@@ -79,11 +95,14 @@ struct ConfigurationView: View {
 				}
 			}
 			.listStyle(GroupedListStyle())
+			.navigationBarItems(trailing: ActivityIndicator(isAnimating: $isLoading))
 			.navigationBarTitle("Configuration", displayMode: .inline)
 		}
 	}
 
 	func configureAndDismiss() {
+		isLoading = true
+
 		userDefaults.set(baseURL, forKey: "Zone5_baseURL")
 		userDefaults.set(clientID, forKey: "Zone5_clientID")
 		userDefaults.set(clientSecret, forKey: "Zone5_clientSecret")
@@ -94,10 +113,14 @@ struct ConfigurationView: View {
 			apiClient.configure(for: baseURL, clientID: clientID, clientSecret: clientSecret)
 		}
 
+		self.error = nil
+
 		apiClient.oAuth.accessToken(username: username, password: password) { result in
+			self.isLoading = false
+
 			switch result {
 			case .failure(let error):
-				break
+				self.error = error
 
 			case .success(_):
 				self.presentationMode.wrappedValue.dismiss()

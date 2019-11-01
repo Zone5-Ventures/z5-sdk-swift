@@ -95,9 +95,17 @@ final internal class HTTPClient {
 					completion(.success(object))
 				}
 				catch {
-					print(String(data: data, encoding: .utf8))
+					let originalError = error
 
-					completion(.failure(.failedDecodingResponse(error)))
+					do {
+						let message = try self.decoder.decode(Zone5.Error.ServerMessage.self, from: data)
+
+						completion(.failure(.serverError(message)))
+					}
+					catch {
+						print("Failed to decode server response: \(String(data: data, encoding: .utf8) ?? "unknown content")")
+						completion(.failure(.failedDecodingResponse(originalError)))
+					}
 				}
 			}
 		}

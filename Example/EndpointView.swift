@@ -21,7 +21,15 @@ struct EndpointView<Response>: View {
 
 	let handler: Handler
 
+	@Environment(\.presentationMode) var presentationMode
+
 	@State private var isLoading = true
+
+	@State private var error: Zone5.Error? {
+		didSet { displayingError = (error != nil) }
+	}
+
+	@State private var displayingError = false
 
 	@State private var properties: [PropertyRepresentation] = []
 
@@ -60,11 +68,25 @@ struct EndpointView<Response>: View {
 			}
 		})
 		.onAppear {
-			self.handler(self.apiClient, self.handlerDidComplete)
+			self.performHandler()
+		}
+		.alert(isPresented: $displayingError) {
+			let title = Text("An Error Occurred")
+			let message = Text(error?.debugDescription ?? "nil")
+			return Alert(title: title,
+						 message: message,
+						 primaryButton: .cancel { self.presentationMode.wrappedValue.dismiss() },
+						 secondaryButton: .default(Text("Try Again"), action: self.performHandler))
 		}
 		.listStyle(GroupedListStyle())
 		.navigationBarItems(trailing: ActivityIndicator(isAnimating: $isLoading))
 		.navigationBarTitle(title)
+	}
+
+	private func performHandler() -> Void {
+		self.error = nil
+		self.isLoading = true
+		self.handler(self.apiClient, self.handlerDidComplete)
 	}
 
 	private func handlerDidComplete(_ result: Result<Response, Zone5.Error>) -> Void {
@@ -114,7 +136,7 @@ struct EndpointView<Response>: View {
 			}
 
 		case .failure(let error):
-			print(error)
+			self.error = error
 		}
 	}
 
