@@ -38,11 +38,19 @@ final internal class HTTPClient {
 
 	private func perform(_ request: Request, method: Request.Method, completion: @escaping (_ result: Result<Data, Zone5.Error>) -> Void) {
 		do {
-			guard let baseURL = zone5?.baseURL else {
+			guard let zone5 = zone5, let baseURL = zone5.baseURL else {
 				throw Zone5.Error.invalidConfiguration
 			}
 
-			let urlRequest = try request.urlRequest(for: baseURL, method: method)
+			var urlRequest = try request.urlRequest(for: baseURL, method: method)
+
+			if request.endpoint.requiresAccessToken {
+				guard let accessToken = zone5.accessToken else {
+					throw Zone5.Error.requiresAccessToken
+				}
+
+				accessToken.sign(request: &urlRequest)
+			}
 
 			let task = urlSession.dataTask(with: urlRequest) { data, response, error in
 				if let error = error {

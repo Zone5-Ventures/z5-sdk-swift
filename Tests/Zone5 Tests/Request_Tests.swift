@@ -3,10 +3,14 @@ import XCTest
 
 final class Request_Tests: XCTestCase {
 
+	enum Endpoints: String, HTTPEndpoint {
+		case test = "endpoint/uri"
+	}
+
 	func testExample() {
 		let url = URL(string: "https://localhost")!
 
-		var request = Request(endpoint: "endpoint/uri")
+		var request = Request(endpoint: Endpoints.test)
 		request.parameters["example"] = "example"
 
 		do {

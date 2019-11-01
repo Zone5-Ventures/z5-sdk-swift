@@ -2,24 +2,16 @@ import Foundation
 
 struct Request {
 
-	var endpoint: String
+	var endpoint: HTTPEndpoint
 
 	var parameters: [String: String]
 
-	var accessToken: AccessToken?
-
-	init(endpoint: String) {
+	init(endpoint: HTTPEndpoint) {
 		self.endpoint = endpoint
 		self.parameters = [:]
 	}
 
-	init(endpoint: String, accessToken: AccessToken) {
-		self.init(endpoint: endpoint)
-
-		self.accessToken = accessToken
-	}
-
-
+	
 	var queryItems: [URLQueryItem] {
         var items: [URLQueryItem] = []
 
@@ -43,7 +35,7 @@ struct Request {
 	}
 
 	func urlRequest(for baseURL: URL, method: Method) throws -> URLRequest {
-		var request = URLRequest(url: baseURL.appendingPathComponent(endpoint))
+		var request = URLRequest(url: baseURL.appendingPathComponent(endpoint.uri))
 
 		switch method {
 		case .get:
@@ -69,8 +61,6 @@ struct Request {
 				}
 			}
 		}
-
-		accessToken?.sign(request: &request)
 
 		return request
 	}
