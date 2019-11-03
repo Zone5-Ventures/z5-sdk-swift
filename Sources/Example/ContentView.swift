@@ -32,6 +32,11 @@ struct ContentView: View {
 						client.users.me(completion: completion)
 					}
 				}
+				Section(header: Text("Activities")) {
+					EndpointLink("Search") { client, completion in
+						client.activities.search(offset: 0, count: 10, completion: completion)
+					}
+				}
 			}
 			.listStyle(GroupedListStyle())
 			.navigationBarTitle("Zone5 Example")
