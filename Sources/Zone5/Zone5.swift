@@ -62,7 +62,9 @@ final public class Zone5 {
 		case invalidConfiguration
 		case requiresAccessToken
 		case serverError(_ message: ServerMessage)
-		case failedEncodingParameters
+		case unexpectedRequestBody
+		case missingRequestBody
+		case failedEncodingRequestBody
 		case failedDecodingResponse(_ underlyingError: Swift.Error)
 		case transportFailure(_ underlyingError: Swift.Error)
 
@@ -78,7 +80,9 @@ final public class Zone5 {
 			case .invalidConfiguration: return ".invalidConfiguration"
 			case .requiresAccessToken: return ".requiresAccessToken"
 			case .serverError(let serverMessage): return ".serverError(message: \(serverMessage.message))"
-			case .failedEncodingParameters: return ".failedEncodingParameters"
+			case .unexpectedRequestBody: return ".unexpectedRequestBody"
+			case .missingRequestBody: return ".missingRequestBody"
+			case .failedEncodingRequestBody: return ".failedEncodingParameters"
 			case .failedDecodingResponse(let underlyingError): return ".failedDecodingResponse(underlyingError: \(underlyingError.localizedDescription))"
 			case .transportFailure(let underlyingError): return ".transportFailure(underlyingError: \(underlyingError.localizedDescription))"
 			}

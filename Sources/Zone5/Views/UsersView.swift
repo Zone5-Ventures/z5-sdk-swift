@@ -7,11 +7,7 @@ public class UsersView: APIView {
 	}
 
 	public func me(completion: @escaping (_ result: Result<User, Zone5.Error>) -> Void) {
-		perform(with: completion) { zone5 in
-			var request = Request(endpoint: Endpoints.me)
-
-			zone5.httpClient.get(request, expectedType: User.self, completion: completion)
-		}
+		get(Endpoints.me, with: completion)
 	}
 
 }

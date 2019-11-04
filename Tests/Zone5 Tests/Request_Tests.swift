@@ -10,17 +10,21 @@ final class Request_Tests: XCTestCase {
 	func testExample() {
 		let url = URL(string: "https://localhost")!
 
-		var request = Request(endpoint: Endpoints.test)
-		request.parameters["example"] = "example"
+		let body: URLEncodedBody = [
+			"example": "example"
+		]
+
+		let request = Request(endpoint: Endpoints.test, body: body)
 
 		do {
-			let urlRequest = try request.urlRequest(for: url, method: .post(.json))
+			let urlRequest = try request.urlRequest(for: url, method: .post)
 
 			XCTAssertNotNil(urlRequest.httpBody)
 
-			let decoded = try JSONDecoder().decode([String: String].self, from: urlRequest.httpBody!)
-
-			XCTAssertEqual(decoded["example"], request.parameters["example"])
+//			let decoded = try JSONDecoder().decode(URLEncodedBody.self, from: urlRequest.httpBody!)
+//
+//			XCTAssertNotNil(decoded)
+//			XCTAssertEqual(decoded, body)
 		}
 		catch {
 			XCTFail()

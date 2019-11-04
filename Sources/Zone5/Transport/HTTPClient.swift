@@ -76,8 +76,8 @@ final internal class HTTPClient {
 		}
 	}
 
-	func post<T: Decodable>(_ request: Request, encoding: Request.Encoding = .json, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) {
-		perform(request, method: .post(encoding)) { [weak self] result in
+	func post<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) {
+		perform(request, method: .post) { [weak self] result in
 			guard let self = self else {
 				completion(.failure(.invalidConfiguration))
 
@@ -99,6 +99,10 @@ final internal class HTTPClient {
 
 					do {
 						let message = try self.decoder.decode(Zone5.Error.ServerMessage.self, from: data)
+
+						if let data = try? request.body?.encodedData(), let string = String(data: data, encoding: .utf8) {
+							print(string)
+						}
 
 						completion(.failure(.serverError(message)))
 					}
