@@ -22,6 +22,18 @@ extension HTTPEndpoint {
 		return true
 	}
 
+	/// Returns a detokenized version of the endpoint.
+	///
+	/// Tokens in the `endpoint` URI are replaced with a value from the dictionary where the key matches occurrences of
+	/// the same string found within the URI, wrapped in braces. For example, given an endpoint with the uri
+	/// `/example/with/{token}`, and a `replacements` dictionary `["token": "the-ultimate-value"]` will result in a
+	/// detokenized endpoint with the URI `/example/with/the-ultimate-value`.
+	///
+	/// - Parameter replacements: A dictionary that maps string-convertible values to the appropriate token names.
+	func replacingTokens(_ replacements: [String: CustomStringConvertible]) -> HTTPEndpoint {
+		return DetokenizedHTTPEndpoint(self, replacements: replacements)
+	}
+
 }
 
 /// An extension on `HTTPEndpoint` which allows it to return the `rawValue` as its `uri` when the conforming
@@ -30,6 +42,36 @@ extension HTTPEndpoint where Self: RawRepresentable, Self.RawValue == String {
 
 	var uri: String {
 		return rawValue
+	}
+
+}
+
+/// A concrete endpoint implementation that takes another endpoint containing "tokens" (parts of the uri that can be
+/// replaced with useful values, wrapped in braces, e.g. `/uri/containing/a/{token}`), which are then replaced with
+/// given values, based on a dictionary of keys that match the token names.
+private struct DetokenizedHTTPEndpoint: HTTPEndpoint {
+
+	/// Storage for the detokenized URI.
+	let uri: String
+
+	/// Creates a detokenized endpoint.
+	///
+	/// Tokens in the `endpoint` URI are replaced with a value from the dictionary where the key matches occurrences of
+	/// the same string found within the URI, wrapped in braces. For example, given an endpoint with the uri
+	/// `/example/with/{token}`, and a `replacements` dictionary `["token": "the-ultimate-value"]` will result in a
+	/// detokenized endpoint with the URI `/example/with/the-ultimate-value`.
+	///
+	/// - Parameter endpoint: The endpoint to be used as a basis.
+	/// - Parameter replacements: A dictionary that maps string-convertible values to the appropriate token names.
+	/// - SeeAlso: `HTTPEndpoint.replacingTokens(_:)`
+	init(_ endpoint: HTTPEndpoint, replacements: [String: CustomStringConvertible]) {
+		var uri = endpoint.uri
+
+		for (token, value) in replacements {
+			uri = uri.replacingOccurrences(of: "{\(token)}", with: value.description)
+		}
+
+		self.uri = uri
 	}
 
 }
