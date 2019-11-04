@@ -33,8 +33,16 @@ struct ContentView: View {
 					}
 				}
 				Section(header: Text("Activities")) {
-					EndpointLink("Search") { client, completion in
-						client.activities.search(offset: 0, count: 10, completion: completion)
+					EndpointLink<SearchResult<Activity>>("Next 7 Days") { client, completion in
+						var criteria = UserWorkoutSearch()
+						criteria.rangesTs = [DateRange(component: .day, value: 7)!]
+
+						let parameters = SearchInput(criteria: criteria)
+
+						client.activities.search(parameters, offset: 0, count: 10, completion: completion)
+					}
+					EndpointLink("Next") { client, completion in
+						client.activities.next(offset: 0, count: 1, completion: completion)
 					}
 				}
 			}

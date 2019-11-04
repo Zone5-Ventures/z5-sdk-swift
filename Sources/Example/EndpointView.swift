@@ -109,27 +109,18 @@ struct EndpointView<Response>: View {
 					return nil
 				}
 
-				guard let optional = child.value as? OptionalProtocol, optional.containsValue else {
-					return PropertyRepresentation(label: label, value: Text("nil").foregroundColor(.secondary).italic())
-				}
+				let value: Text
 
-				let type = Swift.type(of: optional.wrappedValue)
-				var foregroundColor: Color?
-
-				if type == String.self {
-					foregroundColor = .black
-				}
-				else if type == Int.self || type == Int8.self || type == Int16.self || type == Int32.self || type == Int64.self || type == UInt.self || type == UInt8.self || type == UInt16.self || type == UInt32.self || type == UInt64.self || type == Double.self || type == Float.self {
-					foregroundColor = .blue
+				if let optional = child.value as? OptionalProtocol {
+					if optional.containsValue {
+						value = Text("nil").foregroundColor(.secondary).italic()
+					}
+					else {
+						value = displayValue(for: optional.wrappedValue)
+					}
 				}
 				else {
-					foregroundColor = .green
-				}
-
-				var value = Text(String(describing: optional.wrappedValue))
-
-				if let foregroundColor = foregroundColor {
-					value = value.foregroundColor(foregroundColor)
+					value = displayValue(for: child.value)
 				}
 
 				return PropertyRepresentation(label: label, value: value)
@@ -138,6 +129,29 @@ struct EndpointView<Response>: View {
 		case .failure(let error):
 			self.error = error
 		}
+	}
+
+	private func displayValue(for value: Any) -> Text {
+		let type = Swift.type(of: value)
+		var foregroundColor: Color?
+
+		if type == String.self {
+			foregroundColor = .black
+		}
+		else if type == Int.self || type == Int8.self || type == Int16.self || type == Int32.self || type == Int64.self || type == UInt.self || type == UInt8.self || type == UInt16.self || type == UInt32.self || type == UInt64.self || type == Double.self || type == Float.self {
+			foregroundColor = .blue
+		}
+		else {
+			foregroundColor = .green
+		}
+
+		var displayValue = Text(String(describing: value))
+
+		if let foregroundColor = foregroundColor {
+			displayValue = displayValue.foregroundColor(foregroundColor)
+		}
+
+		return displayValue
 	}
 
 }

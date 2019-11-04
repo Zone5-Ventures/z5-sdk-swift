@@ -47,6 +47,10 @@ final public class Zone5 {
 
 	// MARK: Views
 
+	public lazy var activities: ActivitiesView = {
+		return ActivitiesView(zone5: self)
+	}()
+
 	public lazy var oAuth: OAuthView = {
 		return OAuthView(zone5: self)
 	}()
