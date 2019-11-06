@@ -1,7 +1,7 @@
 import XCTest
 @testable import Zone5
 
-final class Request_Tests: XCTestCase {
+final class RequestTests: XCTestCase {
 
 	enum Endpoints: String, HTTPEndpoint {
 		case test = "endpoint/uri"

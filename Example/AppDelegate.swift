@@ -3,7 +3,7 @@
 //  Zone5 Example
 //
 //  Created by Daniel Farrelly on 8/10/19.
-//  Copyright © 2019 JellyStyle Media. All rights reserved.
+//  Copyright © 2019 Zone5 Ventures. All rights reserved.
 //
 
 import UIKit
