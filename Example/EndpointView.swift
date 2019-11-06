@@ -113,10 +113,10 @@ struct EndpointView<Response>: View {
 
 				if let optional = child.value as? OptionalProtocol {
 					if optional.containsValue {
-						value = Text("nil").foregroundColor(.secondary).italic()
+						value = displayValue(for: optional.wrappedValue)
 					}
 					else {
-						value = displayValue(for: optional.wrappedValue)
+						value = Text("nil").foregroundColor(.secondary).italic()
 					}
 				}
 				else {
