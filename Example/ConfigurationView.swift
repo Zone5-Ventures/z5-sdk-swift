@@ -98,6 +98,7 @@ struct ConfigurationView: View {
 			.navigationBarItems(trailing: ActivityIndicator(isAnimating: $isLoading))
 			.navigationBarTitle("Configuration", displayMode: .inline)
 		}
+		.navigationViewStyle(StackNavigationViewStyle())
 	}
 
 	func configureAndDismiss() {
