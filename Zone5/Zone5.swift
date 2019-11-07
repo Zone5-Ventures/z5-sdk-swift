@@ -8,9 +8,11 @@ final public class Zone5 {
 	public static let shared = Zone5()
 
 	/// A light wrapper of the URLSession API, which enables communication with the server endpoints.
-	internal let httpClient = HTTPClient()
+	internal let httpClient: HTTPClient
 
-	init() {
+	init(httpClient: HTTPClient = .init()) {
+		self.httpClient = httpClient
+
 		httpClient.zone5 = self
 	}
 

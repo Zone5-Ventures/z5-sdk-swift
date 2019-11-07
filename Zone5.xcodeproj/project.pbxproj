@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A124B0D62373D9470000919C /* UsersViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124B0D52373D9470000919C /* UsersViewTests.swift */; };
+		A124B0D92373E33A0000919C /* TestHTTPClientURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124B0D82373E33A0000919C /* TestHTTPClientURLSession.swift */; };
 		A182D1B42372AB0500112501 /* Zone5.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B32372AB0500112501 /* Zone5.swift */; };
 		A182D1CC2372AB0F00112501 /* HTTPEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B62372AB0E00112501 /* HTTPEndpoint.swift */; };
 		A182D1CD2372AB0F00112501 /* URLEncodedBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B72372AB0E00112501 /* URLEncodedBody.swift */; };
@@ -85,6 +87,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A124B0D52373D9470000919C /* UsersViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewTests.swift; sourceTree = "<group>"; };
+		A124B0D82373E33A0000919C /* TestHTTPClientURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHTTPClientURLSession.swift; sourceTree = "<group>"; };
 		A12D82482362B5FA00C6EA34 /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		A182D1B32372AB0500112501 /* Zone5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone5.swift; sourceTree = "<group>"; };
 		A182D1B62372AB0E00112501 /* HTTPEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPEndpoint.swift; sourceTree = "<group>"; };
@@ -157,6 +161,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A124B0D72373E3250000919C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A124B0D82373E33A0000919C /* TestHTTPClientURLSession.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A124B0DA2373E4F40000919C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A124B0D52373D9470000919C /* UsersViewTests.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A182D1B52372AB0E00112501 /* Transport */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +274,8 @@
 				A1F058F12372A3840034C7D0 /* Zone5Tests.swift */,
 				A1F059042372A4B60034C7D0 /* RequestTests.swift */,
 				A1F059032372A4B60034C7D0 /* XCTestManifests.swift */,
+				A124B0DA2373E4F40000919C /* Views */,
+				A124B0D72373E3250000919C /* Utilities */,
 				A1F059012372A3B20034C7D0 /* Supporting Files */,
 			);
 			name = "Unit Tests";
@@ -478,6 +500,8 @@
 				A1F058F22372A3840034C7D0 /* Zone5Tests.swift in Sources */,
 				A1F059072372A4B60034C7D0 /* RequestTests.swift in Sources */,
 				A1F059062372A4B60034C7D0 /* XCTestManifests.swift in Sources */,
+				A124B0D92373E33A0000919C /* TestHTTPClientURLSession.swift in Sources */,
+				A124B0D62373D9470000919C /* UsersViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
