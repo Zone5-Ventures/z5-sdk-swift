@@ -126,11 +126,68 @@
           <div class="section-content">
             
             <h1 id='z5-sdk-swift' class='heading'>z5-sdk-swift</h1>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
+
+<p>The most straightforward method of installing the SDK is as a <a href="https://swift.org/package-manager/">Swift Package</a>, which can be done by adding it as a dependency in <code>Package.swift</code>, or by following <a href="https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app">Apple&rsquo;s documentation on adding package dependencies in Xcode</a>.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PackageDescription</span>
+
+<span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="kt">Package</span><span class="p">(</span>
+    <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+    <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Zone5-Ventures/z5-sdk-swift.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"1.0.0"</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p>Install the SDK via <a href="https://github.com/Carthage/Carthage">Carthage</a> by adding the following line to your <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "Zone5-Ventures/z5-sdk-swift"
+</code></pre>
+<h2 id='getting-started' class='heading'>Getting Started</h2>
+
+<p>Once you&rsquo;ve installed the SDK, getting started with using it in your app only takes a handful of steps. Before using it, you&rsquo;ll need to configure it with the OAuth client details used to identify your app to the server:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Zone5</span>
+
+<span class="k">let</span> <span class="nv">baseURL</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://your-zone5-server.com"</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">clientID</span> <span class="o">=</span> <span class="s">"YOUR-CLIENT-IDENTIFIER"</span>
+<span class="k">let</span> <span class="nv">clientSecret</span> <span class="o">=</span> <span class="s">"YOUR-CLIENT-SECRET"</span>
+
+<span class="kt">Zone5</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="n">baseURL</span><span class="p">,</span> <span class="nv">clientID</span><span class="p">:</span> <span class="n">clientID</span><span class="p">,</span> <span class="nv">clientSecret</span><span class="p">:</span> <span class="n">clientSecret</span><span class="p">)</span>
+</code></pre>
+
+<p>Once configured, you&rsquo;ll be able to authenticate users via the methods available through <a href="https://zone5-ventures.github.io/z5-sdk-swift/Classes/OAuthView.html"><code>Zone5.shared.oAuth</code></a>:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">username</span> <span class="o">=</span> <span class="s">"EXAMPLE-USERNAME"</span>
+<span class="k">let</span> <span class="nv">password</span> <span class="o">=</span> <span class="s">"EXAMPLE-PASSWORD"</span>
+
+<span class="kt">Zone5</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">oAuth</span><span class="o">.</span><span class="nf">accessToken</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="n">password</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">// An error occurred and needs to be handled</span>
+
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">accessToken</span><span class="p">):</span>
+        <span class="c1">// The user was successfully authenticated. You should store this token securely</span>
+        <span class="c1">// so that you can allow the user to stay authenticated across multiple sessions.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Once the user successfully authenticates, these methods return an <a href="https://zone5-ventures.github.io/z5-sdk-swift/Structs/AccessToken.html"><code><a href="Structs/AccessToken.html">AccessToken</a></code></a> object, but also update the <a href="https://zone5-ventures.github.io/z5-sdk-swift/Classes/Zone5.html#/s:5Zone5AAC11accessTokenAA06AccessC0VSgvp"><code>Zone5.shared.accessToken</code></a> with the returned token, allowing access to methods that require this token to be set.</p>
+<pre class="highlight swift"><code><span class="kt">Zone5</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">me</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">// An error occurred and needs to be handled</span>
+
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">user</span><span class="p">):</span>
+        <span class="c1">// The user's information was successfully retrieved.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 <h2 id='documentation' class='heading'>Documentation</h2>
 
-<p>You can <a href="https://zone5-ventures.github.io/z5-sdk-swift/">find documentation for this project here</a>.</p>
+<p>You can <a href="https://zone5-ventures.github.io/z5-sdk-swift/">find documentation for this project here</a>. This documentation is generated with <a href="https://github.com/realm/jazzy">jazzy</a> and hosted with <a href="https://pages.github.com/">GitHub Pages</a>.</p>
 
-<p>Documentation is generated with <a href="https://github.com/realm/jazzy">jazzy</a>. To regenerate docs, run <code>make documentation</code> from the root directory in the repo.</p>
+<p>To regenerate docs, run <code>make documentation</code> or <code>sh ./scripts/prepare_docs.sh</code> from the repo&rsquo;s root directory.</p>
 
           </div>
         </section>
