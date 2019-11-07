@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Daniel Farrelly on 4/11/19.
-//
-
 import Foundation
 
 public struct UserWorkoutSearch: Encodable {
