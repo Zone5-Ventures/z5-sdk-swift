@@ -13,8 +13,25 @@ struct ContentView: View {
 
 	let apiClient: Zone5
 
-	init(apiClient: Zone5 = .shared) {
+	@State var keyValueStore: KeyValueStore = .shared
+
+	init(apiClient: Zone5 = .shared, keyValueStore: KeyValueStore = .shared) {
 		self.apiClient = apiClient
+		self.keyValueStore = keyValueStore
+
+		// Do not use UserDefaults for storing user credentials in a production application. It is incredibly insecure,
+		// and a terrible idea. Don't do it.
+		//
+		// If you have stored your AccessToken (nice and securely), you can quite easily configure the SDK to use that
+		// at any point, and completely bypass configuring the clientID and clientSecret, which are only used as part of
+		// the user authentication process.
+		let baseURL = keyValueStore.baseURL
+		if !keyValueStore.clientID.isEmpty, !keyValueStore.clientSecret.isEmpty {
+			apiClient.configure(for: baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret, accessToken: keyValueStore.accessToken)
+		}
+		else if let accessToken = keyValueStore.accessToken {
+			apiClient.configure(for: baseURL, accessToken: accessToken)
+		}
 	}
 
 	@State var displayConfiguration = false
@@ -22,7 +39,7 @@ struct ContentView: View {
 	var body: some View {
 		NavigationView {
 			List {
-				Section(header: Text("Zone5"), footer: Text("In order to test the endpoints for the Zone5 API, the app requires configuration of the API URL, the client's ID and secret, and user authentication details.")) {
+				Section(header: Text("Zone5"), footer: Text("In order to test the endpoints for the Zone5 API, the app requires configuration of the API URL, and a valid access token.")) {
 					Button("Configure Client", action: {
 						self.displayConfiguration = true
 					})
@@ -50,7 +67,7 @@ struct ContentView: View {
 			.navigationBarTitle("Zone5 Example")
 		}
 		.sheet(isPresented: $displayConfiguration) {
-			ConfigurationView()
+			ConfigurationView(apiClient: self.apiClient, keyValueStore: self.keyValueStore)
 		}
 		.onAppear {
 			if !self.apiClient.isConfigured {

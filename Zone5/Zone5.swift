@@ -40,21 +40,46 @@ final public class Zone5 {
 	/// The secret key, as provided by Zone5.
 	public var redirectURI: String = "https://localhost"
 
-	/// Configures the SDK to use the application specified by the given `clientID` and `secret`.
+	/// Configures the SDK to use the application specified by the given `clientID` and `clientSecret`.
 	/// - Parameter baseURL: The API url to use.
 	/// - Parameter clientID: The clientID, as provided by Zone5.
 	/// - Parameter clientSecret: The secret key, as provided by Zone5.
-	public func configure(for baseURL: URL, clientID: String, clientSecret: String) {
+	/// - Parameter accessToken: An access token representing a user authenticated during a previous session.
+	public func configure(for baseURL: URL, clientID: String, clientSecret: String, accessToken: AccessToken? = nil) {
 		self.baseURL = baseURL
 		self.clientID = clientID
 		self.clientSecret = clientSecret
+		self.accessToken = accessToken
+	}
+
+	/// Configures the SDK on behalf of a user, represented by the given `accessToken`.
+	///
+	/// As this method does not include the `clientID` or `clientSecret`, configuring the SDK this way will not allow
+	/// for user authentication, and is intended for instances where the `accessToken` is sourced externally, such as
+	/// through single sign-on.
+	/// - Parameter baseURL: The API url to use.
+	/// - Parameter accessToken: An access token that represents your user and client.
+	public func configure(for baseURL: URL, accessToken: AccessToken) {
+		self.baseURL = baseURL
+		self.accessToken = accessToken
 	}
 
 	/// Flag that indicates if the receiver has been configured correctly. If the value of this property is `false`, the
-	/// `configure(for:,clientID:,clientSecret:)` method will need to be called to configure the client for access to
-	/// the Zone5 API.
+	/// `configure(for:clientID:clientSecret:)` or `configure(for:accessToken:)` methods will need to be called to
+	/// configure the client for access to the Zone5 API.
 	public var isConfigured: Bool {
-		return baseURL != nil && clientID != nil && clientSecret != nil
+		guard baseURL != nil else {
+			return false // Always require a `baseURL`
+		}
+
+		if accessToken != nil {
+			return true // Access token will happily represent the user all by itself
+		}
+		else if clientID != nil && clientSecret != nil {
+			return true // For authentication purposes, we need a valid clientID and clientSecret
+		}
+
+		return false
 	}
 
 	// MARK: Views

@@ -13,19 +13,11 @@ struct ConfigurationView: View {
 
 	let apiClient: Zone5
 
-	let userDefaults: UserDefaults
+	@State var keyValueStore: KeyValueStore = .shared
 
 	@Environment(\.presentationMode) var presentationMode
 
-	@State var baseURL: String = "https://example.com"
-
-	@State var clientID: String = ""
-
-	@State var clientSecret: String = ""
-
-	@State var username: String = ""
-
-	@State var password: String = ""
+	@State private var pickerIndex = 0
 
 	@State private var isLoading = false
 
@@ -35,35 +27,49 @@ struct ConfigurationView: View {
 
 	@State private var displayingError = false
 
-	init(apiClient: Zone5 = .shared, userDefaults: UserDefaults = .standard) {
+	init(apiClient: Zone5 = .shared, keyValueStore: KeyValueStore = .shared) {
 		self.apiClient = apiClient
-		self.userDefaults = userDefaults
+		self.keyValueStore = keyValueStore
 	}
 
 	var body: some View {
 		NavigationView {
-			Form {
-				Section(header: Text("Base URL")) {
-					TextField("Base URL", text: $baseURL)
-						.textContentType(.URL)
-						.keyboardType(.URL)
+			VStack(alignment: HorizontalAlignment.center, spacing: 0) {
+				Picker("Boop", selection: $pickerIndex) {
+					Text("OAuth Client").tag(0)
+					Text("Access Token").tag(1)
 				}
-				Section(header: Text("Client Details")) {
-					TextField("ID", text: $clientID)
-					TextField("Secret", text: $clientSecret)
+				.pickerStyle(SegmentedPickerStyle())
+				.padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+				.background(Color(.systemGroupedBackground))
+
+				Form {
+					Section(header: Text("Base URL"), footer: Text("The URL for the server the SDK should communicate with.")) {
+						TextField("Base URL", text: $keyValueStore.baseURLString)
+							.textContentType(.URL)
+							.keyboardType(.URL)
+					}
+
+					if self.pickerIndex == 0 {
+						Section(header: Text("Client Details"), footer: Text("These values are used to identify your application during user authentication.")) {
+							TextField("ID", text: $keyValueStore.clientID)
+							TextField("Secret", text: $keyValueStore.clientSecret)
+						}
+						Section(header: Text("User Details")) {
+							TextField("Username", text: $keyValueStore.username)
+								.textContentType(.emailAddress)
+								.keyboardType(.emailAddress)
+							SecureField("Password", text: $keyValueStore.password)
+								.textContentType(.password)
+						}
+					}
+					else if self.pickerIndex == 1 {
+						Section(header: Text("Access Token"), footer: Text("You can completely bypass the client configuration and authentication steps by configuring the SDK with a valid user token that is either stored from a previous session, or sourced externally.")) {
+							TextField("Token", text: $keyValueStore.accessTokenString)
+						}
+					}
 				}
-				Section(header: Text("User Details")) {
-					TextField("Username", text: $username)
-						.textContentType(.emailAddress)
-						.keyboardType(.emailAddress)
-					SecureField("Password", text: $password)
-						.textContentType(.password)
-				}
-				Section {
-					Button(action: configureAndDismiss, label: {
-						Text("Continue")
-					})
-				}
+				.listStyle(GroupedListStyle())
 			}
 			.alert(isPresented: $displayingError) {
 				let title = Text("An Error Occurred")
@@ -73,60 +79,70 @@ struct ConfigurationView: View {
 							 primaryButton: .cancel(),
 							 secondaryButton: .default(Text("Try Again"), action: self.configureAndDismiss))
 			}
-			.onAppear {
-				if let value = self.userDefaults.string(forKey: "Zone5_baseURL") ?? self.apiClient.baseURL?.absoluteString {
-					self.baseURL = value
-				}
-
-				if let value = self.userDefaults.string(forKey: "Zone5_clientID") ?? self.apiClient.clientID {
-					self.clientID = value
-				}
-
-				if let value = self.userDefaults.string(forKey: "Zone5_clientSecret") ?? self.apiClient.clientSecret {
-					self.clientSecret = value
-				}
-
-				if let value = self.userDefaults.string(forKey: "Zone5_username") {
-					self.username = value
-				}
-
-				if let value = self.userDefaults.string(forKey: "Zone5_password") {
-					self.password = value
-				}
-			}
-			.listStyle(GroupedListStyle())
-			.navigationBarItems(trailing: ActivityIndicator(isAnimating: $isLoading))
+			.navigationBarItems(trailing: HStack {
+				ActivityIndicator(isAnimating: $isLoading)
+				Button(action: configureAndDismiss, label: {
+					Text("Save")
+				})
+			})
 			.navigationBarTitle("Configuration", displayMode: .inline)
 		}
 		.navigationViewStyle(StackNavigationViewStyle())
 	}
 
 	func configureAndDismiss() {
-		isLoading = true
+		error = nil
 
-		userDefaults.set(baseURL, forKey: "Zone5_baseURL")
-		userDefaults.set(clientID, forKey: "Zone5_clientID")
-		userDefaults.set(clientSecret, forKey: "Zone5_clientSecret")
-		userDefaults.set(username, forKey: "Zone5_username")
-		userDefaults.set(password, forKey: "Zone5_password")
+		// There are two ways to prepare your client for accessing the Zone5 API. If you already have a valid access
+		// token, you can simply configure using that, as it identifies both your user and your application.
+		//
+		// Otherwise, you'll need to first configure your application with a valid `clientID` and `clientSecret` before
+		// then authenticating the user to retrieve an access token.
+		if pickerIndex == 0 {
+			// First we'll configure our client using the `baseURL`, `clientID` and `clientSecret` entered via the UI.
+			// These values would normally be embedded in your application and thus hidden from the user, as they
+			// identify your application.
+			apiClient.configure(for: keyValueStore.baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret)
 
-		if let baseURL = URL(string: baseURL), !clientID.isEmpty, !clientSecret.isEmpty {
-			apiClient.configure(for: baseURL, clientID: clientID, clientSecret: clientSecret)
-		}
+			// Once we've configured the client, we can retrieve an access token for the user, using the credentials
+			// given in the UI.
+			isLoading = true
+			apiClient.oAuth.accessToken(username: keyValueStore.username, password: keyValueStore.password) { result in
+				self.isLoading = false
 
-		self.error = nil
+				switch result {
+				case .failure(let error):
+					// We have an error, so we should surface that. You may want to handle different errors in different
+					// ways, as some may not be directly relevant to the user, but for the purposes of this example,
+					// we're just going to throw up an alert.
+					self.error = error
 
-		apiClient.oAuth.accessToken(username: username, password: password) { result in
-			self.isLoading = false
+				case .success(let accessToken):
+					// We'll hold on to the access token for later.
+					self.keyValueStore.accessToken = accessToken
 
-			switch result {
-			case .failure(let error):
-				self.error = error
-
-			case .success(_):
-				self.presentationMode.wrappedValue.dismiss()
+					// Now that we've successfully authenticated, we can dismiss this screen.
+					self.dismiss()
+				}
 			}
 		}
+		else if pickerIndex == 1,
+			let accessToken = keyValueStore.accessToken {
+
+			// If you already have a valid access token, you can completely bypass the client configuration and
+			// authentication steps, and opt for directly providing the access token.
+			apiClient.configure(for: keyValueStore.baseURL, accessToken: accessToken)
+
+			// Now that we've successfully authenticated, we can dismiss this screen.
+			dismiss()
+		}
+		else {
+			error = .invalidConfiguration
+		}
+	}
+
+	func dismiss() {
+		self.presentationMode.wrappedValue.dismiss()
 	}
 
 }
