@@ -29,15 +29,25 @@ struct EndpointLink<Response>: View {
 
 	let title: String
 
-	let handler: EndpointView<Response>.Handler
+	@ObservedObject var controller: EndpointController<Response>
 
-	init(_ title: String, handler: @escaping EndpointView<Response>.Handler) {
+	init(_ title: String, controller: EndpointController<Response>) {
 		self.title = title
-		self.handler = handler
+		self.controller = controller
+	}
+
+	init(_ title: String, apiClient: Zone5 = .shared, handler: @escaping EndpointController<Response>.Handler) {
+		self.init(title, controller: EndpointController(apiClient: apiClient, handler: handler))
 	}
 
 	var body: some View {
-		return NavigationLink(title, destination: EndpointView<Response>(title: title, handler: handler))
+		return NavigationLink(destination: EndpointView<Response>(title, controller: controller)) {
+			HStack {
+				Text(title)
+				Spacer()
+				ActivityIndicator(isAnimating: $controller.isLoading)
+			}
+		}
 	}
 
 }

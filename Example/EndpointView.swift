@@ -13,66 +13,44 @@ import Zone5
 
 struct EndpointView<Response>: View {
 
-	typealias Handler = (_ client: Zone5, _ completion: @escaping (_ result: Result<Response, Zone5.Error>) -> Void) -> Void
-
-	let apiClient: Zone5
-
 	let title: String
 
-	let handler: Handler
+	@ObservedObject var controller: EndpointController<Response>
 
-	@Environment(\.presentationMode) var presentationMode
-
-	@State private var isLoading = true
-
-	@State private var error: Zone5.Error? {
-		didSet { displayingError = (error != nil) }
-	}
-
-	@State private var displayingError = false
-
-	init(title: String, apiClient: Zone5 = .shared, handler: @escaping Handler) {
+	init(_ title: String, controller: EndpointController<Response>) {
 		self.title = title
-		self.apiClient = apiClient
-		self.handler = handler
+		self.controller = controller
 	}
 
-	@State private var list = ObjectView(object: nil)
+	init(_ title: String, apiClient: Zone5 = .shared, handler: @escaping EndpointController<Response>.Handler) {
+		self.init(title, controller: EndpointController(apiClient: apiClient, handler: handler))
+	}
 
 	var body: some View {
-		return list
+		return ObjectView(object: controller.response)
 		.onAppear {
-			self.performHandler()
+			guard self.controller.result == nil else {
+				return
+			}
+
+			self.controller.perform()
 		}
-		.alert(isPresented: $displayingError) {
+		.alert(isPresented: $controller.shouldDisplayError) {
 			let title = Text("An Error Occurred")
-			let message = Text(error?.debugDescription ?? "nil")
+			let message = Text(controller.error?.debugDescription ?? "nil")
 			return Alert(title: title,
 						 message: message,
-						 primaryButton: .cancel { self.presentationMode.wrappedValue.dismiss() },
-						 secondaryButton: .default(Text("Try Again"), action: self.performHandler))
+						 primaryButton: .cancel(),
+						 secondaryButton: .default(Text("Try Again"), action: self.controller.perform))
 		}
-		.listStyle(GroupedListStyle())
-		.navigationBarItems(trailing: ActivityIndicator(isAnimating: $isLoading))
+		.navigationBarItems(trailing: HStack {
+			ActivityIndicator(isAnimating: $controller.isLoading)
+
+			if self.controller.result != nil {
+				Button("Reload", action: self.controller.perform)
+			}
+		})
 		.navigationBarTitle(title)
-	}
-
-	private func performHandler() -> Void {
-		error = nil
-		isLoading = true
-		handler(apiClient, handlerDidComplete)
-	}
-
-	private func handlerDidComplete(_ result: Result<Response, Zone5.Error>) -> Void {
-		defer { isLoading = false }
-
-		switch result {
-		case .success(let response):
-			list = ObjectView(object: response)
-
-		case .failure(let response):
-			error = response
-		}
 	}
 
 }
@@ -81,7 +59,7 @@ struct EndpointView_Previews: PreviewProvider {
     static var previews: some View {
 		Group {
 			NavigationView {
-				EndpointView<User>(title: "User", handler: { _, completion in
+				EndpointView<User>("User", handler: { _, completion in
 					var user = User()
 					user.id = 12345
 					user.email = "jane.smith@example.com"
@@ -92,7 +70,7 @@ struct EndpointView_Previews: PreviewProvider {
 				})
 			}
 			NavigationView {
-				EndpointView<[User]>(title: "Users", handler: { _, completion in
+				EndpointView<[User]>("Users", handler: { _, completion in
 					var user1 = User()
 					user1.id = 12345
 					user1.email = "jane.smith@example.com"
