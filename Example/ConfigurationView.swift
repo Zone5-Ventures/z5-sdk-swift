@@ -79,7 +79,13 @@ struct ConfigurationView: View {
 							 primaryButton: .cancel(),
 							 secondaryButton: .default(Text("Try Again"), action: self.configureAndDismiss))
 			}
-			.navigationBarItems(trailing: HStack {
+			.navigationBarItems(leading: HStack {
+				if apiClient.isConfigured {
+					Button(action: dismiss, label: {
+						Text("Cancel")
+					})
+				}
+			}, trailing: HStack {
 				ActivityIndicator(isAnimating: $isLoading)
 				Button(action: configureAndDismiss, label: {
 					Text("Save")
@@ -152,4 +158,3 @@ struct ConfigurationView_Previews: PreviewProvider {
         ConfigurationView()
     }
 }
-
