@@ -1,20 +1,28 @@
 import Foundation
 
-public struct Activity: Codable {
+public struct Activity: Codable, Hashable {
 
+	/// The unique activity id.
+	/// - Note: This is also referenced as a `workoutId`, `fileId` or `eventId`.
 	public var id: Int?
 
+	/// The type of activity this activity's `id` is related to.
 	public var category: Category?
 
 	public enum Category: String, Codable {
+		// This enum maps to `ActivityResultType` in Java
+
 		case event = "events"
 		case workout = "workouts"
 		case file = "files"
 	}
 
+	/// The sport related to this activity.
 	public var sport: Sport?
 
 	public enum Sport: String, Codable {
+		// This enum maps to `ActivityType` in Java
+
 		case ride
 		case run
 		case swim
@@ -31,6 +39,13 @@ public struct Activity: Codable {
 	}
 
 	public init() { }
+
+	// MARK: Hashable
+
+	public func hash(into hasher: inout Hasher) {
+		hasher.combine(id)
+		hasher.combine(category)
+	}
 
 	// MARK: Codable
 

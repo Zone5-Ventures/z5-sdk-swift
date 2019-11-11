@@ -23,16 +23,16 @@ public struct UserWorkoutSearch: Encodable {
 	/// Search for activities which occurred in these date ranges - use this for unix timestamps + timezone
 	public var rangesTs: [DateRange]?
 
-//	/// Search for activities which occurred in these date ranges - use this for year + day of year
-//	public var rangesDay: [DayRange]?
+	/// Search for activities which occurred in these date ranges - use this for year + day of year
+	public var rangesDay: [DayRange]?
 
 	// fieldName --> min,max
 	/// Search for completed activities which have attributes in the given ranges. ie all rides with a distance between 100 - 150km
 	public var ranges: [String: [Double]]?
 
-//	/// Limit the search results to activities of this workout type
-//	public var workout: WorkoutType?
-//
+	/// Limit the search results to activities of this workout type
+	public var workout: WorkoutType?
+
 //	/// Limit the search results to activities of this equipment
 //	public var equipment: Equipment?
 //
