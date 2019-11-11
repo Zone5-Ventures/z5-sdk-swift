@@ -62,7 +62,7 @@ struct ObjectView: View {
 						.lineLimit(1)
 					property.value
 						.font(.system(.body, design: .monospaced))
-						.lineLimit(1)
+						.lineLimit(property.object == nil ? 10 : 1)
 				}
 
 				if let object = property.object {
@@ -99,6 +99,10 @@ struct ObjectView: View {
 			if case .enum = mirror.displayStyle {
 				displayValue = Text(String(describing: value))
 					.foregroundColor(.purple)
+
+				if let associatedValues = mirror.children.first?.value {
+					objectForNavigation = associatedValues
+				}
 			}
 			else if mirror.subjectType == String.self {
 				displayValue = Text(String(describing: value))

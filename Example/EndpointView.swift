@@ -27,7 +27,7 @@ struct EndpointView<Response>: View {
 	}
 
 	var body: some View {
-		return ObjectView(object: controller.response)
+		return ObjectView(object: controller.response ?? controller.error)
 		.onAppear {
 			guard self.controller.result == nil else {
 				return
