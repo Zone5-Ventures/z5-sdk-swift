@@ -89,28 +89,7 @@ final internal class HTTPClient {
 				completion(.failure(error))
 
 			case .success(let data):
-				do {
-					let object = try self.decoder.decode(expectedType, from: data)
-
-					completion(.success(object))
-				}
-				catch {
-					let originalError = error
-
-					do {
-						let message = try self.decoder.decode(Zone5.Error.ServerMessage.self, from: data)
-
-						if let data = try? request.body?.encodedData(), let string = String(data: data, encoding: .utf8) {
-							print(string)
-						}
-
-						completion(.failure(.serverError(message)))
-					}
-					catch {
-						print("Failed to decode server response: \(String(data: data, encoding: .utf8) ?? "unknown content")")
-						completion(.failure(.failedDecodingResponse(originalError)))
-					}
-				}
+				completion(self.result(decoding: data, as: expectedType, request: request))
 			}
 		}
 	}
@@ -128,16 +107,43 @@ final internal class HTTPClient {
 				completion(.failure(error))
 
 			case .success(let data):
-				do {
-					let object = try self.decoder.decode(expectedType, from: data)
+				completion(self.result(decoding: data, as: expectedType, request: request))
+			}
+		}
+	}
 
-					completion(.success(object))
-				}
-				catch {
-					print(String(data: data, encoding: .utf8))
+	private func result<T: Decodable>(decoding data: Data, as expectedType: T.Type, request: Request) -> Result<T, Zone5.Error> {
+		do {
+			// Attempt to decode and return the `data` as the `expectedType` using our decoder
+			let response = try self.decoder.decode(expectedType, from: data)
 
-					completion(.failure(.failedDecodingResponse(error)))
+			return .success(response)
+		}
+		catch {
+			let originalError = error
+
+			do {
+				// Decoding as `expectedType` failed, so lets try to decode as a `ServerMessage` instead, in the hopes
+				// that the server responded with a legitimate error.
+				let message = try self.decoder.decode(Zone5.Error.ServerMessage.self, from: data)
+
+				return .failure(.serverError(message))
+			}
+			catch {
+				#if DEBUG
+				var debugMessage = "Failed to decode server response.\n\t- Error: \(originalError)"
+				if let requestData = try? request.body?.encodedData(), let requestString = String(data: requestData, encoding: .utf8) {
+					debugMessage += "\n\t- Request: \(requestString)"
 				}
+				if let responseString = String(data: data, encoding: .utf8) {
+					debugMessage += "\n\t- Response: \(responseString)"
+				}
+				print(debugMessage)
+				#endif
+
+				// Decoding as a `ServerMessage` also failed, so we should pass on the original error.
+				// Getting this far typically means there's a problem in the SDK.
+				return .failure(.failedDecodingResponse(originalError))
 			}
 		}
 	}
