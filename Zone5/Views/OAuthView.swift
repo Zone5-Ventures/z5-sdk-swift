@@ -2,7 +2,7 @@ import Foundation
 
 public class OAuthView: APIView {
 
-	private enum Endpoints: String, HTTPEndpoint {
+	private enum Endpoints: String, RequestEndpoint {
 		case accessToken = "/rest/oauth/access_token"
 
 		var requiresAccessToken: Bool {

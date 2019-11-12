@@ -1,7 +1,7 @@
 import Foundation
 
 /// Protocol defining the requirements for endpoints accepted when generating requests for the API.
-protocol HTTPEndpoint {
+protocol RequestEndpoint {
 
 	/// The string value containing the endpoint's actual URI.
 	/// - Note: This value may contain tokens wrapped in braces that can be replaced at runtime with dynamic values.
@@ -15,7 +15,7 @@ protocol HTTPEndpoint {
 
 }
 
-extension HTTPEndpoint {
+extension RequestEndpoint {
 
 	/// Default implementation that always indicates that the endpoint requires the user's access token.
 	var requiresAccessToken: Bool {
@@ -30,7 +30,7 @@ extension HTTPEndpoint {
 	/// detokenized endpoint with the URI `/example/with/the-ultimate-value`.
 	///
 	/// - Parameter replacements: A dictionary that maps string-convertible values to the appropriate token names.
-	func replacingTokens(_ replacements: [String: CustomStringConvertible]) -> HTTPEndpoint {
+	func replacingTokens(_ replacements: [String: CustomStringConvertible]) -> RequestEndpoint {
 		return DetokenizedHTTPEndpoint(self, replacements: replacements)
 	}
 
@@ -38,7 +38,7 @@ extension HTTPEndpoint {
 
 /// An extension on `HTTPEndpoint` which allows it to return the `rawValue` as its `uri` when the conforming
 /// implementation also conforms to `RawRepresentable`.
-extension HTTPEndpoint where Self: RawRepresentable, Self.RawValue == String {
+extension RequestEndpoint where Self: RawRepresentable, Self.RawValue == String {
 
 	var uri: String {
 		return rawValue
@@ -49,7 +49,7 @@ extension HTTPEndpoint where Self: RawRepresentable, Self.RawValue == String {
 /// A concrete endpoint implementation that takes another endpoint containing "tokens" (parts of the uri that can be
 /// replaced with useful values, wrapped in braces, e.g. `/uri/containing/a/{token}`), which are then replaced with
 /// given values, based on a dictionary of keys that match the token names.
-private struct DetokenizedHTTPEndpoint: HTTPEndpoint {
+private struct DetokenizedHTTPEndpoint: RequestEndpoint {
 
 	/// Storage for the detokenized URI.
 	let uri: String
@@ -64,7 +64,7 @@ private struct DetokenizedHTTPEndpoint: HTTPEndpoint {
 	/// - Parameter endpoint: The endpoint to be used as a basis.
 	/// - Parameter replacements: A dictionary that maps string-convertible values to the appropriate token names.
 	/// - SeeAlso: `HTTPEndpoint.replacingTokens(_:)`
-	init(_ endpoint: HTTPEndpoint, replacements: [String: CustomStringConvertible]) {
+	init(_ endpoint: RequestEndpoint, replacements: [String: CustomStringConvertible]) {
 		var uri = endpoint.uri
 
 		for (token, value) in replacements {

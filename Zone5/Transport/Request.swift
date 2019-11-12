@@ -2,13 +2,13 @@ import Foundation
 
 struct Request {
 
-	var endpoint: HTTPEndpoint
+	var endpoint: RequestEndpoint
 
 	var method: Method
 
 	var body: RequestBody?
 
-	init(endpoint: HTTPEndpoint, method: Method, body: RequestBody? = nil) {
+	init(endpoint: RequestEndpoint, method: Method, body: RequestBody? = nil) {
 		self.endpoint = endpoint
 		self.method = method
 		self.body = body

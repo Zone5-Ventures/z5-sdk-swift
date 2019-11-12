@@ -2,7 +2,7 @@ import Foundation
 
 public class UsersView: APIView {
 
-	private enum Endpoints: String, HTTPEndpoint {
+	private enum Endpoints: String, RequestEndpoint {
 		case me = "/rest/users/me"
 	}
 

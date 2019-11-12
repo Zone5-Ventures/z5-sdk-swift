@@ -3,7 +3,7 @@ import XCTest
 
 final class RequestTests: XCTestCase {
 
-	enum Endpoints: String, HTTPEndpoint {
+	enum Endpoints: String, RequestEndpoint {
 		case test = "endpoint/uri"
 	}
 
