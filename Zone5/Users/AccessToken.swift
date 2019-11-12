@@ -10,14 +10,6 @@ public struct AccessToken: RawRepresentable, Equatable, Hashable {
 		self.rawValue = rawValue
 	}
 
-	// MARK: Signing requests
-
-	/// Signs the given `request` by adding an "Authorization" header.
-	/// - Parameter request: The request to be signed.
-	func sign(request: inout URLRequest) {
-		request.setValue("Bearer \(rawValue)", forHTTPHeaderField: "Authorization")
-	}
-
 }
 
 extension AccessToken: Codable {

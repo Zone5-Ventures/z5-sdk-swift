@@ -62,6 +62,22 @@ struct ContentView: View {
 						client.activities.next(offset: 10, count: 10, completion: completion)
 					}
 				}
+				Section(footer: Text("Uploads a test file to the API.")) {
+					EndpointLink<DataFileUploadIndex>("Upload File") { client, completion in
+						guard let fileURL = Bundle.main.url(forDevelopmentAsset: "2013-12-22-10-30-12", withExtension: "fit") else {
+							completion(.failure(.unknown))
+
+							return
+						}
+
+						var context = DataFileUploadContext()
+						context.equipment = .gravel
+						context.name = "Epic Ride"
+						//context.bikeID = "d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c" // TODO: Does bikeID exist? It's not defined in java.
+
+						client.activities.upload(fileURL, context: context, completion: completion)
+					}
+				}
 			}
 			.listStyle(GroupedListStyle())
 			.navigationBarTitle("Zone5 Example")

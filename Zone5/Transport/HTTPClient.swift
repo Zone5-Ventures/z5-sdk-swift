@@ -28,43 +28,32 @@ final internal class HTTPClient {
 		self.urlSessionDelegate = nil
 	}
 
-	private class URLSessionDelegate: NSObject, Foundation.URLSessionDelegate {
+	fileprivate class URLSessionDelegate: NSObject, Foundation.URLSessionDelegate {
 
 		weak var httpClient: HTTPClient?
 
 	}
 
+	// MARK: Cache directories
+
+	private static let cachesDirectory: URL = {
+		let sharedURL = try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+		return sharedURL.appendingPathComponent("com.zone5ventures.Zone5SDK")
+	}()
+
+	private static let uploadsDirectory = cachesDirectory.appendingPathComponent("uploads").creatingIfNeeded()
+
+	private static let downloadsDirectory = cachesDirectory.appendingPathComponent("downloads").creatingIfNeeded()
+
 	// MARK: Performing requests
 
-	private func perform(_ request: Request, method: Request.Method, completion: @escaping (_ result: Result<Data, Zone5.Error>) -> Void) {
+	private func execute<T: Decodable>(with completion: (_ result: Result<T, Zone5.Error>) -> Void, _ block: (_ zone5: Zone5, _ baseURL: URL) throws -> Void) {
 		do {
 			guard let zone5 = zone5, let baseURL = zone5.baseURL else {
 				throw Zone5.Error.invalidConfiguration
 			}
 
-			var urlRequest = try request.urlRequest(for: baseURL, method: method)
-
-			if request.endpoint.requiresAccessToken {
-				guard let accessToken = zone5.accessToken else {
-					throw Zone5.Error.requiresAccessToken
-				}
-
-				accessToken.sign(request: &urlRequest)
-			}
-
-			let task = urlSession.dataTask(with: urlRequest) { data, response, error in
-				if let error = error {
-					completion(.failure(.transportFailure(error)))
-				}
-				else if let data = data {
-					completion(.success(data))
-				}
-				else {
-					completion(.failure(.unknown))
-				}
-			}
-
-			task.resume()
+			try block(zone5, baseURL)
 		}
 		catch {
 			if let error = error as? Zone5.Error {
@@ -76,46 +65,76 @@ final internal class HTTPClient {
 		}
 	}
 
-	func post<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) {
-		perform(request, method: .post) { [weak self] result in
-			guard let self = self else {
-				completion(.failure(.invalidConfiguration))
+	func perform<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) {
+		execute(with: completion) { zone5, baseURL in
+			let urlRequest = try request.urlRequest(with: baseURL, accessToken: zone5.accessToken)
 
-				return
+			let decoder = self.decoder
+			let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+				if let error = error {
+					completion(.failure(.transportFailure(error)))
+				}
+				else if let data = data {
+					completion(decoder.decode(data, from: request, as: expectedType))
+				}
+				else {
+					completion(.failure(.unknown))
+				}
 			}
 
-			switch result {
-			case .failure(let error):
-				completion(.failure(error))
-
-			case .success(let data):
-				completion(self.result(decoding: data, as: expectedType, request: request))
-			}
+			task.resume()
 		}
 	}
 
-	func get<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) {
-		perform(request, method: .get) { [weak self] result in
-			guard let self = self else {
-				completion(.failure(.invalidConfiguration))
+	func upload<T: Decodable>(_ fileURL: URL, with request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) {
+		execute(with: completion) { zone5, baseURL in
+			let (urlRequest, multipartData) = try request.urlRequest(toUpload: fileURL, with: baseURL, accessToken: zone5.accessToken)
+			let cacheURL = HTTPClient.uploadsDirectory.appendingPathComponent(fileURL.lastPathComponent).appendingPathExtension("multipart")
 
-				return
+			do {
+				try multipartData.write(to: cacheURL)
+			}
+			catch {
+				throw Zone5.Error.failedEncodingRequestBody
 			}
 
-			switch result {
-			case .failure(let error):
-				completion(.failure(error))
+			let decoder = self.decoder
+			let task = urlSession.uploadTask(with: urlRequest, fromFile: cacheURL) { [weak self] data, response, error in
+				defer { try? FileManager.default.removeItem(at: fileURL) }
 
-			case .success(let data):
-				completion(self.result(decoding: data, as: expectedType, request: request))
+				if let error = error {
+					completion(.failure(.transportFailure(error)))
+				}
+				else if let data = data {
+					completion(decoder.decode(data, from: request, as: expectedType))
+				}
+				else {
+					completion(.failure(.unknown))
+				}
 			}
+
+			task.resume()
 		}
 	}
 
-	private func result<T: Decodable>(decoding data: Data, as expectedType: T.Type, request: Request) -> Result<T, Zone5.Error> {
+}
+
+private extension URL {
+
+	func creatingIfNeeded() -> URL {
+		try! FileManager.default.createDirectory(at: self, withIntermediateDirectories: true, attributes: nil)
+
+		return self
+	}
+
+}
+
+private extension JSONDecoder {
+
+	func decode<T: Decodable>(_ data: Data, from request: Request, as expectedType: T.Type) -> Result<T, Zone5.Error> {
 		do {
 			// Attempt to decode and return the `data` as the `expectedType` using our decoder
-			let response = try self.decoder.decode(expectedType, from: data)
+			let response = try decode(expectedType, from: data)
 
 			return .success(response)
 		}
@@ -125,7 +144,7 @@ final internal class HTTPClient {
 			do {
 				// Decoding as `expectedType` failed, so lets try to decode as a `ServerMessage` instead, in the hopes
 				// that the server responded with a legitimate error.
-				let message = try self.decoder.decode(Zone5.Error.ServerMessage.self, from: data)
+				let message = try decode(Zone5.Error.ServerMessage.self, from: data)
 
 				return .failure(.serverError(message))
 			}
@@ -148,11 +167,14 @@ final internal class HTTPClient {
 		}
 	}
 
+
 }
 
 internal protocol HTTPClientURLSession: class {
 
 	func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+
+	func uploadTask(with request: URLRequest, fromFile fileURL: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionUploadTask
 
 }
 

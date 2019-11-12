@@ -30,10 +30,10 @@ public class APIView {
 	}
 
 	internal func get<T>(_ endpoint: HTTPEndpoint, parameters: URLEncodedBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) {
-		let request = Request(endpoint: endpoint, body: parameters)
+		let request = Request(endpoint: endpoint, method: .get, body: parameters)
 
 		perform(with: completionHandler) { zone5 in
-			zone5.httpClient.get(request, expectedType: T.self, completion: completionHandler)
+			zone5.httpClient.perform(request, expectedType: T.self, completion: completionHandler)
 		}
 	}
 
@@ -41,16 +41,28 @@ public class APIView {
 		get(endpoint, parameters: parameters, expectedType: T.self, with: completionHandler)
 	}
 
-	internal func post<T>(_ endpoint: HTTPEndpoint, body: RequestBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) {
-		let request = Request(endpoint: endpoint, body: body)
+	internal func post<T>(_ endpoint: HTTPEndpoint, body: RequestBody, expectedType: T.Type, with completionHandler: @escaping Completion<T>) {
+		let request = Request(endpoint: endpoint, method: .post, body: body)
 
 		perform(with: completionHandler) { zone5 in
-			zone5.httpClient.post(request, expectedType: T.self, completion: completionHandler)
+			zone5.httpClient.perform(request, expectedType: T.self, completion: completionHandler)
 		}
 	}
 
-	internal func post<T>(_ endpoint: HTTPEndpoint, body: RequestBody? = nil, with completionHandler: @escaping Completion<T>) {
+	internal func post<T>(_ endpoint: HTTPEndpoint, body: RequestBody, with completionHandler: @escaping Completion<T>) {
 		post(endpoint, body: body, expectedType: T.self, with: completionHandler)
+	}
+
+	internal func upload<T>(_ endpoint: HTTPEndpoint, contentsOf fileURL: URL, body: RequestBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) {
+		let request = Request(endpoint: endpoint, method: .post, body: body)
+
+		perform(with: completionHandler) { zone5 in
+			zone5.httpClient.upload(fileURL, with: request, expectedType: T.self, completion: completionHandler)
+		}
+	}
+
+	internal func upload<T>(_ endpoint: HTTPEndpoint, contentsOf fileURL: URL, body: RequestBody? = nil, with completionHandler: @escaping Completion<T>) {
+		upload(endpoint, contentsOf: fileURL, body: body, expectedType: T.self, with: completionHandler)
 	}
 
 }
