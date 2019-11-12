@@ -49,17 +49,17 @@ struct ContentView: View {
 						client.users.me(completion: completion)
 					}
 				}
-				Section(header: Text("Activities")) {
-					EndpointLink<SearchResult<Activity>>("Next 7 Days") { client, completion in
+				Section(header: Text("Activities"), footer: Text("Attempting to view \"Next Page\" before performing a legitimate search request—such as by opening the \"Next 3 Months\" screen—will return an empty result.")) {
+					EndpointLink<SearchResult<Activity>>("Next 3 Months") { client, completion in
 						var criteria = UserWorkoutSearch()
-						criteria.rangesTs = [DateRange(component: .day, value: 7)!]
+						criteria.rangesTs = [DateRange(component: .month, value: 3)!]
 
 						let parameters = SearchInput(criteria: criteria)
 
 						client.activities.search(parameters, offset: 0, count: 10, completion: completion)
 					}
-					EndpointLink("Next") { client, completion in
-						client.activities.next(offset: 0, count: 1, completion: completion)
+					EndpointLink("Next Page") { client, completion in
+						client.activities.next(offset: 10, count: 10, completion: completion)
 					}
 				}
 			}
