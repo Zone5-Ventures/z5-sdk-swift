@@ -81,10 +81,10 @@ public struct UserWorkoutSearch: Encodable {
 	/// Limit the search results to activities related to these userIds
 	public var userIds: [Int]?
 
-	public var orderBy: String?
+	public var orderBy: Activity.Field?
 
 	/// Order the results according to these fields
-	public var order: [Order]?
+	public var order: [Order<Activity.Field>]?
 
 	/// Limit the search results to these activities. Set the id and type in the `Activity`.
 	public var activities: [Activity]?

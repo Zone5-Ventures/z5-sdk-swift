@@ -38,6 +38,9 @@ public struct Activity: Codable, Hashable {
 		case transition // a special case for tagging transitions in tri files
 	}
 
+	/// The sport related to this activity.
+	public var timestamp: Int?
+
 	public init() { }
 
 	// MARK: Hashable
@@ -49,24 +52,27 @@ public struct Activity: Codable, Hashable {
 
 	// MARK: Codable
 
-	private enum CodingKeys: String, CodingKey {
+	public enum Field: String, Codable, CodingKey {
 		case id
 		case category = "activity"
 		case sport = "type"
+		case timestamp = "ts"
 	}
 
 	public init(from decoder: Decoder) throws {
-		let container = try decoder.container(keyedBy: CodingKeys.self)
+		let container = try decoder.container(keyedBy: Field.self)
 		id = try container.decodeIfPresent(Int.self, forKey: .id)
 		category = try container.decodeIfPresent(Category.self, forKey: .category)
 		sport = try container.decodeIfPresent(Sport.self, forKey: .sport)
+		timestamp = try container.decodeIfPresent(Int.self, forKey: .timestamp)
 	}
 
 	public func encode(to encoder: Encoder) throws {
-		var container = encoder.container(keyedBy: CodingKeys.self)
+		var container = encoder.container(keyedBy: Field.self)
 		try container.encodeIfPresent(id, forKey: .id)
 		try container.encodeIfPresent(category, forKey: .category)
 		try container.encodeIfPresent(sport, forKey: .sport)
+		try container.encodeIfPresent(timestamp, forKey: .timestamp)
 	}
 
 }

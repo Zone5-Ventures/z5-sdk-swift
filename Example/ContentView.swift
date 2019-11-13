@@ -53,6 +53,7 @@ struct ContentView: View {
 					EndpointLink<SearchResult<Activity>>("Next 3 Months") { client, completion in
 						var criteria = UserWorkoutSearch()
 						criteria.rangesTs = [DateRange(component: .month, value: 3)!]
+						criteria.order = [.ascending(.timestamp)]
 
 						let parameters = SearchInput(criteria: criteria)
 
