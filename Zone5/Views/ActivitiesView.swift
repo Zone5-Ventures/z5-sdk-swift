@@ -7,8 +7,8 @@ public class ActivitiesView: APIView {
 		case next = "/rest/users/activities/page/{offset}/{count}";
 
 		case upload = "/rest/files/upload";
+		case uploadStatus = "/rest/v2/files/get/{indexID}";
 		case delete = "/rest/users/activities/rem/{activityType}/{activityId}/false";
-		case fileIndexStatus = "/rest/v2/files/get/{indexId}";
 
 		case downloadFIT = "/rest/files/download/{fileID}";
 		case downloadRaw3 = "/rest/users/activities/download/files/{fileID}/raw3";
@@ -41,10 +41,19 @@ public class ActivitiesView: APIView {
 		get(endpoint, with: completion)
 	}
 
-	// MARK: Uploads
+	// MARK: Uploading files
 
 	public func upload(_ fileURL: URL, context: DataFileUploadContext, completion: @escaping (_ result: Result<DataFileUploadIndex, Zone5.Error>) -> Void) {
 		upload(Endpoints.upload, contentsOf: fileURL, body: context, with: completion)
+	}
+
+	/// Request the processing status of an uploaded file with the given `indexID`.
+	/// - Parameters:
+	///   - indexID: The `id` from the result of a previous upload's `DataFileUploadIndex` response.
+	///   - completion: Function called with the upload status for the requested file, or the error if one occurred.
+	public func uploadStatus(of indexID: Int, completion: @escaping (_ result: Result<DataFileUploadIndex, Zone5.Error>) -> Void) {
+		let endpoint = Endpoints.uploadStatus.replacingTokens(["indexID": indexID])
+		get(endpoint, with: completion)
 	}
 
 }

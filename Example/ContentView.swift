@@ -75,9 +75,18 @@ struct ContentView: View {
 						var context = DataFileUploadContext()
 						context.equipment = .gravel
 						context.name = "Epic Ride"
+						context.startTime = Int(Date().timeIntervalSince1970 * 1000)
 						//context.bikeID = "d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c" // TODO: Does bikeID exist? It's not defined in java.
 
-						client.activities.upload(fileURL, context: context, completion: completion)
+						client.activities.upload(fileURL, context: context) { result in
+							switch result {
+							case .failure(let error):
+								completion(.failure(error))
+
+							case .success(let index):
+								self.checkUploadStatus(client, index: index, completion: completion)
+							}
+						}
 					}
 				}
 			}
@@ -90,6 +99,28 @@ struct ContentView: View {
 		.onAppear {
 			if !self.apiClient.isConfigured {
 				self.displayConfiguration = true
+			}
+		}
+	}
+
+	private func checkUploadStatus(_ client: Zone5, index: DataFileUploadIndex, completion: @escaping (_ result: Result<DataFileUploadIndex, Zone5.Error>) -> Void) {
+		completion(.success(index))
+
+		sleep(1)
+
+		switch index.state {
+		case .finished, .error:
+			break
+
+		default:
+			client.activities.uploadStatus(of: index.id) { result in
+				switch result {
+				case .failure(let error):
+					completion(.failure(error))
+
+				case .success(let index):
+					self.checkUploadStatus(client, index: index, completion: completion)
+				}
 			}
 		}
 	}
