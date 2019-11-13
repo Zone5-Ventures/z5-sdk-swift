@@ -112,9 +112,12 @@ struct ObjectView: View {
 					.foregroundColor(.blue)
 			}
 			else {
-				objectForNavigation = value
 				displayValue = Text(String(describing: value))
 					.foregroundColor(.green)
+
+				if !mirror.children.isEmpty {
+					objectForNavigation = value
+				}
 			}
 
 			return PropertyRepresentation(label: label, value: displayValue, object: objectForNavigation)
