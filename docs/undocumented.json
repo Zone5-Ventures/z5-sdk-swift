@@ -1,514 +1,1298 @@
 {
   "warnings": [
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
       "line": 3,
       "symbol": "Activity",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 5,
-      "symbol": "Activity.id",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 7,
-      "symbol": "Activity.category",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 9,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 12,
       "symbol": "Activity.Category",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 10,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 15,
       "symbol": "Activity.Category.event",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 11,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 16,
       "symbol": "Activity.Category.workout",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 12,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 17,
       "symbol": "Activity.Category.file",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 15,
-      "symbol": "Activity.sport",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 17,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 23,
       "symbol": "Activity.Sport",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 18,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 26,
       "symbol": "Activity.Sport.ride",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 19,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 27,
       "symbol": "Activity.Sport.run",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 20,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 28,
       "symbol": "Activity.Sport.swim",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 21,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 29,
       "symbol": "Activity.Sport.brick",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 22,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 30,
       "symbol": "Activity.Sport.xtrain",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 23,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 31,
       "symbol": "Activity.Sport.xcski",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 24,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 32,
       "symbol": "Activity.Sport.row",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 25,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 33,
       "symbol": "Activity.Sport.gym",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 26,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 34,
       "symbol": "Activity.Sport.walk",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 27,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 35,
       "symbol": "Activity.Sport.yoga",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 28,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 36,
       "symbol": "Activity.Sport.other",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 29,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 37,
       "symbol": "Activity.Sport.multisport",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 30,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 38,
       "symbol": "Activity.Sport.transition",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Activity.swift",
-      "line": 33,
-      "symbol": "Activity.init()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/DateRange.swift",
-      "line": 3,
-      "symbol": "DateRange",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/DateRange.swift",
-      "line": 5,
-      "symbol": "DateRange.name",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/DateRange.swift",
-      "line": 13,
-      "symbol": "DateRange.timezone",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/DateRange.swift",
-      "line": 15,
-      "symbol": "DateRange.init(name:floor:ceiling:timezone:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/DateRange.swift",
-      "line": 22,
-      "symbol": "DateRange.init(name:floor:ceiling:timezone:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/DateRange.swift",
-      "line": 29,
-      "symbol": "DateRange.init(name:component:value:starting:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/DateRange.swift",
-      "line": 42,
-      "symbol": "DateRange.calendar",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Order.swift",
-      "line": 3,
-      "symbol": "Order",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Order.swift",
-      "line": 5,
-      "symbol": "Order.field",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Order.swift",
-      "line": 7,
-      "symbol": "Order.direction",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Order.swift",
-      "line": 9,
-      "symbol": "Order.Direction",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 59,
+      "symbol": "Activity.Field",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Order.swift",
-      "line": 10,
-      "symbol": "Order.Direction.ascending",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 60,
+      "symbol": "Activity.Field.id",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/Order.swift",
-      "line": 11,
-      "symbol": "Order.Direction.descending",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 61,
+      "symbol": "Activity.Field.category",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchInput.swift",
-      "line": 3,
-      "symbol": "SearchInputOptions",
-      "symbol_kind": "source.lang.swift.decl.struct",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 62,
+      "symbol": "Activity.Field.sport",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchInput.swift",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 63,
+      "symbol": "Activity.Field.name",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 64,
+      "symbol": "Activity.Field.timestamp",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 65,
+      "symbol": "Activity.Field.fileID",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadContext.swift",
       "line": 11,
-      "symbol": "SearchInputOptions.disableFieldSchema",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchInput.swift",
-      "line": 12,
-      "symbol": "SearchInputOptions.disableServerSideDecoration",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchInput.swift",
-      "line": 16,
-      "symbol": "SearchInput",
+      "symbol": "DataFileUploadContext",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchInput.swift",
-      "line": 18,
-      "symbol": "SearchInput.criteria",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchInput.swift",
-      "line": 20,
-      "symbol": "SearchInput.fields",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchInput.swift",
-      "line": 22,
-      "symbol": "SearchInput.identifiers",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchInput.swift",
-      "line": 24,
-      "symbol": "SearchInput.ctx",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchInput.swift",
-      "line": 26,
-      "symbol": "SearchInput.options",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchInput.swift",
-      "line": 28,
-      "symbol": "SearchInput.init(criteria:)",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadContext.swift",
+      "line": 46,
+      "symbol": "DataFileUploadContext.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchResult.swift",
-      "line": 3,
-      "symbol": "SearchResult",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchResult.swift",
-      "line": 5,
-      "symbol": "SearchResult.result",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchResult.swift",
-      "line": 7,
-      "symbol": "SearchResult.total",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/SearchResult.swift",
-      "line": 9,
-      "symbol": "SearchResult.offset",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/User.swift",
-      "line": 3,
-      "symbol": "User",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/User.swift",
-      "line": 5,
-      "symbol": "User.id",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/User.swift",
-      "line": 7,
-      "symbol": "User.uid",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/User.swift",
-      "line": 9,
-      "symbol": "User.email",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/User.swift",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
       "line": 11,
-      "symbol": "User.firstName",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "symbol": "DataFileUploadIndex",
+      "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/User.swift",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
       "line": 13,
-      "symbol": "User.lastName",
+      "symbol": "DataFileUploadIndex.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/User.swift",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
       "line": 15,
-      "symbol": "User.avatar",
+      "symbol": "DataFileUploadIndex.resultID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/User.swift",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
       "line": 17,
-      "symbol": "User.init()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "symbol": "DataFileUploadIndex.timestamp",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/UserWorkoutSearch.swift",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 19,
+      "symbol": "DataFileUploadIndex.filename",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 21,
+      "symbol": "DataFileUploadIndex.state",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 23,
+      "symbol": "DataFileUploadIndex.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 27,
+      "symbol": "DataFileUploadIndex.user",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 29,
+      "symbol": "DataFileUploadIndex.createdTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 31,
+      "symbol": "DataFileUploadIndex.qTs",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutSearch.swift",
       "line": 3,
       "symbol": "UserWorkoutSearch",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/UserWorkoutSearch.swift",
-      "line": 51,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutSearch.swift",
+      "line": 5,
+      "symbol": "UserWorkoutSearch.Field",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutSearch.swift",
+      "line": 53,
       "symbol": "UserWorkoutSearch.reviewMask",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/UserWorkoutSearch.swift",
-      "line": 59,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutSearch.swift",
+      "line": 61,
       "symbol": "UserWorkoutSearch.pwrManufacturer",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/UserWorkoutSearch.swift",
-      "line": 61,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutSearch.swift",
+      "line": 63,
       "symbol": "UserWorkoutSearch.pwrVersion",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/UserWorkoutSearch.swift",
-      "line": 63,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutSearch.swift",
+      "line": 65,
       "symbol": "UserWorkoutSearch.pwrSerial",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/UserWorkoutSearch.swift",
-      "line": 65,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutSearch.swift",
+      "line": 67,
       "symbol": "UserWorkoutSearch.pwrProduct",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/UserWorkoutSearch.swift",
-      "line": 67,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutSearch.swift",
+      "line": 69,
       "symbol": "UserWorkoutSearch.pwrDisplay",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/UserWorkoutSearch.swift",
-      "line": 84,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutSearch.swift",
+      "line": 86,
       "symbol": "UserWorkoutSearch.orderBy",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/UserWorkoutSearch.swift",
-      "line": 98,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutSearch.swift",
+      "line": 100,
       "symbol": "UserWorkoutSearch.meta",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/UserWorkoutSearch.swift",
-      "line": 100,
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutSearch.swift",
+      "line": 102,
       "symbol": "UserWorkoutSearch.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Objects/WorkoutType.swift",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataAccessRequest.swift",
+      "line": 11,
+      "symbol": "DataAccessRequest",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataAccessRequest.swift",
+      "line": 19,
+      "symbol": "DataAccessRequest.view3",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataAccessRequest.swift",
+      "line": 30,
+      "symbol": "DataAccessRequest.edit3",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataFileChannel.swift",
+      "line": 7,
+      "symbol": "DataFileChannel",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataFileChannel.swift",
+      "line": 24,
+      "symbol": "DataFileChannel.speed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataFileChannel.swift",
+      "line": 26,
+      "symbol": "DataFileChannel.temperature",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataFileChannel.swift",
+      "line": 28,
+      "symbol": "DataFileChannel.balance",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataFileChannel.swift",
+      "line": 30,
+      "symbol": "DataFileChannel.gears",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataFileChannel.swift",
+      "line": 56,
+      "symbol": "DataFileChannel.geo",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataFileChannel.swift",
+      "line": 58,
+      "symbol": "DataFileChannel.distance",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataFileChannel.swift",
+      "line": 84,
+      "symbol": "DataFileChannel.flow",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataFileChannel.swift",
+      "line": 86,
+      "symbol": "DataFileChannel.respiration",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/DataFileChannel.swift",
+      "line": 88,
+      "symbol": "DataFileChannel.grit",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Equipment.swift",
+      "line": 11,
+      "symbol": "Equipment",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Equipment.swift",
+      "line": 13,
+      "symbol": "Equipment.road",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Equipment.swift",
+      "line": 15,
+      "symbol": "Equipment.mtb",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Equipment.swift",
+      "line": 17,
+      "symbol": "Equipment.cycloX",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Equipment.swift",
+      "line": 19,
+      "symbol": "Equipment.timeTrial",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Equipment.swift",
+      "line": 21,
+      "symbol": "Equipment.singleSpeed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Equipment.swift",
+      "line": 23,
+      "symbol": "Equipment.commute",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Equipment.swift",
+      "line": 25,
+      "symbol": "Equipment.indoor",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Equipment.swift",
+      "line": 27,
+      "symbol": "Equipment.track",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Equipment.swift",
+      "line": 29,
+      "symbol": "Equipment.gravel",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTarget.swift",
+      "line": 11,
+      "symbol": "EventTarget",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 11,
+      "symbol": "EventTeamCategory",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 13,
+      "symbol": "EventTeamCategory.one",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 15,
+      "symbol": "EventTeamCategory.two",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 17,
+      "symbol": "EventTeamCategory.three",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 19,
+      "symbol": "EventTeamCategory.four",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 21,
+      "symbol": "EventTeamCategory.five",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 23,
+      "symbol": "EventTeamCategory.six",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 25,
+      "symbol": "EventTeamCategory.seven",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 27,
+      "symbol": "EventTeamCategory.eight",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 29,
+      "symbol": "EventTeamCategory.nine",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 31,
+      "symbol": "EventTeamCategory.ten",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 33,
+      "symbol": "EventTeamCategory.eleven",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/EventTeamCategory.swift",
+      "line": 35,
+      "symbol": "EventTeamCategory.twelve",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/FileUploadState.swift",
+      "line": 11,
+      "symbol": "FileUploadState",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/FileUploadState.swift",
+      "line": 13,
+      "symbol": "FileUploadState.pending",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/FileUploadState.swift",
+      "line": 15,
+      "symbol": "FileUploadState.queued",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/FileUploadState.swift",
+      "line": 17,
+      "symbol": "FileUploadState.processing",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/FileUploadState.swift",
+      "line": 19,
+      "symbol": "FileUploadState.finished",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/FileUploadState.swift",
+      "line": 21,
+      "symbol": "FileUploadState.error",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/IntensityZoneType.swift",
+      "line": 9,
+      "symbol": "IntensityZoneType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/IntensityZoneType.swift",
+      "line": 26,
+      "symbol": "IntensityZoneType.pace",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/IntensityZoneType.swift",
+      "line": 28,
+      "symbol": "IntensityZoneType.rpm",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/LapType.swift",
+      "line": 24,
+      "symbol": "LapType.climb",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/LapType.swift",
+      "line": 26,
+      "symbol": "LapType.sprint",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/MappedFieldType.swift",
+      "line": 9,
+      "symbol": "MappedFieldType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/MappedFieldType.swift",
+      "line": 148,
+      "symbol": "MappedFieldType.mbar",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/MappedFieldType.swift",
+      "line": 153,
+      "symbol": "MappedFieldType.millimeter",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/MappedFieldType.swift",
+      "line": 161,
+      "symbol": "MappedFieldType.volts",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/MappedFieldType.swift",
+      "line": 163,
+      "symbol": "MappedFieldType.tScore",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/MappedFieldType.swift",
+      "line": 180,
+      "symbol": "MappedFieldType.zscore",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/MappedFieldType.swift",
+      "line": 194,
+      "symbol": "MappedFieldType.steps",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/MappedFieldType.swift",
+      "line": 217,
+      "symbol": "MappedFieldType.zeroOffset",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/MappedFieldType.swift",
+      "line": 219,
+      "symbol": "MappedFieldType.slope",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/MappedFieldType.swift",
+      "line": 239,
+      "symbol": "MappedFieldType.tsb",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/RelativePeriod.swift",
+      "line": 9,
+      "symbol": "RelativePeriod",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/ResultReview.swift",
+      "line": 12,
+      "symbol": "ResultReview.pending",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/ResultReview.swift",
+      "line": 14,
+      "symbol": "ResultReview.ok",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/ResultReview.swift",
+      "line": 16,
+      "symbol": "ResultReview.fixed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/ResultReview.swift",
+      "line": 18,
+      "symbol": "ResultReview.attention",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/ResultSource.swift",
+      "line": 12,
+      "symbol": "ResultSource.file",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/ResultSource.swift",
+      "line": 14,
+      "symbol": "ResultSource.manual",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/ResultSource.swift",
+      "line": 16,
+      "symbol": "ResultSource.import",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/RunType.swift",
+      "line": 9,
+      "symbol": "RunType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/RunType.swift",
+      "line": 11,
+      "symbol": "RunType.road",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/RunType.swift",
+      "line": 13,
+      "symbol": "RunType.trail",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/RunType.swift",
+      "line": 15,
+      "symbol": "RunType.treadmill",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/RunType.swift",
+      "line": 17,
+      "symbol": "RunType.track",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/SwimType.swift",
+      "line": 9,
+      "symbol": "SwimType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/SwimType.swift",
+      "line": 11,
+      "symbol": "SwimType.pool",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/SwimType.swift",
+      "line": 13,
+      "symbol": "SwimType.openWater",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 9,
+      "symbol": "Terrain",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 11,
+      "symbol": "Terrain.flat",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 13,
+      "symbol": "Terrain.rolling",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 15,
+      "symbol": "Terrain.climbShort",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 17,
+      "symbol": "Terrain.climbMedium",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 19,
+      "symbol": "Terrain.climbLong",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 21,
+      "symbol": "Terrain.crit",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 23,
+      "symbol": "Terrain.dirtTech",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 25,
+      "symbol": "Terrain.dirtTechClimb",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 27,
+      "symbol": "Terrain.dirtTechDescent",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 29,
+      "symbol": "Terrain.dirt",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 31,
+      "symbol": "Terrain.dirtClimb",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 33,
+      "symbol": "Terrain.dirtDescent",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/Terrain.swift",
+      "line": 35,
+      "symbol": "Terrain.boards",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/TimeOfDay.swift",
+      "line": 9,
+      "symbol": "TimeOfDay",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/TimeOfDay.swift",
+      "line": 11,
+      "symbol": "TimeOfDay.am",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/TimeOfDay.swift",
+      "line": 13,
+      "symbol": "TimeOfDay.pm",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UnitMeasurement.swift",
+      "line": 9,
+      "symbol": "UnitMeasurement",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UnitMeasurement.swift",
+      "line": 11,
+      "symbol": "UnitMeasurement.metric",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UnitMeasurement.swift",
+      "line": 13,
+      "symbol": "UnitMeasurement.imperial",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 9,
+      "symbol": "UserConnectionsType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 11,
+      "symbol": "UserConnectionsType.garminConnect",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 13,
+      "symbol": "UserConnectionsType.fitbit",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 15,
+      "symbol": "UserConnectionsType.withings",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 17,
+      "symbol": "UserConnectionsType.myFitnessPal",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 19,
+      "symbol": "UserConnectionsType.underarmour",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 21,
+      "symbol": "UserConnectionsType.garminWellness",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 23,
+      "symbol": "UserConnectionsType.trainingPeaks",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 25,
+      "symbol": "UserConnectionsType.strava",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 27,
+      "symbol": "UserConnectionsType.polar",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 29,
+      "symbol": "UserConnectionsType.rideWithGPS",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "line": 31,
+      "symbol": "UserConnectionsType.todaysPlan",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserDelegateRelationship.swift",
+      "line": 9,
+      "symbol": "UserDelegateRelationship",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/UserDelegateState.swift",
+      "line": 9,
+      "symbol": "UserDelegateState",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/WorkoutType.swift",
       "line": 3,
       "symbol": "WorkoutType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Transport/MappedResult.swift",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/DateRange.swift",
       "line": 3,
-      "symbol": "MappedResult",
+      "symbol": "DateRange",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Transport/MappedResult.swift",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/DateRange.swift",
       "line": 5,
-      "symbol": "MappedResult.results",
+      "symbol": "DateRange.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Transport/MappedResult.swift",
-      "line": 7,
-      "symbol": "MappedResult.fields",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/DateRange.swift",
+      "line": 13,
+      "symbol": "DateRange.timezone",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Transport/MappedResult.swift",
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/DateRange.swift",
+      "line": 15,
+      "symbol": "DateRange.init(name:floor:ceiling:timezone:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/DateRange.swift",
+      "line": 22,
+      "symbol": "DateRange.init(name:floor:ceiling:timezone:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/DateRange.swift",
+      "line": 29,
+      "symbol": "DateRange.init(name:component:value:starting:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/DateRange.swift",
+      "line": 42,
+      "symbol": "DateRange.calendar",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/DayRange.swift",
+      "line": 11,
+      "symbol": "DayRange",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
+      "line": 3,
+      "symbol": "SearchInputCriteria",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
+      "line": 5,
+      "symbol": "SearchInputCriteria.Field",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
       "line": 9,
-      "symbol": "MappedResult.keys",
+      "symbol": "SearchInput",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
+      "line": 11,
+      "symbol": "SearchInput.criteria",
       "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
+      "line": 13,
+      "symbol": "SearchInput.fields",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
+      "line": 15,
+      "symbol": "SearchInput.identifiers",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
+      "line": 17,
+      "symbol": "SearchInput.ctx",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchResult.swift",
+      "line": 24,
+      "symbol": "SearchResult.Page.fields",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchResult.swift",
+      "line": 26,
+      "symbol": "SearchResult.Page.keys",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Transport/JSONEncodedBody.swift",
+      "line": 7,
+      "symbol": "JSONEncodedBody",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Transport/JSONEncodedBody.swift",
+      "line": 21,
+      "symbol": "JSONEncodedBody.multipartData",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Users/User.swift",
+      "line": 3,
+      "symbol": "User",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Users/User.swift",
+      "line": 5,
+      "symbol": "User.id",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Users/User.swift",
+      "line": 7,
+      "symbol": "User.uid",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Users/User.swift",
+      "line": 9,
+      "symbol": "User.email",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Users/User.swift",
+      "line": 11,
+      "symbol": "User.firstName",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Users/User.swift",
+      "line": 13,
+      "symbol": "User.lastName",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Users/User.swift",
+      "line": 15,
+      "symbol": "User.avatar",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Users/User.swift",
+      "line": 17,
+      "symbol": "User.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -520,15 +1304,57 @@
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 29,
+      "line": 32,
+      "symbol": "ActivitiesView.ActivitySearchResult",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
+      "line": 34,
       "symbol": "ActivitiesView.search(_:offset:count:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 34,
+      "line": 39,
       "symbol": "ActivitiesView.next(offset:count:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
+      "line": 46,
+      "symbol": "ActivitiesView.upload(_:context:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
+      "line": 61,
+      "symbol": "ActivitiesView.downloadOriginal(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
+      "line": 66,
+      "symbol": "ActivitiesView.downloadRaw3(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
+      "line": 71,
+      "symbol": "ActivitiesView.downloadCSV(_:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
+      "line": 76,
+      "symbol": "ActivitiesView.downloadMap(_:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -537,13 +1363,6 @@
       "line": 3,
       "symbol": "OAuthView",
       "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/OAuthView.swift",
-      "line": 15,
-      "symbol": "OAuthView.accessToken(username:password:completion:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -569,7 +1388,7 @@
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Zone5.swift",
-      "line": 131,
+      "line": 158,
       "symbol": "Zone5.Error.ServerMessage.message",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
