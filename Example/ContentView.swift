@@ -64,7 +64,7 @@ struct ContentView: View {
 						client.activities.next(offset: 10, count: 10, completion: completion)
 					}
 				}
-				Section(footer: Text("Uploads a test file to the API.")) {
+				Section {
 					EndpointLink<DataFileUploadIndex>("Upload File") { client, completion in
 						guard let fileURL = Bundle.main.url(forDevelopmentAsset: "2013-12-22-10-30-12", withExtension: "fit") else {
 							completion(.failure(.unknown))
@@ -85,6 +85,58 @@ struct ContentView: View {
 
 							case .success(let index):
 								self.checkUploadStatus(client, index: index, completion: completion)
+							}
+						}
+					}
+					EndpointLink<URL>("Download Latest File") { client, completion in
+						self.retrieveFileIdentifier(client) { result in
+							switch result {
+							case .failure(let error):
+								completion(.failure(error))
+
+							case .success(let fileID):
+								client.activities.downloadOriginal(fileID) { result in
+									completion(result)
+								}
+							}
+						}
+					}
+					EndpointLink<URL>("Download Latest File as Raw3") { client, completion in
+						self.retrieveFileIdentifier(client) { result in
+							switch result {
+							case .failure(let error):
+								completion(.failure(error))
+
+							case .success(let fileID):
+								client.activities.downloadRaw3(fileID) { result in
+									completion(result)
+								}
+							}
+						}
+					}
+					EndpointLink<URL>("Download Latest File as CSV") { client, completion in
+						self.retrieveFileIdentifier(client) { result in
+							switch result {
+							case .failure(let error):
+								completion(.failure(error))
+
+							case .success(let fileID):
+								client.activities.downloadCSV(fileID) { result in
+									completion(result)
+								}
+							}
+						}
+					}
+					EndpointLink<URL>("Download Latest File as Map") { client, completion in
+						self.retrieveFileIdentifier(client) { result in
+							switch result {
+							case .failure(let error):
+								completion(.failure(error))
+
+							case .success(let fileID):
+								client.activities.downloadMap(fileID) { result in
+									completion(result)
+								}
 							}
 						}
 					}
@@ -121,6 +173,33 @@ struct ContentView: View {
 				case .success(let index):
 					self.checkUploadStatus(client, index: index, completion: completion)
 				}
+			}
+		}
+	}
+
+	private func retrieveFileIdentifier(_ client: Zone5, _ completion: @escaping (_ result: Result<Int, Zone5.Error>) -> Void) {
+		var criteria = UserWorkoutSearch()
+		criteria.name = "2013-12-22-10-30-12.fit"
+		criteria.rangesTs = [DateRange(component: .month, value: -3)!]
+		criteria.order = [.descending(.timestamp)]
+
+		var parameters = SearchInput(criteria: criteria)
+		parameters.fields = [.name, .fileID]
+		//parameters.fields = ["name", "equipment", "bike.avatar", "bike.serial", "bike.name", "bike.uuid"]
+
+		client.activities.search(parameters, offset: 0, count: 1) { result in
+			switch result {
+			case .failure(let error):
+				completion(.failure(error))
+
+			case .success(let response):
+				guard let activity = response.first, let fileID = activity.fileID else {
+					completion(.failure(.unknown))
+
+					return
+				}
+
+				completion(.success(fileID))
 			}
 		}
 	}

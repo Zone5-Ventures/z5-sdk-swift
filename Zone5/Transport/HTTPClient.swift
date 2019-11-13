@@ -162,12 +162,26 @@ final internal class HTTPClient {
 		execute(with: completion) { zone5, baseURL in
 			let urlRequest = try request.urlRequest(with: baseURL, accessToken: zone5.accessToken)
 
+			let decoder = self.decoder
 			let task = urlSession.downloadTask(with: urlRequest) { location, response, error in
 				if let error = error {
 					completion(.failure(.transportFailure(error)))
 				}
-				else if let location = location {
-					completion(.success(location))
+				else if let location = location, let filename = response?.suggestedFilename {
+					do {
+						let cacheURL = HTTPClient.downloadsDirectory.appendingPathComponent(filename)
+						try FileManager.default.copyItem(at: location, to: cacheURL)
+
+						completion(.success(cacheURL))
+
+						try? FileManager.default.removeItem(at: cacheURL)
+					}
+					catch {
+						completion(.failure(.transportFailure(error)))
+					}
+				}
+				else if let location = location, let data = try? Data(contentsOf: location) {
+					completion(decoder.decode(data, from: request, as: URL.self))
 				}
 				else {
 					completion(.failure(.unknown))

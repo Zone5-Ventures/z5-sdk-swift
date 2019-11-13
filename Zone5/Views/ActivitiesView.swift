@@ -10,7 +10,7 @@ public class ActivitiesView: APIView {
 		case uploadStatus = "/rest/v2/files/get/{indexID}";
 		case delete = "/rest/users/activities/rem/{activityType}/{activityId}/false";
 
-		case downloadFIT = "/rest/files/download/{fileID}";
+		case downloadOriginal = "/rest/files/download/{fileID}";
 		case downloadRaw3 = "/rest/users/activities/download/files/{fileID}/raw3";
 		case downloadCSV = "/rest/plans/files/csv/{fileID}";
 		case downloadMap = "/rest/users/activities/map/{fileID}";
@@ -54,6 +54,28 @@ public class ActivitiesView: APIView {
 	public func uploadStatus(of indexID: Int, completion: @escaping (_ result: Result<DataFileUploadIndex, Zone5.Error>) -> Void) {
 		let endpoint = Endpoints.uploadStatus.replacingTokens(["indexID": indexID])
 		get(endpoint, with: completion)
+	}
+
+	// MARK: Downloading files
+
+	public func downloadOriginal(_ fileID: Int, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) {
+		let endpoint = Endpoints.downloadOriginal.replacingTokens(["fileID": fileID])
+		download(endpoint, with: completion)
+	}
+
+	public func downloadRaw3(_ fileID: Int, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) {
+		let endpoint = Endpoints.downloadRaw3.replacingTokens(["fileID": fileID])
+		download(endpoint, with: completion)
+	}
+
+	public func downloadCSV(_ fileID: Int, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) {
+		let endpoint = Endpoints.downloadCSV.replacingTokens(["fileID": fileID])
+		download(endpoint, with: completion)
+	}
+
+	public func downloadMap(_ fileID: Int, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) {
+		let endpoint = Endpoints.downloadMap.replacingTokens(["fileID": fileID])
+		download(endpoint, with: completion)
 	}
 
 }

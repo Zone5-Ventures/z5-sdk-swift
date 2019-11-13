@@ -10,25 +10,25 @@ import Foundation
 
 public struct DataFileUploadIndex: Codable {
 
-	var id: Int
+	public var id: Int
 
-	var resultID: Int?
+	public var resultID: Int?
 
-	var timestamp: Int?
+	public var timestamp: Int?
 
-	var filename: String?
+	public var filename: String?
 
-	var state: FileUploadState?
+	public var state: FileUploadState?
 
-	var message: Int?
+	public var message: Int?
 
-	//var result: UserWorkoutResult?
+	//public var result: UserWorkoutResult?
 
-	var user: User?
+	public var user: User?
 
-	var createdTime: Int?
+	public var createdTime: Int?
 
-	var qTs: Int?
+	public var qTs: Int?
 
 	// MARK: Encodable
 

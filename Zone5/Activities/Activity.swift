@@ -44,6 +44,9 @@ public struct Activity: Codable, Hashable {
 	///
 	public var timestamp: Int?
 
+	///
+	public var fileID: Int?
+
 	// MARK: Hashable
 
 	public func hash(into hasher: inout Hasher) {
@@ -59,6 +62,7 @@ public struct Activity: Codable, Hashable {
 		case sport = "type"
 		case name
 		case timestamp = "ts"
+		case fileID = "fileId"
 	}
 
 	public init(from decoder: Decoder) throws {
@@ -68,6 +72,7 @@ public struct Activity: Codable, Hashable {
 		sport = try container.decodeIfPresent(Sport.self, forKey: .sport)
 		name = try container.decodeIfPresent(String.self, forKey: .name)
 		timestamp = try container.decodeIfPresent(Int.self, forKey: .timestamp)
+		fileID = try container.decodeIfPresent(Int.self, forKey: .fileID)
 	}
 
 	public func encode(to encoder: Encoder) throws {
@@ -77,6 +82,7 @@ public struct Activity: Codable, Hashable {
 		try container.encodeIfPresent(sport, forKey: .sport)
 		try container.encodeIfPresent(name, forKey: .name)
 		try container.encodeIfPresent(timestamp, forKey: .timestamp)
+		try container.encodeIfPresent(fileID, forKey: .fileID)
 	}
 
 }

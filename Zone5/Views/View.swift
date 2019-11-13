@@ -65,4 +65,12 @@ public class APIView {
 		upload(endpoint, contentsOf: fileURL, body: body, expectedType: T.self, with: completionHandler)
 	}
 
+	internal func download(_ endpoint: RequestEndpoint, parameters: URLEncodedBody? = nil, with completionHandler: @escaping Completion<URL>) {
+		let request = Request(endpoint: endpoint, method: .get, body: parameters)
+
+		perform(with: completionHandler) { zone5 in
+			zone5.httpClient.download(request, completion: completionHandler)
+		}
+	}
+
 }
