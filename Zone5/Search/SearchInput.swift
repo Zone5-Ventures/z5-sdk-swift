@@ -1,30 +1,26 @@
 import Foundation
 
-public struct SearchInputOptions: OptionSet, Encodable {
+public protocol SearchInputCriteria: Encodable {
 
-	public let rawValue: Int
-
-	public init(rawValue: Int) {
-		self.rawValue = rawValue
-	}
-
-	public static let disableFieldSchema = SearchInputOptions(rawValue: 1 << 0)
-	public static let disableServerSideDecoration = SearchInputOptions(rawValue: 1 << 1)
+	associatedtype Field: Codable
 
 }
 
-public struct SearchInput<Criteria: Encodable>: JSONEncodedBody {
+public struct SearchInput<Criteria: SearchInputCriteria>: JSONEncodedBody {
 
 	public var criteria: Criteria
 
-	public var fields: [String] = []
+	public var fields: [Criteria.Field] = []
 
 	public var identifiers: [Int] = []
 
 	public var ctx: String = ""
 
-	public var options: SearchInputOptions = .disableFieldSchema
+	/// Bitmask that defines server options that is intended for internal use only.
+	private let options: Int = 1
 
+	/// Creates a new `SearchInput` with the given criteria.
+	/// - Parameter criteria: The criteria to be used in performing the intended search.
 	public init(criteria: Criteria) {
 		self.criteria = criteria
 	}

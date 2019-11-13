@@ -4,7 +4,7 @@ public struct Activity: Codable, Hashable {
 
 	/// The unique activity id.
 	/// - Note: This is also referenced as a `workoutId`, `fileId` or `eventId`.
-	public var id: Int?
+	public var id: Int
 
 	/// The type of activity this activity's `id` is related to.
 	public var category: Category?
@@ -38,10 +38,11 @@ public struct Activity: Codable, Hashable {
 		case transition // a special case for tagging transitions in tri files
 	}
 
-	/// The sport related to this activity.
-	public var timestamp: Int?
+	///
+	public var name: String?
 
-	public init() { }
+	///
+	public var timestamp: Int?
 
 	// MARK: Hashable
 
@@ -56,22 +57,25 @@ public struct Activity: Codable, Hashable {
 		case id
 		case category = "activity"
 		case sport = "type"
+		case name
 		case timestamp = "ts"
 	}
 
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: Field.self)
-		id = try container.decodeIfPresent(Int.self, forKey: .id)
+		id = try container.decode(Int.self, forKey: .id)
 		category = try container.decodeIfPresent(Category.self, forKey: .category)
 		sport = try container.decodeIfPresent(Sport.self, forKey: .sport)
+		name = try container.decodeIfPresent(String.self, forKey: .name)
 		timestamp = try container.decodeIfPresent(Int.self, forKey: .timestamp)
 	}
 
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: Field.self)
-		try container.encodeIfPresent(id, forKey: .id)
+		try container.encode(id, forKey: .id)
 		try container.encodeIfPresent(category, forKey: .category)
 		try container.encodeIfPresent(sport, forKey: .sport)
+		try container.encodeIfPresent(name, forKey: .name)
 		try container.encodeIfPresent(timestamp, forKey: .timestamp)
 	}
 

@@ -55,7 +55,8 @@ struct ContentView: View {
 						criteria.rangesTs = [DateRange(component: .month, value: 3)!]
 						criteria.order = [.ascending(.timestamp)]
 
-						let parameters = SearchInput(criteria: criteria)
+						var parameters = SearchInput(criteria: criteria)
+						parameters.fields = [.name] //, .distance, .ascent, .peak3minWatts, .peak20minWatts, .channels]
 
 						client.activities.search(parameters, offset: 0, count: 10, completion: completion)
 					}

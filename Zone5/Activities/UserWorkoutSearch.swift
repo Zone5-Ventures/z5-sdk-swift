@@ -1,6 +1,8 @@
 import Foundation
 
-public struct UserWorkoutSearch: Encodable {
+public struct UserWorkoutSearch: SearchInputCriteria {
+
+	public typealias Field = Activity.Field
 
 	/// Search for a name or filename which contains this name
 	public var name: String?
@@ -81,10 +83,10 @@ public struct UserWorkoutSearch: Encodable {
 	/// Limit the search results to activities related to these userIds
 	public var userIds: [Int]?
 
-	public var orderBy: Activity.Field?
+	public var orderBy: Field?
 
 	/// Order the results according to these fields
-	public var order: [Order<Activity.Field>]?
+	public var order: [Order<Field>]?
 
 	/// Limit the search results to these activities. Set the id and type in the `Activity`.
 	public var activities: [Activity]?
