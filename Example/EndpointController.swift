@@ -57,10 +57,6 @@ class EndpointController<Response>: ObservableObject {
 	}
 
 	func perform() -> Void {
-		guard response == nil else {
-			return
-		}
-
 		isLoading = true
 		handler(apiClient, handlerDidComplete)
 	}
