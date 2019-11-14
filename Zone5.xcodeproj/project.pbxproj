@@ -70,7 +70,6 @@
 		A1EBDAD7237A1DE800834B21 /* MultipartEncodedBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBDAD6237A1DE800834B21 /* MultipartEncodedBody.swift */; };
 		A1EBDADA237A22ED00834B21 /* MultipartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBDAD8237A21DD00834B21 /* MultipartTests.swift */; };
 		A1EBDADB237A236D00834B21 /* Development Assets in Resources */ = {isa = PBXBuildFile; fileRef = A190FFE2237937910059561D /* Development Assets */; };
-		A1EBDADD237A241100834B21 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBDADC237A241100834B21 /* Bundle.swift */; };
 		A1EBDADE237A241100834B21 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBDADC237A241100834B21 /* Bundle.swift */; };
 		A1ED40902362DA14001495B2 /* EndpointLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED40892362DA14001495B2 /* EndpointLink.swift */; };
 		A1ED40922362DA14001495B2 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ED408B2362DA14001495B2 /* ConfigurationView.swift */; };
@@ -246,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				A124B0D82373E33A0000919C /* TestHTTPClientURLSession.swift */,
+				A1EBDADC237A241100834B21 /* Bundle.swift */,
 				A18762102373EB1600893CFF /* Result.swift */,
 			);
 			path = Utilities;
@@ -299,7 +299,6 @@
 			isa = PBXGroup;
 			children = (
 				A18762122374FB1800893CFF /* KeyValueStore.swift */,
-				A1EBDADC237A241100834B21 /* Bundle.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -621,7 +620,6 @@
 				A1ED40922362DA14001495B2 /* ConfigurationView.swift in Sources */,
 				A1ED40952362DA14001495B2 /* ActivityIndicator.swift in Sources */,
 				A1ED40902362DA14001495B2 /* EndpointLink.swift in Sources */,
-				A1EBDADD237A241100834B21 /* Bundle.swift in Sources */,
 				A1D31CCD2375274800A54922 /* ObjectView.swift in Sources */,
 				A18A52A6234C2D210016DDA5 /* SceneDelegate.swift in Sources */,
 			);
