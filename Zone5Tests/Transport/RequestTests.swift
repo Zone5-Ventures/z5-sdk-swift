@@ -8,16 +8,17 @@ final class RequestTests: XCTestCase {
 	}
 
 	func testExample() {
-		let url = URL(string: "https://localhost")!
+		let baseURL = URL(string: "https://localhost")!
+		let accessToken = AccessToken(rawValue: UUID().uuidString)
 
 		let body: URLEncodedBody = [
 			"example": "example"
 		]
 
-		let request = Request(endpoint: Endpoints.test, body: body)
+		let request = Request(endpoint: Endpoints.test, method: .post, body: body)
 
 		do {
-			let urlRequest = try request.urlRequest(for: url, method: .post)
+			let urlRequest = try request.urlRequest(with: baseURL, accessToken: accessToken)
 
 			XCTAssertNotNil(urlRequest.httpBody)
 
@@ -27,6 +28,8 @@ final class RequestTests: XCTestCase {
 //			XCTAssertEqual(decoded, body)
 		}
 		catch {
+			print(error)
+
 			XCTFail()
 		}
 	}
