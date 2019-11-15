@@ -1,10 +1,10 @@
 import Foundation
 
 /// A structure that defines an ordering to be applied when returning a list of results.
-public struct Order<Field: Codable>: Codable {
+public struct Order: Codable {
 
 	/// The field to that the order should be applied to.
-	public let field: Field
+	public let field: String
 
 	/// The direction of the sort order.
 	public let direction: Direction
@@ -21,7 +21,7 @@ public struct Order<Field: Codable>: Codable {
 	}
 
 	/// Initialises an instance of `Order`, sorting the given `field` in the given `direction`.
-	private init(field: Field, direction: Direction) {
+	private init(field: String, direction: Direction) {
 		self.field = field
 		self.direction = direction
 	}
@@ -30,13 +30,13 @@ public struct Order<Field: Codable>: Codable {
 
 	/// Defines an `Order` that indicates sorting by the given `field`, in ascending order.
 	/// - Parameter field: The field to sort by.
-	public static func ascending(_ field: Field) -> Order<Field> {
+	public static func ascending(_ field: String) -> Order {
 		return Order(field: field, direction: .ascending)
 	}
 
 	/// Defines an `Order` that indicates sorting by the given `field`, in descending order.
 	/// - Parameter field: The field to sort by.
-	public static func descending(_ field: Field) -> Order<Field> {
+	public static func descending(_ field: String) -> Order {
 		return Order(field: field, direction: .descending)
 	}
 

@@ -8,7 +8,6 @@ Icon
 .Trashes
 
 # Xcode
-#
 build/
 *.pbxuser
 !default.pbxuser
@@ -34,3 +33,7 @@ Carthage
 
 # SPM
 .build/
+
+# Project Specific
+Zone5/*.java
+Zone5/*/*.java

@@ -17,16 +17,16 @@ class SearchResultTests: XCTestCase {
 		let json = "{\"result\": [{\"id\": 12345, \"activity\": \"workouts\"}, {\"id\": 67890, \"activity\": \"files\"}], \"cnt\": 10, \"offset\": 0}"
 
 		let data = json.data(using: .utf8)!
-		let result = try decoder.decode(SearchResult<Activity>.self, from: data)
+		let result = try decoder.decode(SearchResult<UserWorkoutResult>.self, from: data)
 
 		XCTAssertEqual(result.total, 10)
 		XCTAssertEqual(result.offset, 0)
 
 		XCTAssertEqual(result.count, 2)
 		XCTAssertEqual(result[0].id, 12345)
-		XCTAssertEqual(result[0].category, .workout)
+		XCTAssertEqual(result[0].activity, .workout)
 		XCTAssertEqual(result[1].id, 67890)
-		XCTAssertEqual(result[1].category, .file)
+		XCTAssertEqual(result[1].activity, .file)
 
 		XCTAssert(result.result.fields.isEmpty)
 		XCTAssert(result.result.keys.isEmpty)
@@ -36,16 +36,16 @@ class SearchResultTests: XCTestCase {
 		let json = "{\"result\": {\"results\": [{\"id\": 12345, \"activity\": \"workouts\"}, {\"id\": 67890, \"activity\": \"files\"}], \"fields\": {}, \"keys\": []}, \"cnt\": 10, \"offset\": 0}"
 
 		let data = json.data(using: .utf8)!
-		let result = try decoder.decode(SearchResult<Activity>.self, from: data)
+		let result = try decoder.decode(SearchResult<UserWorkoutResult>.self, from: data)
 
 		XCTAssertEqual(result.total, 10)
 		XCTAssertEqual(result.offset, 0)
 
 		XCTAssertEqual(result.count, 2)
 		XCTAssertEqual(result[0].id, 12345)
-		XCTAssertEqual(result[0].category, .workout)
+		XCTAssertEqual(result[0].activity, .workout)
 		XCTAssertEqual(result[1].id, 67890)
-		XCTAssertEqual(result[1].category, .file)
+		XCTAssertEqual(result[1].activity, .file)
 
 		XCTAssert(result.result.fields.isEmpty)
 		XCTAssert(result.result.keys.isEmpty)

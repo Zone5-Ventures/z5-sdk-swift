@@ -1,8 +1,6 @@
 import Foundation
 
-public struct UserWorkoutSearch: SearchInputCriteria {
-
-	public typealias Field = Activity.Field
+public struct UserWorkoutFileSearch: SearchInputCriteria {
 
 	/// Search for a name or filename which contains this name
 	public var name: String?
@@ -35,20 +33,20 @@ public struct UserWorkoutSearch: SearchInputCriteria {
 	/// Limit the search results to activities of this workout type
 	public var workout: WorkoutType?
 
-//	/// Limit the search results to activities of this equipment
-//	public var equipment: Equipment?
-//
-//	/// Limit the search results to activities with this source type
-//	public var source: ResultSource?
-//
-//	/// Limit the search results to activities with this review type
-//	public var review: ResultReview?
-//
-//	/// Limit the search results to activities with this state
-//	public var state: UserWorkoutState?
-//
-//	/// Limit the search results to activities of this workout incomplete reason
-//	public var reason: UserWorkoutFailedReason?
+	/// Limit the search results to activities of this equipment
+	public var equipment: Equipment?
+
+	/// Limit the search results to activities with this source type
+	public var source: ResultSource?
+
+	/// Limit the search results to activities with this review type
+	public var review: ResultReview?
+
+	/// Limit the search results to activities with this state
+	public var state: UserWorkoutState?
+
+	/// Limit the search results to activities of this workout incomplete reason
+	public var reason: UserWorkoutFailedReason?
 
 	public var reviewMask: Int?
 
@@ -83,10 +81,10 @@ public struct UserWorkoutSearch: SearchInputCriteria {
 	/// Limit the search results to activities related to these userIds
 	public var userIds: [Int]?
 
-	public var orderBy: Field?
+	public var orderBy: String?
 
 	/// Order the results according to these fields
-	public var order: [Order<Field>]?
+	public var order: [Order]?
 
 	/// Limit the search results to these activities. Set the id and type in the `Activity`.
 	public var activities: [Activity]?
@@ -95,7 +93,7 @@ public struct UserWorkoutSearch: SearchInputCriteria {
 	public var excludeWorkouts: [WorkoutType]?
 
 	/// Limit the search results to activities of these sport
-	public var sports: [Activity.Sport]?
+	public var sports: [ActivityType]?
 
 	public var meta: [String: String]?
 

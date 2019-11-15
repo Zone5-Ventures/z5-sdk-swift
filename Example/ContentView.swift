@@ -50,13 +50,13 @@ struct ContentView: View {
 					}
 				}
 				Section(header: Text("Activities"), footer: Text("Attempting to view \"Next Page\" before performing a legitimate search request—such as by opening the \"Next 3 Months\" screen—will return an empty result.")) {
-					EndpointLink<SearchResult<Activity>>("Next 3 Months") { client, completion in
-						var criteria = UserWorkoutSearch()
+					EndpointLink<SearchResult<UserWorkoutResult>>("Next 3 Months") { client, completion in
+						var criteria = UserWorkoutFileSearch()
 						criteria.rangesTs = [DateRange(component: .month, value: 3)!]
-						criteria.order = [.ascending(.timestamp)]
+						criteria.order = [.ascending("ts")]
 
 						var parameters = SearchInput(criteria: criteria)
-						parameters.fields = [.name] //, .distance, .ascent, .peak3minWatts, .peak20minWatts, .channels]
+						parameters.fields = ["name", "distance", "ascent", "peak3minWatts", "peak20minWatts", "channels"]
 
 						client.activities.search(parameters, offset: 0, count: 10, completion: completion)
 					}
@@ -178,14 +178,12 @@ struct ContentView: View {
 	}
 
 	private func retrieveFileIdentifier(_ client: Zone5, _ completion: @escaping (_ result: Result<Int, Zone5.Error>) -> Void) {
-		var criteria = UserWorkoutSearch()
+		var criteria = UserWorkoutFileSearch()
 		criteria.name = "2013-12-22-10-30-12.fit"
 		criteria.rangesTs = [DateRange(component: .month, value: -3)!]
-		criteria.order = [.descending(.timestamp)]
+		criteria.order = [.descending("ts")]
 
-		var parameters = SearchInput(criteria: criteria)
-		parameters.fields = [.name, .fileID]
-		//parameters.fields = ["name", "equipment", "bike.avatar", "bike.serial", "bike.name", "bike.uuid"]
+		let parameters = SearchInput(criteria: criteria)
 
 		client.activities.search(parameters, offset: 0, count: 1) { result in
 			switch result {
@@ -193,7 +191,7 @@ struct ContentView: View {
 				completion(.failure(error))
 
 			case .success(let response):
-				guard let activity = response.first, let fileID = activity.fileID else {
+				guard let activity = response.first, let fileID = activity.fileId else {
 					completion(.failure(.unknown))
 
 					return

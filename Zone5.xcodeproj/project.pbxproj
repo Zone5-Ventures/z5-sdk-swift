@@ -7,6 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10AB213237D0B5100EBAC66 /* UserHeadunit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB212237D0B5100EBAC66 /* UserHeadunit.swift */; };
+		A10AB215237D0C9400EBAC66 /* UserIntensityZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB214237D0C9400EBAC66 /* UserIntensityZone.swift */; };
+		A10AB217237D0D0000EBAC66 /* UserIntensityZoneRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB216237D0D0000EBAC66 /* UserIntensityZoneRange.swift */; };
+		A10AB219237D0E9600EBAC66 /* UserPowerMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB218237D0E9600EBAC66 /* UserPowerMeter.swift */; };
+		A10AB21B237D110200EBAC66 /* UserWorkoutDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB21A237D110200EBAC66 /* UserWorkoutDetails.swift */; };
+		A10AB21D237D15CB00EBAC66 /* ActivityResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB21C237D15CB00EBAC66 /* ActivityResultType.swift */; };
+		A10AB21F237D161900EBAC66 /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB21E237D161900EBAC66 /* ActivityType.swift */; };
+		A10AB221237D174C00EBAC66 /* UserWorkoutResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB220237D174C00EBAC66 /* UserWorkoutResult.swift */; };
+		A10AB22A237D341900EBAC66 /* UserRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB226237D341900EBAC66 /* UserRoute.swift */; };
+		A10AB22B237D341900EBAC66 /* UserRouteOutputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB227237D341900EBAC66 /* UserRouteOutputType.swift */; };
+		A10AB22C237D341900EBAC66 /* UserRouteVisibilityMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB228237D341900EBAC66 /* UserRouteVisibilityMask.swift */; };
+		A10AB22D237D341900EBAC66 /* UserRouteSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB229237D341900EBAC66 /* UserRouteSearch.swift */; };
+		A10AB238237E147E00EBAC66 /* UserWorkoutResultTurbo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB22E237E147D00EBAC66 /* UserWorkoutResultTurbo.swift */; };
+		A10AB23A237E147E00EBAC66 /* UserWorkoutResultByHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB230237E147D00EBAC66 /* UserWorkoutResultByHour.swift */; };
+		A10AB23B237E147E00EBAC66 /* UserWorkoutResultPeakPace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB231237E147D00EBAC66 /* UserWorkoutResultPeakPace.swift */; };
+		A10AB23C237E147E00EBAC66 /* UserWorkoutResultExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB232237E147D00EBAC66 /* UserWorkoutResultExt.swift */; };
+		A10AB23D237E147E00EBAC66 /* UserWorkoutResultChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB233237E147D00EBAC66 /* UserWorkoutResultChannel.swift */; };
+		A10AB23E237E147E00EBAC66 /* UserWorkoutResultPeakLss.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB234237E147D00EBAC66 /* UserWorkoutResultPeakLss.swift */; };
+		A10AB23F237E147E00EBAC66 /* UserWorkoutResultRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB235237E147D00EBAC66 /* UserWorkoutResultRating.swift */; };
+		A10AB240237E147E00EBAC66 /* UserWorkoutResultAlt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB236237E147D00EBAC66 /* UserWorkoutResultAlt.swift */; };
+		A10AB241237E147E00EBAC66 /* UserWorkoutResultExt2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB237237E147E00EBAC66 /* UserWorkoutResultExt2.swift */; };
+		A10AB242237E163900EBAC66 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EBDADC237A241100834B21 /* Bundle.swift */; };
 		A1219C6A237A13BC00B6E80B /* DataFileUploadIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1219C69237A13BC00B6E80B /* DataFileUploadIndex.swift */; };
 		A124B0D62373D9470000919C /* UsersViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124B0D52373D9470000919C /* UsersViewTests.swift */; };
 		A124B0D92373E33A0000919C /* TestHTTPClientURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124B0D82373E33A0000919C /* TestHTTPClientURLSession.swift */; };
@@ -22,7 +44,7 @@
 		A182D1D52372AB0F00112501 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1C02372AB0F00112501 /* UsersView.swift */; };
 		A182D1D62372AB0F00112501 /* OAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1C12372AB0F00112501 /* OAuthView.swift */; };
 		A182D1D72372AB0F00112501 /* SearchInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1C32372AB0F00112501 /* SearchInput.swift */; };
-		A182D1D82372AB0F00112501 /* UserWorkoutSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1C42372AB0F00112501 /* UserWorkoutSearch.swift */; };
+		A182D1D82372AB0F00112501 /* UserWorkoutFileSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1C42372AB0F00112501 /* UserWorkoutFileSearch.swift */; };
 		A182D1D92372AB0F00112501 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1C52372AB0F00112501 /* AccessToken.swift */; };
 		A182D1DA2372AB0F00112501 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1C62372AB0F00112501 /* Order.swift */; };
 		A182D1DB2372AB0F00112501 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1C72372AB0F00112501 /* SearchResult.swift */; };
@@ -123,6 +145,28 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A10AB212237D0B5100EBAC66 /* UserHeadunit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeadunit.swift; sourceTree = "<group>"; };
+		A10AB214237D0C9400EBAC66 /* UserIntensityZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntensityZone.swift; sourceTree = "<group>"; };
+		A10AB216237D0D0000EBAC66 /* UserIntensityZoneRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntensityZoneRange.swift; sourceTree = "<group>"; };
+		A10AB218237D0E9600EBAC66 /* UserPowerMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPowerMeter.swift; sourceTree = "<group>"; };
+		A10AB21A237D110200EBAC66 /* UserWorkoutDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWorkoutDetails.swift; sourceTree = "<group>"; };
+		A10AB21C237D15CB00EBAC66 /* ActivityResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityResultType.swift; sourceTree = "<group>"; };
+		A10AB21E237D161900EBAC66 /* ActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
+		A10AB220237D174C00EBAC66 /* UserWorkoutResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWorkoutResult.swift; sourceTree = "<group>"; };
+		A10AB224237D1CEB00EBAC66 /* ConvertFromJava.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertFromJava.swift; sourceTree = "<group>"; };
+		A10AB226237D341900EBAC66 /* UserRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRoute.swift; sourceTree = "<group>"; };
+		A10AB227237D341900EBAC66 /* UserRouteOutputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRouteOutputType.swift; sourceTree = "<group>"; };
+		A10AB228237D341900EBAC66 /* UserRouteVisibilityMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRouteVisibilityMask.swift; sourceTree = "<group>"; };
+		A10AB229237D341900EBAC66 /* UserRouteSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRouteSearch.swift; sourceTree = "<group>"; };
+		A10AB22E237E147D00EBAC66 /* UserWorkoutResultTurbo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorkoutResultTurbo.swift; sourceTree = "<group>"; };
+		A10AB230237E147D00EBAC66 /* UserWorkoutResultByHour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorkoutResultByHour.swift; sourceTree = "<group>"; };
+		A10AB231237E147D00EBAC66 /* UserWorkoutResultPeakPace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorkoutResultPeakPace.swift; sourceTree = "<group>"; };
+		A10AB232237E147D00EBAC66 /* UserWorkoutResultExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorkoutResultExt.swift; sourceTree = "<group>"; };
+		A10AB233237E147D00EBAC66 /* UserWorkoutResultChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorkoutResultChannel.swift; sourceTree = "<group>"; };
+		A10AB234237E147D00EBAC66 /* UserWorkoutResultPeakLss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorkoutResultPeakLss.swift; sourceTree = "<group>"; };
+		A10AB235237E147D00EBAC66 /* UserWorkoutResultRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorkoutResultRating.swift; sourceTree = "<group>"; };
+		A10AB236237E147D00EBAC66 /* UserWorkoutResultAlt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorkoutResultAlt.swift; sourceTree = "<group>"; };
+		A10AB237237E147E00EBAC66 /* UserWorkoutResultExt2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorkoutResultExt2.swift; sourceTree = "<group>"; };
 		A1219C69237A13BC00B6E80B /* DataFileUploadIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFileUploadIndex.swift; sourceTree = "<group>"; };
 		A124B0D52373D9470000919C /* UsersViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewTests.swift; sourceTree = "<group>"; };
 		A124B0D82373E33A0000919C /* TestHTTPClientURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHTTPClientURLSession.swift; sourceTree = "<group>"; };
@@ -139,7 +183,7 @@
 		A182D1C02372AB0F00112501 /* UsersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
 		A182D1C12372AB0F00112501 /* OAuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthView.swift; sourceTree = "<group>"; };
 		A182D1C32372AB0F00112501 /* SearchInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInput.swift; sourceTree = "<group>"; };
-		A182D1C42372AB0F00112501 /* UserWorkoutSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorkoutSearch.swift; sourceTree = "<group>"; };
+		A182D1C42372AB0F00112501 /* UserWorkoutFileSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWorkoutFileSearch.swift; sourceTree = "<group>"; };
 		A182D1C52372AB0F00112501 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		A182D1C62372AB0F00112501 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		A182D1C72372AB0F00112501 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
@@ -232,6 +276,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A10AB222237D1B7C00EBAC66 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				A10AB226237D341900EBAC66 /* UserRoute.swift */,
+				A10AB227237D341900EBAC66 /* UserRouteOutputType.swift */,
+				A10AB229237D341900EBAC66 /* UserRouteSearch.swift */,
+				A10AB228237D341900EBAC66 /* UserRouteVisibilityMask.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		A10AB223237D1CBF00EBAC66 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				A10AB224237D1CEB00EBAC66 /* ConvertFromJava.swift */,
+			);
+			name = Scripts;
+			path = scripts;
+			sourceTree = "<group>";
+		};
 		A1219C68237A138800B6E80B /* Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,10 +351,25 @@
 		A182D1C22372AB0F00112501 /* Activities */ = {
 			isa = PBXGroup;
 			children = (
-				A182D1C92372AB0F00112501 /* Activity.swift */,
 				A190FFE4237938420059561D /* DataFileUploadContext.swift */,
 				A1219C69237A13BC00B6E80B /* DataFileUploadIndex.swift */,
-				A182D1C42372AB0F00112501 /* UserWorkoutSearch.swift */,
+				A10AB212237D0B5100EBAC66 /* UserHeadunit.swift */,
+				A10AB214237D0C9400EBAC66 /* UserIntensityZone.swift */,
+				A10AB216237D0D0000EBAC66 /* UserIntensityZoneRange.swift */,
+				A10AB218237D0E9600EBAC66 /* UserPowerMeter.swift */,
+				A10AB21A237D110200EBAC66 /* UserWorkoutDetails.swift */,
+				A182D1C42372AB0F00112501 /* UserWorkoutFileSearch.swift */,
+				A10AB220237D174C00EBAC66 /* UserWorkoutResult.swift */,
+				A10AB236237E147D00EBAC66 /* UserWorkoutResultAlt.swift */,
+				A10AB230237E147D00EBAC66 /* UserWorkoutResultByHour.swift */,
+				A10AB233237E147D00EBAC66 /* UserWorkoutResultChannel.swift */,
+				A10AB232237E147D00EBAC66 /* UserWorkoutResultExt.swift */,
+				A10AB237237E147E00EBAC66 /* UserWorkoutResultExt2.swift */,
+				A10AB234237E147D00EBAC66 /* UserWorkoutResultPeakLss.swift */,
+				A10AB231237E147D00EBAC66 /* UserWorkoutResultPeakPace.swift */,
+				A10AB235237E147D00EBAC66 /* UserWorkoutResultRating.swift */,
+				A10AB22E237E147D00EBAC66 /* UserWorkoutResultTurbo.swift */,
+				A182D1C92372AB0F00112501 /* Activity.swift */,
 			);
 			path = Activities;
 			sourceTree = "<group>";
@@ -309,6 +388,7 @@
 				A1F058E32372A3840034C7D0 /* Zone5 */,
 				A1F058F02372A3840034C7D0 /* Unit Tests */,
 				A1ED40882362D990001495B2 /* Example App */,
+				A10AB223237D1CBF00EBAC66 /* Scripts */,
 				A190FFE2237937910059561D /* Development Assets */,
 				A18A52A1234C2D210016DDA5 /* Products */,
 			);
@@ -327,6 +407,8 @@
 		A190FFE6237938810059561D /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				A10AB21C237D15CB00EBAC66 /* ActivityResultType.swift */,
+				A10AB21E237D161900EBAC66 /* ActivityType.swift */,
 				A196033023794AE100CEB121 /* DataAccessRequest.swift */,
 				A196033223794B4600CEB121 /* DataFileChannel.swift */,
 				A196033423794C4B00CEB121 /* Equipment.swift */,
@@ -412,6 +494,7 @@
 				A182D1B32372AB0500112501 /* Zone5.swift */,
 				A1219C68237A138800B6E80B /* Users */,
 				A182D1C22372AB0F00112501 /* Activities */,
+				A10AB222237D1B7C00EBAC66 /* Routes */,
 				A190FFE7237938BA0059561D /* Search */,
 				A190FFE6237938810059561D /* Enums */,
 				A182D1B52372AB0E00112501 /* Transport */,
@@ -620,6 +703,7 @@
 				A1ED40922362DA14001495B2 /* ConfigurationView.swift in Sources */,
 				A1ED40952362DA14001495B2 /* ActivityIndicator.swift in Sources */,
 				A1ED40902362DA14001495B2 /* EndpointLink.swift in Sources */,
+				A10AB242237E163900EBAC66 /* Bundle.swift in Sources */,
 				A1D31CCD2375274800A54922 /* ObjectView.swift in Sources */,
 				A18A52A6234C2D210016DDA5 /* SceneDelegate.swift in Sources */,
 			);
@@ -634,6 +718,7 @@
 				A182D1B42372AB0500112501 /* Zone5.swift in Sources */,
 				A196035823794DD200CEB121 /* RelativePeriod.swift in Sources */,
 				A182D1DA2372AB0F00112501 /* Order.swift in Sources */,
+				A10AB240237E147E00EBAC66 /* UserWorkoutResultAlt.swift in Sources */,
 				A182D1D42372AB0F00112501 /* View.swift in Sources */,
 				A196035923794DD200CEB121 /* UserWorkoutFailedReason.swift in Sources */,
 				A182D1D02372AB0F00112501 /* HTTPClient.swift in Sources */,
@@ -641,6 +726,7 @@
 				A1EBDAD7237A1DE800834B21 /* MultipartEncodedBody.swift in Sources */,
 				A196035223794DD200CEB121 /* RunType.swift in Sources */,
 				A196035323794DD200CEB121 /* LapType.swift in Sources */,
+				A10AB23D237E147E00EBAC66 /* UserWorkoutResultChannel.swift in Sources */,
 				A196033123794AE100CEB121 /* DataAccessRequest.swift in Sources */,
 				A196035723794DD200CEB121 /* MappedFieldType.swift in Sources */,
 				A182D1D62372AB0F00112501 /* OAuthView.swift in Sources */,
@@ -648,34 +734,53 @@
 				A196035D23794DD200CEB121 /* TScoreType.swift in Sources */,
 				A196035123794DD200CEB121 /* IntensityZoneType.swift in Sources */,
 				A196033523794C4B00CEB121 /* Equipment.swift in Sources */,
+				A10AB241237E147E00EBAC66 /* UserWorkoutResultExt2.swift in Sources */,
+				A10AB221237D174C00EBAC66 /* UserWorkoutResult.swift in Sources */,
 				A182D1D12372AB0F00112501 /* Request.swift in Sources */,
+				A10AB215237D0C9400EBAC66 /* UserIntensityZone.swift in Sources */,
+				A10AB23C237E147E00EBAC66 /* UserWorkoutResultExt.swift in Sources */,
 				A196036123794DD200CEB121 /* Terrain.swift in Sources */,
 				A190FFE9237938D80059561D /* DayRange.swift in Sources */,
 				A196033323794B4600CEB121 /* DataFileChannel.swift in Sources */,
 				A196033723794CCD00CEB121 /* EventTarget.swift in Sources */,
 				A196033B23794D7B00CEB121 /* FileUploadState.swift in Sources */,
 				A182D1DD2372AB0F00112501 /* Activity.swift in Sources */,
+				A10AB22D237D341900EBAC66 /* UserRouteSearch.swift in Sources */,
 				A196035023794DD200CEB121 /* ResultReview.swift in Sources */,
-				A182D1D82372AB0F00112501 /* UserWorkoutSearch.swift in Sources */,
+				A182D1D82372AB0F00112501 /* UserWorkoutFileSearch.swift in Sources */,
 				A196036323794DD200CEB121 /* SwimType.swift in Sources */,
+				A10AB23F237E147E00EBAC66 /* UserWorkoutResultRating.swift in Sources */,
 				A182D1D32372AB0F00112501 /* ActivitiesView.swift in Sources */,
+				A10AB213237D0B5100EBAC66 /* UserHeadunit.swift in Sources */,
+				A10AB22C237D341900EBAC66 /* UserRouteVisibilityMask.swift in Sources */,
 				A196035423794DD200CEB121 /* UserConnectionsType.swift in Sources */,
 				A182D1D72372AB0F00112501 /* SearchInput.swift in Sources */,
 				A182D1DE2372AB0F00112501 /* WorkoutType.swift in Sources */,
 				A182D1CF2372AB0F00112501 /* RequestBody.swift in Sources */,
 				A182D1D52372AB0F00112501 /* UsersView.swift in Sources */,
+				A10AB23A237E147E00EBAC66 /* UserWorkoutResultByHour.swift in Sources */,
 				A196035523794DD200CEB121 /* PowerThresholdType.swift in Sources */,
 				A196036223794DD200CEB121 /* UserDelegateRelationship.swift in Sources */,
+				A10AB22B237D341900EBAC66 /* UserRouteOutputType.swift in Sources */,
 				A182D1DC2372AB0F00112501 /* User.swift in Sources */,
+				A10AB23E237E147E00EBAC66 /* UserWorkoutResultPeakLss.swift in Sources */,
 				A190FFE5237938420059561D /* DataFileUploadContext.swift in Sources */,
+				A10AB21F237D161900EBAC66 /* ActivityType.swift in Sources */,
+				A10AB21B237D110200EBAC66 /* UserWorkoutDetails.swift in Sources */,
 				A196035F23794DD200CEB121 /* TimeOfDay.swift in Sources */,
+				A10AB21D237D15CB00EBAC66 /* ActivityResultType.swift in Sources */,
 				A182D1CD2372AB0F00112501 /* URLEncodedBody.swift in Sources */,
 				A196033923794D4600CEB121 /* EventTeamCategory.swift in Sources */,
 				A182D1D92372AB0F00112501 /* AccessToken.swift in Sources */,
+				A10AB23B237E147E00EBAC66 /* UserWorkoutResultPeakPace.swift in Sources */,
+				A10AB217237D0D0000EBAC66 /* UserIntensityZoneRange.swift in Sources */,
 				A196035E23794DD200CEB121 /* UserWorkoutState.swift in Sources */,
 				A196036023794DD200CEB121 /* ResultSource.swift in Sources */,
+				A10AB219237D0E9600EBAC66 /* UserPowerMeter.swift in Sources */,
+				A10AB22A237D341900EBAC66 /* UserRoute.swift in Sources */,
 				A196035B23794DD200CEB121 /* UnitMeasurement.swift in Sources */,
 				A196035C23794DD200CEB121 /* UserDelegateState.swift in Sources */,
+				A10AB238237E147E00EBAC66 /* UserWorkoutResultTurbo.swift in Sources */,
 				A182D1DB2372AB0F00112501 /* SearchResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

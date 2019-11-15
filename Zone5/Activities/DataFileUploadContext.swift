@@ -14,13 +14,13 @@ public struct DataFileUploadContext: JSONEncodedBody {
 	public var userID: Int?
 
 	/// Override the sport type
-	public var sport: Activity.Sport?
+	public var sport: ActivityType?
 
 	/// The original filename
 	public var filename: String?
 
 	/// The activity type this file is to be associate with
-	public var category: Activity.Category?
+	public var category: ActivityResultType?
 
 	/// The activity id this file is to be associated with
 	public var activityID: Int?

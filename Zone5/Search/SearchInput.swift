@@ -2,15 +2,13 @@ import Foundation
 
 public protocol SearchInputCriteria: Encodable {
 
-	associatedtype Field: Codable
-
 }
 
 public struct SearchInput<Criteria: SearchInputCriteria>: JSONEncodedBody {
 
 	public var criteria: Criteria
 
-	public var fields: [Criteria.Field] = []
+	public var fields: [String] = []
 
 	public var identifiers: [Int] = []
 

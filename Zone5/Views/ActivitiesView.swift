@@ -29,9 +29,9 @@ public class ActivitiesView: APIView {
 
 	// MARK: Browsing activities
 
-	public typealias ActivitySearchResult = Result<SearchResult<Activity>, Zone5.Error>
+	public typealias ActivitySearchResult = Result<SearchResult<UserWorkoutResult>, Zone5.Error>
 
-	public func search(_ parameters: SearchInput<UserWorkoutSearch>, offset: Int, count: Int, completion: @escaping (_ result: ActivitySearchResult) -> Void) {
+	public func search(_ parameters: SearchInput<UserWorkoutFileSearch>, offset: Int, count: Int, completion: @escaping (_ result: ActivitySearchResult) -> Void) {
 		let endpoint = Endpoints.search.replacingTokens(["offset": offset, "count": count])
 		post(endpoint, body: parameters, with: completion)
 	}
