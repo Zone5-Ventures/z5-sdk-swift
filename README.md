@@ -1,5 +1,7 @@
 # z5-sdk-swift
 
+![Unit Test Status](https://github.com/Zone5-Ventures/z5-sdk-swift/workflows/Unit%20Tests/badge.svg) ![Documentation Status](https://zone5-ventures.github.io/z5-sdk-swift/badge.svg)
+
 ## Installation
 
 ### Swift Package Manager
