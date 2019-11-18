@@ -197,14 +197,35 @@ final internal class HTTPClient {
 private extension JSONDecoder {
 
 	func decode<T: Decodable>(_ data: Data, from request: Request, as expectedType: T.Type) -> Result<T, Zone5.Error> {
+		#if DEBUG
+		var debugMessage = ""
+		defer {
+			if let requestData = try? request.body?.encodedData(), let requestString = String(data: requestData, encoding: .utf8) {
+				debugMessage += "\n\t- Request: \(requestString)"
+			}
+			if let responseString = String(data: data, encoding: .utf8) {
+				debugMessage += "\n\t- Response: \(responseString)"
+			}
+			print(debugMessage)
+		}
+		#endif
+
 		do {
 			// Attempt to decode and return the `data` as the `expectedType` using our decoder
 			let response = try decode(expectedType, from: data)
+
+			#if DEBUG
+			debugMessage = "Successfully decoded server response as `\(expectedType)`."
+			#endif
 
 			return .success(response)
 		}
 		catch {
 			let originalError = error
+
+			#if DEBUG
+			debugMessage = "Failed to decode server response as `\(expectedType)`.\n\t- Error: \(originalError)"
+			#endif
 
 			do {
 				// Decoding as `expectedType` failed, so lets try to decode as a `ServerMessage` instead, in the hopes
@@ -214,17 +235,6 @@ private extension JSONDecoder {
 				return .failure(.serverError(message))
 			}
 			catch {
-				#if DEBUG
-				var debugMessage = "Failed to decode server response.\n\t- Error: \(originalError)"
-				if let requestData = try? request.body?.encodedData(), let requestString = String(data: requestData, encoding: .utf8) {
-					debugMessage += "\n\t- Request: \(requestString)"
-				}
-				if let responseString = String(data: data, encoding: .utf8) {
-					debugMessage += "\n\t- Response: \(responseString)"
-				}
-				print(debugMessage)
-				#endif
-
 				// Decoding as a `ServerMessage` also failed, so we should pass on the original error.
 				// Getting this far typically means there's a problem in the SDK.
 				return .failure(.failedDecodingResponse(originalError))
