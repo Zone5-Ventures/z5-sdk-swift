@@ -17,3 +17,11 @@ public enum ActivityResultType: String, Codable {
 	case file = "files"
 
 }
+
+extension ActivityResultType: CustomStringConvertible {
+
+	public var description: String {
+		return rawValue
+	}
+
+}

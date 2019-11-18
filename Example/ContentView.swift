@@ -94,8 +94,8 @@ struct ContentView: View {
 							case .failure(let error):
 								completion(.failure(error))
 
-							case .success(let fileID):
-								client.activities.downloadOriginal(fileID) { result in
+							case .success(let activity):
+								client.activities.downloadOriginal(activity.fileId!) { result in
 									completion(result)
 								}
 							}
@@ -107,8 +107,8 @@ struct ContentView: View {
 							case .failure(let error):
 								completion(.failure(error))
 
-							case .success(let fileID):
-								client.activities.downloadRaw3(fileID) { result in
+							case .success(let activity):
+								client.activities.downloadRaw(activity.fileId!) { result in
 									completion(result)
 								}
 							}
@@ -120,8 +120,8 @@ struct ContentView: View {
 							case .failure(let error):
 								completion(.failure(error))
 
-							case .success(let fileID):
-								client.activities.downloadCSV(fileID) { result in
+							case .success(let activity):
+								client.activities.downloadCSV(activity.fileId!) { result in
 									completion(result)
 								}
 							}
@@ -133,10 +133,21 @@ struct ContentView: View {
 							case .failure(let error):
 								completion(.failure(error))
 
-							case .success(let fileID):
-								client.activities.downloadMap(fileID) { result in
+							case .success(let activity):
+								client.activities.downloadMap(activity.fileId!) { result in
 									completion(result)
 								}
+							}
+						}
+					}
+					EndpointLink<Bool>("Delete Latest File") { client, completion in
+						self.retrieveFileIdentifier(client) { result in
+							switch result {
+							case .failure(let error):
+								completion(.failure(error))
+
+							case .success(let activity):
+								client.activities.delete(type: activity.activity!, id: activity.id!, completion: completion)
 							}
 						}
 					}
@@ -177,7 +188,7 @@ struct ContentView: View {
 		}
 	}
 
-	private func retrieveFileIdentifier(_ client: Zone5, _ completion: @escaping (_ result: Result<Int, Zone5.Error>) -> Void) {
+	private func retrieveFileIdentifier(_ client: Zone5, _ completion: @escaping (_ result: Result<UserWorkoutResult, Zone5.Error>) -> Void) {
 		var criteria = UserWorkoutFileSearch()
 		criteria.name = "2013-12-22-10-30-12.fit"
 		criteria.rangesTs = [DateRange(component: .month, value: -3)!]
@@ -191,13 +202,13 @@ struct ContentView: View {
 				completion(.failure(error))
 
 			case .success(let response):
-				guard let activity = response.first, let fileID = activity.fileId else {
+				guard let activity = response.first, activity.fileId != nil else {
 					completion(.failure(.unknown))
 
 					return
 				}
 
-				completion(.success(fileID))
+				completion(.success(activity))
 			}
 		}
 	}

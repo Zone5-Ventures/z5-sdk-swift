@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DateRange: Encodable {
+public struct DateRange: Codable {
 
 	public var name: String?
 
@@ -54,12 +54,20 @@ public struct DateRange: Encodable {
 		case timezone = "tz"
 	}
 
+	public init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		name = try container.decodeIfPresent(String.self, forKey: .name)
+		floor = try container.decode(TimeInterval.self, forKey: .floor)
+		ceiling = try container.decode(TimeInterval.self, forKey: .ceiling)
+		timezone = try container.decode(TimeZone.self, forKey: .timezone)
+	}
+
 	public func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encodeIfPresent(name, forKey: .name)
 		try container.encode(Int(floor * 1000), forKey: .floor)
 		try container.encode(Int(ceiling * 1000), forKey: .ceiling)
-		try container.encode(timezone.identifier, forKey: .timezone)
+		try container.encode(timezone, forKey: .timezone)
 	}
 
 }

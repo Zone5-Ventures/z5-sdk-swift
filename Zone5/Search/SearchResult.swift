@@ -1,5 +1,7 @@
 import Foundation
 
+public typealias MappedResult<Result: Decodable> = SearchResult<Result>.Page
+
 /// A collection of results for a search request.
 ///
 ///
