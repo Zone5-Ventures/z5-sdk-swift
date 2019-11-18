@@ -31,7 +31,7 @@ extension RequestEndpoint {
 	///
 	/// - Parameter replacements: A dictionary that maps string-convertible values to the appropriate token names.
 	func replacingTokens(_ replacements: [String: CustomStringConvertible]) -> RequestEndpoint {
-		return DetokenizedHTTPEndpoint(self, replacements: replacements)
+		return DetokenizedRequestEndpoint(self, replacements: replacements)
 	}
 
 }
@@ -49,7 +49,7 @@ extension RequestEndpoint where Self: RawRepresentable, Self.RawValue == String 
 /// A concrete endpoint implementation that takes another endpoint containing "tokens" (parts of the uri that can be
 /// replaced with useful values, wrapped in braces, e.g. `/uri/containing/a/{token}`), which are then replaced with
 /// given values, based on a dictionary of keys that match the token names.
-private struct DetokenizedHTTPEndpoint: RequestEndpoint {
+private struct DetokenizedRequestEndpoint: RequestEndpoint {
 
 	/// Storage for the detokenized URI.
 	let uri: String
@@ -63,7 +63,7 @@ private struct DetokenizedHTTPEndpoint: RequestEndpoint {
 	///
 	/// - Parameter endpoint: The endpoint to be used as a basis.
 	/// - Parameter replacements: A dictionary that maps string-convertible values to the appropriate token names.
-	/// - SeeAlso: `HTTPEndpoint.replacingTokens(_:)`
+	/// - SeeAlso: `RequestEndpoint.replacingTokens(_:)`
 	init(_ endpoint: RequestEndpoint, replacements: [String: CustomStringConvertible]) {
 		var uri = endpoint.uri
 
