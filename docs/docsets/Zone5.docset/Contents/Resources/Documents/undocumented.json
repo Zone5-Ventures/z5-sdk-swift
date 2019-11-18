@@ -9,50 +9,29 @@
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
-      "line": 33,
+      "line": 23,
       "symbol": "Activity.Field",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
-      "line": 34,
+      "line": 24,
       "symbol": "Activity.Field.id",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
-      "line": 35,
-      "symbol": "Activity.Field.category",
+      "line": 25,
+      "symbol": "Activity.Field.activity",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
-      "line": 36,
-      "symbol": "Activity.Field.sport",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
-      "line": 37,
-      "symbol": "Activity.Field.name",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
-      "line": 38,
-      "symbol": "Activity.Field.timestamp",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/Activity.swift",
-      "line": 39,
-      "symbol": "Activity.Field.fileID",
+      "line": 26,
+      "symbol": "Activity.Field.type",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -408,1225 +387,1211 @@
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
-      "line": 5,
-      "symbol": "UserWorkoutFileSearch.Field",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
-      "line": 53,
+      "line": 51,
       "symbol": "UserWorkoutFileSearch.reviewMask",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
-      "line": 61,
+      "line": 59,
       "symbol": "UserWorkoutFileSearch.pwrManufacturer",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
-      "line": 63,
+      "line": 61,
       "symbol": "UserWorkoutFileSearch.pwrVersion",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
-      "line": 65,
+      "line": 63,
       "symbol": "UserWorkoutFileSearch.pwrSerial",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
-      "line": 67,
+      "line": 65,
       "symbol": "UserWorkoutFileSearch.pwrProduct",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
-      "line": 69,
+      "line": 67,
       "symbol": "UserWorkoutFileSearch.pwrDisplay",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
-      "line": 86,
+      "line": 84,
       "symbol": "UserWorkoutFileSearch.orderBy",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
-      "line": 100,
+      "line": 98,
       "symbol": "UserWorkoutFileSearch.meta",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
-      "line": 102,
+      "line": 100,
       "symbol": "UserWorkoutFileSearch.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 88,
+      "line": 87,
       "symbol": "UserWorkoutResult.notes",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 90,
+      "line": 89,
       "symbol": "UserWorkoutResult.user",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 210,
+      "line": 209,
       "symbol": "UserWorkoutResult.vo2max",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 260,
+      "line": 259,
       "symbol": "UserWorkoutResult.estThresWattsKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 353,
+      "line": 352,
       "symbol": "UserWorkoutResult.tau",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 367,
+      "line": 366,
       "symbol": "UserWorkoutResult.peak3secWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 368,
+      "line": 367,
       "symbol": "UserWorkoutResult.peak3secWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 369,
+      "line": 368,
       "symbol": "UserWorkoutResult.peak3secWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 371,
+      "line": 370,
       "symbol": "UserWorkoutResult.peak4secWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 372,
+      "line": 371,
       "symbol": "UserWorkoutResult.peak4secWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 373,
+      "line": 372,
       "symbol": "UserWorkoutResult.peak4secWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 375,
+      "line": 374,
       "symbol": "UserWorkoutResult.peak5secWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 376,
+      "line": 375,
       "symbol": "UserWorkoutResult.peak5secWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 377,
+      "line": 376,
       "symbol": "UserWorkoutResult.peak5secWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 379,
+      "line": 378,
       "symbol": "UserWorkoutResult.peak10secWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 380,
+      "line": 379,
       "symbol": "UserWorkoutResult.peak10secWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 381,
+      "line": 380,
       "symbol": "UserWorkoutResult.peak10secWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 383,
+      "line": 382,
       "symbol": "UserWorkoutResult.peak12secWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 384,
+      "line": 383,
       "symbol": "UserWorkoutResult.peak12secWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 385,
+      "line": 384,
       "symbol": "UserWorkoutResult.peak12secWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 387,
+      "line": 386,
       "symbol": "UserWorkoutResult.peak20secWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 388,
+      "line": 387,
       "symbol": "UserWorkoutResult.peak20secWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 389,
+      "line": 388,
       "symbol": "UserWorkoutResult.peak20secWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 391,
+      "line": 390,
       "symbol": "UserWorkoutResult.peak30secWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 392,
+      "line": 391,
       "symbol": "UserWorkoutResult.peak30secWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 393,
+      "line": 392,
       "symbol": "UserWorkoutResult.peak30secWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 395,
+      "line": 394,
       "symbol": "UserWorkoutResult.peak1minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 396,
+      "line": 395,
       "symbol": "UserWorkoutResult.peak1minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 397,
+      "line": 396,
       "symbol": "UserWorkoutResult.peak1minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 399,
+      "line": 398,
       "symbol": "UserWorkoutResult.peak2minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 400,
+      "line": 399,
       "symbol": "UserWorkoutResult.peak2minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 401,
+      "line": 400,
       "symbol": "UserWorkoutResult.peak2minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 403,
+      "line": 402,
       "symbol": "UserWorkoutResult.peak3minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 404,
+      "line": 403,
       "symbol": "UserWorkoutResult.peak3minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 405,
+      "line": 404,
       "symbol": "UserWorkoutResult.peak3minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 407,
+      "line": 406,
       "symbol": "UserWorkoutResult.peak4minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 408,
+      "line": 407,
       "symbol": "UserWorkoutResult.peak4minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 409,
+      "line": 408,
       "symbol": "UserWorkoutResult.peak4minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 411,
+      "line": 410,
       "symbol": "UserWorkoutResult.peak5minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 412,
+      "line": 411,
       "symbol": "UserWorkoutResult.peak5minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 413,
+      "line": 412,
       "symbol": "UserWorkoutResult.peak5minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 415,
+      "line": 414,
       "symbol": "UserWorkoutResult.peak6minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 416,
+      "line": 415,
       "symbol": "UserWorkoutResult.peak6minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 417,
+      "line": 416,
       "symbol": "UserWorkoutResult.peak6minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 419,
+      "line": 418,
       "symbol": "UserWorkoutResult.peak10minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 420,
+      "line": 419,
       "symbol": "UserWorkoutResult.peak10minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 421,
+      "line": 420,
       "symbol": "UserWorkoutResult.peak10minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 423,
+      "line": 422,
       "symbol": "UserWorkoutResult.peak12minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 424,
+      "line": 423,
       "symbol": "UserWorkoutResult.peak12minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 425,
+      "line": 424,
       "symbol": "UserWorkoutResult.peak12minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 427,
+      "line": 426,
       "symbol": "UserWorkoutResult.peak15minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 428,
+      "line": 427,
       "symbol": "UserWorkoutResult.peak15minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 429,
+      "line": 428,
       "symbol": "UserWorkoutResult.peak15minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 431,
+      "line": 430,
       "symbol": "UserWorkoutResult.peak16minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 432,
+      "line": 431,
       "symbol": "UserWorkoutResult.peak16minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 433,
+      "line": 432,
       "symbol": "UserWorkoutResult.peak16minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 435,
+      "line": 434,
       "symbol": "UserWorkoutResult.peak20minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 436,
+      "line": 435,
       "symbol": "UserWorkoutResult.peak20minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 437,
+      "line": 436,
       "symbol": "UserWorkoutResult.peak20minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 439,
+      "line": 438,
       "symbol": "UserWorkoutResult.peak24minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 440,
+      "line": 439,
       "symbol": "UserWorkoutResult.peak24minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 441,
+      "line": 440,
       "symbol": "UserWorkoutResult.peak24minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 443,
+      "line": 442,
       "symbol": "UserWorkoutResult.peak30minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 444,
+      "line": 443,
       "symbol": "UserWorkoutResult.peak30minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 445,
+      "line": 444,
       "symbol": "UserWorkoutResult.peak30minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 447,
+      "line": 446,
       "symbol": "UserWorkoutResult.peak40minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 448,
+      "line": 447,
       "symbol": "UserWorkoutResult.peak40minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 449,
+      "line": 448,
       "symbol": "UserWorkoutResult.peak40minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 451,
+      "line": 450,
       "symbol": "UserWorkoutResult.peak60minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 452,
+      "line": 451,
       "symbol": "UserWorkoutResult.peak60minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 453,
+      "line": 452,
       "symbol": "UserWorkoutResult.peak60minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 455,
+      "line": 454,
       "symbol": "UserWorkoutResult.peak75minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 456,
+      "line": 455,
       "symbol": "UserWorkoutResult.peak75minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 457,
+      "line": 456,
       "symbol": "UserWorkoutResult.peak75minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 459,
+      "line": 458,
       "symbol": "UserWorkoutResult.peak80minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 460,
+      "line": 459,
       "symbol": "UserWorkoutResult.peak80minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 461,
+      "line": 460,
       "symbol": "UserWorkoutResult.peak80minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 463,
+      "line": 462,
       "symbol": "UserWorkoutResult.peak90minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 464,
+      "line": 463,
       "symbol": "UserWorkoutResult.peak90minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 465,
+      "line": 464,
       "symbol": "UserWorkoutResult.peak90minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 467,
+      "line": 466,
       "symbol": "UserWorkoutResult.peak120minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 468,
+      "line": 467,
       "symbol": "UserWorkoutResult.peak120minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 469,
+      "line": 468,
       "symbol": "UserWorkoutResult.peak120minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 471,
+      "line": 470,
       "symbol": "UserWorkoutResult.peak150minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 472,
+      "line": 471,
       "symbol": "UserWorkoutResult.peak150minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 473,
+      "line": 472,
       "symbol": "UserWorkoutResult.peak150minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 475,
+      "line": 474,
       "symbol": "UserWorkoutResult.peak180minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 476,
+      "line": 475,
       "symbol": "UserWorkoutResult.peak180minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 477,
+      "line": 476,
       "symbol": "UserWorkoutResult.peak180minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 479,
+      "line": 478,
       "symbol": "UserWorkoutResult.peak210minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 480,
+      "line": 479,
       "symbol": "UserWorkoutResult.peak210minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 481,
+      "line": 480,
       "symbol": "UserWorkoutResult.peak210minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 483,
+      "line": 482,
       "symbol": "UserWorkoutResult.peak240minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 484,
+      "line": 483,
       "symbol": "UserWorkoutResult.peak240minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 485,
+      "line": 484,
       "symbol": "UserWorkoutResult.peak240minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 487,
+      "line": 486,
       "symbol": "UserWorkoutResult.peak360minWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 488,
+      "line": 487,
       "symbol": "UserWorkoutResult.peak360minWattsP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 489,
+      "line": 488,
       "symbol": "UserWorkoutResult.peak360minWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 491,
+      "line": 490,
       "symbol": "UserWorkoutResult.peak5secBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 492,
+      "line": 491,
       "symbol": "UserWorkoutResult.peak5secBpmP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 494,
+      "line": 493,
       "symbol": "UserWorkoutResult.peak10secBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 495,
+      "line": 494,
       "symbol": "UserWorkoutResult.peak10secBpmP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 497,
+      "line": 496,
       "symbol": "UserWorkoutResult.peak1minBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 498,
+      "line": 497,
       "symbol": "UserWorkoutResult.peak1minBpmP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 500,
+      "line": 499,
       "symbol": "UserWorkoutResult.peak5minBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 501,
+      "line": 500,
       "symbol": "UserWorkoutResult.peak5minBpmP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 503,
+      "line": 502,
       "symbol": "UserWorkoutResult.peak10minBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 504,
+      "line": 503,
       "symbol": "UserWorkoutResult.peak10minBpmP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 506,
+      "line": 505,
       "symbol": "UserWorkoutResult.peak20minBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 507,
+      "line": 506,
       "symbol": "UserWorkoutResult.peak20minBpmP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 509,
+      "line": 508,
       "symbol": "UserWorkoutResult.peak30minBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 510,
+      "line": 509,
       "symbol": "UserWorkoutResult.peak30minBpmP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 512,
+      "line": 511,
       "symbol": "UserWorkoutResult.peak60minBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 513,
+      "line": 512,
       "symbol": "UserWorkoutResult.peak60minBpmP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 515,
+      "line": 514,
       "symbol": "UserWorkoutResult.peak120minBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 516,
+      "line": 515,
       "symbol": "UserWorkoutResult.peak120minBpmP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 518,
+      "line": 517,
       "symbol": "UserWorkoutResult.peak180minBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 519,
+      "line": 518,
       "symbol": "UserWorkoutResult.peak180minBpmP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 523,
+      "line": 522,
       "symbol": "UserWorkoutResult.maxGear",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 524,
+      "line": 523,
       "symbol": "UserWorkoutResult.avgGear",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 525,
+      "line": 524,
       "symbol": "UserWorkoutResult.gearChangeCnt",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 529,
+      "line": 528,
       "symbol": "UserWorkoutResult.maxGrade",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 530,
+      "line": 529,
       "symbol": "UserWorkoutResult.avgGrade",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 532,
+      "line": 531,
       "symbol": "UserWorkoutResult.bpmSampleRate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 533,
+      "line": 532,
       "symbol": "UserWorkoutResult.bpmSampleCnt",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 535,
+      "line": 534,
       "symbol": "UserWorkoutResult.pwrSampleRate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 536,
+      "line": 535,
       "symbol": "UserWorkoutResult.pwrSampleCnt",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 540,
+      "line": 539,
       "symbol": "UserWorkoutResult.pwrBattery",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 541,
+      "line": 540,
       "symbol": "UserWorkoutResult.pwrBatteryP",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 542,
+      "line": 541,
       "symbol": "UserWorkoutResult.pwrOffset",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 543,
+      "line": 542,
       "symbol": "UserWorkoutResult.pwrSlope",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 544,
+      "line": 543,
       "symbol": "UserWorkoutResult.pwrManufacturer",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 545,
+      "line": 544,
       "symbol": "UserWorkoutResult.pwrManufacturerId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 546,
+      "line": 545,
       "symbol": "UserWorkoutResult.pwrVersion",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 547,
+      "line": 546,
       "symbol": "UserWorkoutResult.pwrSerial",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 548,
+      "line": 547,
       "symbol": "UserWorkoutResult.pwrProduct",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 549,
+      "line": 548,
       "symbol": "UserWorkoutResult.pwrId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 550,
+      "line": 549,
       "symbol": "UserWorkoutResult.pwrBalance",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 551,
+      "line": 550,
       "symbol": "UserWorkoutResult.pwrDiscardCnt",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 555,
+      "line": 554,
       "symbol": "UserWorkoutResult.secsInSurface",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 556,
+      "line": 555,
       "symbol": "UserWorkoutResult.secsInZonePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 557,
+      "line": 556,
       "symbol": "UserWorkoutResult.secsInZoneWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 558,
+      "line": 557,
       "symbol": "UserWorkoutResult.secsInZoneNm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 559,
+      "line": 558,
       "symbol": "UserWorkoutResult.secsInZoneBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 560,
+      "line": 559,
       "symbol": "UserWorkoutResult.secsInZoneMaxHr",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 562,
+      "line": 561,
       "symbol": "UserWorkoutResult.wkgZones",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 563,
+      "line": 562,
       "symbol": "UserWorkoutResult.bpmZones",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 564,
+      "line": 563,
       "symbol": "UserWorkoutResult.maxHrZones",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 565,
+      "line": 564,
       "symbol": "UserWorkoutResult.pwrZones",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 566,
+      "line": 565,
       "symbol": "UserWorkoutResult.nmZones",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 567,
+      "line": 566,
       "symbol": "UserWorkoutResult.paceZones",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 568,
+      "line": 567,
       "symbol": "UserWorkoutResult.bpmZoneNames",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 570,
+      "line": 569,
       "symbol": "UserWorkoutResult.laps",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 572,
+      "line": 571,
       "symbol": "UserWorkoutResult.distributions",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 582,
-      "symbol": "UserWorkoutResult.metadata",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 584,
+      "line": 583,
       "symbol": "UserWorkoutResult.permissions",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 586,
+      "line": 585,
       "symbol": "UserWorkoutResult.aap",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 588,
+      "line": 587,
       "symbol": "UserWorkoutResult.ext",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 590,
+      "line": 589,
       "symbol": "UserWorkoutResult.ext2",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 592,
+      "line": 591,
       "symbol": "UserWorkoutResult.pace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 594,
+      "line": 593,
       "symbol": "UserWorkoutResult.lss",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 596,
+      "line": 595,
       "symbol": "UserWorkoutResult.hour",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 598,
+      "line": 597,
       "symbol": "UserWorkoutResult.turbo",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 600,
+      "line": 599,
       "symbol": "UserWorkoutResult.channels",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 611,
+      "line": 610,
       "symbol": "UserWorkoutResult.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -3775,14 +3740,7 @@
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Routes/UserRouteSearch.swift",
-      "line": 6,
-      "symbol": "UserRouteSearch.Field",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Routes/UserRouteSearch.swift",
-      "line": 26,
+      "line": 24,
       "symbol": "UserRouteSearch.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -3859,42 +3817,35 @@
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
-      "line": 5,
-      "symbol": "SearchInputCriteria.Field",
-      "symbol_kind": "source.lang.swift.decl.associatedtype",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
-      "line": 9,
+      "line": 7,
       "symbol": "SearchInput",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
-      "line": 11,
+      "line": 9,
       "symbol": "SearchInput.criteria",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
-      "line": 13,
+      "line": 11,
       "symbol": "SearchInput.fields",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
-      "line": 15,
+      "line": 13,
       "symbol": "SearchInput.identifiers",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInput.swift",
-      "line": 17,
+      "line": 15,
       "symbol": "SearchInput.ctx",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"

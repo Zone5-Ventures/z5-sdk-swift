@@ -2829,6 +2829,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/ActivityResultType.swift",
+      "line": 21,
+      "symbol": "ActivityResultType",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Enums/ActivityType.swift",
       "line": 11,
       "symbol": "ActivityType",
@@ -3769,21 +3776,21 @@
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/DateRange.swift",
       "line": 13,
-      "symbol": "DateRange.timezone",
+      "symbol": "DateRange.timeZone",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/DateRange.swift",
       "line": 15,
-      "symbol": "DateRange.init(name:floor:ceiling:timezone:)",
+      "symbol": "DateRange.init(name:floor:ceiling:timeZone:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/DateRange.swift",
       "line": 22,
-      "symbol": "DateRange.init(name:floor:ceiling:timezone:)",
+      "symbol": "DateRange.init(name:floor:ceiling:timeZone:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -3851,15 +3858,113 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 6,
+      "symbol": "SearchInputReport.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 8,
+      "symbol": "SearchInputReport.isAllTime",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 17,
+      "symbol": "SearchInputReport.userIDs",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 21,
+      "symbol": "SearchInputReport.ranges",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 25,
+      "symbol": "SearchInputReport.activities",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 49,
+      "symbol": "SearchInputReport.range",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 56,
+      "symbol": "SearchInputReport.references",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 61,
+      "symbol": "SearchInputReport.isNotNull",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 63,
+      "symbol": "SearchInputReport.isNull",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 65,
+      "symbol": "SearchInputReport.order",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 69,
+      "symbol": "SearchInputReport.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 105,
+      "symbol": "SearchInputReport.forInstanceMetrics(sport:userIDs:ranges:fields:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchInputReport.swift",
+      "line": 159,
+      "symbol": "SearchInputReport.init(from:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchResult.swift",
-      "line": 24,
+      "line": 3,
+      "symbol": "MappedResult",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchResult.swift",
+      "line": 26,
       "symbol": "SearchResult.Page.fields",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Search/SearchResult.swift",
-      "line": 26,
+      "line": 28,
       "symbol": "SearchResult.Page.keys",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -3943,58 +4048,51 @@
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 32,
+      "line": 31,
       "symbol": "ActivitiesView.ActivitySearchResult",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 34,
+      "line": 33,
       "symbol": "ActivitiesView.search(_:offset:count:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 39,
+      "line": 38,
       "symbol": "ActivitiesView.next(offset:count:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 46,
+      "line": 45,
       "symbol": "ActivitiesView.upload(_:context:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 61,
-      "symbol": "ActivitiesView.downloadOriginal(_:completion:)",
+      "line": 60,
+      "symbol": "ActivitiesView.FileURLResultHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
+      "line": 121,
+      "symbol": "ActivitiesView.timeInZones(type:id:zoneType:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 66,
-      "symbol": "ActivitiesView.downloadRaw3(_:completion:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 71,
-      "symbol": "ActivitiesView.downloadCSV(_:completion:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/jelly/Development/Clients/TodaysPlan/zone5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 76,
-      "symbol": "ActivitiesView.downloadMap(_:completion:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "line": 129,
+      "symbol": "ActivitiesView.MappedUserWorkoutResultHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
