@@ -99,6 +99,11 @@ final public class Zone5 {
 		return UsersView(zone5: self)
 	}()
 
+	/// A collection of API endpoints related to routes.
+	public lazy var routes: RoutesView = {
+		return RoutesView(zone5: self)
+	}()
+
 	// MARK: Errors
 
 	/// Definitions for errors typically thrown by Zone5 methods.

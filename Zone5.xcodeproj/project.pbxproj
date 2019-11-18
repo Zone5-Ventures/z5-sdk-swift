@@ -34,6 +34,7 @@
 		A124B0D92373E33A0000919C /* TestHTTPClientURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124B0D82373E33A0000919C /* TestHTTPClientURLSession.swift */; };
 		A167D6C723821FD900507276 /* SearchInputReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167D6C623821FD900507276 /* SearchInputReport.swift */; };
 		A167D6CA23823D6500507276 /* DateRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167D6C823823CF400507276 /* DateRangeTests.swift */; };
+		A167D6CC238252CE00507276 /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167D6CB238252CE00507276 /* RoutesView.swift */; };
 		A182D1B42372AB0500112501 /* Zone5.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B32372AB0500112501 /* Zone5.swift */; };
 		A182D1CC2372AB0F00112501 /* RequestEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B62372AB0E00112501 /* RequestEndpoint.swift */; };
 		A182D1CD2372AB0F00112501 /* URLEncodedBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B72372AB0E00112501 /* URLEncodedBody.swift */; };
@@ -175,6 +176,7 @@
 		A12D82482362B5FA00C6EA34 /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		A167D6C623821FD900507276 /* SearchInputReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInputReport.swift; sourceTree = "<group>"; };
 		A167D6C823823CF400507276 /* DateRangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeTests.swift; sourceTree = "<group>"; };
+		A167D6CB238252CE00507276 /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
 		A182D1B32372AB0500112501 /* Zone5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone5.swift; sourceTree = "<group>"; };
 		A182D1B62372AB0E00112501 /* RequestEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestEndpoint.swift; sourceTree = "<group>"; };
 		A182D1B72372AB0E00112501 /* URLEncodedBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEncodedBody.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				A182D1BE2372AB0F00112501 /* ActivitiesView.swift */,
 				A182D1C02372AB0F00112501 /* UsersView.swift */,
 				A182D1C12372AB0F00112501 /* OAuthView.swift */,
+				A167D6CB238252CE00507276 /* RoutesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				A196035823794DD200CEB121 /* RelativePeriod.swift in Sources */,
 				A182D1DA2372AB0F00112501 /* Order.swift in Sources */,
 				A10AB240237E147E00EBAC66 /* UserWorkoutResultAlt.swift in Sources */,
+				A167D6CC238252CE00507276 /* RoutesView.swift in Sources */,
 				A182D1D42372AB0F00112501 /* View.swift in Sources */,
 				A196035923794DD200CEB121 /* UserWorkoutFailedReason.swift in Sources */,
 				A182D1D02372AB0F00112501 /* HTTPClient.swift in Sources */,

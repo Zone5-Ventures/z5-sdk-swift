@@ -1,6 +1,6 @@
 import Foundation
 
-public enum UserRouteOutputType: String, Codable {
+public enum UserRouteOutputType: String, Codable, CustomStringConvertible {
 
 	/// Stages L10 route format
 	case sro
@@ -26,5 +26,8 @@ public enum UserRouteOutputType: String, Codable {
 	/// Web UI js format for saving a route
 	case js
 
+	public var description: String {
+		return rawValue
+	}
 
 }

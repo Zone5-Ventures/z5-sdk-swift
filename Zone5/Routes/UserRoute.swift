@@ -1,8 +1,16 @@
 import Foundation
 
-public struct UserRoute: Codable {
+/// Protocol that allows a route's ID or UUID values to be used interchangeably when accessing API endpoints.
+public protocol UserRouteServerIdentifier: CustomStringConvertible {}
 
-	public var id: Int?
+public struct UserRoute: Codable, JSONEncodedBody {
+
+	public typealias Identifier = Int
+	public typealias UUID = String
+
+	public var id: Identifier?
+
+	public var uuid: UUID?
 
 	/// When this object was first created
 	public var createdTime: Int?
@@ -128,8 +136,10 @@ public struct UserRoute: Codable {
 	/// The number of public ratings (if any)
 	public var publicRatingCnt: Int?
 
-	public var uuid: String?
-
 	public init() {}
 
 }
+
+extension UserRoute.Identifier: UserRouteServerIdentifier {}
+
+extension UserRoute.UUID: UserRouteServerIdentifier {}
