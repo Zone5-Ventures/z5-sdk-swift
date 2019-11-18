@@ -10,20 +10,20 @@ public struct DateRange: Codable {
 	/// The low end timestamp in this range. A unix timestamp in milliseconds.
 	public var ceiling: TimeInterval
 
-	public var timezone: TimeZone
+	public var timeZone: TimeZone
 
-	public init(name: String? = nil, floor: TimeInterval, ceiling: TimeInterval, timezone: TimeZone = DateRange.calendar.timeZone) {
+	public init(name: String? = nil, floor: TimeInterval, ceiling: TimeInterval, timeZone: TimeZone = DateRange.calendar.timeZone) {
 		self.name = name
 		self.floor = floor
 		self.ceiling = ceiling
-		self.timezone = timezone
+		self.timeZone = timeZone
 	}
 
-	public init(name: String? = nil, floor: Date, ceiling: Date, timezone: TimeZone = DateRange.calendar.timeZone) {
+	public init(name: String? = nil, floor: Date, ceiling: Date, timeZone: TimeZone = DateRange.calendar.timeZone) {
 		self.name = name
 		self.floor = floor.timeIntervalSince1970
 		self.ceiling = ceiling.timeIntervalSince1970
-		self.timezone = timezone
+		self.timeZone = timeZone
 	}
 
 	public init?(name: String? = nil, component: Calendar.Component, value: Int, starting: Date = .init()) {
@@ -32,18 +32,14 @@ public struct DateRange: Codable {
 		}
 
 		if ending >= starting {
-			self.init(name: name, floor: starting, ceiling: ending, timezone: DateRange.calendar.timeZone)
+			self.init(name: name, floor: starting, ceiling: ending, timeZone: DateRange.calendar.timeZone)
 		}
 		else {
-			self.init(name: name, floor: ending, ceiling: starting, timezone: DateRange.calendar.timeZone)
+			self.init(name: name, floor: ending, ceiling: starting, timeZone: DateRange.calendar.timeZone)
 		}
 	}
 
-	public static var calendar: Calendar = {
-		var calendar = Calendar(identifier: .iso8601)
-		calendar.timeZone = .current
-		return calendar
-	}()
+	public static var calendar = Calendar.autoupdatingCurrent
 
 	// MARK: Encodable
 
@@ -51,15 +47,29 @@ public struct DateRange: Codable {
 		case name
 		case floor = "floorTs"
 		case ceiling = "ceilTs"
-		case timezone = "tz"
+		case timeZone = "tz"
+	}
+
+	enum DecodingError: Swift.Error {
+		case invalidTimeZoneIdentifier(identifier: String)
 	}
 
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		name = try container.decodeIfPresent(String.self, forKey: .name)
-		floor = try container.decode(TimeInterval.self, forKey: .floor)
-		ceiling = try container.decode(TimeInterval.self, forKey: .ceiling)
-		timezone = try container.decode(TimeZone.self, forKey: .timezone)
+		floor = try container.decode(TimeInterval.self, forKey: .floor) / 1000
+		ceiling = try container.decode(TimeInterval.self, forKey: .ceiling) / 1000
+
+		if let timeZoneIdentifier = try container.decodeIfPresent(String.self, forKey: .timeZone) {
+			guard let decodedTimezone = TimeZone(identifier: timeZoneIdentifier) else {
+				throw DecodingError.invalidTimeZoneIdentifier(identifier: timeZoneIdentifier)
+			}
+
+			timeZone = decodedTimezone
+		}
+		else {
+			timeZone = DateRange.calendar.timeZone
+		}
 	}
 
 	public func encode(to encoder: Encoder) throws {
@@ -67,7 +77,7 @@ public struct DateRange: Codable {
 		try container.encodeIfPresent(name, forKey: .name)
 		try container.encode(Int(floor * 1000), forKey: .floor)
 		try container.encode(Int(ceiling * 1000), forKey: .ceiling)
-		try container.encode(timezone, forKey: .timezone)
+		try container.encode(timeZone.identifier, forKey: .timeZone)
 	}
 
 }
