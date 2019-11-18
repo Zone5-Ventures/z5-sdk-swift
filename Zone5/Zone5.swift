@@ -106,6 +106,14 @@ final public class Zone5 {
 
 	// MARK: Errors
 
+	/// Enumeration containing the decoded value on success, or the error that occurred on failure.
+	public typealias Result<Element: Decodable> = Swift.Result<Element, Zone5.Error>
+
+	/// Function that receives a `Result` that can either contain a structure decoded from a server response, or an
+	/// error if one occurred, typically used for handling the completion of an API call.
+	/// - Parameter result: Enumeration containing the decoded value on success, or the error that occurred on failure.
+	public typealias ResultHandler<Element: Decodable> = (_ result: Result<Element>) -> Void
+
 	/// Definitions for errors typically thrown by Zone5 methods.
 	public enum Error: Swift.Error, CustomDebugStringConvertible {
 

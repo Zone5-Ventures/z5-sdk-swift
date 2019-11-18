@@ -811,6 +811,80 @@ configure the client for access to the Zone5 API.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Zone5AAC6Resulta"></a>
+                    <a name="//apple_ref/swift/Alias/Result" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone5AAC6Resulta">Result</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enumeration containing the decoded value on success, or the error that occurred on failure.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span> <span class="o">=</span> <span class="kt">Swift</span><span class="o">.</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt">Element</span><span class="p">,</span> <span class="kt">Zone5</span><span class="o">.</span><span class="kt"><a href="../Classes/Zone5/Error.html">Error</a></span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">Element</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone5AAC13ResultHandlera"></a>
+                    <a name="//apple_ref/swift/Alias/ResultHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone5AAC13ResultHandlera">ResultHandler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Function that receives a <code><a href="../Classes/Zone5.html#/s:5Zone5AAC6Resulta">Result</a></code> that can either contain a structure decoded from a server response, or an
+error if one occurred, typically used for handling the completion of an API call.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">(</span><span class="n">_</span> <span class="nv">result</span><span class="p">:</span> <span class="kt"><a href="../Classes/Zone5.html#/s:5Zone5AAC6Resulta">Result</a></span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">where</span> <span class="kt">Element</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>result</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Enumeration containing the decoded value on success, or the error that occurred on failure.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Zone5AAC5ErrorO"></a>
                     <a name="//apple_ref/swift/Enum/Error" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Zone5AAC5ErrorO">Error</a>

@@ -20,11 +20,6 @@ public class RoutesView: APIView {
 		case cloneRoute = "/rest/users/route/clone/route/{routeID}";
 	}
 
-	public typealias RouteSearchResult = Result<SearchResult<UserRoute>, Zone5.Error>
-	public typealias RouteResult = Result<UserRoute, Zone5.Error>
-	public typealias URLResult = Result<URL, Zone5.Error>
-	public typealias BooleanResult = Result<Bool, Zone5.Error>
-
 	// MARK: Browsing routes
 
 	/// Perform a search for routes matching the given `parameters`.
@@ -33,7 +28,7 @@ public class RoutesView: APIView {
 	///   - offset: The pagination offset for the retrieved set of `UserRoute` values.
 	///   - count: The number of `UserRoute` values to retrieve.
 	///   - completion: Function called with the `UserRoute` results matching the given criteria, or the error if one occurred.
-	public func search(_ parameters: SearchInput<UserRouteSearch>, offset: Int, count: Int, completion: @escaping (_ result: RouteSearchResult) -> Void) {
+	public func search(_ parameters: SearchInput<UserRouteSearch>, offset: Int, count: Int, completion: @escaping Zone5.ResultHandler<SearchResult<UserRoute>>) {
 		let endpoint = Endpoints.search.replacingTokens(["offset": offset, "count": count])
 		post(endpoint, body: parameters, with: completion)
 	}
@@ -43,7 +38,7 @@ public class RoutesView: APIView {
 	///   - offset: The pagination offset for the retrieved set of `UserRoute` values.
 	///   - count: The number of `UserRoute` values to retrieve.
 	///   - completion: Function called with the `UserRoute` results matching the given criteria, or the error if one occurred.
-	public func next(offset: Int, count: Int, completion: @escaping (_ result: RouteSearchResult) -> Void) {
+	public func next(offset: Int, count: Int, completion: @escaping Zone5.ResultHandler<SearchResult<UserRoute>>) {
 		let endpoint = Endpoints.next.replacingTokens(["offset": offset, "count": count])
 		get(endpoint, with: completion)
 	}
@@ -52,7 +47,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route, either the route's `id` or `uuid`.
 	///   - completion: Function called with the `UserRoute` summary, or the error if one occurred.
-	public func summaryView(of identifier: UserRouteServerIdentifier, completion: @escaping (_ result: RouteResult) -> Void) {
+	public func summaryView(of identifier: UserRouteServerIdentifier, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.summary.replacingTokens(["routeID": identifier])
 		get(endpoint, with: completion)
 	}
@@ -61,7 +56,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route, either the route's `id` or `uuid`.
 	///   - completion: Function called with the detailed `UserRoute` value, or the error if one occurred.
-	public func detailedView(of identifier: UserRouteServerIdentifier, completion: @escaping (_ result: RouteResult) -> Void) {
+	public func detailedView(of identifier: UserRouteServerIdentifier, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.detailed.replacingTokens(["routeID": identifier])
 		get(endpoint, with: completion)
 	}
@@ -74,7 +69,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route to be downloaded, either the route's `id` or `uuid`.
 	///   - completion: Function called with the location of the downloaded file on disk, or the error if one occurred.
-	public func downloadPNG(for identifier: UserRouteServerIdentifier, completion: @escaping (_ result: URLResult) -> Void) {
+	public func downloadPNG(for identifier: UserRouteServerIdentifier, completion: @escaping Zone5.ResultHandler<URL>) {
 		let endpoint = Endpoints.downloadPNG.replacingTokens(["routeID": identifier])
 		download(endpoint, with: completion)
 	}
@@ -87,7 +82,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route to be downloaded, either the route's `id` or `uuid`.
 	///   - completion: Function called with the location of the downloaded file on disk, or the error if one occurred.
-	public func downloadFIT(for identifier: UserRouteServerIdentifier, completion: @escaping (_ result: URLResult) -> Void) {
+	public func downloadFIT(for identifier: UserRouteServerIdentifier, completion: @escaping Zone5.ResultHandler<URL>) {
 		let endpoint = Endpoints.downloadFIT.replacingTokens(["routeID": identifier])
 		download(endpoint, with: completion)
 	}
@@ -98,7 +93,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeUUID: The identifier for the route to be downloaded, either the route's `id` or `uuid`.
 	///   - completion: Function called with the location of the downloaded file on disk, or the error if one occurred.
-	public func downloadGPX(for identifier: UserRouteServerIdentifier, completion: @escaping (_ result: URLResult) -> Void) {
+	public func downloadGPX(for identifier: UserRouteServerIdentifier, completion: @escaping Zone5.ResultHandler<URL>) {
 		let endpoint = Endpoints.downloadGPX.replacingTokens(["routeID": identifier])
 		download(endpoint, with: completion)
 	}
@@ -109,7 +104,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route to be downloaded.
 	///   - completion: Function called with the location of the downloaded file on disk, or the error if one occurred.
-	public func downloadStagesSRO(for routeID: Int, completion: @escaping (_ result: URLResult) -> Void) {
+	public func downloadStagesSRO(for routeID: Int, completion: @escaping Zone5.ResultHandler<URL>) {
 		let endpoint = Endpoints.downloadStagesSRO.replacingTokens(["routeID": routeID])
 		download(endpoint, with: completion)
 	}
@@ -120,7 +115,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route to be downloaded.
 	///   - completion: Function called with the location of the downloaded file on disk, or the error if one occurred.
-	public func downloadStagesFIT(for routeID: Int, completion: @escaping (_ result: URLResult) -> Void) {
+	public func downloadStagesFIT(for routeID: Int, completion: @escaping Zone5.ResultHandler<URL>) {
 		let endpoint = Endpoints.downloadStagesFIT.replacingTokens(["routeID": routeID])
 		download(endpoint, with: completion)
 	}
@@ -147,7 +142,7 @@ public class RoutesView: APIView {
 	///   - fileURL: The URL for a JSON-formatted route file.
 	///   - metadata: The metadata for the created route.
 	///   - completion: Function called with the created route, or the error if one occurred.
-	public func createRoute(fromJSON fileURL: URL, metadata: UserRoute, completion: @escaping (_ result: RouteResult) -> Void) {
+	public func createRoute(fromJSON fileURL: URL, metadata: UserRoute, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.upload.replacingTokens(["format": UserRouteOutputType.js])
 		upload(endpoint, contentsOf: fileURL, body: metadata, with: completion)
 	}
@@ -157,7 +152,7 @@ public class RoutesView: APIView {
 	///   - fileURL: The URL for a FIT-based route file.
 	///   - metadata: The metadata for the created route.
 	///   - completion: Function called with the created route, or the error if one occurred.
-	public func createRoute(fromFIT fileURL: URL, metadata: UserRoute, completion: @escaping (_ result: RouteResult) -> Void) {
+	public func createRoute(fromFIT fileURL: URL, metadata: UserRoute, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.upload.replacingTokens(["format": UserRouteOutputType.fit])
 		upload(endpoint, contentsOf: fileURL, body: metadata, with: completion)
 	}
@@ -167,7 +162,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The fileID for the activity to be cloned.
 	///   - completion: Function called with the created route, or the error if one occurred.
-	public func createRoute(fromActivity fileID: Int, completion: @escaping (_ result: RouteResult) -> Void) {
+	public func createRoute(fromActivity fileID: Int, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.cloneActivity.replacingTokens(["fileID": fileID])
 		get(endpoint, with: completion)
 	}
@@ -177,7 +172,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route to be cloned.
 	///   - completion: Function called with the created route, or the error if one occurred.
-	public func createRoute(fromRoute routeID: Int, completion: @escaping (_ result: RouteResult) -> Void) {
+	public func createRoute(fromRoute routeID: Int, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.cloneRoute.replacingTokens(["routeID": routeID])
 		get(endpoint, with: completion)
 	}
@@ -203,7 +198,7 @@ public class RoutesView: APIView {
 	///   - fileURL: The URL for a JSON-formatted route file for updating the route.
 	///   - metadata: The updated metadata for the route.
 	///   - completion: Function called with the updated route, or the error if one occurred.
-	public func updateRoute(with routeID: Int, fromJSON fileURL: URL, metadata: UserRoute, completion: @escaping (_ result: RouteResult) -> Void) {
+	public func updateRoute(with routeID: Int, fromJSON fileURL: URL, metadata: UserRoute, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.uploadUpdate.replacingTokens(["routeID": routeID, "format": UserRouteOutputType.js])
 		upload(endpoint, contentsOf: fileURL, body: metadata, with: completion)
 	}
@@ -214,7 +209,7 @@ public class RoutesView: APIView {
 	///   - fileURL: The URL for a FIT-based route file for updating the route.
 	///   - metadata: The updated metadata for the route.
 	///   - completion: Function called with the updated route, or the error if one occurred.
-	public func updateRoute(with routeID: Int, fromFIT fileURL: URL, metadata: UserRoute, completion: @escaping (_ result: RouteResult) -> Void) {
+	public func updateRoute(with routeID: Int, fromFIT fileURL: URL, metadata: UserRoute, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.uploadUpdate.replacingTokens(["routeID": routeID, "format": UserRouteOutputType.fit])
 		upload(endpoint, contentsOf: fileURL, body: metadata, with: completion)
 	}
@@ -225,7 +220,7 @@ public class RoutesView: APIView {
 	///   - routeID: The identifier for the route to be updated.
 	///   - metadata: The updated metadata for the route.
 	///   - completion: Function called with the updated route, or the error if one occurred.
-	public func updateMetadata(for routeID: Int, metadata: UserRoute, completion: @escaping (_ result: BooleanResult) -> Void) {
+	public func updateMetadata(for routeID: Int, metadata: UserRoute, completion: @escaping Zone5.ResultHandler<Bool>) {
 		let endpoint = Endpoints.update.replacingTokens(["routeID": routeID])
 		post(endpoint, body: metadata, with: completion)
 	}
@@ -234,7 +229,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route to be deleted.
 	///   - completion: Function called with the result of the deletion attempt, or the error if one occurred.
-	public func delete(routeID: Int, completion: @escaping (_ result: BooleanResult) -> Void) {
+	public func delete(routeID: Int, completion: @escaping Zone5.ResultHandler<Bool>) {
 		let endpoint = Endpoints.delete.replacingTokens(["routeID": routeID])
 		get(endpoint, with: completion)
 	}
