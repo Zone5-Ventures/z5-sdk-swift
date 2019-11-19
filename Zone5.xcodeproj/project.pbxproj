@@ -664,9 +664,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A18A529F234C2D210016DDA5 /* Zone5 Example */,
 				A1F058E12372A3840034C7D0 /* Zone5 */,
 				A1F058E92372A3840034C7D0 /* Zone5Tests */,
+				A18A529F234C2D210016DDA5 /* Zone5 Example */,
 			);
 		};
 /* End PBXProject section */
