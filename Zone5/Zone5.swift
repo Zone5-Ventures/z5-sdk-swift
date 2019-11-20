@@ -41,15 +41,28 @@ final public class Zone5 {
 	public var redirectURI: String = "https://localhost"
 
 	/// Configures the SDK to use the application specified by the given `clientID` and `clientSecret`.
-	/// - Parameter baseURL: The API url to use.
-	/// - Parameter clientID: The clientID, as provided by Zone5.
-	/// - Parameter clientSecret: The secret key, as provided by Zone5.
-	/// - Parameter accessToken: An access token representing a user authenticated during a previous session.
-	public func configure(for baseURL: URL, clientID: String, clientSecret: String, accessToken: AccessToken? = nil) {
+	/// - Parameters:
+	///   - baseURL: The API url to use.
+	///   - clientID: The clientID, as provided by Zone5.
+	///   - clientSecret: The secret key, as provided by Zone5.
+	///   - accessToken: An access token representing a user authenticated during a previous session. If `nil`, any
+	///   		existing access token will be cleared.
+	public func configure(for baseURL: URL, clientID: String, clientSecret: String, accessToken: AccessToken?) {
 		self.baseURL = baseURL
 		self.clientID = clientID
 		self.clientSecret = clientSecret
 		self.accessToken = accessToken
+	}
+
+	/// Configures the SDK to use the application specified by the given `clientID` and `clientSecret`.
+	/// - Parameters:
+	///   - baseURL: The API url to use.
+	///   - clientID: The clientID, as provided by Zone5.
+	///   - clientSecret: The secret key, as provided by Zone5.
+	public func configure(for baseURL: URL, clientID: String, clientSecret: String) {
+		self.baseURL = baseURL
+		self.clientID = clientID
+		self.clientSecret = clientSecret
 	}
 
 	/// Configures the SDK on behalf of a user, represented by the given `accessToken`.
@@ -57,8 +70,9 @@ final public class Zone5 {
 	/// As this method does not include the `clientID` or `clientSecret`, configuring the SDK this way will not allow
 	/// for user authentication, and is intended for instances where the `accessToken` is sourced externally, such as
 	/// through single sign-on.
-	/// - Parameter baseURL: The API url to use.
-	/// - Parameter accessToken: An access token that represents your user and client.
+	/// - Parameters:
+	///   - baseURL: The API url to use.
+	///   - accessToken: An access token that represents your user and client.
 	public func configure(for baseURL: URL, accessToken: AccessToken) {
 		self.baseURL = baseURL
 		self.accessToken = accessToken
