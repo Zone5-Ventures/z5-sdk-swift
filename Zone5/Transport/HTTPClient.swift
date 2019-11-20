@@ -167,7 +167,11 @@ final internal class HTTPClient {
 				if let error = error {
 					completion(.failure(.transportFailure(error)))
 				}
-				else if let location = location, let filename = response?.suggestedFilename {
+				else if
+					let contentDisposition = (response as? HTTPURLResponse)?.allHeaderFields["Content-Disposition"] as? String,
+					contentDisposition.hasPrefix("attachment"),
+					let location = location,
+					let filename = response?.suggestedFilename {
 					do {
 						let cacheURL = HTTPClient.downloadsDirectory.appendingPathComponent(filename)
 						try FileManager.default.copyItem(at: location, to: cacheURL)

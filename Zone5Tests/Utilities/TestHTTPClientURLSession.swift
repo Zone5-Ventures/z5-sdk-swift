@@ -11,22 +11,42 @@ import Foundation
 
 class TestHTTPClientURLSession: HTTPClientURLSession {
 
+	enum Result<Success> {
+		case success(Success)
+		case message(String, statusCode: Int)
+		case error(Error)
+	}
+
 	// MARK: Data tasks
 
 	/// - Returns: Result enumeration containing either a JSON string or an error.
-	var dataTaskHandler: (_ request: URLRequest) -> Result<String, Error> = { _ in fatalError() }
+	var dataTaskHandler: ((_ request: URLRequest) -> Result<String>)?
 
 	func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
 		return DataTask {
-			let result = self.dataTaskHandler(request)
-			let response = HTTPURLResponse.init(url: request.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: [
-				"Content-Type": "application/json",
-			])
+			let result = self.dataTaskHandler?(request)
 
 			switch result {
-			case .failure(let error):
-				completionHandler(nil, response, error)
+			case .none:
+				fatalError("Expected a `dataTaskHandler` to be defined.")
+			case .message(let message, let statusCode):
+				let response = HTTPURLResponse.init(url: request.url!, statusCode: statusCode, httpVersion: "HTTP/1.1", headerFields: [
+					"Content-Type": "application/json",
+				])
+
+				let json = "{\"message\": \"\(message)\"}"
+				completionHandler(json.data(using: .utf8), response, nil)
+			case .error(let error):
+				let response = HTTPURLResponse.init(url: request.url!, statusCode: 500, httpVersion: "HTTP/1.1", headerFields: [
+					"Content-Type": "application/json",
+				])
+
+				completionHandler(nil, response!, error)
 			case .success(let json):
+				let response = HTTPURLResponse.init(url: request.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: [
+					"Content-Type": "application/json",
+				])
+
 				completionHandler(json.data(using: .utf8), response, nil)
 			}
 		}
@@ -49,19 +69,33 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 	// MARK: Upload tasks
 
 	/// - Returns: Result enumeration containing either a JSON string or an error.
-	var uploadTaskHandler: (_ request: URLRequest) -> Result<String, Error> = { _ in fatalError() }
+	var uploadTaskHandler: ((_ request: URLRequest, _ fileURL: URL) -> Result<String>)?
 
 	func uploadTask(with request: URLRequest, fromFile fileURL: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionUploadTask {
 		return UploadTask {
-			let result = self.dataTaskHandler(request)
-			let response = HTTPURLResponse.init(url: request.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: [
-				"Content-Type": "application/json",
-			])
+			let result = self.uploadTaskHandler?(request, fileURL)
 
 			switch result {
-			case .failure(let error):
+			case .none:
+				fatalError("Expected an `uploadTaskHandler` to be defined.")
+			case .message(let message, let statusCode):
+				let response = HTTPURLResponse.init(url: request.url!, statusCode: statusCode, httpVersion: "HTTP/1.1", headerFields: [
+					"Content-Type": "application/json",
+				])
+
+				let json = "{\"message\": \"\(message)\"}"
+				completionHandler(json.data(using: .utf8), response, nil)
+			case .error(let error):
+				let response = HTTPURLResponse.init(url: request.url!, statusCode: 500, httpVersion: "HTTP/1.1", headerFields: [
+					"Content-Type": "application/json",
+				])
+
 				completionHandler(nil, response!, error)
 			case .success(let json):
+				let response = HTTPURLResponse.init(url: request.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: [
+					"Content-Type": "application/json",
+				])
+
 				completionHandler(json.data(using: .utf8), response, nil)
 			}
 		}
@@ -84,14 +118,26 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 	// MARK: Download tasks
 
 	/// - Returns: Result enumeration containing either a file URL or an error.
-	var downloadTaskHandler: (_ request: URLRequest) -> Result<URL, Error> = { _ in fatalError() }
+	var downloadTaskHandler: ((_ request: URLRequest) -> Result<URL>)?
 
 	func downloadTask(with request: URLRequest, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask {
 		return DownloadTask {
-			let result = self.downloadTaskHandler(request)
+			let result = self.downloadTaskHandler?(request)
 
 			switch result {
-			case .failure(let error):
+			case .none:
+				fatalError("Expected an `downloadTaskHandler` to be defined.")
+			case .message(let message, let statusCode):
+				let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("dataResponse.tmp")
+				let json = "{\"message\": \"\(message)\"}"
+				try! json.write(to: tempURL, atomically: true, encoding: .utf8)
+
+				let response = HTTPURLResponse.init(url: request.url!, statusCode: statusCode, httpVersion: "HTTP/1.1", headerFields: [
+					"Content-Type": "application/json",
+				])
+
+				completionHandler(tempURL, response!, nil)
+			case .error(let error):
 				let response = HTTPURLResponse.init(url: request.url!, statusCode: 500, httpVersion: "HTTP/1.1", headerFields: [
 					"Content-Type": "application/json",
 				])

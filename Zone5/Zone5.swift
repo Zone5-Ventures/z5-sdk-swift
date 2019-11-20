@@ -180,7 +180,7 @@ final public class Zone5 {
 		case transportFailure(_ underlyingError: Swift.Error)
 
 		/// Structure that represents a message produced by the server when an error occurs.
-		public struct ServerMessage: Swift.Error, Codable {
+		public struct ServerMessage: Swift.Error, Codable, Equatable {
 
 			public let message: String
 
