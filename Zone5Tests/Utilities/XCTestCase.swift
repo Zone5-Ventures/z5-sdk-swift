@@ -6,4 +6,66 @@
 //  Copyright © 2019 Zone5 Ventures. All rights reserved.
 //
 
-import Foundation
+import XCTest
+@testable import Zone5
+
+extension XCTestCase {
+
+	struct ConfigurationForTesting {
+
+		var accessToken: AccessToken? = AccessToken(rawValue: "ACCESS_TOKEN")
+
+		var baseURL: URL? = URL(string: "http://localhost")!
+
+		var clientID: String? = "CLIENT_IDENTIFIER"
+
+		var clientSecret: String? = "CLIENT_SECRET"
+
+		var redirectURI: String = "https://localhost"
+
+	}
+
+	enum EndpointsForTesting: String, RequestEndpoint {
+
+		/// Basic endpoint that does not require an access token.
+		case `default` = "/endpoint/default"
+
+		/// Basic endpoint that requires an access token.
+		case requiresAccessToken = "/endpoint/noAccessTokenRequired"
+
+		/// Endpoint with a replaceable `{token}` that does not require an access token.
+		case withReplaceableTokens = "/endpoint/with/{token}"
+
+		var requiresAccessToken: Bool {
+			switch self {
+			case .requiresAccessToken: return true
+			default: return false
+			}
+		}
+
+	}
+
+	func execute(configuration: ConfigurationForTesting = .init(), _ tests: (_ zone5: Zone5, _ httpClient: HTTPClient, _ urlSession: TestHTTPClientURLSession) throws -> Void) rethrows {
+		let urlSession = TestHTTPClientURLSession()
+		let httpClient = HTTPClient(urlSession: urlSession)
+
+		let zone5 = Zone5(httpClient: httpClient)
+		zone5.redirectURI = configuration.redirectURI
+		zone5.accessToken = configuration.accessToken
+
+		if let baseURL = configuration.baseURL, let clientID = configuration.clientID, let clientSecret = configuration.clientSecret {
+			zone5.configure(for: baseURL, clientID: clientID, clientSecret: clientSecret)
+		}
+
+		try tests(zone5, httpClient, urlSession)
+	}
+
+	func execute<T>(with parameters: [T], configuration: ConfigurationForTesting = .init(), _ tests: (_ zone5: Zone5, _ httpClient: HTTPClient, _ urlSession: TestHTTPClientURLSession, _ parameters: T) throws -> Void) rethrows {
+		try parameters.forEach { parameters in
+			try execute(configuration: configuration) { zone5, httpClient, urlSession in
+				try tests(zone5, httpClient, urlSession, parameters)
+			}
+		}
+	}
+
+}

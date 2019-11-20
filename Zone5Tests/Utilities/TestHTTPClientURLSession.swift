@@ -9,19 +9,6 @@
 import Foundation
 @testable import Zone5
 
-extension Zone5 {
-
-	static func prepareTestClient() -> (client: Zone5, urlSession: TestHTTPClientURLSession) {
-		let urlSession = TestHTTPClientURLSession()
-
-		let zone5 = Zone5(httpClient: HTTPClient(urlSession: urlSession))
-		zone5.configure(for: URL(string: "http://localhost")!, clientID: "CLIENT_IDENTIFIER", clientSecret: "CLIENT_SECRET")
-
-		return (client: zone5, urlSession: urlSession)
-	}
-
-}
-
 class TestHTTPClientURLSession: HTTPClientURLSession {
 
 	// MARK: Data tasks

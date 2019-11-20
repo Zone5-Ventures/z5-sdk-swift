@@ -12,16 +12,14 @@ import XCTest
 class UsersViewTests: XCTestCase {
 
 	func testMe() {
-		let (client, urlSession) = Zone5.prepareTestClient()
-
-		let tests: [(token: UUID?, json: String, expectedResult: Result<User, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, json: String, expectedResult: Result<User, Zone5.Error>)] = [
 			(
 				token: nil,
 				json: "{\"id\": 12345678, \"email\": \"jame.smith@example.com\", \"firstname\": \"Jane\", \"lastname\": \"Smith\"}",
 				expectedResult: .failure(.requiresAccessToken)
 			),
 			(
-				token: UUID(),
+				token: AccessToken(rawValue: UUID().uuidString),
 				json: "{\"id\": 12345678, \"email\": \"jame.smith@example.com\", \"firstname\": \"Jane\", \"lastname\": \"Smith\"}",
 				expectedResult: .success {
 					var user = User()
@@ -34,14 +32,12 @@ class UsersViewTests: XCTestCase {
 			),
 		]
 
-		for test in tests {
-			if let token = test.token {
-				client.accessToken = AccessToken(rawValue: token.uuidString)
-			}
+		execute(with: tests) { client, _, urlSession, test in
+			client.accessToken = test.token
 
 			urlSession.dataTaskHandler = { request in
 				XCTAssertEqual(request.url?.path, "/rest/users/me")
-				XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer \(client.accessToken!.rawValue)")
+				XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer \(test.token?.rawValue ?? "UNKNOWN")")
 
 				return .success(test.json)
 			}
@@ -61,10 +57,10 @@ class UsersViewTests: XCTestCase {
 					XCTAssertEqual(lhs.avatar, rhs.avatar)
 
 				default:
+					print(result, test.expectedResult)
 					XCTFail()
 				}
 			}
-
 		}
 	}
 
