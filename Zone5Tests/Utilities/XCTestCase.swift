@@ -50,12 +50,7 @@ extension XCTestCase {
 		let httpClient = HTTPClient(urlSession: urlSession)
 
 		let zone5 = Zone5(httpClient: httpClient)
-		zone5.redirectURI = configuration.redirectURI
-		zone5.accessToken = configuration.accessToken
-
-		if let baseURL = configuration.baseURL, let clientID = configuration.clientID, let clientSecret = configuration.clientSecret {
-			zone5.configure(for: baseURL, clientID: clientID, clientSecret: clientSecret)
-		}
+		zone5.configure(with: configuration)
 
 		try tests(zone5, httpClient, urlSession)
 	}
@@ -65,6 +60,19 @@ extension XCTestCase {
 			try execute(configuration: configuration) { zone5, httpClient, urlSession in
 				try tests(zone5, httpClient, urlSession, parameters)
 			}
+		}
+	}
+
+}
+
+extension Zone5 {
+
+	func configure(with configuration: XCTestCase.ConfigurationForTesting) {
+		redirectURI = configuration.redirectURI
+		accessToken = configuration.accessToken
+
+		if let baseURL = configuration.baseURL, let clientID = configuration.clientID, let clientSecret = configuration.clientSecret {
+			configure(for: baseURL, clientID: clientID, clientSecret: clientSecret)
 		}
 	}
 
