@@ -79,6 +79,11 @@ extension Zone5 {
 		if let baseURL = configuration.baseURL, let clientID = configuration.clientID, let clientSecret = configuration.clientSecret {
 			configure(for: baseURL, clientID: clientID, clientSecret: clientSecret)
 		}
+		else {
+			baseURL = configuration.baseURL
+			clientID = configuration.clientID
+			clientSecret = configuration.clientSecret
+		}
 	}
 
 }

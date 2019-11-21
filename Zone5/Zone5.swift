@@ -27,15 +27,15 @@ final public class Zone5 {
 
 	/// The root URL for the server that we want to communicate with.
 	/// - Note: This value can be set using the `configure(for:clientID:clientSecret:)` method.
-	public private(set) var baseURL: URL?
+	public internal(set) var baseURL: URL?
 
 	/// The clientID, as provided by Zone5.
 	/// - Note: This value can be set using the `configure(for:clientID:clientSecret:)` method.
-	public private(set) var clientID: String?
+	public internal(set) var clientID: String?
 
 	/// The secret key, as provided by Zone5.
 	/// - Note: This value can be set using the `configure(for:clientID:clientSecret:)` method.
-	public private(set) var clientSecret: String?
+	public internal(set) var clientSecret: String?
 
 	/// The secret key, as provided by Zone5.
 	public var redirectURI: String = "https://localhost"

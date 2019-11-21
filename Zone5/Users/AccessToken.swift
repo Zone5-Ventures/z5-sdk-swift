@@ -12,7 +12,7 @@ public struct AccessToken: RawRepresentable, Equatable, Hashable {
 
 }
 
-extension AccessToken: Codable {
+extension AccessToken: Decodable {
 
 	private enum CodingKeys: String, CodingKey {
 		case accessToken = "access_token"
@@ -21,11 +21,6 @@ extension AccessToken: Codable {
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		rawValue = try container.decode(String.self, forKey: .accessToken)
-	}
-
-	public func encode(to encoder: Encoder) throws {
-		var container = encoder.container(keyedBy: CodingKeys.self)
-		try container.encode(rawValue, forKey: .accessToken)
 	}
 
 }

@@ -40,6 +40,7 @@
 		A167D6D52383DBAB00507276 /* HTTPClientUploadRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167D6D42383DBAB00507276 /* HTTPClientUploadRequestTests.swift */; };
 		A1713CBD238609B20084BDDC /* RequestEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1713CBB2386060F0084BDDC /* RequestEndpointTests.swift */; };
 		A1713CBF238642C40084BDDC /* URLEncodedBodyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1713CBE238642C40084BDDC /* URLEncodedBodyTests.swift */; };
+		A1713CC12387435E0084BDDC /* OAuthViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1713CC02387435E0084BDDC /* OAuthViewTests.swift */; };
 		A182D1B42372AB0500112501 /* Zone5.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B32372AB0500112501 /* Zone5.swift */; };
 		A182D1CC2372AB0F00112501 /* RequestEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B62372AB0E00112501 /* RequestEndpoint.swift */; };
 		A182D1CD2372AB0F00112501 /* URLEncodedBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B72372AB0E00112501 /* URLEncodedBody.swift */; };
@@ -188,6 +189,7 @@
 		A167D6D42383DBAB00507276 /* HTTPClientUploadRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientUploadRequestTests.swift; sourceTree = "<group>"; };
 		A1713CBB2386060F0084BDDC /* RequestEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestEndpointTests.swift; sourceTree = "<group>"; };
 		A1713CBE238642C40084BDDC /* URLEncodedBodyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEncodedBodyTests.swift; sourceTree = "<group>"; };
+		A1713CC02387435E0084BDDC /* OAuthViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OAuthViewTests.swift; path = ../../../../../../Documents/OAuthViewTests.swift; sourceTree = "<group>"; };
 		A182D1B32372AB0500112501 /* Zone5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone5.swift; sourceTree = "<group>"; };
 		A182D1B62372AB0E00112501 /* RequestEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestEndpoint.swift; sourceTree = "<group>"; };
 		A182D1B72372AB0E00112501 /* URLEncodedBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEncodedBody.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				A124B0D52373D9470000919C /* UsersViewTests.swift */,
+				A1713CC02387435E0084BDDC /* OAuthViewTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				A167D6D52383DBAB00507276 /* HTTPClientUploadRequestTests.swift in Sources */,
 				A1EBDADA237A22ED00834B21 /* MultipartEncodedBodyTests.swift in Sources */,
 				A1713CBD238609B20084BDDC /* RequestEndpointTests.swift in Sources */,
+				A1713CC12387435E0084BDDC /* OAuthViewTests.swift in Sources */,
 				A1713CBF238642C40084BDDC /* URLEncodedBodyTests.swift in Sources */,
 				A1F059062372A4B60034C7D0 /* XCTestManifests.swift in Sources */,
 				A124B0D92373E33A0000919C /* TestHTTPClientURLSession.swift in Sources */,
