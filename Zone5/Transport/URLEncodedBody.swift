@@ -1,5 +1,10 @@
 import Foundation
 
+/// Parameters that may be encoded as a URL query string, i.e. `key=value&otherKey=otherValue`.
+///
+/// This structure can be used all request types. For requests that can take a request body (i.e. POST), the output of
+/// the `encodedData()` method is used. In instances where this is not the case, the `description` is appended to the
+/// endpoint URL as a query string.
 struct URLEncodedBody: RequestBody, CustomStringConvertible, ExpressibleByArrayLiteral, ExpressibleByDictionaryLiteral {
 
 	private(set) var queryItems: [URLQueryItem]

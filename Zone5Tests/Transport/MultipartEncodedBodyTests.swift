@@ -3,7 +3,7 @@ import XCTest
 
 final class MultipartEncodedBodyTests: XCTestCase {
 
-	private let developmentAssets = (Bundle.tests.urlsForDevelopmentAssets() ?? []).filter { $0.pathExtension != "multipart" }
+	private let developmentAssets = Bundle.tests.urlsForDevelopmentAssets()!.filter { $0.pathExtension != "multipart" }
 
 	func testMultipartEncoding() throws {
 		for assetURL in developmentAssets {
@@ -12,22 +12,35 @@ final class MultipartEncodedBodyTests: XCTestCase {
 			context.name = "Epic Ride"
 
 			var multipart = MultipartEncodedBody()
-			multipart.boundary = "Zone5MultipartY0NqCq7gshT1E36A"
-
 			var expectations: [String: Expectation] = [:]
 
-			try multipart.appendPart(name: "json", content: context)
-			expectations["json"] = .object(context)
+			try multipart.appendPart(name: "JSONEncodedBody", content: context)
+			expectations["JSONEncodedBody"] = .object(context)
 
-			try multipart.appendPart(name: "filename", content: assetURL.lastPathComponent)
-			expectations["filename"] = .object(assetURL.lastPathComponent)
+			try multipart.appendPart(name: "String", content: "Hello World")
+			expectations["String"] = .object("Hello World")
 
-			try multipart.appendPart(name: "attachment", contentsOf: assetURL)
-			expectations["attachment"] = .file(assetURL)
+			try multipart.appendPart(name: "Number", content: NSNumber(1234567890))
+			expectations["Number"] = .object(NSNumber(1234567890))
+
+			try multipart.appendPart(name: "File", contentsOf: assetURL)
+			expectations["File"] = .file(assetURL)
+
+			try multipart.appendPart(name: "EmptyString", content: "")
+			expectations["EmptyString"] = .object("")
+
+			try multipart.appendPart(name: "EmptyData", content: Data())
+			expectations["EmptyData"] = .object(Data())
 
 			let data = try multipart.encodedData()
 			MultipartEncodedBodyTests.validate(data, with: multipart.contentType, against: expectations)
 		}
+	}
+
+	func testNoParts() throws {
+		let multipart = MultipartEncodedBody()
+		let data = try multipart.encodedData()
+		MultipartEncodedBodyTests.validate(data, with: multipart.contentType, against: [:])
 	}
 
 	// MARK: Utilities
@@ -38,7 +51,8 @@ final class MultipartEncodedBodyTests: XCTestCase {
 	}
 
 	/// Parses and validates that the given `data` conforms to multipart.
-	/// - Note: This is somewhat complex, so it has its own unit test below.
+	/// - Note: This is somewhat complex, and relies on comparing the output of `MultipartDataConvertible.multipartData`
+	/// against itself, so it has its own unit test below, which validates known good multipart data.
 	static func validate(_ multipartData: Data, with contentType: String, against expectations: [String: Expectation]) {
 		let (contentTypeMime, contentTypeParameters) = parse(contentType)
 		XCTAssertEqual(contentTypeMime, "multipart/form-data")
@@ -116,7 +130,16 @@ final class MultipartEncodedBodyTests: XCTestCase {
 	private static func enumerateHeaders(in data: Data, using block: (_ key: String, _ value: String) -> Void) -> Data.Index {
 		var headerIndex = data.startIndex
 
-		while let headerRange = data.range(scanningUpTo: newlineData, startingFrom: &headerIndex) {
+		while true {
+			let headerRange: Range<Data.Index>
+			if let scannedRange = data.range(scanningUpTo: newlineData, startingFrom: &headerIndex) {
+				headerRange = scannedRange
+			}
+			else {
+				headerRange = headerIndex..<data.endIndex
+				headerIndex = data.endIndex
+			}
+
 			if headerRange.isEmpty {
 				break
 			}
@@ -124,7 +147,7 @@ final class MultipartEncodedBodyTests: XCTestCase {
 			let headerData = data[headerRange]
 
 			guard let header = String(data: headerData, encoding: .utf8)?.split(separator: ":", maxSplits: 2) else {
-				continue
+				break
 			}
 
 			let headerKey = header[0].trimmingCharacters(in: .whitespaces)
@@ -188,7 +211,7 @@ final class MultipartEncodedBodyTests: XCTestCase {
 
 	// MARK: Utility tests
 
-	func testValidateMultipartData() {
+	func testValidateKnownGoodMultipartData() {
 		for assetURL in developmentAssets {
 			let multipartURL = assetURL.appendingPathExtension("multipart")
 
@@ -230,7 +253,8 @@ final class MultipartEncodedBodyTests: XCTestCase {
 
 	static var allTests = [
         ("testMultipartEncoding", testMultipartEncoding),
-		("testValidateMultipartData", testValidateMultipartData),
+        ("testNoParts", testNoParts),
+		("testValidateKnownGoodMultipartData", testValidateKnownGoodMultipartData),
 		("testParseHeaderValue", testParseHeaderValue),
     ]
 }

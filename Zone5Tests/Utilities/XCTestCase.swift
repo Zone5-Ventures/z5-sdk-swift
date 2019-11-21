@@ -63,6 +63,11 @@ extension XCTestCase {
 		}
 	}
 
+	/// Convenience method to quickly decode a JSON string as the given `expectedType`.
+	func decode<T: Decodable>(json: String, as expectedType: T.Type) throws -> T {
+		return try JSONDecoder().decode(expectedType, from: json.data(using: .utf8)!)
+	}
+
 }
 
 extension Zone5 {

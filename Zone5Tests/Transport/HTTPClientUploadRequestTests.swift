@@ -3,7 +3,7 @@ import XCTest
 
 final class HTTPClientUploadRequestTests: XCTestCase {
 
-	private let developmentAssets = (Bundle.tests.urlsForDevelopmentAssets() ?? []).filter { $0.pathExtension != "multipart" }
+	private let developmentAssets = Bundle.tests.urlsForDevelopmentAssets()!.filter { $0.pathExtension != "multipart" }
 
 	func testInvalidConfiguration() {
 		var configuration = ConfigurationForTesting()

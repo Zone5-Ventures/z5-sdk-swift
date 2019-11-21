@@ -1,21 +1,31 @@
-//
-//  Multipart.swift
-//  Zone5
-//
-//  Created by Daniel Farrelly on 12/11/19.
-//  Copyright © 2019 Zone5 Ventures. All rights reserved.
-//
-
 import Foundation
 
+/// Structure used to encode multipart data for upload requests.
+/// - Note: Parts are encoded in the order that they are appended.
 struct MultipartEncodedBody: RequestBody {
 
-	var boundary = "Zone5MultipartY0NqCq7gshT1E36A"
+	/// Character set that can be used to generate a random `boundary` string on a per-instance basis
+	private static let boundaryCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
+	/// Boundary string used as the basis for separating the parts within the encoded multipart data.
+	var boundary: String
+
+	init() {
+		boundary = "Zone5Multipart-" + (0..<15).compactMap { _ in MultipartEncodedBody.boundaryCharacters.randomElement() }
+	}
+
+	/// Errors that can be generated while encoding a `MultipartEncodedBody`.
 	enum Error: Swift.Error {
+
+		/// The multipart's boundary string couldn't be encoded.
 		case invalidBoundary
+
+		/// The `Part`'s header couldn't be encoded.
 		case invalidHeader
+
+		/// The `Part`'s content couldn't be encoded.
 		case invalidContent
+
 	}
 
 	// MARK: Parts
@@ -28,18 +38,17 @@ struct MultipartEncodedBody: RequestBody {
 
 	mutating func appendPart(name: String, content: MultipartDataConvertible) throws {
 		let part = try Part(name: name, content: content)
-		parts.append(part)
+		append(part)
 	}
 
 	mutating func appendPart(name: String, filename: String, content: MultipartDataConvertible) throws {
 		let part = try Part(name: name, filename: filename, content: content)
-		parts.append(part)
+		append(part)
 	}
 
 	mutating func appendPart(name: String, contentsOf fileURL: URL) throws {
 		let content = try Data(contentsOf: fileURL)
-		let part = try Part(name: name, filename: fileURL.lastPathComponent, content: content)
-		parts.append(part)
+		try appendPart(name: name, filename: fileURL.lastPathComponent, content: content)
 	}
 
 	struct Part {
