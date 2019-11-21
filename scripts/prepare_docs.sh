@@ -6,7 +6,11 @@ fi
 jazzy \
 	--module Zone5 \
 	--min-acl public \
-	--no-hide-documentation-coverage \
+	--swift-build-tool spm \
+	--hide-documentation-coverage \
+	--title "Zone5 SDK for Swift" \
+	--author_url https://zone5ventures.com \
+	--github_url https://github.com/Zone5-Ventures/z5-sdk-swift \
 	--theme fullwidth \
 	--output ./docs
 
