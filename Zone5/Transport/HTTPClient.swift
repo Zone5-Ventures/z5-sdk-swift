@@ -99,7 +99,7 @@ final internal class HTTPClient {
 					completion(.failure(.transportFailure(error)))
 				}
 				else if let data = data {
-					completion(decoder.decode(data, from: request, as: expectedType))
+					completion(decoder.decode(data, response: response, from: request, as: expectedType))
 				}
 				else {
 					completion(.failure(.unknown))
@@ -142,7 +142,7 @@ final internal class HTTPClient {
 					completion(.failure(.transportFailure(error)))
 				}
 				else if let data = data {
-					completion(decoder.decode(data, from: request, as: expectedType))
+					completion(decoder.decode(data, response: response, from: request, as: expectedType))
 				}
 				else {
 					completion(.failure(.unknown))
@@ -185,7 +185,7 @@ final internal class HTTPClient {
 					}
 				}
 				else if let location = location, let data = try? Data(contentsOf: location) {
-					completion(decoder.decode(data, from: request, as: URL.self))
+					completion(decoder.decode(data, response: response, from: request, as: URL.self))
 				}
 				else {
 					completion(.failure(.unknown))
@@ -200,7 +200,7 @@ final internal class HTTPClient {
 
 private extension JSONDecoder {
 
-	func decode<T: Decodable>(_ data: Data, from request: Request, as expectedType: T.Type) -> Result<T, Zone5.Error> {
+	func decode<T: Decodable>(_ data: Data, response: URLResponse?, from request: Request, as expectedType: T.Type) -> Result<T, Zone5.Error> {
 		#if DEBUG
 		var debugMessage = ""
 		defer {
@@ -214,15 +214,32 @@ private extension JSONDecoder {
 		}
 		#endif
 
+		if let httpResponse = response as? HTTPURLResponse {
+			guard (200..<400).contains(httpResponse.statusCode) else {
+				#if DEBUG
+				debugMessage = "Server responded with status code of \(httpResponse.statusCode)."
+				#endif
+
+				do {
+					let decodedMessage = try decode(Zone5.Error.ServerMessage.self, from: data)
+
+					return .failure(.serverError(decodedMessage))
+				}
+				catch {
+					return .failure(.failedDecodingResponse(error))
+				}
+			}
+		}
+
 		do {
 			// Attempt to decode and return the `data` as the `expectedType` using our decoder
-			let response = try decode(expectedType, from: data)
+			let decodedValue = try decode(expectedType, from: data)
 
 			#if DEBUG
 			debugMessage = "Successfully decoded server response as `\(expectedType)`."
 			#endif
 
-			return .success(response)
+			return .success(decodedValue)
 		}
 		catch {
 			let originalError = error
@@ -234,9 +251,9 @@ private extension JSONDecoder {
 			do {
 				// Decoding as `expectedType` failed, so lets try to decode as a `ServerMessage` instead, in the hopes
 				// that the server responded with a legitimate error.
-				let message = try decode(Zone5.Error.ServerMessage.self, from: data)
+				let decodedMessage = try decode(Zone5.Error.ServerMessage.self, from: data)
 
-				return .failure(.serverError(message))
+				return .failure(.serverError(decodedMessage))
 			}
 			catch {
 				// Decoding as a `ServerMessage` also failed, so we should pass on the original error.
