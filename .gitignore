@@ -37,3 +37,4 @@ Carthage
 # Project Specific
 Zone5/*.java
 Zone5/*/*.java
+docs/
