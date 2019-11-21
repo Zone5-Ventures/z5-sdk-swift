@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ActivitiesView Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/ActivitiesView" class="dashAnchor"></a>
+
+    <a title="ActivitiesView Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          Zone5 Docs
+        </a>
+         (50% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">Zone5 Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      ActivitiesView Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes.html#/s:5Zone57APIViewC">APIView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ActivitiesView.html">ActivitiesView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/OAuthView.html">OAuthView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RoutesView.html">RoutesView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/UsersView.html">UsersView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Zone5.html">Zone5</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Zone5/Error.html">– Error</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ActivityResultType.html">ActivityResultType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ActivityType.html">ActivityType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/DataAccessRequest.html">DataAccessRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/DataFileChannel.html">DataFileChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Equipment.html">Equipment</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/EventTarget.html">EventTarget</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/EventTeamCategory.html">EventTeamCategory</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/FileUploadState.html">FileUploadState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/IntensityZoneType.html">IntensityZoneType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/LapType.html">LapType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/MappedFieldType.html">MappedFieldType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/PowerThresholdType.html">PowerThresholdType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/RelativePeriod.html">RelativePeriod</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ResultReview.html">ResultReview</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ResultSource.html">ResultSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/RunType.html">RunType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SwimType.html">SwimType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TScoreType.html">TScoreType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Terrain.html">Terrain</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TimeOfDay.html">TimeOfDay</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/UnitMeasurement.html">UnitMeasurement</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/UserConnectionsType.html">UserConnectionsType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/UserDelegateRelationship.html">UserDelegateRelationship</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/UserDelegateState.html">UserDelegateState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/UserRouteOutputType.html">UserRouteOutputType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/UserRouteVisibilityMask.html">UserRouteVisibilityMask</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/UserWorkoutFailedReason.html">UserWorkoutFailedReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/UserWorkoutState.html">UserWorkoutState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/WorkoutType.html">WorkoutType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/JSONEncodedBody.html">JSONEncodedBody</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:5Zone519SearchInputCriteriaP">SearchInputCriteria</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols.html#/s:5Zone525UserRouteServerIdentifierP">UserRouteServerIdentifier</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/AccessToken.html">AccessToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Activity.html">Activity</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Activity/Field.html">– Field</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DataFileUploadContext.html">DataFileUploadContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DataFileUploadIndex.html">DataFileUploadIndex</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DateRange.html">DateRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs.html#/s:5Zone58DayRangeV">DayRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Order.html">Order</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Order/Direction.html">– Direction</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SearchInput.html">SearchInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SearchInputReport.html">SearchInputReport</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SearchResult.html">SearchResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SearchResult/Page.html">– Page</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/User.html">User</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserHeadunit.html">UserHeadunit</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserIntensityZone.html">UserIntensityZone</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserIntensityZoneRange.html">UserIntensityZoneRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserPowerMeter.html">UserPowerMeter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserRoute.html">UserRoute</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserRouteSearch.html">UserRouteSearch</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutDetails.html">UserWorkoutDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutFileSearch.html">UserWorkoutFileSearch</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutResultAlt.html">UserWorkoutResultAlt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutResultByHour.html">UserWorkoutResultByHour</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutResultChannel.html">UserWorkoutResultChannel</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutResultExt.html">UserWorkoutResultExt</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutResultExt2.html">UserWorkoutResultExt2</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutResultPeakLss.html">UserWorkoutResultPeakLss</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutResultPeakPace.html">UserWorkoutResultPeakPace</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutResultRating.html">UserWorkoutResultRating</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserWorkoutResultTurbo.html">UserWorkoutResultTurbo</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:5Zone512MappedResulta">MappedResult</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>ActivitiesView</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ActivitiesView</span> <span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:5Zone57APIViewC">APIView</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Browsing%20activities"></a>
+                <a name="//apple_ref/swift/Section/Browsing activities" class="dashAnchor"></a>
+                <a href="#/Browsing%20activities">
+                  <h3 class="section-name">Browsing activities</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC6search_6offset5count10completionyAA11SearchInputVyAA015UserWorkoutFileH0VG_S2iys6ResultOyAA0hM0VyAA0jkM0VGA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/search(_:offset:count:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC6search_6offset5count10completionyAA11SearchInputVyAA015UserWorkoutFileH0VG_S2iys6ResultOyAA0hM0VyAA0jkM0VGA2AC5ErrorOGctF">search(_:offset:count:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Perform a search for activities matching the given <code>parameters</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">search</span><span class="p">(</span><span class="n">_</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt"><a href="../Structs/SearchInput.html">SearchInput</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutFileSearch.html">UserWorkoutFileSearch</a></span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">offset</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/SearchResult.html">SearchResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></span><span class="o">&gt;&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parameters</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The criteria to use when performing the search.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pagination offset for the retrieved set of <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> values.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>count</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> values to retrieve.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> results matching the given criteria, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC4next6offset5count10completionySi_Siys6ResultOyAA06SearchH0VyAA011UserWorkoutH0VGA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/next(offset:count:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC4next6offset5count10completionySi_Siys6ResultOyAA06SearchH0VyAA011UserWorkoutH0VGA2AC5ErrorOGctF">next(offset:count:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the next paginated set from the previous search.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">next</span><span class="p">(</span><span class="nv">offset</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/SearchResult.html">SearchResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></span><span class="o">&gt;&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pagination offset for the retrieved set of <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> values.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>count</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> values to retrieve.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> results matching the given criteria, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Uploading%20files"></a>
+                <a name="//apple_ref/swift/Section/Uploading files" class="dashAnchor"></a>
+                <a href="#/Uploading%20files">
+                  <h3 class="section-name">Uploading files</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC6upload_7context10completiony10Foundation3URLV_AA21DataFileUploadContextVys6ResultOyAA0ijK5IndexVA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/upload(_:context:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC6upload_7context10completiony10Foundation3URLV_AA21DataFileUploadContextVys6ResultOyAA0ijK5IndexVA2AC5ErrorOGctF">upload(_:context:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">upload</span><span class="p">(</span><span class="n">_</span> <span class="nv">fileURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt"><a href="../Structs/DataFileUploadContext.html">DataFileUploadContext</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/DataFileUploadIndex.html">DataFileUploadIndex</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC12uploadStatus2of10completionySi_ys6ResultOyAA19DataFileUploadIndexVA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/uploadStatus(of:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC12uploadStatus2of10completionySi_ys6ResultOyAA19DataFileUploadIndexVA2AC5ErrorOGctF">uploadStatus(of:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Request the processing status of an uploaded file with the given <code>indexID</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">uploadStatus</span><span class="p">(</span><span class="n">of</span> <span class="nv">indexID</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/DataFileUploadIndex.html">DataFileUploadIndex</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>indexID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>id</code> from the result of a previous upload&rsquo;s <code><a href="../Structs/DataFileUploadIndex.html">DataFileUploadIndex</a></code> response.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the upload status for the requested file, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Downloading%20files"></a>
+                <a name="//apple_ref/swift/Section/Downloading files" class="dashAnchor"></a>
+                <a href="#/Downloading%20files">
+                  <h3 class="section-name">Downloading files</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC16downloadOriginal_10completionySi_ys6ResultOy10Foundation3URLVA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/downloadOriginal(_:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC16downloadOriginal_10completionySi_ys6ResultOy10Foundation3URLVA2AC5ErrorOGctF">downloadOriginal(_:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Download the originally uploaded file.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The cached file is deleted upon return of the completion handler, and so the file should be copied to an
+alternate location before performing any asynchronous tasks, or before returning from the closure.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">downloadOriginal</span><span class="p">(</span><span class="n">_</span> <span class="nv">fileID</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt">URL</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fileID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the file to be downloaded.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the location of the downloaded file on disk, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC11downloadRaw_10completionySi_ys6ResultOy10Foundation3URLVA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/downloadRaw(_:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC11downloadRaw_10completionySi_ys6ResultOy10Foundation3URLVA2AC5ErrorOGctF">downloadRaw(_:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Download a normalized FIT file which contains typed numeric data channels.
+Use this for time series graphs or raw channel analysis.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The cached file is deleted upon return of the completion handler, and so the file should be copied to an
+alternate location before performing any asynchronous tasks, or before returning from the closure.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">downloadRaw</span><span class="p">(</span><span class="n">_</span> <span class="nv">fileID</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt">URL</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fileID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the file to be downloaded.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the location of the downloaded file on disk, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC11downloadCSV_10completionySi_ys6ResultOy10Foundation3URLVA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/downloadCSV(_:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC11downloadCSV_10completionySi_ys6ResultOy10Foundation3URLVA2AC5ErrorOGctF">downloadCSV(_:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Download the normalized CSV file.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The cached file is deleted upon return of the completion handler, and so the file should be copied to an
+alternate location before performing any asynchronous tasks, or before returning from the closure.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">downloadCSV</span><span class="p">(</span><span class="n">_</span> <span class="nv">fileID</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt">URL</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fileID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the file to be downloaded.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the location of the downloaded file on disk, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC11downloadMap_10completionySi_ys6ResultOy10Foundation3URLVA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/downloadMap(_:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC11downloadMap_10completionySi_ys6ResultOy10Foundation3URLVA2AC5ErrorOGctF">downloadMap(_:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Download a PNG image with the ride plotted on a map.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The cached file is deleted upon return of the completion handler, and so the file should be copied to an
+alternate location before performing any asynchronous tasks, or before returning from the closure.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">downloadMap</span><span class="p">(</span><span class="n">_</span> <span class="nv">fileID</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt">URL</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>fileID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the file to be downloaded.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the location of the downloaded file on disk, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Deleting"></a>
+                <a name="//apple_ref/swift/Section/Deleting" class="dashAnchor"></a>
+                <a href="#/Deleting">
+                  <h3 class="section-name">Deleting</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC6delete4type2id10completionyAA18ActivityResultTypeO_Siys0I0OySbA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/delete(type:id:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC6delete4type2id10completionyAA18ActivityResultTypeO_Siys0I0OySbA2AC5ErrorOGctF">delete(type:id:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a file, event or workout using its <code>id</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ActivityResultType.html">ActivityResultType</a></span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The result type of the activity to be deleted.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the activity to be deleted.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the result of the deletion, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Time%20in%20Zones"></a>
+                <a name="//apple_ref/swift/Section/Time in Zones" class="dashAnchor"></a>
+                <a href="#/Time%20in%20Zones">
+                  <h3 class="section-name">Time in Zones</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC11timeInZones4type2id8zoneType10completionyAA014ActivityResultJ0O_SiAA013IntensityZoneJ0Oys0M0OyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/timeInZones(type:id:zoneType:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC11timeInZones4type2id8zoneType10completionyAA014ActivityResultJ0O_SiAA013IntensityZoneJ0Oys0M0OyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF">timeInZones(type:id:zoneType:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">timeInZones</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ActivityResultType.html">ActivityResultType</a></span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">zoneType</span><span class="p">:</span> <span class="kt"><a href="../Enums/IntensityZoneType.html">IntensityZoneType</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:5Zone512MappedResulta">MappedResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></span><span class="o">&gt;&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Instance%20Peak%20Curves"></a>
+                <a name="//apple_ref/swift/Section/Instance Peak Curves" class="dashAnchor"></a>
+                <a href="#/Instance%20Peak%20Curves">
+                  <h3 class="section-name">Instance Peak Curves</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC14peakPowerCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeJ0OSgys0M0OyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/peakPowerCurve(type:id:referencePeriod:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC14peakPowerCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeJ0OSgys0M0OyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF">peakPowerCurve(type:id:referencePeriod:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the peak power curve for this activity, and include a reference series.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">peakPowerCurve</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ActivityResultType.html">ActivityResultType</a></span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">referencePeriod</span><span class="p">:</span> <span class="kt"><a href="../Enums/RelativePeriod.html">RelativePeriod</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:5Zone512MappedResulta">MappedResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></span><span class="o">&gt;&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The result type of the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>referencePeriod</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The optional reference period to use for the search. Defaults to <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> values returned by the server, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC18peakHeartRateCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeK0OSgys0N0OyAA06SearchN0V4PageVyAA011UserWorkoutN0V_GA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/peakHeartRateCurve(type:id:referencePeriod:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC18peakHeartRateCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeK0OSgys0N0OyAA06SearchN0V4PageVyAA011UserWorkoutN0V_GA2AC5ErrorOGctF">peakHeartRateCurve(type:id:referencePeriod:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the peak heart rate curve for this activity, and include a reference series.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">peakHeartRateCurve</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ActivityResultType.html">ActivityResultType</a></span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">referencePeriod</span><span class="p">:</span> <span class="kt"><a href="../Enums/RelativePeriod.html">RelativePeriod</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:5Zone512MappedResulta">MappedResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></span><span class="o">&gt;&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The result type of the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>referencePeriod</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The optional reference period to use for the search. Defaults to <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> values returned by the server, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC12peakWKgCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeJ0OSgys0M0OyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/peakWKgCurve(type:id:referencePeriod:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC12peakWKgCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeJ0OSgys0M0OyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF">peakWKgCurve(type:id:referencePeriod:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the peak w/kg curve for this activity, and include a reference series.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">peakWKgCurve</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ActivityResultType.html">ActivityResultType</a></span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">referencePeriod</span><span class="p">:</span> <span class="kt"><a href="../Enums/RelativePeriod.html">RelativePeriod</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:5Zone512MappedResulta">MappedResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></span><span class="o">&gt;&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The result type of the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>referencePeriod</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The optional reference period to use for the search. Defaults to <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> values returned by the server, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC13peakPaceCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeJ0OSgys0M0OyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/peakPaceCurve(type:id:referencePeriod:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC13peakPaceCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeJ0OSgys0M0OyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF">peakPaceCurve(type:id:referencePeriod:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the peak pace curve for this activity, and include a reference series.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">peakPaceCurve</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ActivityResultType.html">ActivityResultType</a></span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">referencePeriod</span><span class="p">:</span> <span class="kt"><a href="../Enums/RelativePeriod.html">RelativePeriod</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:5Zone512MappedResulta">MappedResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></span><span class="o">&gt;&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The result type of the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>referencePeriod</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The optional reference period to use for the search. Defaults to <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> values returned by the server, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC12peakLSSCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeI0OSgys0L0OyAA06SearchL0V4PageVyAA011UserWorkoutL0V_GA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/peakLSSCurve(type:id:referencePeriod:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC12peakLSSCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeI0OSgys0L0OyAA06SearchL0V4PageVyAA011UserWorkoutL0V_GA2AC5ErrorOGctF">peakLSSCurve(type:id:referencePeriod:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the peak leg spring stiffness curve for this activity, and include a reference series.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">peakLSSCurve</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ActivityResultType.html">ActivityResultType</a></span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">referencePeriod</span><span class="p">:</span> <span class="kt"><a href="../Enums/RelativePeriod.html">RelativePeriod</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:5Zone512MappedResulta">MappedResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></span><span class="o">&gt;&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The result type of the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>referencePeriod</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The optional reference period to use for the search. Defaults to <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> values returned by the server, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC14peakLSSKgCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeJ0OSgys0M0OyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/peakLSSKgCurve(type:id:referencePeriod:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC14peakLSSKgCurve4type2id15referencePeriod10completionyAA18ActivityResultTypeO_SiAA08RelativeJ0OSgys0M0OyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF">peakLSSKgCurve(type:id:referencePeriod:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the peak leg spring stiffness/kg for this activity, and include a reference series.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">peakLSSKgCurve</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ActivityResultType.html">ActivityResultType</a></span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">referencePeriod</span><span class="p">:</span> <span class="kt"><a href="../Enums/RelativePeriod.html">RelativePeriod</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:5Zone512MappedResulta">MappedResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></span><span class="o">&gt;&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The result type of the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the activity in question.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>referencePeriod</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The optional reference period to use for the search. Defaults to <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the <code><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></code> values returned by the server, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Specialized%20Feature%20Set"></a>
+                <a name="//apple_ref/swift/Section/Specialized Feature Set" class="dashAnchor"></a>
+                <a href="#/Specialized%20Feature%20Set">
+                  <h3 class="section-name">Specialized Feature Set</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC7setBike4type2id6bikeID10completionyAA18ActivityResultTypeO_SiSSys0L0OySbA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/setBike(type:id:bikeID:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC7setBike4type2id6bikeID10completionyAA18ActivityResultTypeO_SiSSys0L0OySbA2AC5ErrorOGctF">setBike(type:id:bikeID:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set the Specialized bike for a completed activity, using the given <code>bikeID</code>.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Specialized feature set only.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setBike</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ActivityResultType.html">ActivityResultType</a></span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">bikeID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The result type of the activity to add the bike to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the activity to add the bike to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>bikeID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the bike to be added.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the result of the bike addition, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone514ActivitiesViewC10removeBike4type2id10completionyAA18ActivityResultTypeO_Siys0J0OySbA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/removeBike(type:id:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone514ActivitiesViewC10removeBike4type2id10completionyAA18ActivityResultTypeO_Siys0J0OySbA2AC5ErrorOGctF">removeBike(type:id:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove the Specialized bike from a completed activity.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Specialized feature set only.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeBike</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ActivityResultType.html">ActivityResultType</a></span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The result type of the activity to remove the bike from.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>id</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier for the activity to remove the bike from.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Function called with the result of the bike removal, or the error if one occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-11-21)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.12.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
