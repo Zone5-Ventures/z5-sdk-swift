@@ -109,7 +109,7 @@ extension SearchResult: Decodable {
 
 	public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
-		let decodedResult = try container.decode(Page.self, forKey: .result)
+		let decodedResult = try container.decodeIfPresent(Page.self, forKey: .result) ?? Page()
 
 		result = decodedResult
 		total = try container.decodeIfPresent(Int.self, forKey: .total) ?? decodedResult.count

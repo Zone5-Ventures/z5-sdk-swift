@@ -11,6 +11,21 @@ import XCTest
 
 class SearchResultTests: XCTestCase {
 
+	func testDecodeResultsWithoutResult() throws {
+		let result = try decode(
+			json: "{\"cnt\": 10, \"offset\": 0}",
+			as: SearchResult<UserWorkoutResult>.self
+		)
+
+		XCTAssertEqual(result.total, 10)
+		XCTAssertEqual(result.offset, 0)
+
+		XCTAssertEqual(result.count, 0)
+
+		XCTAssert(result.result.fields.isEmpty)
+		XCTAssert(result.result.keys.isEmpty)
+	}
+
 	func testDecodeResultsAsEmptyArray() throws {
 		let result = try decode(
 			json: "{\"result\": [], \"cnt\": 10, \"offset\": 0}",
