@@ -1,4 +1,4 @@
-name: Swift
+name: Generate Documentation
 
 on: [push]
 
