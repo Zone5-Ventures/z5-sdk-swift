@@ -3782,44 +3782,9 @@
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/DateRange.swift",
-      "line": 5,
-      "symbol": "DateRange.name",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/DateRange.swift",
-      "line": 13,
-      "symbol": "DateRange.timeZone",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/DateRange.swift",
-      "line": 15,
+      "line": 37,
       "symbol": "DateRange.init(name:floor:ceiling:timeZone:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/DateRange.swift",
-      "line": 22,
-      "symbol": "DateRange.init(name:floor:ceiling:timeZone:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/DateRange.swift",
-      "line": 29,
-      "symbol": "DateRange.init(name:component:value:starting:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/DateRange.swift",
-      "line": 42,
-      "symbol": "DateRange.calendar",
-      "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
@@ -3827,6 +3792,20 @@
       "line": 11,
       "symbol": "DayRange",
       "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/Milliseconds.swift",
+      "line": 88,
+      "symbol": "Milliseconds./(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/Milliseconds.swift",
+      "line": 92,
+      "symbol": "Milliseconds./=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {

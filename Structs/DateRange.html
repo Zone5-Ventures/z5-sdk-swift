@@ -172,13 +172,22 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/JSONEncodedBody.html">JSONEncodedBody</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/TimeInterval.html">TimeInterval</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/MillisecondsRepresentable.html">MillisecondsRepresentable</a>
+              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols.html#/s:5Zone519SearchInputCriteriaP">SearchInputCriteria</a>
               </li>
@@ -210,6 +219,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs.html#/s:5Zone58DayRangeV">DayRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Milliseconds.html">Milliseconds</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Order.html">Order</a>
@@ -331,7 +343,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>An (optional) display name for the range.</p>
 
                       </div>
                       <div class="declaration">
@@ -348,9 +360,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Zone59DateRangeV5floorSdvp"></a>
+                    <a name="/s:5Zone59DateRangeV5floorAA12MillisecondsVvp"></a>
                     <a name="//apple_ref/swift/Property/floor" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone59DateRangeV5floorSdvp">floor</a>
+                    <a class="token" href="#/s:5Zone59DateRangeV5floorAA12MillisecondsVvp">floor</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -365,7 +377,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">floor</span><span class="p">:</span> <span class="kt">TimeInterval</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">floor</span><span class="p">:</span> <span class="kt"><a href="../Structs/Milliseconds.html">Milliseconds</a></span></code></pre>
 
                         </div>
                       </div>
@@ -375,9 +387,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Zone59DateRangeV7ceilingSdvp"></a>
+                    <a name="/s:5Zone59DateRangeV7ceilingAA12MillisecondsVvp"></a>
                     <a name="//apple_ref/swift/Property/ceiling" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone59DateRangeV7ceilingSdvp">ceiling</a>
+                    <a class="token" href="#/s:5Zone59DateRangeV7ceilingAA12MillisecondsVvp">ceiling</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -385,14 +397,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The low end timestamp in this range. A unix timestamp in milliseconds.</p>
+                        <p>The high end timestamp in this range. A unix timestamp in milliseconds.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">ceiling</span><span class="p">:</span> <span class="kt">TimeInterval</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">ceiling</span><span class="p">:</span> <span class="kt"><a href="../Structs/Milliseconds.html">Milliseconds</a></span></code></pre>
 
                         </div>
                       </div>
@@ -412,7 +424,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The timezone used as the basis of the timestamps this date range.</p>
 
                       </div>
                       <div class="declaration">
@@ -420,87 +432,6 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">timeZone</span><span class="p">:</span> <span class="kt">TimeZone</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Zone59DateRangeV4name5floor7ceiling8timeZoneACSSSg_S2d10Foundation04TimeH0Vtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(name:floor:ceiling:timeZone:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone59DateRangeV4name5floor7ceiling8timeZoneACSSSg_S2d10Foundation04TimeH0Vtcfc">init(name:floor:ceiling:timeZone:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">floor</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">ceiling</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">,</span> <span class="nv">timeZone</span><span class="p">:</span> <span class="kt">TimeZone</span> <span class="o">=</span> <span class="kt">DateRange</span><span class="o">.</span><span class="n"><a href="../Structs/DateRange.html#/s:5Zone59DateRangeV8calendar10Foundation8CalendarVvpZ">calendar</a></span><span class="o">.</span><span class="n"><a href="../Structs/DateRange.html#/s:5Zone59DateRangeV8timeZone10Foundation04TimeE0Vvp">timeZone</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Zone59DateRangeV4name5floor7ceiling8timeZoneACSSSg_10Foundation0B0VAkI04TimeH0Vtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(name:floor:ceiling:timeZone:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone59DateRangeV4name5floor7ceiling8timeZoneACSSSg_10Foundation0B0VAkI04TimeH0Vtcfc">init(name:floor:ceiling:timeZone:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">floor</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">ceiling</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">timeZone</span><span class="p">:</span> <span class="kt">TimeZone</span> <span class="o">=</span> <span class="kt">DateRange</span><span class="o">.</span><span class="n"><a href="../Structs/DateRange.html#/s:5Zone59DateRangeV8calendar10Foundation8CalendarVvpZ">calendar</a></span><span class="o">.</span><span class="n"><a href="../Structs/DateRange.html#/s:5Zone59DateRangeV8timeZone10Foundation04TimeE0Vvp">timeZone</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Zone59DateRangeV4name9component5value8startingACSgSSSg_10Foundation8CalendarV9ComponentOSiAJ0B0Vtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(name:component:value:starting:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone59DateRangeV4name9component5value8startingACSgSSSg_10Foundation8CalendarV9ComponentOSiAJ0B0Vtcfc">init(name:component:value:starting:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">component</span><span class="p">:</span> <span class="kt">Calendar</span><span class="o">.</span><span class="kt">Component</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">starting</span><span class="p">:</span> <span class="kt">Date</span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">())</span></code></pre>
 
                         </div>
                       </div>
@@ -520,7 +451,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The default calendar used in generating <code>DateRange</code> instances.
+This defaults to <code>Calendar.autoupdatingCurrent</code>, and is used both for default timezones as well as generating
+ranges based on calendar components via <code><a href="../Structs/DateRange.html#/s:5Zone59DateRangeV4name9component5value8startingACSgSSSg_10Foundation8CalendarV9ComponentOSiAA12MillisecondsVtcfc">DateRange.init(name:component:value:starting:)</a></code>.</p>
 
                       </div>
                       <div class="declaration">
@@ -530,6 +463,279 @@
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">calendar</span><span class="p">:</span> <span class="kt">Calendar</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59DateRangeV4name5floor7ceiling8timeZoneACSSSg_AA12MillisecondsVAJ10Foundation04TimeH0Vtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(name:floor:ceiling:timeZone:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59DateRangeV4name5floor7ceiling8timeZoneACSSSg_AA12MillisecondsVAJ10Foundation04TimeH0Vtcfc">init(name:floor:ceiling:timeZone:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a date range with the given values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">floor</span><span class="p">:</span> <span class="kt"><a href="../Structs/Milliseconds.html">Milliseconds</a></span><span class="p">,</span> <span class="nv">ceiling</span><span class="p">:</span> <span class="kt"><a href="../Structs/Milliseconds.html">Milliseconds</a></span><span class="p">,</span> <span class="nv">timeZone</span><span class="p">:</span> <span class="kt">TimeZone</span> <span class="o">=</span> <span class="kt">DateRange</span><span class="o">.</span><span class="n"><a href="../Structs/DateRange.html#/s:5Zone59DateRangeV8calendar10Foundation8CalendarVvpZ">calendar</a></span><span class="o">.</span><span class="n"><a href="../Structs/DateRange.html#/s:5Zone59DateRangeV8timeZone10Foundation04TimeE0Vvp">timeZone</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An (optional) display name for the range.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>floor</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The lowest timestamp covered by the range.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ceiling</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The highest timestamp covered by the range.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>timeZone</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The timezone used as the basis of the timestamps this date range.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59DateRangeV4name5floor7ceiling8timeZoneACSSSg_AA25MillisecondsRepresentable_pAaI_p10Foundation04TimeH0Vtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(name:floor:ceiling:timeZone:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59DateRangeV4name5floor7ceiling8timeZoneACSSSg_AA25MillisecondsRepresentable_pAaI_p10Foundation04TimeH0Vtcfc">init(name:floor:ceiling:timeZone:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">floor</span><span class="p">:</span> <span class="kt"><a href="../Protocols/MillisecondsRepresentable.html">MillisecondsRepresentable</a></span><span class="p">,</span> <span class="nv">ceiling</span><span class="p">:</span> <span class="kt"><a href="../Protocols/MillisecondsRepresentable.html">MillisecondsRepresentable</a></span><span class="p">,</span> <span class="nv">timeZone</span><span class="p">:</span> <span class="kt">TimeZone</span> <span class="o">=</span> <span class="kt">DateRange</span><span class="o">.</span><span class="n"><a href="../Structs/DateRange.html#/s:5Zone59DateRangeV8calendar10Foundation8CalendarVvpZ">calendar</a></span><span class="o">.</span><span class="n"><a href="../Structs/DateRange.html#/s:5Zone59DateRangeV8timeZone10Foundation04TimeE0Vvp">timeZone</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59DateRangeV4name9component5value8startingACSgSSSg_10Foundation8CalendarV9ComponentOSiAA12MillisecondsVtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(name:component:value:starting:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59DateRangeV4name9component5value8startingACSgSSSg_10Foundation8CalendarV9ComponentOSiAA12MillisecondsVtcfc">init(name:component:value:starting:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a date range that covers a period defined by <code>component</code> multiplied by <code>value</code>, starting from the given <code>starting</code> unix timestamp.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">component</span><span class="p">:</span> <span class="kt">Calendar</span><span class="o">.</span><span class="kt">Component</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">starting</span><span class="p">:</span> <span class="kt"><a href="../Structs/Milliseconds.html">Milliseconds</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">now</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An (optional) display name for the range.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>component</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A single component to add.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of the specified <code>component</code> to add.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>starting</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A unix timestamp in milliseconds to use as the starting point for generating the date range. Defaults to <code><a href="../Structs/Milliseconds.html#/s:5Zone512MillisecondsV3nowACvpZ">Milliseconds.now</a></code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59DateRangeV4name9component5value8startingACSgSSSg_10Foundation8CalendarV9ComponentOSiAA25MillisecondsRepresentable_ptcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(name:component:value:starting:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59DateRangeV4name9component5value8startingACSgSSSg_10Foundation8CalendarV9ComponentOSiAA25MillisecondsRepresentable_ptcfc">init(name:component:value:starting:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a date range that covers a period defined by <code>component</code> multiplied by <code>value</code>, starting from the given <code>starting</code> unix timestamp.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">component</span><span class="p">:</span> <span class="kt">Calendar</span><span class="o">.</span><span class="kt">Component</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">starting</span><span class="p">:</span> <span class="kt"><a href="../Protocols/MillisecondsRepresentable.html">MillisecondsRepresentable</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An (optional) display name for the range.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>component</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A single component to add.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of the specified <code>component</code> to add.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>starting</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A unix timestamp in milliseconds to use as the starting point for generating the date range.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -605,7 +811,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://zone5ventures.com" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-11-21)</p>
+      <p>&copy; 2019 <a class="link" href="https://zone5ventures.com" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-11-22)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.12.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
