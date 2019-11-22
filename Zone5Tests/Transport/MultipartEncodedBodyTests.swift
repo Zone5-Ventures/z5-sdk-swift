@@ -5,6 +5,12 @@ final class MultipartEncodedBodyTests: XCTestCase {
 
 	private let developmentAssets = Bundle.tests.urlsForDevelopmentAssets()!.filter { $0.pathExtension != "multipart" }
 
+	private struct InvalidMultipartData: MultipartDataConvertible {
+
+		let multipartData: Data? = nil
+
+	}
+
 	func testMultipartEncoding() throws {
 		for assetURL in developmentAssets {
 			var context = DataFileUploadContext()
@@ -31,6 +37,10 @@ final class MultipartEncodedBodyTests: XCTestCase {
 
 			try multipart.appendPart(name: "EmptyData", content: Data())
 			expectations["EmptyData"] = .object(Data())
+
+			/// It's a rare scenario that valid `MultipartDataConvertible` objects can't be appended to a multipart data
+			/// structure, but just in case, let's verify that the scenario throws an error.
+			XCTAssertThrowsError(try multipart.appendPart(name: "InvalidContent", content: InvalidMultipartData()))
 
 			let data = try multipart.encodedData()
 			MultipartEncodedBodyTests.validate(data, with: multipart.contentType, against: expectations)
@@ -62,6 +72,8 @@ final class MultipartEncodedBodyTests: XCTestCase {
 			let boundaryData = "--\(boundary)".data(using: .utf8) else {
 			return
 		}
+
+		var expectationsCovered: [String] = []
 
 		enumerateParts(in: multipartData, separatedBy: boundaryData) { partData in
 			var partDisposition: (mime: String, parameters: [String: String])?
@@ -108,7 +120,12 @@ final class MultipartEncodedBodyTests: XCTestCase {
 			}
 
 			XCTAssertEqual(partContent, expectedContent)
+			expectationsCovered.append(partName)
 		}
+
+		let expectationsRemaining = Set(expectations.keys).subtracting(expectationsCovered)
+
+		XCTAssert(expectationsRemaining.isEmpty, "Not all expectations were accounted for: \(expectationsRemaining)")
 	}
 
 	private static let newlineData = "\r\n".data(using: .utf8)!
