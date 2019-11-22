@@ -20,10 +20,7 @@ public struct DateRange: Codable {
 	}
 
 	public init(name: String? = nil, floor: Date, ceiling: Date, timeZone: TimeZone = DateRange.calendar.timeZone) {
-		self.name = name
-		self.floor = floor.timeIntervalSince1970
-		self.ceiling = ceiling.timeIntervalSince1970
-		self.timeZone = timeZone
+		self.init(name: name, floor: floor.timeIntervalSince1970, ceiling: ceiling.timeIntervalSince1970, timeZone: timeZone)
 	}
 
 	public init?(name: String? = nil, component: Calendar.Component, value: Int, starting: Date = .init()) {

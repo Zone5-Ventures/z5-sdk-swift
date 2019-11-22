@@ -14,18 +14,34 @@ class DateRangeTests: XCTestCase {
 	let decoder = JSONDecoder()
 
 	func testDecode() throws {
+		var calendar = Calendar(identifier: Calendar.Identifier.iso8601)
+		calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+		DateRange.calendar = calendar
+
 		let tests: [(json: String, expected: Result<DateRange, Swift.Error>)] = [
 			(
-				json: "{\"floorTs\":1566099275352,\"ceilTs\":1574044475352,\"tz\":\"Australia\\/Sydney\"}",
-				expected: .success(DateRange(name: nil, floor: 1566099275.352, ceiling: 1574044475.352, timeZone: TimeZone(identifier: "Australia/Sydney")!))
-			),
-			(
-				json: "{\"floorTs\":1566099275352,\"ceilTs\":1574044475352,\"tz\":\"INVALID_TIMEZONE_IDENTIFIER\"}",
+				json: "{\"floorTs\":1566099275352,\"ceilTs\":1595740875352,\"tz\":\"INVALID_TIMEZONE_IDENTIFIER\"}",
 				expected: .failure(DateRange.DecodingError.invalidTimeZoneIdentifier(identifier: "INVALID_TIMEZONE_IDENTIFIER"))
 			),
 			(
-				json: "{\"name\":\"Test Range\",\"floorTs\":1566099275352,\"ceilTs\":1574044475352}",
-				expected: .success(DateRange(name: "Test Range", floor: 1566099275.352, ceiling: 1574044475.352))
+				json: "{\"floorTs\":1566099275352,\"ceilTs\":1595740875352,\"tz\":\"Australia\\/Sydney\"}",
+				expected: .success(DateRange(name: nil, floor: 1566099275.352, ceiling: 1595740875.352, timeZone: TimeZone(identifier: "Australia/Sydney")!))
+			),
+			(
+				json: "{\"floorTs\":1566099275352,\"ceilTs\":1595740875352,\"tz\":\"GMT\"}",
+				expected: .success(DateRange(name: nil, floor: Date(timeIntervalSinceReferenceDate: 587792075.352), ceiling: Date(timeIntervalSinceReferenceDate: 617433675.352)))
+			),
+			(
+				json: "{\"floorTs\":1566099275352,\"ceilTs\":1574048075352,\"tz\":\"GMT\"}",
+				expected: .success(DateRange(component: .month, value: 3, starting: Date(timeIntervalSince1970: 1566099275.352))!)
+			),
+			(
+				json: "{\"floorTs\":1566099275352,\"ceilTs\":1574048075352,\"tz\":\"GMT\"}",
+				expected: .success(DateRange(component: .month, value: -3, starting: Date(timeIntervalSince1970: 1574048075.352))!)
+			),
+			(
+				json: "{\"name\":\"Test Range\",\"floorTs\":1566099275352,\"ceilTs\":1595740875352}",
+				expected: .success(DateRange(name: "Test Range", floor: 1566099275.352, ceiling: 1595740875.352))
 			),
 		]
 
