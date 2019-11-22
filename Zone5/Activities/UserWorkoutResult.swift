@@ -174,10 +174,10 @@ public struct UserWorkoutResult: Codable {
 	public var activity: ActivityResultType?
 
 	/// Timestamp of the result - this will match either the workout or event scheduled date or the start time of an adhoc ride
-	public var ts: Int?
+	public var ts: Milliseconds?
 
 	/// Timestamp of when the activity actually commenced
-	public var startTs: Int?
+	public var startTs: Milliseconds?
 
 	/// The timezone this activity is scheduled or completed in
 	public var tz: String?

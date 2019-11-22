@@ -14,7 +14,7 @@ public struct UserPowerMeter: Codable {
 
 	public var user: User?
 
-	public var timestamp: Int?
+	public var timestamp: Milliseconds?
 
 	/// Ant+ id
 	public var manufacturerID: Int?

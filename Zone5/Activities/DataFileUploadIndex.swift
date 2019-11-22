@@ -14,7 +14,7 @@ public struct DataFileUploadIndex: Codable {
 
 	public var resultID: Int?
 
-	public var timestamp: Int?
+	public var timestamp: Milliseconds?
 
 	public var filename: String?
 

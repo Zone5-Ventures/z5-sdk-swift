@@ -9,10 +9,10 @@ public struct UserWorkoutFileSearch: SearchInputCriteria {
 	public var locality: String?
 
 	/// Search for files with a start timestamp >= this value. Value is a unix timestamp in milliseconds
-	public var fromTs: Int?
+	public var fromTs: Milliseconds?
 
 	/// Search for files with a start timestamp <= this value. Value is a unix timestamp in milliseconds
-	public var toTs: Int?
+	public var toTs: Milliseconds?
 
 	/// Search for activities which occurred on or are scheduled on this day of the year
 	public var day: Int?
