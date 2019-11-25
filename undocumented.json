@@ -8,34 +8,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/Activity.swift",
-      "line": 23,
-      "symbol": "Activity.Field",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/Activity.swift",
-      "line": 24,
-      "symbol": "Activity.Field.id",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/Activity.swift",
-      "line": 25,
-      "symbol": "Activity.Field.activity",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/Activity.swift",
-      "line": 26,
-      "symbol": "Activity.Field.type",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadContext.swift",
       "line": 11,
       "symbol": "DataFileUploadContext",
@@ -95,6 +67,13 @@
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
       "line": 23,
       "symbol": "DataFileUploadIndex.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 25,
+      "symbol": "DataFileUploadIndex.result",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -325,14 +304,14 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutDetails.swift",
       "line": 29,
-      "symbol": "UserWorkoutDetails.descr",
+      "symbol": "UserWorkoutDetails.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutDetails.swift",
       "line": 31,
-      "symbol": "UserWorkoutDetails.preDescr",
+      "symbol": "UserWorkoutDetails.previewDescription",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -395,35 +374,35 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
       "line": 59,
-      "symbol": "UserWorkoutFileSearch.pwrManufacturer",
+      "symbol": "UserWorkoutFileSearch.powerManufacturer",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
       "line": 61,
-      "symbol": "UserWorkoutFileSearch.pwrVersion",
+      "symbol": "UserWorkoutFileSearch.powerVersion",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
       "line": 63,
-      "symbol": "UserWorkoutFileSearch.pwrSerial",
+      "symbol": "UserWorkoutFileSearch.powerSerial",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
       "line": 65,
-      "symbol": "UserWorkoutFileSearch.pwrProduct",
+      "symbol": "UserWorkoutFileSearch.powerProduct",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutFileSearch.swift",
       "line": 67,
-      "symbol": "UserWorkoutFileSearch.pwrDisplay",
+      "symbol": "UserWorkoutFileSearch.powerDisplay",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -472,7 +451,7 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 259,
-      "symbol": "UserWorkoutResult.estThresWattsKg",
+      "symbol": "UserWorkoutResult.estimatedThresholdWattsKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -486,273 +465,273 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 366,
-      "symbol": "UserWorkoutResult.peak3secWatts",
+      "symbol": "UserWorkoutResult.peak3SecondWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 367,
-      "symbol": "UserWorkoutResult.peak3secWattsP",
+      "symbol": "UserWorkoutResult.peak3SecondWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 368,
-      "symbol": "UserWorkoutResult.peak3secWkg",
+      "symbol": "UserWorkoutResult.peak3SecondWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 370,
-      "symbol": "UserWorkoutResult.peak4secWatts",
+      "symbol": "UserWorkoutResult.peak4SecondWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 371,
-      "symbol": "UserWorkoutResult.peak4secWattsP",
+      "symbol": "UserWorkoutResult.peak4SecondWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 372,
-      "symbol": "UserWorkoutResult.peak4secWkg",
+      "symbol": "UserWorkoutResult.peak4SecondWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 374,
-      "symbol": "UserWorkoutResult.peak5secWatts",
+      "symbol": "UserWorkoutResult.peak5SecondWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 375,
-      "symbol": "UserWorkoutResult.peak5secWattsP",
+      "symbol": "UserWorkoutResult.peak5SecondWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 376,
-      "symbol": "UserWorkoutResult.peak5secWkg",
+      "symbol": "UserWorkoutResult.peak5SecondWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 378,
-      "symbol": "UserWorkoutResult.peak10secWatts",
+      "symbol": "UserWorkoutResult.peak10SecondWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 379,
-      "symbol": "UserWorkoutResult.peak10secWattsP",
+      "symbol": "UserWorkoutResult.peak10SecondWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 380,
-      "symbol": "UserWorkoutResult.peak10secWkg",
+      "symbol": "UserWorkoutResult.peak10SecondWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 382,
-      "symbol": "UserWorkoutResult.peak12secWatts",
+      "symbol": "UserWorkoutResult.peak12SecondWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 383,
-      "symbol": "UserWorkoutResult.peak12secWattsP",
+      "symbol": "UserWorkoutResult.peak12SecondWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 384,
-      "symbol": "UserWorkoutResult.peak12secWkg",
+      "symbol": "UserWorkoutResult.peak12SecondWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 386,
-      "symbol": "UserWorkoutResult.peak20secWatts",
+      "symbol": "UserWorkoutResult.peak20SecondWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 387,
-      "symbol": "UserWorkoutResult.peak20secWattsP",
+      "symbol": "UserWorkoutResult.peak20SecondWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 388,
-      "symbol": "UserWorkoutResult.peak20secWkg",
+      "symbol": "UserWorkoutResult.peak20SecondWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 390,
-      "symbol": "UserWorkoutResult.peak30secWatts",
+      "symbol": "UserWorkoutResult.peak30SecondWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 391,
-      "symbol": "UserWorkoutResult.peak30secWattsP",
+      "symbol": "UserWorkoutResult.peak30SecondWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 392,
-      "symbol": "UserWorkoutResult.peak30secWkg",
+      "symbol": "UserWorkoutResult.peak30SecondWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 394,
-      "symbol": "UserWorkoutResult.peak1minWatts",
+      "symbol": "UserWorkoutResult.peak1MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 395,
-      "symbol": "UserWorkoutResult.peak1minWattsP",
+      "symbol": "UserWorkoutResult.peak1MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 396,
-      "symbol": "UserWorkoutResult.peak1minWkg",
+      "symbol": "UserWorkoutResult.peak1MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 398,
-      "symbol": "UserWorkoutResult.peak2minWatts",
+      "symbol": "UserWorkoutResult.peak2MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 399,
-      "symbol": "UserWorkoutResult.peak2minWattsP",
+      "symbol": "UserWorkoutResult.peak2MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 400,
-      "symbol": "UserWorkoutResult.peak2minWkg",
+      "symbol": "UserWorkoutResult.peak2MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 402,
-      "symbol": "UserWorkoutResult.peak3minWatts",
+      "symbol": "UserWorkoutResult.peak3MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 403,
-      "symbol": "UserWorkoutResult.peak3minWattsP",
+      "symbol": "UserWorkoutResult.peak3MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 404,
-      "symbol": "UserWorkoutResult.peak3minWkg",
+      "symbol": "UserWorkoutResult.peak3MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 406,
-      "symbol": "UserWorkoutResult.peak4minWatts",
+      "symbol": "UserWorkoutResult.peak4MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 407,
-      "symbol": "UserWorkoutResult.peak4minWattsP",
+      "symbol": "UserWorkoutResult.peak4MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 408,
-      "symbol": "UserWorkoutResult.peak4minWkg",
+      "symbol": "UserWorkoutResult.peak4MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 410,
-      "symbol": "UserWorkoutResult.peak5minWatts",
+      "symbol": "UserWorkoutResult.peak5MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 411,
-      "symbol": "UserWorkoutResult.peak5minWattsP",
+      "symbol": "UserWorkoutResult.peak5MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 412,
-      "symbol": "UserWorkoutResult.peak5minWkg",
+      "symbol": "UserWorkoutResult.peak5MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 414,
-      "symbol": "UserWorkoutResult.peak6minWatts",
+      "symbol": "UserWorkoutResult.peak6MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 415,
-      "symbol": "UserWorkoutResult.peak6minWattsP",
+      "symbol": "UserWorkoutResult.peak6MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 416,
-      "symbol": "UserWorkoutResult.peak6minWkg",
+      "symbol": "UserWorkoutResult.peak6MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -766,7 +745,7 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 419,
-      "symbol": "UserWorkoutResult.peak10minWattsP",
+      "symbol": "UserWorkoutResult.peak10minWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -780,532 +759,532 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 422,
-      "symbol": "UserWorkoutResult.peak12minWatts",
+      "symbol": "UserWorkoutResult.peak12MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 423,
-      "symbol": "UserWorkoutResult.peak12minWattsP",
+      "symbol": "UserWorkoutResult.peak12MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 424,
-      "symbol": "UserWorkoutResult.peak12minWkg",
+      "symbol": "UserWorkoutResult.peak12MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 426,
-      "symbol": "UserWorkoutResult.peak15minWatts",
+      "symbol": "UserWorkoutResult.peak15MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 427,
-      "symbol": "UserWorkoutResult.peak15minWattsP",
+      "symbol": "UserWorkoutResult.peak15MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 428,
-      "symbol": "UserWorkoutResult.peak15minWkg",
+      "symbol": "UserWorkoutResult.peak15MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 430,
-      "symbol": "UserWorkoutResult.peak16minWatts",
+      "symbol": "UserWorkoutResult.peak16MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 431,
-      "symbol": "UserWorkoutResult.peak16minWattsP",
+      "symbol": "UserWorkoutResult.peak16MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 432,
-      "symbol": "UserWorkoutResult.peak16minWkg",
+      "symbol": "UserWorkoutResult.peak16MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 434,
-      "symbol": "UserWorkoutResult.peak20minWatts",
+      "symbol": "UserWorkoutResult.peak20MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 435,
-      "symbol": "UserWorkoutResult.peak20minWattsP",
+      "symbol": "UserWorkoutResult.peak20MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 436,
-      "symbol": "UserWorkoutResult.peak20minWkg",
+      "symbol": "UserWorkoutResult.peak20MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 438,
-      "symbol": "UserWorkoutResult.peak24minWatts",
+      "symbol": "UserWorkoutResult.peak24MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 439,
-      "symbol": "UserWorkoutResult.peak24minWattsP",
+      "symbol": "UserWorkoutResult.peak24MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 440,
-      "symbol": "UserWorkoutResult.peak24minWkg",
+      "symbol": "UserWorkoutResult.peak24MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 442,
-      "symbol": "UserWorkoutResult.peak30minWatts",
+      "symbol": "UserWorkoutResult.peak30MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 443,
-      "symbol": "UserWorkoutResult.peak30minWattsP",
+      "symbol": "UserWorkoutResult.peak30MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 444,
-      "symbol": "UserWorkoutResult.peak30minWkg",
+      "symbol": "UserWorkoutResult.peak30MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 446,
-      "symbol": "UserWorkoutResult.peak40minWatts",
+      "symbol": "UserWorkoutResult.peak40MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 447,
-      "symbol": "UserWorkoutResult.peak40minWattsP",
+      "symbol": "UserWorkoutResult.peak40MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 448,
-      "symbol": "UserWorkoutResult.peak40minWkg",
+      "symbol": "UserWorkoutResult.peak40MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 450,
-      "symbol": "UserWorkoutResult.peak60minWatts",
+      "symbol": "UserWorkoutResult.peak60MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 451,
-      "symbol": "UserWorkoutResult.peak60minWattsP",
+      "symbol": "UserWorkoutResult.peak60MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 452,
-      "symbol": "UserWorkoutResult.peak60minWkg",
+      "symbol": "UserWorkoutResult.peak60MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 454,
-      "symbol": "UserWorkoutResult.peak75minWatts",
+      "symbol": "UserWorkoutResult.peak75MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 455,
-      "symbol": "UserWorkoutResult.peak75minWattsP",
+      "symbol": "UserWorkoutResult.peak75MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 456,
-      "symbol": "UserWorkoutResult.peak75minWkg",
+      "symbol": "UserWorkoutResult.peak75MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 458,
-      "symbol": "UserWorkoutResult.peak80minWatts",
+      "symbol": "UserWorkoutResult.peak80MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 459,
-      "symbol": "UserWorkoutResult.peak80minWattsP",
+      "symbol": "UserWorkoutResult.peak80MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 460,
-      "symbol": "UserWorkoutResult.peak80minWkg",
+      "symbol": "UserWorkoutResult.peak80MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 462,
-      "symbol": "UserWorkoutResult.peak90minWatts",
+      "symbol": "UserWorkoutResult.peak90MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 463,
-      "symbol": "UserWorkoutResult.peak90minWattsP",
+      "symbol": "UserWorkoutResult.peak90MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 464,
-      "symbol": "UserWorkoutResult.peak90minWkg",
+      "symbol": "UserWorkoutResult.peak90MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 466,
-      "symbol": "UserWorkoutResult.peak120minWatts",
+      "symbol": "UserWorkoutResult.peak120MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 467,
-      "symbol": "UserWorkoutResult.peak120minWattsP",
+      "symbol": "UserWorkoutResult.peak120MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 468,
-      "symbol": "UserWorkoutResult.peak120minWkg",
+      "symbol": "UserWorkoutResult.peak120MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 470,
-      "symbol": "UserWorkoutResult.peak150minWatts",
+      "symbol": "UserWorkoutResult.peak150MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 471,
-      "symbol": "UserWorkoutResult.peak150minWattsP",
+      "symbol": "UserWorkoutResult.peak150MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 472,
-      "symbol": "UserWorkoutResult.peak150minWkg",
+      "symbol": "UserWorkoutResult.peak150MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 474,
-      "symbol": "UserWorkoutResult.peak180minWatts",
+      "symbol": "UserWorkoutResult.peak180MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 475,
-      "symbol": "UserWorkoutResult.peak180minWattsP",
+      "symbol": "UserWorkoutResult.peak180MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 476,
-      "symbol": "UserWorkoutResult.peak180minWkg",
+      "symbol": "UserWorkoutResult.peak180MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 478,
-      "symbol": "UserWorkoutResult.peak210minWatts",
+      "symbol": "UserWorkoutResult.peak210MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 479,
-      "symbol": "UserWorkoutResult.peak210minWattsP",
+      "symbol": "UserWorkoutResult.peak210MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 480,
-      "symbol": "UserWorkoutResult.peak210minWkg",
+      "symbol": "UserWorkoutResult.peak210MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 482,
-      "symbol": "UserWorkoutResult.peak240minWatts",
+      "symbol": "UserWorkoutResult.peak240MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 483,
-      "symbol": "UserWorkoutResult.peak240minWattsP",
+      "symbol": "UserWorkoutResult.peak240MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 484,
-      "symbol": "UserWorkoutResult.peak240minWkg",
+      "symbol": "UserWorkoutResult.peak240MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 486,
-      "symbol": "UserWorkoutResult.peak360minWatts",
+      "symbol": "UserWorkoutResult.peak360MinuteWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 487,
-      "symbol": "UserWorkoutResult.peak360minWattsP",
+      "symbol": "UserWorkoutResult.peak360MinuteWattsPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 488,
-      "symbol": "UserWorkoutResult.peak360minWkg",
+      "symbol": "UserWorkoutResult.peak360MinuteWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 490,
-      "symbol": "UserWorkoutResult.peak5secBpm",
+      "symbol": "UserWorkoutResult.peak5SecondBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 491,
-      "symbol": "UserWorkoutResult.peak5secBpmP",
+      "symbol": "UserWorkoutResult.peak5SecondBpmPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 493,
-      "symbol": "UserWorkoutResult.peak10secBpm",
+      "symbol": "UserWorkoutResult.peak10SecondBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 494,
-      "symbol": "UserWorkoutResult.peak10secBpmP",
+      "symbol": "UserWorkoutResult.peak10SecondBpmPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 496,
-      "symbol": "UserWorkoutResult.peak1minBpm",
+      "symbol": "UserWorkoutResult.peak1MinuteBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 497,
-      "symbol": "UserWorkoutResult.peak1minBpmP",
+      "symbol": "UserWorkoutResult.peak1MinuteBpmPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 499,
-      "symbol": "UserWorkoutResult.peak5minBpm",
+      "symbol": "UserWorkoutResult.peak5MinuteBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 500,
-      "symbol": "UserWorkoutResult.peak5minBpmP",
+      "symbol": "UserWorkoutResult.peak5MinuteBpmPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 502,
-      "symbol": "UserWorkoutResult.peak10minBpm",
+      "symbol": "UserWorkoutResult.peak10MinuteBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 503,
-      "symbol": "UserWorkoutResult.peak10minBpmP",
+      "symbol": "UserWorkoutResult.peak10MinuteBpmPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 505,
-      "symbol": "UserWorkoutResult.peak20minBpm",
+      "symbol": "UserWorkoutResult.peak20MinuteBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 506,
-      "symbol": "UserWorkoutResult.peak20minBpmP",
+      "symbol": "UserWorkoutResult.peak20MinuteBpmPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 508,
-      "symbol": "UserWorkoutResult.peak30minBpm",
+      "symbol": "UserWorkoutResult.peak30MinuteBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 509,
-      "symbol": "UserWorkoutResult.peak30minBpmP",
+      "symbol": "UserWorkoutResult.peak30MinuteBpmPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 511,
-      "symbol": "UserWorkoutResult.peak60minBpm",
+      "symbol": "UserWorkoutResult.peak60MinuteBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 512,
-      "symbol": "UserWorkoutResult.peak60minBpmP",
+      "symbol": "UserWorkoutResult.peak60MinuteBpmPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 514,
-      "symbol": "UserWorkoutResult.peak120minBpm",
+      "symbol": "UserWorkoutResult.peak120MinuteBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 515,
-      "symbol": "UserWorkoutResult.peak120minBpmP",
+      "symbol": "UserWorkoutResult.peak120MinuteBpmPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 517,
-      "symbol": "UserWorkoutResult.peak180minBpm",
+      "symbol": "UserWorkoutResult.peak180MinuteBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 518,
-      "symbol": "UserWorkoutResult.peak180minBpmP",
+      "symbol": "UserWorkoutResult.peak180MinuteBpmPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 522,
-      "symbol": "UserWorkoutResult.maxGear",
+      "symbol": "UserWorkoutResult.maximumGear",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 523,
-      "symbol": "UserWorkoutResult.avgGear",
+      "symbol": "UserWorkoutResult.averageGear",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 524,
-      "symbol": "UserWorkoutResult.gearChangeCnt",
+      "symbol": "UserWorkoutResult.gearChangeCount",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 528,
-      "symbol": "UserWorkoutResult.maxGrade",
+      "symbol": "UserWorkoutResult.maximumGrade",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 529,
-      "symbol": "UserWorkoutResult.avgGrade",
+      "symbol": "UserWorkoutResult.averageGrade",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -1319,147 +1298,147 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 532,
-      "symbol": "UserWorkoutResult.bpmSampleCnt",
+      "symbol": "UserWorkoutResult.bpmSampleCount",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 534,
-      "symbol": "UserWorkoutResult.pwrSampleRate",
+      "symbol": "UserWorkoutResult.powerSampleRate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 535,
-      "symbol": "UserWorkoutResult.pwrSampleCnt",
+      "symbol": "UserWorkoutResult.powerSampleCount",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 539,
-      "symbol": "UserWorkoutResult.pwrBattery",
+      "symbol": "UserWorkoutResult.powerBattery",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 540,
-      "symbol": "UserWorkoutResult.pwrBatteryP",
+      "symbol": "UserWorkoutResult.powerBatteryPercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 541,
-      "symbol": "UserWorkoutResult.pwrOffset",
+      "symbol": "UserWorkoutResult.powerOffset",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 542,
-      "symbol": "UserWorkoutResult.pwrSlope",
+      "symbol": "UserWorkoutResult.powerSlope",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 543,
-      "symbol": "UserWorkoutResult.pwrManufacturer",
+      "symbol": "UserWorkoutResult.powerManufacturer",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 544,
-      "symbol": "UserWorkoutResult.pwrManufacturerId",
+      "symbol": "UserWorkoutResult.powerManufacturerId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 545,
-      "symbol": "UserWorkoutResult.pwrVersion",
+      "symbol": "UserWorkoutResult.powerVersion",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 546,
-      "symbol": "UserWorkoutResult.pwrSerial",
+      "symbol": "UserWorkoutResult.powerSerial",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 547,
-      "symbol": "UserWorkoutResult.pwrProduct",
+      "symbol": "UserWorkoutResult.powerProduct",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 548,
-      "symbol": "UserWorkoutResult.pwrId",
+      "symbol": "UserWorkoutResult.powerID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 549,
-      "symbol": "UserWorkoutResult.pwrBalance",
+      "symbol": "UserWorkoutResult.powerBalance",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 550,
-      "symbol": "UserWorkoutResult.pwrDiscardCnt",
+      "symbol": "UserWorkoutResult.powerDiscardCount",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 554,
-      "symbol": "UserWorkoutResult.secsInSurface",
+      "symbol": "UserWorkoutResult.secondsInSurface",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 555,
-      "symbol": "UserWorkoutResult.secsInZonePace",
+      "symbol": "UserWorkoutResult.secondsInZonePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 556,
-      "symbol": "UserWorkoutResult.secsInZoneWkg",
+      "symbol": "UserWorkoutResult.secondsInZoneWkg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 557,
-      "symbol": "UserWorkoutResult.secsInZoneNm",
+      "symbol": "UserWorkoutResult.secondsInZoneNm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 558,
-      "symbol": "UserWorkoutResult.secsInZoneBpm",
+      "symbol": "UserWorkoutResult.secondsInZoneBpm",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 559,
-      "symbol": "UserWorkoutResult.secsInZoneMaxHr",
+      "symbol": "UserWorkoutResult.secondsInZoneMaxHr",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -1487,7 +1466,7 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 564,
-      "symbol": "UserWorkoutResult.pwrZones",
+      "symbol": "UserWorkoutResult.powerZones",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -1543,14 +1522,14 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 587,
-      "symbol": "UserWorkoutResult.ext",
+      "symbol": "UserWorkoutResult.extension",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 589,
-      "symbol": "UserWorkoutResult.ext2",
+      "symbol": "UserWorkoutResult.extension2",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -1599,21 +1578,21 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultAlt.swift",
       "line": 6,
-      "symbol": "UserWorkoutResultAlt.avgWatts",
+      "symbol": "UserWorkoutResultAlt.averageWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultAlt.swift",
       "line": 7,
-      "symbol": "UserWorkoutResultAlt.maxWatts",
+      "symbol": "UserWorkoutResultAlt.maximumWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultAlt.swift",
       "line": 8,
-      "symbol": "UserWorkoutResultAlt.adjWatts",
+      "symbol": "UserWorkoutResultAlt.adjustedWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -1900,56 +1879,56 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 11,
-      "symbol": "UserWorkoutResultExt.avgPace",
+      "symbol": "UserWorkoutResultExt.averagePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 12,
-      "symbol": "UserWorkoutResultExt.avgPaceP",
+      "symbol": "UserWorkoutResultExt.averagePacePercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 14,
-      "symbol": "UserWorkoutResultExt.maxPace",
+      "symbol": "UserWorkoutResultExt.maximumPace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 15,
-      "symbol": "UserWorkoutResultExt.maxPaceP",
+      "symbol": "UserWorkoutResultExt.maximumPacePercentage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 17,
-      "symbol": "UserWorkoutResultExt.avgPaceAboveThres",
+      "symbol": "UserWorkoutResultExt.averagePaceAboveThreshold",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 18,
-      "symbol": "UserWorkoutResultExt.avgPaceBelowThres",
+      "symbol": "UserWorkoutResultExt.averagePaceBelowThreshold",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 19,
-      "symbol": "UserWorkoutResultExt.secsAbovePaceThres",
+      "symbol": "UserWorkoutResultExt.secsAbovePaceThreshold",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 21,
-      "symbol": "UserWorkoutResultExt.adjPace",
+      "symbol": "UserWorkoutResultExt.adjustedPace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -1963,28 +1942,28 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 23,
-      "symbol": "UserWorkoutResultExt.estThresPace",
+      "symbol": "UserWorkoutResultExt.estimatedThresholdPace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 25,
-      "symbol": "UserWorkoutResultExt.avgStrokeCount",
+      "symbol": "UserWorkoutResultExt.averageStrokeCount",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 26,
-      "symbol": "UserWorkoutResultExt.avgStrokeLen",
+      "symbol": "UserWorkoutResultExt.averageStrokeLength",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 27,
-      "symbol": "UserWorkoutResultExt.avgStepLen",
+      "symbol": "UserWorkoutResultExt.averageStepLength",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -1998,42 +1977,42 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 30,
-      "symbol": "UserWorkoutResultExt.avgFormWatts",
+      "symbol": "UserWorkoutResultExt.averageFormWatts",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 38,
-      "symbol": "UserWorkoutResultExt.avgLegSSKg",
+      "symbol": "UserWorkoutResultExt.averageLegSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 46,
-      "symbol": "UserWorkoutResultExt.avgGroundTime",
+      "symbol": "UserWorkoutResultExt.averageGroundTime",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 48,
-      "symbol": "UserWorkoutResultExt.avgStanceTime",
+      "symbol": "UserWorkoutResultExt.averageStanceTime",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 62,
-      "symbol": "UserWorkoutResultExt.avgThrustTime",
+      "symbol": "UserWorkoutResultExt.averageThrustTime",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 64,
-      "symbol": "UserWorkoutResultExt.maxThrustTime",
+      "symbol": "UserWorkoutResultExt.maximumThrustTime",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -2075,28 +2054,28 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 80,
-      "symbol": "UserWorkoutResultExt.poolLen",
+      "symbol": "UserWorkoutResultExt.poolLength",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 82,
-      "symbol": "UserWorkoutResultExt.poolLenUnits",
+      "symbol": "UserWorkoutResultExt.poolLengthUnits",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 85,
-      "symbol": "UserWorkoutResultExt.avgLap",
+      "symbol": "UserWorkoutResultExt.averageLapTime",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 88,
-      "symbol": "UserWorkoutResultExt.lapCnt",
+      "symbol": "UserWorkoutResultExt.lapCount",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -2110,42 +2089,42 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 93,
-      "symbol": "UserWorkoutResultExt.frontTireMin",
+      "symbol": "UserWorkoutResultExt.frontTireMinimum",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 95,
-      "symbol": "UserWorkoutResultExt.frontTireMax",
+      "symbol": "UserWorkoutResultExt.frontTireMaximum",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 97,
-      "symbol": "UserWorkoutResultExt.frontTireAvg",
+      "symbol": "UserWorkoutResultExt.frontTireAverage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 99,
-      "symbol": "UserWorkoutResultExt.rearTireMin",
+      "symbol": "UserWorkoutResultExt.rearTireMinimum",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 101,
-      "symbol": "UserWorkoutResultExt.rearTireMax",
+      "symbol": "UserWorkoutResultExt.rearTireMaximum",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultExt.swift",
       "line": 103,
-      "symbol": "UserWorkoutResultExt.rearTireAvg",
+      "symbol": "UserWorkoutResultExt.rearTireAverage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -2173,294 +2152,294 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 6,
-      "symbol": "UserWorkoutResultPeakLss.peak3secLss",
+      "symbol": "UserWorkoutResultPeakLss.peak3SecondLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 7,
-      "symbol": "UserWorkoutResultPeakLss.peak4secLss",
+      "symbol": "UserWorkoutResultPeakLss.peak4SecondLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 8,
-      "symbol": "UserWorkoutResultPeakLss.peak5secLss",
+      "symbol": "UserWorkoutResultPeakLss.peak5SecondLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 9,
-      "symbol": "UserWorkoutResultPeakLss.peak10secLss",
+      "symbol": "UserWorkoutResultPeakLss.peak10SecondLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 10,
-      "symbol": "UserWorkoutResultPeakLss.peak12secLss",
+      "symbol": "UserWorkoutResultPeakLss.peak12SecondLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 11,
-      "symbol": "UserWorkoutResultPeakLss.peak20secLss",
+      "symbol": "UserWorkoutResultPeakLss.peak20SecondLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 12,
-      "symbol": "UserWorkoutResultPeakLss.peak30secLss",
+      "symbol": "UserWorkoutResultPeakLss.peak30SecondLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 13,
-      "symbol": "UserWorkoutResultPeakLss.peak1minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak1MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 14,
-      "symbol": "UserWorkoutResultPeakLss.peak2minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak2MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 15,
-      "symbol": "UserWorkoutResultPeakLss.peak3minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak3MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 16,
-      "symbol": "UserWorkoutResultPeakLss.peak4minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak4MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 17,
-      "symbol": "UserWorkoutResultPeakLss.peak5minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak5MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 18,
-      "symbol": "UserWorkoutResultPeakLss.peak6minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak6MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 19,
-      "symbol": "UserWorkoutResultPeakLss.peak10minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak10MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 20,
-      "symbol": "UserWorkoutResultPeakLss.peak15minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak15MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 21,
-      "symbol": "UserWorkoutResultPeakLss.peak20minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak20MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 22,
-      "symbol": "UserWorkoutResultPeakLss.peak30minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak30MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 23,
-      "symbol": "UserWorkoutResultPeakLss.peak40minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak40MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 24,
-      "symbol": "UserWorkoutResultPeakLss.peak60minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak60MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 25,
-      "symbol": "UserWorkoutResultPeakLss.peak120minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak120MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 26,
-      "symbol": "UserWorkoutResultPeakLss.peak180minLss",
+      "symbol": "UserWorkoutResultPeakLss.peak180MinuteLSS",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 28,
-      "symbol": "UserWorkoutResultPeakLss.peak3secLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak3SecondLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 29,
-      "symbol": "UserWorkoutResultPeakLss.peak4secLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak4SecondLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 30,
-      "symbol": "UserWorkoutResultPeakLss.peak5secLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak5SecondLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 31,
-      "symbol": "UserWorkoutResultPeakLss.peak10secLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak10SecondLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 32,
-      "symbol": "UserWorkoutResultPeakLss.peak12secLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak12SecondLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 33,
-      "symbol": "UserWorkoutResultPeakLss.peak20secLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak20SecondLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 34,
-      "symbol": "UserWorkoutResultPeakLss.peak30secLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak30SecondLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 35,
-      "symbol": "UserWorkoutResultPeakLss.peak1minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak1MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 36,
-      "symbol": "UserWorkoutResultPeakLss.peak2minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak2MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 37,
-      "symbol": "UserWorkoutResultPeakLss.peak3minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak3MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 38,
-      "symbol": "UserWorkoutResultPeakLss.peak4minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak4MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 39,
-      "symbol": "UserWorkoutResultPeakLss.peak5minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak5MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 40,
-      "symbol": "UserWorkoutResultPeakLss.peak6minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak6MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 41,
-      "symbol": "UserWorkoutResultPeakLss.peak10minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak10MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 42,
-      "symbol": "UserWorkoutResultPeakLss.peak15minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak15MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 43,
-      "symbol": "UserWorkoutResultPeakLss.peak20minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak20MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 44,
-      "symbol": "UserWorkoutResultPeakLss.peak30minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak30MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 45,
-      "symbol": "UserWorkoutResultPeakLss.peak40minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak40MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 46,
-      "symbol": "UserWorkoutResultPeakLss.peak60minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak60MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 47,
-      "symbol": "UserWorkoutResultPeakLss.peak120minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak120MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakLss.swift",
       "line": 48,
-      "symbol": "UserWorkoutResultPeakLss.peak180minLssKg",
+      "symbol": "UserWorkoutResultPeakLss.peak180MinuteLSSKg",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -2474,147 +2453,147 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 6,
-      "symbol": "UserWorkoutResultPeakPace.peak3secPace",
+      "symbol": "UserWorkoutResultPeakPace.peak3SecondPace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 7,
-      "symbol": "UserWorkoutResultPeakPace.peak4secPace",
+      "symbol": "UserWorkoutResultPeakPace.peak4SecondPace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 8,
-      "symbol": "UserWorkoutResultPeakPace.peak5secPace",
+      "symbol": "UserWorkoutResultPeakPace.peak5SecondPace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 9,
-      "symbol": "UserWorkoutResultPeakPace.peak10secPace",
+      "symbol": "UserWorkoutResultPeakPace.peak10SecondPace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 10,
-      "symbol": "UserWorkoutResultPeakPace.peak12secPace",
+      "symbol": "UserWorkoutResultPeakPace.peak12SecondPace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 11,
-      "symbol": "UserWorkoutResultPeakPace.peak20secPace",
+      "symbol": "UserWorkoutResultPeakPace.peak20SecondPace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 12,
-      "symbol": "UserWorkoutResultPeakPace.peak30secPace",
+      "symbol": "UserWorkoutResultPeakPace.peak30SecondPace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 13,
-      "symbol": "UserWorkoutResultPeakPace.peak1minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak1MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 14,
-      "symbol": "UserWorkoutResultPeakPace.peak2minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak2MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 15,
-      "symbol": "UserWorkoutResultPeakPace.peak3minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak3MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 16,
-      "symbol": "UserWorkoutResultPeakPace.peak4minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak4MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 17,
-      "symbol": "UserWorkoutResultPeakPace.peak5minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak5MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 18,
-      "symbol": "UserWorkoutResultPeakPace.peak6minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak6MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 19,
-      "symbol": "UserWorkoutResultPeakPace.peak10minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak10MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 20,
-      "symbol": "UserWorkoutResultPeakPace.peak15minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak15MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 21,
-      "symbol": "UserWorkoutResultPeakPace.peak20minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak20MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 22,
-      "symbol": "UserWorkoutResultPeakPace.peak30minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak30MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 23,
-      "symbol": "UserWorkoutResultPeakPace.peak40minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak40MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 24,
-      "symbol": "UserWorkoutResultPeakPace.peak60minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak60MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 25,
-      "symbol": "UserWorkoutResultPeakPace.peak120minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak120MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultPeakPace.swift",
       "line": 26,
-      "symbol": "UserWorkoutResultPeakPace.peak180minPace",
+      "symbol": "UserWorkoutResultPeakPace.peak180MinutePace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -2656,140 +2635,140 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 5,
-      "symbol": "UserWorkoutResultTurbo.product",
+      "symbol": "UserWorkoutResultTurbo.productName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 7,
-      "symbol": "UserWorkoutResultTurbo.avgMotorPower",
+      "symbol": "UserWorkoutResultTurbo.averageMotorPower",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 8,
-      "symbol": "UserWorkoutResultTurbo.maxMotorPower",
+      "symbol": "UserWorkoutResultTurbo.maximumMotorPower",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 10,
-      "symbol": "UserWorkoutResultTurbo.minMotorTemp",
+      "symbol": "UserWorkoutResultTurbo.minimumMotorTemperature",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 11,
-      "symbol": "UserWorkoutResultTurbo.avgMotorTemp",
+      "symbol": "UserWorkoutResultTurbo.averageMotorTemperature",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 12,
-      "symbol": "UserWorkoutResultTurbo.maxMotorTemp",
+      "symbol": "UserWorkoutResultTurbo.maximumMotorTemperature",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 14,
-      "symbol": "UserWorkoutResultTurbo.minBattery1",
+      "symbol": "UserWorkoutResultTurbo.minimumBattery1",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 15,
-      "symbol": "UserWorkoutResultTurbo.avgBattery1",
+      "symbol": "UserWorkoutResultTurbo.averageBattery1",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 16,
-      "symbol": "UserWorkoutResultTurbo.maxBattery1",
+      "symbol": "UserWorkoutResultTurbo.maximumBattery1",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 18,
-      "symbol": "UserWorkoutResultTurbo.minBattery2",
+      "symbol": "UserWorkoutResultTurbo.minimumBattery2",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 19,
-      "symbol": "UserWorkoutResultTurbo.avgBattery2",
+      "symbol": "UserWorkoutResultTurbo.averageBattery2",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 20,
-      "symbol": "UserWorkoutResultTurbo.maxBattery2",
+      "symbol": "UserWorkoutResultTurbo.maximumBattery2",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 22,
-      "symbol": "UserWorkoutResultTurbo.minProfileScale",
+      "symbol": "UserWorkoutResultTurbo.minimumProfileScale",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 23,
-      "symbol": "UserWorkoutResultTurbo.avgProfileScale",
+      "symbol": "UserWorkoutResultTurbo.averageProfileScale",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 24,
-      "symbol": "UserWorkoutResultTurbo.maxProfileScale",
+      "symbol": "UserWorkoutResultTurbo.maximumProfileScale",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 26,
-      "symbol": "UserWorkoutResultTurbo.minCurrentScale",
+      "symbol": "UserWorkoutResultTurbo.minimumCurrentScale",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 27,
-      "symbol": "UserWorkoutResultTurbo.avgCurrentScale",
+      "symbol": "UserWorkoutResultTurbo.averageCurrentScale",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 28,
-      "symbol": "UserWorkoutResultTurbo.maxCurrentScale",
+      "symbol": "UserWorkoutResultTurbo.maximumCurrentScale",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 30,
-      "symbol": "UserWorkoutResultTurbo.avgSupportFactor",
+      "symbol": "UserWorkoutResultTurbo.averageSupportFactor",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 31,
-      "symbol": "UserWorkoutResultTurbo.maxSupportFactor",
+      "symbol": "UserWorkoutResultTurbo.maximumSupportFactor",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -3734,14 +3713,14 @@
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Routes/UserRoute.swift",
       "line": 124,
-      "symbol": "UserRoute.lon1",
+      "symbol": "UserRoute.longitude1",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Routes/UserRoute.swift",
       "line": 128,
-      "symbol": "UserRoute.lon2",
+      "symbol": "UserRoute.longitude2",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -3796,14 +3775,14 @@
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/Milliseconds.swift",
-      "line": 88,
+      "line": 93,
       "symbol": "Milliseconds./(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/Milliseconds.swift",
-      "line": 92,
+      "line": 97,
       "symbol": "Milliseconds./=(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
@@ -3932,13 +3911,6 @@
       "line": 105,
       "symbol": "SearchInputReport.forInstanceMetrics(sport:userIDs:ranges:fields:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/SearchInputReport.swift",
-      "line": 159,
-      "symbol": "SearchInputReport.init(from:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
