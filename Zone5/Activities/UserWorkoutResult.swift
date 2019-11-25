@@ -573,10 +573,9 @@ public struct UserWorkoutResult: Codable {
 	//public var swimLaps: [VUserWorkoutResultSwimLap]?
 
 	/// used for multisport and brick? sub-activities
-	// TODO: Value type `UserWorkoutResult` cannot have a stored property that recursively contains it
-	//public var children: [UserWorkoutResult]?
-	//public var related: [UserWorkoutResult]?
-	//public var parent: UserWorkoutResult?
+	public var children: [UserWorkoutResult]?
+	public var related: [UserWorkoutResult]?
+	public var parent: Indirect<UserWorkoutResult>?
 
 	//public var metadata: [String: Any]?
 
@@ -600,12 +599,11 @@ public struct UserWorkoutResult: Codable {
 
 	// MARK: UserWorkoutResultAggregates
 
-	// TODO: Value type `UserWorkoutResult` cannot have a stored property that recursively contains it
-	//public var sum: UserWorkoutResult?
-	//public var minimum: UserWorkoutResult?
-	//public var maximum: UserWorkoutResult?
-	//public var average: UserWorkoutResult?
-	//public var weightedAverage: UserWorkoutResult?
+	public var sum: Indirect<UserWorkoutResult>?
+	public var minimum: Indirect<UserWorkoutResult>?
+	public var maximum: Indirect<UserWorkoutResult>?
+	public var average: Indirect<UserWorkoutResult>?
+	public var weightedAverage: Indirect<UserWorkoutResult>?
 
 	public init() {}
 
@@ -890,9 +888,9 @@ public struct UserWorkoutResult: Codable {
 		case laps = "laps"
 		case distributions = "distributions"
 		//case swimLaps = "swimLaps"
-		//case children = "children"
-		//case related = "related"
-		//case parent = "parent"
+		case children = "children"
+		case related = "related"
+		case parent = "parent"
 		//case metadata = "metadata"
 		case permissions = "permissions"
 		case aap = "aap"
@@ -903,11 +901,11 @@ public struct UserWorkoutResult: Codable {
 		case hour = "hour"
 		case turbo = "turbo"
 		case channels = "channels"
-		//case sum = "sum"
-		//case minimum = "min"
-		//case maximum = "max"
-		//case average = "avg"
-		//case weightedAverage = "wavg"
+		case sum = "sum"
+		case minimum = "min"
+		case maximum = "max"
+		case average = "avg"
+		case weightedAverage = "wavg"
 	}
 
 }
