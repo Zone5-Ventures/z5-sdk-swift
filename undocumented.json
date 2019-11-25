@@ -1507,70 +1507,119 @@
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 583,
+      "line": 577,
+      "symbol": "UserWorkoutResult.related",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
+      "line": 578,
+      "symbol": "UserWorkoutResult.parent",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
+      "line": 582,
       "symbol": "UserWorkoutResult.permissions",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 585,
+      "line": 584,
       "symbol": "UserWorkoutResult.aap",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 587,
+      "line": 586,
       "symbol": "UserWorkoutResult.extension",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 589,
+      "line": 588,
       "symbol": "UserWorkoutResult.extension2",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 591,
+      "line": 590,
       "symbol": "UserWorkoutResult.pace",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 593,
+      "line": 592,
       "symbol": "UserWorkoutResult.lss",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 595,
+      "line": 594,
       "symbol": "UserWorkoutResult.hour",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 597,
+      "line": 596,
       "symbol": "UserWorkoutResult.turbo",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 599,
+      "line": 598,
       "symbol": "UserWorkoutResult.channels",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 610,
+      "line": 602,
+      "symbol": "UserWorkoutResult.sum",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
+      "line": 603,
+      "symbol": "UserWorkoutResult.minimum",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
+      "line": 604,
+      "symbol": "UserWorkoutResult.maximum",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
+      "line": 605,
+      "symbol": "UserWorkoutResult.average",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
+      "line": 606,
+      "symbol": "UserWorkoutResult.weightedAverage",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
+      "line": 608,
       "symbol": "UserWorkoutResult.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -3771,6 +3820,41 @@
       "line": 11,
       "symbol": "DayRange",
       "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/Indirect.swift",
+      "line": 7,
+      "symbol": "Indirect",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/Indirect.swift",
+      "line": 26,
+      "symbol": "Indirect",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/Indirect.swift",
+      "line": 34,
+      "symbol": "Indirect",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/Indirect.swift",
+      "line": 42,
+      "symbol": "Indirect",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.160.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Search/Indirect.swift",
+      "line": 53,
+      "symbol": "Indirect",
+      "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
