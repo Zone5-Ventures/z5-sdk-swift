@@ -3,22 +3,22 @@ import Foundation
 public struct UserWorkoutResultExt2: Codable {
 
 	/// Respiration - breaths/minute
-	public var avgResp: Int?
+	public var averageRespiration: Int?
 
 	/// Respiration - breaths/minute
-	public var maxResp: Int?
+	public var maximumRespiration: Int?
 
 	/// 0-20+ Garmin MTB dynamics - Flow (double) (0-1 - Smooth, 1-20 Moderate, 20+ rough
-	public var avgFlow: Float?
+	public var averageFlow: Float?
 
 	/// 0-20+ Garmin MTB dynamics - Flow (double) (0-1 - Smooth, 1-20 Moderate, 20+ rough
-	public var maxFlow: Float?
+	public var maximumFlow: Float?
 
 	/// 0-40+ Garmin MTB dynamics - Grit (sum this and /1000) - 0-20 (Easy), 20-40 (moderate), Hard 40+
-	public var avgGrit: Int? //
+	public var averageGrit: Int? //
 
 	/// 0-40+ Garmin MTB dynamics - Grit (sum this and /1000) - 0-20 (Easy), 20-40 (moderate), Hard 40+
-	public var maxGrit: Int?
+	public var maximumGrit: Int?
 
 	/// kGrit - Sum of Garmin MTB dynamics Grit
 	public var sumGrit: Int? // kGrit
@@ -27,7 +27,7 @@ public struct UserWorkoutResultExt2: Codable {
 	public var caloriesIn: Int?
 
 	/// Calories deficient - calories in - calories out
-	public var caloriesDiff: Int? // calories in - calories out
+	public var caloriesDifference: Int? // calories in - calories out
 
 	/// Fluid loss (milliliter)
 	public var fluidOut: Int?
@@ -36,8 +36,25 @@ public struct UserWorkoutResultExt2: Codable {
 	public var fluidIn: Int?
 
 	/// Fluid deficient - fluid in - fluid out (milliliter)
-	public var fluidDiff: Int?
+	public var fluidDifference: Int?
 
 	public init() {}
+
+	// MARK: Codable
+
+	private enum CodingKeys: String, CodingKey {
+		case averageRespiration = "avgResp"
+		case maximumRespiration = "maxResp"
+		case averageFlow = "avgFlow"
+		case maximumFlow = "maxFlow"
+		case averageGrit = "avgGrit"
+		case maximumGrit = "maxGrit"
+		case sumGrit = "sumGrit"
+		case caloriesIn = "caloriesIn"
+		case caloriesDifference = "caloriesDiff"
+		case fluidOut = "fluidOut"
+		case fluidIn = "fluidIn"
+		case fluidDifference = "fluidDiff"
+	}
 
 }

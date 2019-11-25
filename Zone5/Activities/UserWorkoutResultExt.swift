@@ -8,63 +8,63 @@ public struct UserWorkoutResultExt: Codable {
 	/// Compliance score for how well this workout was adhered to (0-100)
 	public var wscore: Int?
 
-	public var avgPace: Double?
-	public var avgPaceP: Int?
+	public var averagePace: Double?
+	public var averagePacePercentage: Int?
 
-	public var maxPace: Double?
-	public var maxPaceP: Int?
+	public var maximumPace: Double?
+	public var maximumPacePercentage: Int?
 
-	public var avgPaceAboveThres: Double?
-	public var avgPaceBelowThres: Double?
-	public var secsAbovePaceThres: Int?
+	public var averagePaceAboveThreshold: Double?
+	public var averagePaceBelowThreshold: Double?
+	public var secsAbovePaceThreshold: Int?
 
-	public var adjPace: Double?
+	public var adjustedPace: Double?
 	public var thresholdPace: Double?
-	public var estThresPace: Double?
+	public var estimatedThresholdPace: Double?
 
-	public var avgStrokeCount: Int? // stride or stroke
-	public var avgStrokeLen: Float? // stride or stroke
-	public var avgStepLen: Int? // stride or stroke - prolly in cm
+	public var averageStrokeCount: Int? // stride or stroke
+	public var averageStrokeLength: Float? // stride or stroke
+	public var averageStepLength: Int? // stride or stroke - prolly in cm
 	public var steps: Int?
 
-	public var avgFormWatts: Int?
+	public var averageFormWatts: Int?
 
 	/// Stryd form power - form power ratio: CALCULATED as Form Power / Total Power/// 100
-	public var avgFormR: Int?
+	public var averageFormRatio: Int?
 
 	/// Stryd Leg Spring Stiffness
-	public var avgLegSS: Double?
+	public var averageLegSS: Double?
 
-	public var avgLegSSKg: Double?
+	public var averageLegSSKg: Double?
 
 	/// Vertical oscillation (run)
-	public var avgVertOss: Int?
+	public var averageVerticalOscillation: Int?
 
 	/// Vertical oscillation ratio - calculated as Vertical oscillation / stride length (run)
-	public var avgVertOssR: Double?
+	public var averageVerticalOscillationRatio: Double?
 
-	public var avgGroundTime: Int?
+	public var averageGroundTime: Int?
 
-	public var avgStanceTime: Int?
-
-	/// Run dynamics
-	public var avgStanceTimeP: Int? // stryd non-Ground contact time / stride time (run)
+	public var averageStanceTime: Int?
 
 	/// Run dynamics
-	public var avgStanceTimeBal: Int?
+	public var averageStanceTimePercentage: Int? // stryd non-Ground contact time / stride time (run)
+
+	/// Run dynamics
+	public var averageStanceTimeBalance: Int?
 
 	/// Efficiency index (run) - average HR / adjusted pace
-	public var efPace: Double?
+	public var efficiencyPace: Double?
 
 	/// Power:Pace ratio - average HR / adjusted pace
-	public var pwrPaceR: Double?
+	public var powerPaceRatio: Double?
 
-	public var avgThrustTime: Int?
+	public var averageThrustTime: Int?
 
-	public var maxThrustTime: Int?
+	public var maximumThrustTime: Int?
 
 	/// Where this file is related to a multisport activity
-	public var parentId: Int?
+	public var parentID: Int?
 
 	// Stryd RSS (for run)
 	public var rss: Int?
@@ -77,31 +77,83 @@ public struct UserWorkoutResultExt: Codable {
 
 	public var terrain: RunType?
 
-	public var poolLen: Int?
+	public var poolLength: Int?
 
-	public var poolLenUnits: UnitMeasurement?
+	public var poolLengthUnits: UnitMeasurement?
 
 	// average training time per lap
-	public var avgLap: Int?
+	public var averageLapTime: Int?
 
 	// number of swimming laps
-	public var lapCnt: Int?
+	public var lapCount: Int?
 
 	// A csv list of SwimStroke ordinals
 	public var strokeTypes: Int?
 
-	public var frontTireMin: Int?
+	public var frontTireMinimum: Int?
 
-	public var frontTireMax: Int?
+	public var frontTireMaximum: Int?
 
-	public var frontTireAvg: Int?
+	public var frontTireAverage: Int?
 
-	public var rearTireMin: Int?
+	public var rearTireMinimum: Int?
 
-	public var rearTireMax: Int?
+	public var rearTireMaximum: Int?
 
-	public var rearTireAvg: Int?
+	public var rearTireAverage: Int?
 
 	public init() {}
+
+	// MARK: Codable
+
+	private enum CodingKeys: String, CodingKey {
+		case aerobicDec = "aerobicDec"
+		case wscore
+		case averagePace = "avgPace"
+		case averagePacePercentage = "avgPaceP"
+		case maximumPace = "maxPace"
+		case maximumPacePercentage = "maxPaceP"
+		case averagePaceAboveThreshold = "avgPaceAboveThres"
+		case averagePaceBelowThreshold = "avgPaceBelowThres"
+		case secsAbovePaceThreshold = "secsAbovePaceThres"
+		case adjustedPace = "adjPace"
+		case thresholdPace
+		case estimatedThresholdPace = "estThresPace"
+		case averageStrokeCount = "avgStrokeCount"
+		case averageStrokeLength = "avgStrokeLen"
+		case averageStepLength = "avgStepLen"
+		case steps
+		case averageFormWatts = "avgFormWatts"
+		case averageFormRatio = "avgFormR"
+		case averageLegSS = "avgLegSS"
+		case averageLegSSKg = "avgLegSSKg"
+		case averageVerticalOscillation = "avgVertOss"
+		case averageVerticalOscillationRatio = "avgVertOssR"
+		case averageGroundTime = "avgGroundTime"
+		case averageStanceTime = "avgStanceTime"
+		case averageStanceTimePercentage = "avgStanceTimeP"
+		case averageStanceTimeBalance = "avgStanceTimeBal"
+		case efficiencyPace = "efPace"
+		case powerPaceRatio = "pwrPaceR"
+		case averageThrustTime = "avgThrustTime"
+		case maximumThrustTime = "maxThrustTime"
+		case parentID = "parentId"
+		case rss
+		case hss
+		case pss
+		case water
+		case terrain
+		case poolLength = "poolLen"
+		case poolLengthUnits = "poolLenUnits"
+		case averageLapTime = "avgLap"
+		case lapCount = "lapCnt"
+		case strokeTypes
+		case frontTireMinimum = "frontTireMin"
+		case frontTireMaximum = "frontTireMax"
+		case frontTireAverage = "frontTireAvg"
+		case rearTireMinimum = "rearTireMin"
+		case rearTireMaximum = "rearTireMax"
+		case rearTireAverage = "rearTireAvg"
+	}
 
 }

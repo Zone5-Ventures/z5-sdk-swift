@@ -22,11 +22,11 @@ public struct DataFileUploadIndex: Codable {
 
 	public var message: Int?
 
-	//public var result: UserWorkoutResult?
+	public var result: UserWorkoutResult?
 
 	public var user: User?
 
-	public var createdTime: Int?
+	public var createdTime: Milliseconds?
 
 	public var qTs: Int?
 
@@ -39,7 +39,7 @@ public struct DataFileUploadIndex: Codable {
 		case filename
 		case state
 		case message
-		//case result
+		case result
 		case user
 		case createdTime
 		case qTs

@@ -18,4 +18,14 @@ public struct UserWorkoutResultRating: Codable {
 
 	public init() {}
 
+	// MARK: Codable
+
+	private enum CodingKeys: String, CodingKey {
+		case user
+		case resultId = "resultID"
+		case overall
+		case duration
+		case intensity
+	}
+
 }

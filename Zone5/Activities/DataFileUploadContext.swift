@@ -26,7 +26,7 @@ public struct DataFileUploadContext: JSONEncodedBody {
 	public var activityID: Int?
 
 	/// Override the timestamps within this file to commence from this value
-	public var startTime: Int?
+	public var startTime: Milliseconds?
 
 	/// Alternate display name
 	public var name: String?

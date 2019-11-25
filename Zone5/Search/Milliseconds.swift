@@ -12,12 +12,17 @@ public struct Milliseconds: RawRepresentable, Hashable, CustomStringConvertible 
 		self.rawValue = rawValue
 	}
 
-	/// Returns a `Milliseconds` value initialized to the current date and time.
+	/// Initializes a `Milliseconds` value relative to 00:00:00 UTC on 1 January 1970.
+	public init() {
+		self = .now
+	}
+
+	/// Returns a value relative to 00:00:00 UTC on 1 January 1970 by a given number of milliseconds.
 	public static var now: Milliseconds {
 		return Date().milliseconds
 	}
 
-	// MARK: Converting
+	// MARK: Converting to other types
 
 	/// Initializes a new `Milliseconds` value based on the given `timeInterval`.
 	/// - Parameter timeInterval: The value in seconds.

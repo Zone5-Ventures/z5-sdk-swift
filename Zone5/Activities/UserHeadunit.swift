@@ -36,7 +36,7 @@ public struct UserHeadunit: Codable {
 
 	// MARK: Codable
 
-	private enum Field: String, CodingKey {
+	private enum CodingKeys: String, CodingKey {
 		case name
 		case model
 		case serial

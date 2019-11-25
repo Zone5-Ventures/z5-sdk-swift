@@ -35,7 +35,7 @@ public struct UserIntensityZoneRange: Codable {
 
 	// MARK: Codable
 
-	private enum Field: String, CodingKey {
+	private enum CodingKeys: String, CodingKey {
 		case min
 		case max
 		case name

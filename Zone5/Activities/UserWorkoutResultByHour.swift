@@ -1,6 +1,6 @@
 import Foundation
 
-/// By hour averages averages
+/// By hour averages
 public struct UserWorkoutResultByHour: Codable {
 
 	/// Average watts in hour 1

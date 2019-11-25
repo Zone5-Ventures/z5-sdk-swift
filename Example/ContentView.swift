@@ -52,7 +52,7 @@ struct ContentView: View {
 				Section(header: Text("Activities"), footer: Text("Attempting to view \"Next Page\" before performing a legitimate search request—such as by opening the \"Next 3 Months\" screen—will return an empty result.")) {
 					EndpointLink<SearchResult<UserWorkoutResult>>("Next 3 Months") { client, completion in
 						var criteria = UserWorkoutFileSearch()
-						criteria.rangesTs = [DateRange(component: .month, value: 3)!]
+						criteria.dateRanges = [DateRange(component: .month, value: 3)!]
 						criteria.order = [.ascending("ts")]
 
 						var parameters = SearchInput(criteria: criteria)
@@ -75,7 +75,7 @@ struct ContentView: View {
 						var context = DataFileUploadContext()
 						context.equipment = .gravel
 						context.name = "Epic Ride"
-						context.startTime = Int(Date().timeIntervalSince1970 * 1000)
+						context.startTime = .now
 						//context.bikeID = "d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c" // TODO: Does bikeID exist? It's not defined in java.
 
 						client.activities.upload(fileURL, context: context) { result in
@@ -95,7 +95,7 @@ struct ContentView: View {
 								completion(.failure(error))
 
 							case .success(let activity):
-								client.activities.downloadOriginal(activity.fileId!) { result in
+								client.activities.downloadOriginal(activity.fileID!) { result in
 									completion(result)
 								}
 							}
@@ -108,7 +108,7 @@ struct ContentView: View {
 								completion(.failure(error))
 
 							case .success(let activity):
-								client.activities.downloadRaw(activity.fileId!) { result in
+								client.activities.downloadRaw(activity.fileID!) { result in
 									completion(result)
 								}
 							}
@@ -121,7 +121,7 @@ struct ContentView: View {
 								completion(.failure(error))
 
 							case .success(let activity):
-								client.activities.downloadCSV(activity.fileId!) { result in
+								client.activities.downloadCSV(activity.fileID!) { result in
 									completion(result)
 								}
 							}
@@ -134,7 +134,7 @@ struct ContentView: View {
 								completion(.failure(error))
 
 							case .success(let activity):
-								client.activities.downloadMap(activity.fileId!) { result in
+								client.activities.downloadMap(activity.fileID!) { result in
 									completion(result)
 								}
 							}
@@ -191,7 +191,7 @@ struct ContentView: View {
 	private func retrieveFileIdentifier(_ client: Zone5, _ completion: @escaping (_ result: Result<UserWorkoutResult, Zone5.Error>) -> Void) {
 		var criteria = UserWorkoutFileSearch()
 		criteria.name = "2013-12-22-10-30-12.fit"
-		criteria.rangesTs = [DateRange(component: .month, value: -3)!]
+		criteria.dateRanges = [DateRange(component: .month, value: -3)!]
 		criteria.order = [.descending("ts")]
 
 		let parameters = SearchInput(criteria: criteria)
@@ -202,7 +202,7 @@ struct ContentView: View {
 				completion(.failure(error))
 
 			case .success(let response):
-				guard let activity = response.first, activity.fileId != nil else {
+				guard let activity = response.first, activity.fileID != nil else {
 					completion(.failure(.unknown))
 
 					return

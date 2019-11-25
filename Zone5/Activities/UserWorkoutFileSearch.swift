@@ -9,10 +9,10 @@ public struct UserWorkoutFileSearch: SearchInputCriteria {
 	public var locality: String?
 
 	/// Search for files with a start timestamp >= this value. Value is a unix timestamp in milliseconds
-	public var fromTs: Milliseconds?
+	public var fromTime: Milliseconds?
 
 	/// Search for files with a start timestamp <= this value. Value is a unix timestamp in milliseconds
-	public var toTs: Milliseconds?
+	public var toTime: Milliseconds?
 
 	/// Search for activities which occurred on or are scheduled on this day of the year
 	public var day: Int?
@@ -21,13 +21,13 @@ public struct UserWorkoutFileSearch: SearchInputCriteria {
 	public var year: Int?
 
 	/// Search for activities which occurred in these date ranges - use this for unix timestamps + timezone
-	public var rangesTs: [DateRange]?
+	public var dateRanges: [DateRange]?
 
 	/// Search for activities which occurred in these date ranges - use this for year + day of year
-	public var rangesDay: [DayRange]?
+	public var dayRanges: [DayRange]?
 
-	// fieldName --> min,max
 	/// Search for completed activities which have attributes in the given ranges. ie all rides with a distance between 100 - 150km
+	/// fieldName --> min,max
 	public var ranges: [String: [Double]]?
 
 	/// Limit the search results to activities of this workout type
@@ -56,15 +56,15 @@ public struct UserWorkoutFileSearch: SearchInputCriteria {
 //	/// Limit the search results to activities completed with this headunit meter
 //	public var headunit: VUserHeadunit?
 
-	public var pwrManufacturer: String?
+	public var powerManufacturer: String?
 
-	public var pwrVersion: String?
+	public var powerVersion: String?
 
-	public var pwrSerial: String?
+	public var powerSerial: String?
 
-	public var pwrProduct: String?
+	public var powerProduct: String?
 
-	public var pwrDisplay: String?
+	public var powerDisplay: String?
 
 	/// Search for files related to the given user
 	public var user: User?
@@ -79,7 +79,7 @@ public struct UserWorkoutFileSearch: SearchInputCriteria {
 	public var isNotNull: [String]?
 
 	/// Limit the search results to activities related to these userIds
-	public var userIds: [Int]?
+	public var userIDs: [Int]?
 
 	public var orderBy: String?
 
@@ -98,5 +98,44 @@ public struct UserWorkoutFileSearch: SearchInputCriteria {
 	public var meta: [String: String]?
 
 	public init() {}
+
+	// MARK: Codable
+
+	private enum CodingKeys: String, CodingKey {
+		case name
+		case locality
+		case fromTime = "fromTs"
+		case toTime = "toTs"
+		case day
+		case year
+		case dateRanges = "rangesTs"
+		case dayRanges = "rangesDay"
+		case ranges
+		case workout
+		case equipment
+		case source
+		case review
+		case state
+		case reason
+		case reviewMask
+		//case meter
+		//case headunit
+		case powerManufacturer = "pwrManufacturer"
+		case powerVersion = "pwrVersion"
+		case powerSerial = "pwrSerial"
+		case powerProduct = "pwrProduct"
+		case powerDisplay = "pwrDisplay"
+		case user
+		//case group
+		case isNull
+		case isNotNull
+		case userIDs = "userIds"
+		case orderBy
+		case order
+		case activities
+		case excludeWorkouts
+		case sports
+		case meta
+	}
 
 }

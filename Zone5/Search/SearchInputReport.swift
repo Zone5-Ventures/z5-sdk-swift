@@ -124,7 +124,7 @@ public struct SearchInputReport: JSONEncodedBody, SearchInputCriteria {
 
 	// MARK: Codable
 
-	enum Field: String, Codable, CodingKey {
+	private enum CodingKeys: String, Codable, CodingKey {
 		case type
 		case isAllTime = "alltime"
 		//case withinPercentages = "withinP"
@@ -156,71 +156,4 @@ public struct SearchInputReport: JSONEncodedBody, SearchInputCriteria {
 		//case tags
 	}
 
-	public init(from decoder: Decoder) throws {
-		let container = try decoder.container(keyedBy: Field.self)
-		type = try container.decodeIfPresent(ActivityType.self, forKey: .type)
-		isAllTime = try container.decodeIfPresent(Bool.self, forKey: .isAllTime)
-		//withinPercentages = try container.decodeIfPresent([Int].self, forKey: .withinPercentages)
-		//period = try container.decodeIfPresent(AggregatePeriod.self, forKey: .period)
-		//depth = try container.decodeIfPresent(Int.self, forKey: .depth)
-		userIDs = try container.decodeIfPresent([Int].self, forKey: .userIDs)
-		//groupID = try container.decodeIfPresent(Int.self, forKey: .groupID)
-		ranges = try container.decodeIfPresent([DateRange].self, forKey: .ranges)
-		//teamActivities = try container.decodeIfPresent([VTeamActivity].self, forKey: .teamActivities)
-		activities = try container.decodeIfPresent([Activity].self, forKey: .activities)
-		limit = try container.decodeIfPresent([Activity].self, forKey: .limit)
-		//groupBy = try container.decodeIfPresent(String.self, forKey: .groupBy)
-		//exclude = try container.decodeIfPresent(VTeamMultiRidePeriod.self, forKey: .exclude)
-		//flag1 = try container.decodeIfPresent(Bool.self, forKey: .flag1)
-		//flag2 = try container.decodeIfPresent(Bool.self, forKey: .flag2)
-		//flag3 = try container.decodeIfPresent(Bool.self, forKey: .flag3)
-		//extName = try container.decodeIfPresent(Bool.self, forKey: .extName)
-		//noCache = try container.decodeIfPresent(Bool.self, forKey: .noCache)
-		//returnIDs = try container.decodeIfPresent(Bool.self, forKey: .returnIDs)
-		isInclusive = try container.decodeIfPresent(Bool.self, forKey: .isInclusive)
-		range = try container.decodeIfPresent(DateRange.self, forKey: .range)
-		opts = try container.decodeIfPresent(Int.self, forKey: .opts)
-		shouldIncludeZones = try container.decodeIfPresent(Bool.self, forKey: .shouldIncludeZones)
-		references = try container.decodeIfPresent([RelativePeriod].self, forKey: .references)
-		simpleFields = try container.decodeIfPresent([String].self, forKey: .simpleFields)
-		isNotNull = try container.decodeIfPresent([String].self, forKey: .isNotNull)
-		isNull = try container.decodeIfPresent([String].self, forKey: .isNull)
-		order = try container.decodeIfPresent([Order].self, forKey: .order)
-		//tags = try container.decodeIfPresent(Set<String>.self, forKey: .tags)
-	}
-
-	public func encode(to encoder: Encoder) throws {
-		var container = encoder.container(keyedBy: Field.self)
-		try container.encodeIfPresent(type, forKey: .type)
-		try container.encodeIfPresent(isAllTime, forKey: .isAllTime)
-		//try container.encodeIfPresent(withinPercentages, forKey: .withinPercentages)
-		//try container.encodeIfPresent(period, forKey: .period)
-		//try container.encodeIfPresent(depth, forKey: .depth)
-		try container.encodeIfPresent(userIDs, forKey: .userIDs)
-		//try container.encodeIfPresent(groupID, forKey: .groupID)
-		try container.encodeIfPresent(ranges, forKey: .ranges)
-		//try container.encodeIfPresent(teamActivities, forKey: .teamActivities)
-		try container.encodeIfPresent(activities, forKey: .activities)
-		try container.encodeIfPresent(limit, forKey: .limit)
-		//try container.encodeIfPresent(groupBy, forKey: .groupBy)
-		//try container.encodeIfPresent(exclude, forKey: .exclude)
-		//try container.encodeIfPresent(flag1, forKey: .flag1)
-		//try container.encodeIfPresent(flag2, forKey: .flag2)
-		//try container.encodeIfPresent(flag3, forKey: .flag3)
-		//try container.encodeIfPresent(extName, forKey: .extName)
-		//try container.encodeIfPresent(noCache, forKey: .noCache)
-		//try container.encodeIfPresent(returnIDs, forKey: .returnIDs)
-		try container.encodeIfPresent(isInclusive, forKey: .isInclusive)
-		try container.encodeIfPresent(range, forKey: .range)
-		try container.encodeIfPresent(opts, forKey: .opts)
-		try container.encodeIfPresent(shouldIncludeZones, forKey: .shouldIncludeZones)
-		try container.encodeIfPresent(references, forKey: .references)
-		try container.encodeIfPresent(simpleFields, forKey: .simpleFields)
-		try container.encodeIfPresent(isNotNull, forKey: .isNotNull)
-		try container.encodeIfPresent(isNull, forKey: .isNull)
-		try container.encodeIfPresent(order, forKey: .order)
-		//try container.encodeIfPresent(tags, forKey: .tags)
-	}
-
-	
 }

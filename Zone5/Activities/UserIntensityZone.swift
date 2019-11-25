@@ -22,7 +22,7 @@ public struct UserIntensityZone: Codable {
 
 	// MARK: Codable
 
-	private enum Field: String, CodingKey {
+	private enum CodingKeys: String, CodingKey {
 		case id
 		case type
 		case name

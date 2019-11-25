@@ -20,7 +20,7 @@ public struct Activity: Codable, Hashable {
 
 	// MARK: Codable
 
-	public enum Field: String, Codable, CodingKey {
+	private enum CodingKeys: String, Codable, CodingKey {
 		case id
 		case activity
 		case type

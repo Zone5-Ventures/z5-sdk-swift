@@ -10,7 +10,7 @@ public struct UserRouteSearch: SearchInputCriteria {
 	public var route: UserRoute?
 
 	/// User Ids to search on
-	public var userIds: [Int]?
+	public var userIDs: [Int]?
 
 	/// Order by fields ascending/descending
 	public var orderBy: [Order]?
@@ -22,5 +22,16 @@ public struct UserRouteSearch: SearchInputCriteria {
 	public var radius: Int?
 
 	public init() {}
+
+	// MARK: Codable
+
+	private enum CodingKeys: String, CodingKey {
+		case ranges
+		case route
+		case userIDs = "userIds"
+		case orderBy
+		case ids
+		case radius
+	}
 
 }

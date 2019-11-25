@@ -16,10 +16,10 @@ public struct UserWorkoutResult: Codable {
 	public var dayOfYear: Int?
 
 	/// A unix timestamp (ms) of when this activity was last modified
-	public var modifedTime: Int?
+	public var modifiedTime: Milliseconds?
 
 	/// A unix timestamp (ms) of when this activity was created in the system (not the actual activity start time)
-	public var createdTime: Int?
+	public var createdTime: Milliseconds?
 
 	/// Flag to track if this workout is tagged as a favorite/bookmarked
 	public var favorite: Bool?
@@ -28,7 +28,7 @@ public struct UserWorkoutResult: Codable {
 	public var headunit: UserHeadunit?
 
 	/// Metadata on the power meter used to complete this activity
-	public var powermeter: UserPowerMeter?
+	public var powerMeter: UserPowerMeter?
 
 	/// A generic count param - often used to convey the number of records which comprise an aggregate calculation
 	public var count: Int?
@@ -49,7 +49,7 @@ public struct UserWorkoutResult: Codable {
 	public var route: UserRoute?
 
 	/// Rating of the scheduled workout
-	//public var sessionrating: VUserWorkoutResultRating?
+	//public var sessionRating: VUserWorkoutResultRating?
 
 	/// Metadata related to a scheduled workout/event
 	public var scheduled: UserWorkoutDetails?
@@ -89,17 +89,17 @@ public struct UserWorkoutResult: Codable {
 	public var user: User?
 
 	/// Start location of the activity
-	public var lat1: Double?
+	public var startLatitude: Double?
 	/// Start location of the activity
-	public var lon1: Double?
+	public var startLongitude: Double?
 
 	/// End location of the activity
-	public var lat2: Double?
+	public var endLatitude: Double?
 	/// End location of the activity
-	public var lon2: Double?
+	public var endLongitude: Double?
 
 	/// Power efficiency - a relation of power to heart rate
-	public var ef: Double?
+	public var efficiency: Double?
 
 	/// ascent / training/60/60
 	public var vam: Double?
@@ -114,16 +114,16 @@ public struct UserWorkoutResult: Codable {
 	public var tqr: Double?
 
 	/// Avg torque (nm)
-	public var avgNm: Int?
+	public var averageNm: Int?
 
 	/// Max torque (nm)
-	public var maxNm: Int?
+	public var maximumNm: Int?
 
 	/// Cafe time - time difference between training and elapsed time (seconds)
 	public var idle: Int?
 
 	/// Number of seconds where no power was being produced
-	public var noPower: Int?
+	public var noPower: TimeInterval?
 
 	/// avg Power / Heart Rate / RPE/// 1000
 	public var gscore: Int?
@@ -150,7 +150,7 @@ public struct UserWorkoutResult: Codable {
 	public var name: String?
 
 	/// Activity description
-	public var descr: String?
+	public var description: String?
 
 	/// Display name for the event course
 	public var course: String?
@@ -159,28 +159,28 @@ public struct UserWorkoutResult: Codable {
 	public var category: EventTeamCategory?
 
 	/// UserWorkout.id - if this result relates to a workout
-	public var workoutId: Int?
+	public var workoutID: Int?
 
 	/// UserWorkoutFile.id - if this result relates to a file
-	public var fileId: Int?
+	public var fileID: Int?
 
 	/// UserEvent.id - if this result relates to an event
-	public var eventId: Int?
+	public var eventID: Int?
 
 	/// This id coupled with the ActivityResultType is a unique key for this activity
-	public var activityId: Int?
+	public var activityID: Int?
 
 	/// This value coupled with the activityId is a unique key for this activity
 	public var activity: ActivityResultType?
 
 	/// Timestamp of the result - this will match either the workout or event scheduled date or the start time of an adhoc ride
-	public var ts: Milliseconds?
+	public var timestamp: Milliseconds?
 
 	/// Timestamp of when the activity actually commenced
-	public var startTs: Milliseconds?
+	public var startTime: Milliseconds?
 
 	/// The timezone this activity is scheduled or completed in
-	public var tz: String?
+	public var timeZone: String?
 
 	/// Type of activity - ie ride, run etc
 	public var type: ActivityType?
@@ -201,10 +201,10 @@ public struct UserWorkoutResult: Codable {
 	public var weight: Double?
 
 	/// Actual movement time (seconds)
-	public var training: Int?
+	public var training: TimeInterval?
 
 	/// Elapsed time (seconds)
-	public var elapsed: Int?
+	public var elapsed: TimeInterval?
 
 	public var vo2max: Double?
 
@@ -254,9 +254,9 @@ public struct UserWorkoutResult: Codable {
 	public var thresholdWatts: Int?
 
 	/// The estimated threshold based on this activity
-	public var estThresWatts: Int?
+	public var estimatedThresholdWatts: Int?
 
-	public var estThresWattsKg: Int?
+	public var estimatedThresholdWattsKg: Int?
 
 	/// The threshold type used for this activity
 	public var thresholdType: PowerThresholdType?
@@ -280,68 +280,68 @@ public struct UserWorkoutResult: Codable {
 	public var descent: Int?
 
 	/// Starting altitude
-	public var startAlt: Int?
+	public var startAltitude: Int?
 
 	/// Finishing altitude
-	public var endAlt: Int?
+	public var endAltitude: Int?
 
 	/// Min altitude
-	public var minAlt: Int?
+	public var minimumAltitude: Int?
 
 	/// Max altitude
-	public var maxAlt: Int?
+	public var maximumAltitude: Int?
 
 	/// Average altitude
-	public var avgAlt: Int?
+	public var averageAltitude: Int?
 
 	/// Speed (km/h)
-	public var avgSpeed: Double?
+	public var averageSpeed: Double?
 
 	/// Speed (km/h)
-	public var maxSpeed: Double?
+	public var maximumSpeed: Double?
 
 	/// Cadence (rpm)
-	public var avgCadence: Int?
+	public var averageCadence: Int?
 
 	/// Cadence (rpm)
-	public var maxCadence: Int?
+	public var maximumCadence: Int?
 
 	/// Saturated Hb percent
-	public var minSatHbP: Double?
+	public var minimumSaturatedHbPercent: Double?
 	/// Saturated Hb percent
-	public var maxSatHbP: Double?
+	public var maximumSaturatedHbPercent: Double?
 	/// Saturated Hb percent
-	public var avgSatHbP: Double?
+	public var averageSaturatedHbPercent: Double?
 
 	/// TotalHemoglobinConc
-	public var minTotHbC: Double?
+	public var minimumTotalHbConc: Double?
 	/// TotalHemoglobinConc
-	public var maxTotHbC: Double?
+	public var maximumTotalHbConc: Double?
 	/// TotalHemoglobinConc
-	public var avgTotHbC: Double?
+	public var averageTotalHbConc: Double?
 
 	/// Temperature (celsius)
-	public var minTemp: Int?
+	public var minimumTemperature: Int?
 	/// Temperature (celsius)
-	public var maxTemp: Int?
+	public var maximumTemperature: Int?
 	/// Temperature (celsius)
-	public var avgTemp: Int?
+	public var averageTemperature: Int?
 
 	/// Heart rate (BPM)
-	public var minBpm: Int?
+	public var minimumBpm: Int?
 	/// Heart rate (BPM)
-	public var avgBpm: Int?
+	public var averageBpm: Int?
 	/// Heart rate (BPM)
-	public var maxBpm: Int?
+	public var maximumBpm: Int?
 
 	/// Percentage of maxHR
-	public var avgBpmP: Double?
+	public var averageBpmP: Double?
 
 	/// Percentage of maxHR
-	public var maxBpmP: Double?
+	public var maximumBpmP: Double?
 
 	/// Average power
-	public var avgWatts: Int?
+	public var averageWatts: Int?
 
 	/// Estimated critical power
 	public var cp: Int?
@@ -352,216 +352,216 @@ public struct UserWorkoutResult: Codable {
 	public var tau: Double?
 
 	/// Average power above threshold
-	public var avgWattsAboveCP: Int?
+	public var averageWattsAboveCP: Int?
 
 	/// Average power below threshold
-	public var avgWattsBelowCP: Int?
+	public var averageWattsBelowCP: Int?
 
 	/// Time above threshold
 	public var timeAboveCP: Int?
 
 	/// Maximum power
-	public var maxWatts: Int?
+	public var maximumWatts: Int?
 
-	public var peak3secWatts: Int?
-	public var peak3secWattsP: Int?
-	public var peak3secWkg: Double?
+	public var peak3SecondWatts: Int?
+	public var peak3SecondWattsPercentage: Int?
+	public var peak3SecondWkg: Double?
 
-	public var peak4secWatts: Int?
-	public var peak4secWattsP: Int?
-	public var peak4secWkg: Double?
+	public var peak4SecondWatts: Int?
+	public var peak4SecondWattsPercentage: Int?
+	public var peak4SecondWkg: Double?
 
-	public var peak5secWatts: Int?
-	public var peak5secWattsP: Int?
-	public var peak5secWkg: Double?
+	public var peak5SecondWatts: Int?
+	public var peak5SecondWattsPercentage: Int?
+	public var peak5SecondWkg: Double?
 
-	public var peak10secWatts: Int?
-	public var peak10secWattsP: Int?
-	public var peak10secWkg: Double?
+	public var peak10SecondWatts: Int?
+	public var peak10SecondWattsPercentage: Int?
+	public var peak10SecondWkg: Double?
 
-	public var peak12secWatts: Int?
-	public var peak12secWattsP: Int?
-	public var peak12secWkg: Double?
+	public var peak12SecondWatts: Int?
+	public var peak12SecondWattsPercentage: Int?
+	public var peak12SecondWkg: Double?
 
-	public var peak20secWatts: Int?
-	public var peak20secWattsP: Int?
-	public var peak20secWkg: Double?
+	public var peak20SecondWatts: Int?
+	public var peak20SecondWattsPercentage: Int?
+	public var peak20SecondWkg: Double?
 
-	public var peak30secWatts: Int?
-	public var peak30secWattsP: Int?
-	public var peak30secWkg: Double?
+	public var peak30SecondWatts: Int?
+	public var peak30SecondWattsPercentage: Int?
+	public var peak30SecondWkg: Double?
 
-	public var peak1minWatts: Int?
-	public var peak1minWattsP: Int?
-	public var peak1minWkg: Double?
+	public var peak1MinuteWatts: Int?
+	public var peak1MinuteWattsPercentage: Int?
+	public var peak1MinuteWkg: Double?
 
-	public var peak2minWatts: Int?
-	public var peak2minWattsP: Int?
-	public var peak2minWkg: Double?
+	public var peak2MinuteWatts: Int?
+	public var peak2MinuteWattsPercentage: Int?
+	public var peak2MinuteWkg: Double?
 
-	public var peak3minWatts: Int?
-	public var peak3minWattsP: Int?
-	public var peak3minWkg: Double?
+	public var peak3MinuteWatts: Int?
+	public var peak3MinuteWattsPercentage: Int?
+	public var peak3MinuteWkg: Double?
 
-	public var peak4minWatts: Int?
-	public var peak4minWattsP: Int?
-	public var peak4minWkg: Double?
+	public var peak4MinuteWatts: Int?
+	public var peak4MinuteWattsPercentage: Int?
+	public var peak4MinuteWkg: Double?
 
-	public var peak5minWatts: Int?
-	public var peak5minWattsP: Int?
-	public var peak5minWkg: Double?
+	public var peak5MinuteWatts: Int?
+	public var peak5MinuteWattsPercentage: Int?
+	public var peak5MinuteWkg: Double?
 
-	public var peak6minWatts: Int?
-	public var peak6minWattsP: Int?
-	public var peak6minWkg: Double?
+	public var peak6MinuteWatts: Int?
+	public var peak6MinuteWattsPercentage: Int?
+	public var peak6MinuteWkg: Double?
 
 	public var peak10minWatts: Int?
-	public var peak10minWattsP: Int?
+	public var peak10minWattsPercentage: Int?
 	public var peak10minWkg: Double?
 
-	public var peak12minWatts: Int?
-	public var peak12minWattsP: Int?
-	public var peak12minWkg: Double?
+	public var peak12MinuteWatts: Int?
+	public var peak12MinuteWattsPercentage: Int?
+	public var peak12MinuteWkg: Double?
 
-	public var peak15minWatts: Int?
-	public var peak15minWattsP: Int?
-	public var peak15minWkg: Double?
+	public var peak15MinuteWatts: Int?
+	public var peak15MinuteWattsPercentage: Int?
+	public var peak15MinuteWkg: Double?
 
-	public var peak16minWatts: Int?
-	public var peak16minWattsP: Int?
-	public var peak16minWkg: Double?
+	public var peak16MinuteWatts: Int?
+	public var peak16MinuteWattsPercentage: Int?
+	public var peak16MinuteWkg: Double?
 
-	public var peak20minWatts: Int?
-	public var peak20minWattsP: Int?
-	public var peak20minWkg: Double?
+	public var peak20MinuteWatts: Int?
+	public var peak20MinuteWattsPercentage: Int?
+	public var peak20MinuteWkg: Double?
 
-	public var peak24minWatts: Int?
-	public var peak24minWattsP: Int?
-	public var peak24minWkg: Double?
+	public var peak24MinuteWatts: Int?
+	public var peak24MinuteWattsPercentage: Int?
+	public var peak24MinuteWkg: Double?
 
-	public var peak30minWatts: Int?
-	public var peak30minWattsP: Int?
-	public var peak30minWkg: Double?
+	public var peak30MinuteWatts: Int?
+	public var peak30MinuteWattsPercentage: Int?
+	public var peak30MinuteWkg: Double?
 
-	public var peak40minWatts: Int?
-	public var peak40minWattsP: Int?
-	public var peak40minWkg: Double?
+	public var peak40MinuteWatts: Int?
+	public var peak40MinuteWattsPercentage: Int?
+	public var peak40MinuteWkg: Double?
 
-	public var peak60minWatts: Int?
-	public var peak60minWattsP: Int?
-	public var peak60minWkg: Double?
+	public var peak60MinuteWatts: Int?
+	public var peak60MinuteWattsPercentage: Int?
+	public var peak60MinuteWkg: Double?
 
-	public var peak75minWatts: Int?
-	public var peak75minWattsP: Int?
-	public var peak75minWkg: Double?
+	public var peak75MinuteWatts: Int?
+	public var peak75MinuteWattsPercentage: Int?
+	public var peak75MinuteWkg: Double?
 
-	public var peak80minWatts: Int?
-	public var peak80minWattsP: Int?
-	public var peak80minWkg: Double?
+	public var peak80MinuteWatts: Int?
+	public var peak80MinuteWattsPercentage: Int?
+	public var peak80MinuteWkg: Double?
 
-	public var peak90minWatts: Int?
-	public var peak90minWattsP: Int?
-	public var peak90minWkg: Double?
+	public var peak90MinuteWatts: Int?
+	public var peak90MinuteWattsPercentage: Int?
+	public var peak90MinuteWkg: Double?
 
-	public var peak120minWatts: Int?
-	public var peak120minWattsP: Int?
-	public var peak120minWkg: Double?
+	public var peak120MinuteWatts: Int?
+	public var peak120MinuteWattsPercentage: Int?
+	public var peak120MinuteWkg: Double?
 
-	public var peak150minWatts: Int?
-	public var peak150minWattsP: Int?
-	public var peak150minWkg: Double?
+	public var peak150MinuteWatts: Int?
+	public var peak150MinuteWattsPercentage: Int?
+	public var peak150MinuteWkg: Double?
 
-	public var peak180minWatts: Int?
-	public var peak180minWattsP: Int?
-	public var peak180minWkg: Double?
+	public var peak180MinuteWatts: Int?
+	public var peak180MinuteWattsPercentage: Int?
+	public var peak180MinuteWkg: Double?
 
-	public var peak210minWatts: Int?
-	public var peak210minWattsP: Int?
-	public var peak210minWkg: Double?
+	public var peak210MinuteWatts: Int?
+	public var peak210MinuteWattsPercentage: Int?
+	public var peak210MinuteWkg: Double?
 
-	public var peak240minWatts: Int?
-	public var peak240minWattsP: Int?
-	public var peak240minWkg: Double?
+	public var peak240MinuteWatts: Int?
+	public var peak240MinuteWattsPercentage: Int?
+	public var peak240MinuteWkg: Double?
 
-	public var peak360minWatts: Int?
-	public var peak360minWattsP: Int?
-	public var peak360minWkg: Double?
+	public var peak360MinuteWatts: Int?
+	public var peak360MinuteWattsPercentage: Int?
+	public var peak360MinuteWkg: Double?
 
-	public var peak5secBpm: Int?
-	public var peak5secBpmP: Int?
+	public var peak5SecondBpm: Int?
+	public var peak5SecondBpmPercentage: Int?
 
-	public var peak10secBpm: Int?
-	public var peak10secBpmP: Int?
+	public var peak10SecondBpm: Int?
+	public var peak10SecondBpmPercentage: Int?
 
-	public var peak1minBpm: Int?
-	public var peak1minBpmP: Int?
+	public var peak1MinuteBpm: Int?
+	public var peak1MinuteBpmPercentage: Int?
 
-	public var peak5minBpm: Int?
-	public var peak5minBpmP: Int?
+	public var peak5MinuteBpm: Int?
+	public var peak5MinuteBpmPercentage: Int?
 
-	public var peak10minBpm: Int?
-	public var peak10minBpmP: Int?
+	public var peak10MinuteBpm: Int?
+	public var peak10MinuteBpmPercentage: Int?
 
-	public var peak20minBpm: Int?
-	public var peak20minBpmP: Int?
+	public var peak20MinuteBpm: Int?
+	public var peak20MinuteBpmPercentage: Int?
 
-	public var peak30minBpm: Int?
-	public var peak30minBpmP: Int?
+	public var peak30MinuteBpm: Int?
+	public var peak30MinuteBpmPercentage: Int?
 
-	public var peak60minBpm: Int?
-	public var peak60minBpmP: Int?
+	public var peak60MinuteBpm: Int?
+	public var peak60MinuteBpmPercentage: Int?
 
-	public var peak120minBpm: Int?
-	public var peak120minBpmP: Int?
+	public var peak120MinuteBpm: Int?
+	public var peak120MinuteBpmPercentage: Int?
 
-	public var peak180minBpm: Int?
-	public var peak180minBpmP: Int?
+	public var peak180MinuteBpm: Int?
+	public var peak180MinuteBpmPercentage: Int?
 
 	/// di2 gearing
-	public var minGear: String?
-	public var maxGear: String?
-	public var avgGear: String?
-	public var gearChangeCnt: Int?
+	public var minimumGear: String?
+	public var maximumGear: String?
+	public var averageGear: String?
+	public var gearChangeCount: Int?
 
 	/// gradient %
-	public var minGrade: Double?
-	public var maxGrade: Double?
-	public var avgGrade: Double?
+	public var minimumGrade: Double?
+	public var maximumGrade: Double?
+	public var averageGrade: Double?
 
 	public var bpmSampleRate: Double?
-	public var bpmSampleCnt: Int?
+	public var bpmSampleCount: Int?
 
-	public var pwrSampleRate: Double?
-	public var pwrSampleCnt: Int?
+	public var powerSampleRate: Double?
+	public var powerSampleCount: Int?
 
 	/// power meter info
-	public var pwrDisplay: String?
-	public var pwrBattery: Double?
-	public var pwrBatteryP: Int?
-	public var pwrOffset: Int?
-	public var pwrSlope: Int?
-	public var pwrManufacturer: String?
-	public var pwrManufacturerId: Int?
-	public var pwrVersion: String?
-	public var pwrSerial: String?
-	public var pwrProduct: String?
-	public var pwrId: String?
-	public var pwrBalance: Int?
-	public var pwrDiscardCnt: Int?
+	public var powerDisplay: String?
+	public var powerBattery: Double?
+	public var powerBatteryPercentage: Int?
+	public var powerOffset: Int?
+	public var powerSlope: Int?
+	public var powerManufacturer: String?
+	public var powerManufacturerId: Int?
+	public var powerVersion: String?
+	public var powerSerial: String?
+	public var powerProduct: String?
+	public var powerID: String?
+	public var powerBalance: Int?
+	public var powerDiscardCount: Int?
 
 	/// Time in zones
-	public var secsInZonePwr: [Int: Int]?
-	public var secsInSurface: [String: Int]?
-	public var secsInZonePace: [Int: Int]?
-	public var secsInZoneWkg: [Int: Int]?
-	public var secsInZoneNm: [Int: Int]?
-	public var secsInZoneBpm: [Int: Int]?
-	public var secsInZoneMaxHr: [Int: Int]?
+	public var secondsInZonePower: [Int: TimeInterval]?
+	public var secondsInSurface: [String: TimeInterval]?
+	public var secondsInZonePace: [Int: TimeInterval]?
+	public var secondsInZoneWkg: [Int: TimeInterval]?
+	public var secondsInZoneNm: [Int: TimeInterval]?
+	public var secondsInZoneBpm: [Int: TimeInterval]?
+	public var secondsInZoneMaxHr: [Int: TimeInterval]?
 
 	public var wkgZones: [UserIntensityZoneRange]?
 	public var bpmZones: [UserIntensityZoneRange]?
 	public var maxHrZones: [UserIntensityZoneRange]?
-	public var pwrZones: [UserIntensityZoneRange]?
+	public var powerZones: [UserIntensityZoneRange]?
 	public var nmZones: [UserIntensityZoneRange]?
 	public var paceZones: [UserIntensityZoneRange]?
 	public var bpmZoneNames: [Int: String]?
@@ -584,9 +584,9 @@ public struct UserWorkoutResult: Codable {
 
 	public var aap: UserWorkoutResultAlt?
 
-	public var ext: UserWorkoutResultExt?
+	public var `extension`: UserWorkoutResultExt?
 
-	public var ext2: UserWorkoutResultExt2?
+	public var extension2: UserWorkoutResultExt2?
 
 	public var pace: UserWorkoutResultPeakPace?
 
@@ -602,11 +602,312 @@ public struct UserWorkoutResult: Codable {
 
 	// TODO: Value type `UserWorkoutResult` cannot have a stored property that recursively contains it
 	//public var sum: UserWorkoutResult?
-	//public var min: UserWorkoutResult?
-	//public var max: UserWorkoutResult?
-	//public var avg: UserWorkoutResult?
-	//public var wavg: UserWorkoutResult?
+	//public var minimum: UserWorkoutResult?
+	//public var maximum: UserWorkoutResult?
+	//public var average: UserWorkoutResult?
+	//public var weightedAverage: UserWorkoutResult?
 
 	public init() {}
+
+	// MARK: Codable
+
+	private enum CodingKeys: String, CodingKey {
+		case id = "id"
+		case year = "year"
+		case dayOfYear = "dayOfYear"
+		case modifiedTime = "modifedTime"
+		case createdTime = "createdTime"
+		case favorite = "favorite"
+		case headunit = "headunit"
+		case powerMeter = "powermeter"
+		case count = "count"
+		//case day = "day"
+		//case hrv = "hrv"
+		//case sleep = "sleep"
+		//case rating = "rating"
+		case route = "route"
+		//case sessionRating = "sessionrating"
+		case scheduled = "scheduled"
+		//case event = "event"
+		//case plan = "plan"
+		case source = "source"
+		case locality = "locality"
+		case fieldOverrideMask = "fieldOverrideMask"
+		case fieldOverrideMask2 = "fieldOverrideMask2"
+		case reviewMask = "reviewMask"
+		case channelMask = "channelMask"
+		case featureMask = "featureMask"
+		case zoneMask = "zoneMask"
+		case notes = "notes"
+		case user = "user"
+		case startLatitude = "lat1"
+		case startLongitude = "lon1"
+		case endLatitude = "lat2"
+		case endLongitude = "lon2"
+		case efficiency = "ef"
+		case vam = "vam"
+		case rpe = "rpe"
+		case pain = "pain"
+		case tqr = "tqr"
+		case averageNm = "avgNm"
+		case maximumNm = "maxNm"
+		case idle = "idle"
+		case noPower = "noPower"
+		case gscore = "gscore"
+		case rpeh = "rpeh"
+		case rpeef = "rpeef"
+		case rpep = "rpep"
+		case state = "state"
+		case review = "review"
+		case reason = "reason"
+		case name = "name"
+		case description = "descr"
+		case course = "course"
+		case category = "category"
+		case workoutID = "workoutId"
+		case fileID = "fileId"
+		case eventID = "eventId"
+		case activityID = "activityId"
+		case activity = "activity"
+		case timestamp = "ts"
+		case startTime = "startTs"
+		case timeZone = "tz"
+		case type = "type"
+		case equipment = "equipment"
+		case workout = "workout"
+		case lap = "lap"
+		case lapType = "lapType"
+		case weight = "weight"
+		case training = "training"
+		case elapsed = "elapsed"
+		case vo2max = "vo2max"
+		case distance = "distance"
+		case tscorepwr = "tscorepwr"
+		case tscorehr = "tscorehr"
+		case atBpm = "atBpm"
+		case intensityFactor = "intensityFactor"
+		case calories = "calories"
+		case kj = "kj"
+		case kjh = "kjh"
+		case kjkg = "kjkg"
+		case kjhkg = "kjhkg"
+		case np = "np"
+		case vi = "vi"
+		case iff = "iff"
+		case wkg = "wkg"
+		case thresholdWatts = "thresholdWatts"
+		case estimatedThresholdWatts = "estThresWatts"
+		case estimatedThresholdWattsKg = "estThresWattsKg"
+		case thresholdType = "thresholdType"
+		case tscoreType = "tscoreType"
+		case thresholdBpm = "thresholdBpm"
+		case thresholdPace = "thresholdPace"
+		case maxHr = "maxHr"
+		case ascent = "ascent"
+		case descent = "descent"
+		case startAltitude = "startAlt"
+		case endAltitude = "endAlt"
+		case minimumAltitude = "minAlt"
+		case maximumAltitude = "maxAlt"
+		case averageAltitude = "avgAlt"
+		case averageSpeed = "avgSpeed"
+		case maximumSpeed = "maxSpeed"
+		case averageCadence = "avgCadence"
+		case maximumCadence = "maxCadence"
+		case minimumSaturatedHbPercent = "minSatHbP"
+		case maximumSaturatedHbPercent = "maxSatHbP"
+		case averageSaturatedHbPercent = "avgSatHbP"
+		case minimumTotalHbConc = "minTotHbC"
+		case maximumTotalHbConc = "maxTotHbC"
+		case averageTotalHbConc = "avgTotHbC"
+		case minimumTemperature = "minTemp"
+		case maximumTemperature = "maxTemp"
+		case averageTemperature = "avgTemp"
+		case minimumBpm = "minBpm"
+		case averageBpm = "avgBpm"
+		case maximumBpm = "maxBpm"
+		case averageBpmP = "avgBpmP"
+		case maximumBpmP = "maxBpmP"
+		case averageWatts = "avgWatts"
+		case cp = "cp"
+		case awc = "awc"
+		case tau = "tau"
+		case averageWattsAboveCP = "avgWattsAboveCP"
+		case averageWattsBelowCP = "avgWattsBelowCP"
+		case timeAboveCP = "timeAboveCP"
+		case maximumWatts = "maxWatts"
+		case peak3SecondWatts = "peak3secWatts"
+		case peak3SecondWattsPercentage = "peak3secWattsP"
+		case peak3SecondWkg = "peak3secWkg"
+		case peak4SecondWatts = "peak4secWatts"
+		case peak4SecondWattsPercentage = "peak4secWattsP"
+		case peak4SecondWkg = "peak4secWkg"
+		case peak5SecondWatts = "peak5secWatts"
+		case peak5SecondWattsPercentage = "peak5secWattsP"
+		case peak5SecondWkg = "peak5secWkg"
+		case peak10SecondWatts = "peak10secWatts"
+		case peak10SecondWattsPercentage = "peak10secWattsP"
+		case peak10SecondWkg = "peak10secWkg"
+		case peak12SecondWatts = "peak12secWatts"
+		case peak12SecondWattsPercentage = "peak12secWattsP"
+		case peak12SecondWkg = "peak12secWkg"
+		case peak20SecondWatts = "peak20secWatts"
+		case peak20SecondWattsPercentage = "peak20secWattsP"
+		case peak20SecondWkg = "peak20secWkg"
+		case peak30SecondWatts = "peak30secWatts"
+		case peak30SecondWattsPercentage = "peak30secWattsP"
+		case peak30SecondWkg = "peak30secWkg"
+		case peak1MinuteWatts = "peak1minWatts"
+		case peak1MinuteWattsPercentage = "peak1minWattsP"
+		case peak1MinuteWkg = "peak1minWkg"
+		case peak2MinuteWatts = "peak2minWatts"
+		case peak2MinuteWattsPercentage = "peak2minWattsP"
+		case peak2MinuteWkg = "peak2minWkg"
+		case peak3MinuteWatts = "peak3minWatts"
+		case peak3MinuteWattsPercentage = "peak3minWattsP"
+		case peak3MinuteWkg = "peak3minWkg"
+		case peak4MinuteWatts = "peak4minWatts"
+		case peak4MinuteWattsPercentage = "peak4minWattsP"
+		case peak4MinuteWkg = "peak4minWkg"
+		case peak5MinuteWatts = "peak5minWatts"
+		case peak5MinuteWattsPercentage = "peak5minWattsP"
+		case peak5MinuteWkg = "peak5minWkg"
+		case peak6MinuteWatts = "peak6minWatts"
+		case peak6MinuteWattsPercentage = "peak6minWattsP"
+		case peak6MinuteWkg = "peak6minWkg"
+		case peak10minWatts = "peak10minWatts"
+		case peak10minWattsPercentage = "peak10minWattsP"
+		case peak10minWkg = "peak10minWkg"
+		case peak12MinuteWatts = "peak12minWatts"
+		case peak12MinuteWattsPercentage = "peak12minWattsP"
+		case peak12MinuteWkg = "peak12minWkg"
+		case peak15MinuteWatts = "peak15minWatts"
+		case peak15MinuteWattsPercentage = "peak15minWattsP"
+		case peak15MinuteWkg = "peak15minWkg"
+		case peak16MinuteWatts = "peak16minWatts"
+		case peak16MinuteWattsPercentage = "peak16minWattsP"
+		case peak16MinuteWkg = "peak16minWkg"
+		case peak20MinuteWatts = "peak20minWatts"
+		case peak20MinuteWattsPercentage = "peak20minWattsP"
+		case peak20MinuteWkg = "peak20minWkg"
+		case peak24MinuteWatts = "peak24minWatts"
+		case peak24MinuteWattsPercentage = "peak24minWattsP"
+		case peak24MinuteWkg = "peak24minWkg"
+		case peak30MinuteWatts = "peak30minWatts"
+		case peak30MinuteWattsPercentage = "peak30minWattsP"
+		case peak30MinuteWkg = "peak30minWkg"
+		case peak40MinuteWatts = "peak40minWatts"
+		case peak40MinuteWattsPercentage = "peak40minWattsP"
+		case peak40MinuteWkg = "peak40minWkg"
+		case peak60MinuteWatts = "peak60minWatts"
+		case peak60MinuteWattsPercentage = "peak60minWattsP"
+		case peak60MinuteWkg = "peak60minWkg"
+		case peak75MinuteWatts = "peak75minWatts"
+		case peak75MinuteWattsPercentage = "peak75minWattsP"
+		case peak75MinuteWkg = "peak75minWkg"
+		case peak80MinuteWatts = "peak80minWatts"
+		case peak80MinuteWattsPercentage = "peak80minWattsP"
+		case peak80MinuteWkg = "peak80minWkg"
+		case peak90MinuteWatts = "peak90minWatts"
+		case peak90MinuteWattsPercentage = "peak90minWattsP"
+		case peak90MinuteWkg = "peak90minWkg"
+		case peak120MinuteWatts = "peak120minWatts"
+		case peak120MinuteWattsPercentage = "peak120minWattsP"
+		case peak120MinuteWkg = "peak120minWkg"
+		case peak150MinuteWatts = "peak150minWatts"
+		case peak150MinuteWattsPercentage = "peak150minWattsP"
+		case peak150MinuteWkg = "peak150minWkg"
+		case peak180MinuteWatts = "peak180minWatts"
+		case peak180MinuteWattsPercentage = "peak180minWattsP"
+		case peak180MinuteWkg = "peak180minWkg"
+		case peak210MinuteWatts = "peak210minWatts"
+		case peak210MinuteWattsPercentage = "peak210minWattsP"
+		case peak210MinuteWkg = "peak210minWkg"
+		case peak240MinuteWatts = "peak240minWatts"
+		case peak240MinuteWattsPercentage = "peak240minWattsP"
+		case peak240MinuteWkg = "peak240minWkg"
+		case peak360MinuteWatts = "peak360minWatts"
+		case peak360MinuteWattsPercentage = "peak360minWattsP"
+		case peak360MinuteWkg = "peak360minWkg"
+		case peak5SecondBpm = "peak5secBpm"
+		case peak5SecondBpmPercentage = "peak5secBpmP"
+		case peak10SecondBpm = "peak10secBpm"
+		case peak10SecondBpmPercentage = "peak10secBpmP"
+		case peak1MinuteBpm = "peak1minBpm"
+		case peak1MinuteBpmPercentage = "peak1minBpmP"
+		case peak5MinuteBpm = "peak5minBpm"
+		case peak5MinuteBpmPercentage = "peak5minBpmP"
+		case peak10MinuteBpm = "peak10minBpm"
+		case peak10MinuteBpmPercentage = "peak10minBpmP"
+		case peak20MinuteBpm = "peak20minBpm"
+		case peak20MinuteBpmPercentage = "peak20minBpmP"
+		case peak30MinuteBpm = "peak30minBpm"
+		case peak30MinuteBpmPercentage = "peak30minBpmP"
+		case peak60MinuteBpm = "peak60minBpm"
+		case peak60MinuteBpmPercentage = "peak60minBpmP"
+		case peak120MinuteBpm = "peak120minBpm"
+		case peak120MinuteBpmPercentage = "peak120minBpmP"
+		case peak180MinuteBpm = "peak180minBpm"
+		case peak180MinuteBpmPercentage = "peak180minBpmP"
+		case minimumGear = "minGear"
+		case maximumGear = "maxGear"
+		case averageGear = "avgGear"
+		case gearChangeCount = "gearChangeCnt"
+		case minimumGrade = "minGrade"
+		case maximumGrade = "maxGrade"
+		case averageGrade = "avgGrade"
+		case bpmSampleRate = "bpmSampleRate"
+		case bpmSampleCount = "bpmSampleCnt"
+		case powerSampleRate = "pwrSampleRate"
+		case powerSampleCount = "pwrSampleCnt"
+		case powerDisplay = "pwrDisplay"
+		case powerBattery = "pwrBattery"
+		case powerBatteryPercentage = "pwrBatteryP"
+		case powerOffset = "pwrOffset"
+		case powerSlope = "pwrSlope"
+		case powerManufacturer = "pwrManufacturer"
+		case powerManufacturerId = "pwrManufacturerId"
+		case powerVersion = "pwrVersion"
+		case powerSerial = "pwrSerial"
+		case powerProduct = "pwrProduct"
+		case powerID = "pwrId"
+		case powerBalance = "pwrBalance"
+		case powerDiscardCount = "pwrDiscardCnt"
+		case secondsInZonePower = "secsInZonePwr"
+		case secondsInSurface = "secsInSurface"
+		case secondsInZonePace = "secsInZonePace"
+		case secondsInZoneWkg = "secsInZoneWkg"
+		case secondsInZoneNm = "secsInZoneNm"
+		case secondsInZoneBpm = "secsInZoneBpm"
+		case secondsInZoneMaxHr = "secsInZoneMaxHr"
+		case wkgZones = "wkgZones"
+		case bpmZones = "bpmZones"
+		case maxHrZones = "maxHrZones"
+		case powerZones = "pwrZones"
+		case nmZones = "nmZones"
+		case paceZones = "paceZones"
+		case bpmZoneNames = "bpmZoneNames"
+		case laps = "laps"
+		case distributions = "distributions"
+		//case swimLaps = "swimLaps"
+		//case children = "children"
+		//case related = "related"
+		//case parent = "parent"
+		//case metadata = "metadata"
+		case permissions = "permissions"
+		case aap = "aap"
+		case `extension` = "ext"
+		case extension2 = "ext2"
+		case pace = "pace"
+		case lss = "lss"
+		case hour = "hour"
+		case turbo = "turbo"
+		case channels = "channels"
+		//case sum = "sum"
+		//case minimum = "min"
+		//case maximum = "max"
+		//case average = "avg"
+		//case weightedAverage = "wavg"
+	}
 
 }

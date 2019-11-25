@@ -33,7 +33,7 @@ public struct UserPowerMeter: Codable {
 	public var slope: Int?
 
 	/// Accumulated operating time (secs)
-	public var operatingTime: Int?
+	public var operatingTime: TimeInterval?
 
 	/// Current version
 	public var version: String?
@@ -64,11 +64,11 @@ public struct UserPowerMeter: Codable {
 
 	// MARK: Codable
 
-	private enum Field: String, CodingKey {
+	private enum CodingKeys: String, CodingKey {
 		case id
 		case user
 		case timestamp = "ts"
-		case manufacturerId = "manufacturerId"
+		case manufacturerID = "manufacturerId"
 		case manufacturer
 		case batteryVolts = "battery"
 		case batteryPercentage = "batteryP"

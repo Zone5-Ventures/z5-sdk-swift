@@ -13,16 +13,16 @@ public struct UserRoute: Codable, JSONEncodedBody {
 	public var uuid: UUID?
 
 	/// When this object was first created
-	public var createdTime: Int?
+	public var createdTime: Milliseconds?
 
 	/// When this object was last modified
-	public var modifedTime: Int?
+	public var modifiedTime: Milliseconds?
 
 	/// Who created this object
 	public var createdBy: String?
 
 	/// Who last modified this object
-	public var modifedBy: String?
+	public var modifiedBy: String?
 
 	/// Who owns this object
 	public var user: User?
@@ -30,7 +30,7 @@ public struct UserRoute: Codable, JSONEncodedBody {
 	// public var company: VCompany?
 
 	/// The number of times this route should be completed
-	public var rpt: Int?
+	public var repeatCount: Int?
 
 	/// A nice name for this route
 	public var name: String?
@@ -39,7 +39,7 @@ public struct UserRoute: Codable, JSONEncodedBody {
 	public var source: String?
 
 	/// The original UUID/id of this route in it's origin system
-	public var sourceId: String?
+	public var sourceID: String?
 
 	/// The locality of where this route begins
 	public var locality: String?
@@ -50,14 +50,14 @@ public struct UserRoute: Codable, JSONEncodedBody {
 	/// The locality of where this route ends
 	public var locality2: String?
 
-	/// The language that the way point messages are in
+	/// The language that the waypoint messages are in
 	public var locale: String?
 
 	/// The metric/imperial that the way point messages are in
 	public var units: UnitMeasurement?
 
 	/// A description of this route
-	public var descr: String?
+	public var description: String?
 
 	/// The total distance (meters) of this route
 	public var distance: Double?
@@ -72,25 +72,25 @@ public struct UserRoute: Codable, JSONEncodedBody {
 	public var duration: Int?
 
 	/// The lowest altitude point in this route (meters)
-	public var minAlt: Int?
+	public var minimumAltitude: Int?
 
 	/// The highest altitude point in this route (meters)
-	public var maxAlt: Int?
+	public var maximumAltitude: Int?
 
 	/// The average altitude point in this route (meters)
-	public var avgAlt: Int?
+	public var averageAltitude: Int?
 
 	/// Min latitude in this route - for geo boxing
-	public var minLatitude: Int?
+	public var minimumLatitude: Int?
 
 	/// Min longitude in this route - for geo boxing
-	public var minIntitude: Int?
+	public var minimumLongitude: Int?
 
 	/// Max latitude in this route - for geo boxing
-	public var maxLatitude: Int?
+	public var maximumLatitude: Int?
 
 	/// Max longitude in this route - for geo boxing
-	public var maxIntitude: Int?
+	public var maximumLongitude: Int?
 
 	/// The sport type for this route - ie cycling, running etc
 	public var type: ActivityType?
@@ -108,7 +108,7 @@ public struct UserRoute: Codable, JSONEncodedBody {
 	//public var mask: Int?
 
 	/// A bitmask used for tracking visibility / sharing of this route - see UserRouteVisibilityMask
-	public var vmask: Int?
+	public var visibilityMask: Int?
 
 	/// Permissions which the current user has scope to on this object
 	public var permissions: Set<DataAccessRequest>?
@@ -120,23 +120,73 @@ public struct UserRoute: Codable, JSONEncodedBody {
 	public var message: String?
 
 	/// Start location
-	public var lat1: Double?
-	public var lon1: Double?
+	public var latitude1: Double?
+	public var longitude1: Double?
 
 	/// End location
-	public var lat2: Double?
-	public var lon2: Double?
+	public var latitude2: Double?
+	public var longitude2: Double?
 
 	/// My rating of this route (if any)
 	public var rating: Int?
 
 	/// The overall rating of this route (if any)
-	public var publicRating: Int?
+	public var publicRatingOverall: Int?
 
 	/// The number of public ratings (if any)
-	public var publicRatingCnt: Int?
+	public var publicRatingCount: Int?
 
 	public init() {}
+
+	// MARK: Codable
+
+	private enum CodingKeys: String, CodingKey {
+			case id
+			case uuid
+			case createdTime
+			case modifiedTime = "modifedTime"
+			case createdBy
+			case modifiedBy = "modifedBy"
+			case user
+			//case company
+			case repeatCount = "rpt"
+			case name
+			case source
+			case sourceID = "sourceId"
+			case locality
+			case locality1
+			case locality2
+			case locale
+			case units
+			case description
+			case distance
+			case ascent
+			case descent
+			case duration
+			case minimumAltitude = "minAlt"
+			case maximumAltitude = "maxAlt"
+			case averageAltitude = "avgAlt"
+			case minimumLatitude = "minLatitude"
+			case minimumLongitude = "minIntitude"
+			case maximumLatitude = "maxLatitude"
+			case maximumLongitude = "maxIntitude"
+			case type
+			case equipment
+			case terrain
+			case tags
+			//case mask
+			case visibilityMask = "vmask"
+			case permissions
+			case state
+			case message
+			case latitude1 = "lat1"
+			case longitude1 = "lon1"
+			case latitude2 = "lat2"
+			case longitude2 = "lon2"
+			case rating
+			case publicRatingOverall = "publicRating"
+			case publicRatingCount = "publicRatingCnt"
+	}
 
 }
 
