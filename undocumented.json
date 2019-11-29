@@ -3781,24 +3781,10 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.161.0/work/z5-sdk-swift/z5-sdk-swift/Zone5/Routes/UserRouteOutputType.swift",
-      "line": 3,
-      "symbol": "UserRouteOutputType",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/runner/runners/2.161.0/work/z5-sdk-swift/z5-sdk-swift/Zone5/Routes/UserRouteSearch.swift",
       "line": 24,
       "symbol": "UserRouteSearch.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/runners/2.161.0/work/z5-sdk-swift/z5-sdk-swift/Zone5/Routes/UserRouteVisibilityMask.swift",
-      "line": 3,
-      "symbol": "UserRouteVisibilityMask",
-      "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
