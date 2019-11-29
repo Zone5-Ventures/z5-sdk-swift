@@ -1,6 +1,8 @@
 import Foundation
 
-public enum UserRouteOutputType: String, Codable, CustomStringConvertible {
+/// The file format that should be expected when creating a route from an uploaded file.
+/// - Note: This is not really used outside of the `RoutesView` at this stage, and so is internal.
+internal enum UserRouteOutputType: String, Codable, CustomStringConvertible {
 
 	/// Stages L10 route format
 	case sro
