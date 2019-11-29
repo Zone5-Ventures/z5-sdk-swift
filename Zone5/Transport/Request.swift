@@ -30,6 +30,7 @@ struct Request {
 		let url = baseURL.appendingPathComponent(endpoint.uri)
 		var request = URLRequest(url: url)
 		request.httpMethod = method.rawValue
+		request.setValue("true", forHTTPHeaderField: "tp-nodecorate")
 
 		// Sign the request with the access token if we have one
 		if endpoint.requiresAccessToken, let accessToken = accessToken {
