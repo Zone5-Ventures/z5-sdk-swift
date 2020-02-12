@@ -175,9 +175,6 @@
                 <a class="nav-group-task-link" href="../Extensions/Date.html">Date</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/JSONEncodedBody.html">JSONEncodedBody</a>
-              </li>
-              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Extensions/TimeInterval.html">TimeInterval</a>
               </li>
             </ul>
@@ -257,6 +254,12 @@
                 <a class="nav-group-task-link" href="../Structs/UserRoute.html">UserRoute</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserRoute.html#/s:5Zone59UserRouteV10Identifiera">– Identifier</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserRoute.html#/s:5Zone59UserRouteV4UUIDa">– UUID</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/UserRouteSearch.html">UserRouteSearch</a>
               </li>
               <li class="nav-group-task">
@@ -310,11 +313,14 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>Milliseconds</h1>
               <div class="declaration">
                 <div class="language">
                   <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Milliseconds</span> <span class="p">:</span> <span class="kt">RawRepresentable</span><span class="p">,</span> <span class="kt">Hashable</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Milliseconds</span><span class="p">:</span> <span class="kt">ExpressibleByIntegerLiteral</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Milliseconds</span><span class="p">:</span> <span class="kt">SignedNumeric</span><span class="p">,</span> <span class="kt">Strideable</span><span class="p">,</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">Comparable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Milliseconds</span><span class="p">:</span> <span class="kt">Codable</span></code></pre>
 
                 </div>
               </div>
@@ -441,9 +447,11 @@
               <div class="task-name-container">
                 <a name="/CustomStringConvertible"></a>
                 <a name="//apple_ref/swift/Section/CustomStringConvertible" class="dashAnchor"></a>
-                <a href="#/CustomStringConvertible">
-                  <h3 class="section-name">CustomStringConvertible</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/CustomStringConvertible"></a>
+                  <h3 class="section-name"><p>CustomStringConvertible</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -472,10 +480,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -511,9 +515,11 @@
               <div class="task-name-container">
                 <a name="/Numeric"></a>
                 <a name="//apple_ref/swift/Section/Numeric" class="dashAnchor"></a>
-                <a href="#/Numeric">
-                  <h3 class="section-name">Numeric</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Numeric"></a>
+                  <h3 class="section-name"><p>Numeric</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -680,9 +686,11 @@
               <div class="task-name-container">
                 <a name="/Strideable"></a>
                 <a name="//apple_ref/swift/Section/Strideable" class="dashAnchor"></a>
-                <a href="#/Strideable">
-                  <h3 class="section-name">Strideable</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Strideable"></a>
+                  <h3 class="section-name"><p>Strideable</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -743,9 +751,11 @@
               <div class="task-name-container">
                 <a name="/AdditiveArithmetic"></a>
                 <a name="//apple_ref/swift/Section/AdditiveArithmetic" class="dashAnchor"></a>
-                <a href="#/AdditiveArithmetic">
-                  <h3 class="section-name">AdditiveArithmetic</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/AdditiveArithmetic"></a>
+                  <h3 class="section-name"><p>AdditiveArithmetic</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -884,9 +894,11 @@
               <div class="task-name-container">
                 <a name="/Comparable"></a>
                 <a name="//apple_ref/swift/Section/Comparable" class="dashAnchor"></a>
-                <a href="#/Comparable">
-                  <h3 class="section-name">Comparable</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Comparable"></a>
+                  <h3 class="section-name"><p>Comparable</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -921,9 +933,11 @@
               <div class="task-name-container">
                 <a name="/Equatable"></a>
                 <a name="//apple_ref/swift/Section/Equatable" class="dashAnchor"></a>
-                <a href="#/Equatable">
-                  <h3 class="section-name">Equatable</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Equatable"></a>
+                  <h3 class="section-name"><p>Equatable</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -952,10 +966,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -1016,8 +1026,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://zone5ventures.com" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2019-11-29)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.12.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://zone5ventures.com" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-02-12)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
