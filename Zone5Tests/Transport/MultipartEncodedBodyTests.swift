@@ -187,8 +187,19 @@ final class MultipartEncodedBodyTests: XCTestCase {
 		var currentKey = ""
 		var scanningKey = true
 		while true {
-			let character = scanner.scanCharacter() ?? ";"
-
+            let character: Character
+            if #available(iOS 13.0, *) {
+                character = scanner.scanCharacter() ?? ";"
+            }
+            else if scanner.scanLocation < scanner.string.count {
+                let index = scanner.string.index(scanner.string.startIndex, offsetBy: scanner.scanLocation)
+                character = scanner.string[index]
+                scanner.scanLocation += 1
+            }
+            else {
+                character = ";"
+            }
+            
 			if character == ";" {
 				// Finished the value, remove wrapping quotes (if found), and prepare for the next key
 				if let segmentValue = parameters[currentKey] {
@@ -205,12 +216,24 @@ final class MultipartEncodedBodyTests: XCTestCase {
 					break
 				}
 
-				_ = scanner.scanCharacters(from: .whitespaces)
+                if #available(iOS 13.0, *) {
+                    _ = scanner.scanCharacters(from: .whitespaces)
+                }
+                else {
+                    scanner.scanCharacters(from: CharacterSet(charactersIn: ";"), into: nil)
+                    scanner.scanCharacters(from: .whitespaces, into: nil)
+                }
 			}
 			else if character == "=" {
 				// Finished scanning the key, switch to the value
 				parameters[currentKey] = ""
 				scanningKey = false
+                
+                if #available(iOS 13.0, *) {
+                }
+                else {
+                    scanner.scanCharacters(from: CharacterSet(charactersIn: "="), into: nil)
+                }
 			}
 			else if !scanningKey, var segmentValue = parameters[currentKey] {
 				// Scan characters into the value
