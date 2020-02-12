@@ -11,10 +11,15 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-    - uses: actions/checkout@v1
-
-    - name: Install Jazzy
-      run: gem install jazzy
+    - name: Checkout
+      uses: actions/checkout@v1
+    
+    - name: Cache RubyGems
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: ${{ runner.os }}-gem-
 
     - name: Generate Documentation
       run: make documentation
