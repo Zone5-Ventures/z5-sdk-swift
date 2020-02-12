@@ -89,21 +89,29 @@ class MillisecondsTests: XCTestCase {
 
 	func testCodable() throws {
 		let tests: [(json: String, expected: Milliseconds?)] = [
-			("0", 0),
-			("123456789", 123456789),
-			("123456789.987654321", nil),
+			("[0]", 0),
+			("[123456789]", 123456789),
+			("[123456789.987654321]", nil),
 		]
 
 		for (json, expected) in tests {
-			let decoded = try? decode(json: json, as: Milliseconds.self)
-			XCTAssertEqual(decoded, expected)
+            do {
+                let decoded = try decode(json: json, as: [Milliseconds].self)
+                XCTAssertEqual(decoded.first, expected)
+            } catch {
+                print(error)
+            }
 
 			guard let milliseconds = expected else {
 				continue
 			}
 
-			let encoded = try? encode(milliseconds)
-			XCTAssertEqual(encoded, json)
+            do {
+                let encoded = try encode([milliseconds])
+                XCTAssertEqual(encoded, json)
+            } catch {
+                print(error)
+            }
 		}
 	}
 
