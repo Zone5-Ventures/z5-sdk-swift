@@ -1,6 +1,6 @@
 # Zone5 SDK for Swift
 
-![Unit Test Status](https://github.com/Zone5-Ventures/z5-sdk-swift/workflows/Unit%20Tests/badge.svg)
+![Unit Test Status](https://github.com/Zone5-Cloud/z5-sdk-swift/workflows/Unit%20Tests/badge.svg)
 
 ## Installation
 
@@ -13,7 +13,7 @@ import PackageDescription
 let package = Package(
     [...]
     dependencies: [
-        .package(url: "https://github.com/Zone5-Ventures/z5-sdk-swift.git", from: "1.0.0"),
+        .package(url: "https://github.com/Zone5-Cloud/z5-sdk-swift.git", from: "1.0.0"),
     ]
 )
 ```
@@ -22,7 +22,7 @@ let package = Package(
 Install the SDK via [Carthage](https://github.com/Carthage/Carthage) by adding the following line to your `Cartfile`:
 
 ```
-github "Zone5-Ventures/z5-sdk-swift"
+github "Zone5-Cloud/z5-sdk-swift"
 ```
 
 ## Getting Started
@@ -73,7 +73,7 @@ Zone5.shared.users.me { result in
 
 ## Unit Tests
 
-Unit tests are included and can be run from both the Swift CLI and via Xcode. There may be some slight differences in how these two sources run tests, so if tests are failing in one, but not the other, this may be the cause. Tests are run automatically on push (of any branch) using the Swift CLI, via a [GitHub Action](https://github.com/Zone5-Ventures/z5-sdk-swift/blob/master/.github/workflows/unit-tests.yml), the result of which can be browsed via [the Actions tab](https://github.com/Zone5-Ventures/z5-sdk-swift/actions?query=workflow%3A%22Unit+Tests%22).
+Unit tests are included and can be run from both the Swift CLI and via Xcode. There may be some slight differences in how these two sources run tests, so if tests are failing in one, but not the other, this may be the cause. Tests are run automatically on push (of any branch) using the Swift CLI, via a [GitHub Action](https://github.com/Zone5-Cloud/z5-sdk-swift/blob/master/.github/workflows/unit-tests.yml), the result of which can be browsed via [the Actions tab](https://github.com/Zone5-Cloud/z5-sdk-swift/actions?query=workflow%3A%22Unit+Tests%22).
 
 ### Running Tests via Swift CLI
 
@@ -84,6 +84,6 @@ Run `swift test` from the repo's root directory. Test results will be logged dir
 In the _Product_ menu, select _Test_, or use the keyboard shortcut—typically &#8984;U. Test results are available from the Test Navigator (&#8984;6). Additional details—such as a coverage report—can be found in the Report Navigator (&#8984;9), by selecting the relevant Test report.
 
 ## Documentation
-You can [find documentation for this project here](https://zone5-ventures.github.io/z5-sdk-swift/). This documentation is automatically generated with [jazzy](https://github.com/realm/jazzy) from a [GitHub Action](https://github.com/Zone5-Ventures/z5-sdk-swift/blob/master/.github/workflows/documentation.yml) and hosted with [GitHub Pages](https://pages.github.com/).
+You can [find documentation for this project here](https://zone5-ventures.github.io/z5-sdk-swift/). This documentation is automatically generated with [jazzy](https://github.com/realm/jazzy) from a [GitHub Action](https://github.com/Zone5-Cloud/z5-sdk-swift/blob/master/.github/workflows/documentation.yml) and hosted with [GitHub Pages](https://pages.github.com/).
 
 To generate documentation locally, run `make documentation` or `sh ./scripts/prepare_docs.sh` from the repo's root directory. The output will be generated in the docs folder, and should _not_ be included with commits (as the online documentation is automatically generated and updated).

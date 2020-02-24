@@ -14,6 +14,6 @@ bundle exec jazzy \
 	--hide-documentation-coverage \
 	--title "Zone5 SDK for Swift" \
 	--author_url https://zone5ventures.com \
-	--github_url https://github.com/Zone5-Ventures/z5-sdk-swift \
+	--github_url https://github.com/Zone5-Cloud/z5-sdk-swift \
 	--theme fullwidth \
 	--output ./docs
