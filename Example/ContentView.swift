@@ -56,7 +56,7 @@ struct ContentView: View {
 						criteria.order = [.ascending("ts")]
 
 						var parameters = SearchInput(criteria: criteria)
-						parameters.fields = ["name", "distance", "ascent", "peak3minWatts", "peak20minWatts", "channels"]
+						parameters.fields = ["name", "distance", "ascent", "peak3minWatts", "peak20minWatts", "channels", "bike.serial", "bike.name", "bike.uuid", "bike.avatar", "bike.descr"]
 
 						client.activities.search(parameters, offset: 0, count: 10, completion: completion)
 					}
