@@ -350,7 +350,7 @@
 <span class="kt">Zone5</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="n">baseURL</span><span class="p">,</span> <span class="nv">clientID</span><span class="p">:</span> <span class="n">clientID</span><span class="p">,</span> <span class="nv">clientSecret</span><span class="p">:</span> <span class="n">clientSecret</span><span class="p">)</span>
 </code></pre>
 
-<p>Once configured, you&rsquo;ll be able to authenticate users via the methods available through <a href="https://zone5-ventures.github.io/z5-sdk-swift/Classes/OAuthView.html"><code>Zone5.shared.oAuth</code></a>:</p>
+<p>Once configured, you&rsquo;ll be able to authenticate users via the methods available through <a href="https://zone5-cloud.github.io/z5-sdk-swift/Classes/OAuthView.html"><code>Zone5.shared.oAuth</code></a>:</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">username</span> <span class="o">=</span> <span class="s">"EXAMPLE-USERNAME"</span>
 <span class="k">let</span> <span class="nv">password</span> <span class="o">=</span> <span class="s">"EXAMPLE-PASSWORD"</span>
 
@@ -366,7 +366,7 @@
 <span class="p">}</span>
 </code></pre>
 
-<p>Once the user successfully authenticates, these methods return an <a href="https://zone5-ventures.github.io/z5-sdk-swift/Structs/AccessToken.html"><code><a href="Structs/AccessToken.html">AccessToken</a></code></a> object, but also update the <a href="https://zone5-ventures.github.io/z5-sdk-swift/Classes/Zone5.html#/s:5Zone5AAC11accessTokenAA06AccessC0VSgvp"><code>Zone5.shared.accessToken</code></a> with the returned token, allowing access to methods that require this token to be set.</p>
+<p>Once the user successfully authenticates, these methods return an <a href="https://zone5-cloud.github.io/z5-sdk-swift/Structs/AccessToken.html"><code><a href="Structs/AccessToken.html">AccessToken</a></code></a> object, but also update the <a href="https://zone5-cloud.github.io/z5-sdk-swift/Classes/Zone5.html#/s:5Zone5AAC11accessTokenAA06AccessC0VSgvp"><code>Zone5.shared.accessToken</code></a> with the returned token, allowing access to methods that require this token to be set.</p>
 <pre class="highlight swift"><code><span class="kt">Zone5</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">me</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
     <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
@@ -388,7 +388,7 @@
 <p>In the <em>Product</em> menu, select <em>Test</em>, or use the keyboard shortcut—typically &#8984;U. Test results are available from the Test Navigator (&#8984;6). Additional details—such as a coverage report—can be found in the Report Navigator (&#8984;9), by selecting the relevant Test report.</p>
 <h2 id='documentation' class='heading'>Documentation</h2>
 
-<p>You can <a href="https://zone5-ventures.github.io/z5-sdk-swift/">find documentation for this project here</a>. This documentation is automatically generated with <a href="https://github.com/realm/jazzy">jazzy</a> from a <a href="https://github.com/Zone5-Cloud/z5-sdk-swift/blob/master/.github/workflows/documentation.yml">GitHub Action</a> and hosted with <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+<p>You can <a href="https://zone5-cloud.github.io/z5-sdk-swift/">find documentation for this project here</a>. This documentation is automatically generated with <a href="https://github.com/realm/jazzy">jazzy</a> from a <a href="https://github.com/Zone5-Cloud/z5-sdk-swift/blob/master/.github/workflows/documentation.yml">GitHub Action</a> and hosted with <a href="https://pages.github.com/">GitHub Pages</a>.</p>
 
 <p>To generate documentation locally, run <code>make documentation</code> or <code>sh ./scripts/prepare_docs.sh</code> from the repo&rsquo;s root directory. The output will be generated in the docs folder, and should <em>not</em> be included with commits (as the online documentation is automatically generated and updated).</p>
 
