@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FB27F3D24060BFA00D7991B /* UserWorkoutResultBike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB27F3C24060BFA00D7991B /* UserWorkoutResultBike.swift */; };
 		A10AB213237D0B5100EBAC66 /* UserHeadunit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB212237D0B5100EBAC66 /* UserHeadunit.swift */; };
 		A10AB215237D0C9400EBAC66 /* UserIntensityZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB214237D0C9400EBAC66 /* UserIntensityZone.swift */; };
 		A10AB217237D0D0000EBAC66 /* UserIntensityZoneRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB216237D0D0000EBAC66 /* UserIntensityZoneRange.swift */; };
@@ -151,6 +152,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0FB27F3C24060BFA00D7991B /* UserWorkoutResultBike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWorkoutResultBike.swift; sourceTree = "<group>"; };
 		A10AB212237D0B5100EBAC66 /* UserHeadunit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeadunit.swift; sourceTree = "<group>"; };
 		A10AB214237D0C9400EBAC66 /* UserIntensityZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntensityZone.swift; sourceTree = "<group>"; };
 		A10AB216237D0D0000EBAC66 /* UserIntensityZoneRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntensityZoneRange.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				A10AB235237E147D00EBAC66 /* UserWorkoutResultRating.swift */,
 				A10AB22E237E147D00EBAC66 /* UserWorkoutResultTurbo.swift */,
 				A182D1C92372AB0F00112501 /* Activity.swift */,
+				0FB27F3C24060BFA00D7991B /* UserWorkoutResultBike.swift */,
 			);
 			path = Activities;
 			sourceTree = "<group>";
@@ -753,6 +756,7 @@
 				A182D1D42372AB0F00112501 /* View.swift in Sources */,
 				A1C28C64238B8BE000E67B05 /* Indirect.swift in Sources */,
 				A196035923794DD200CEB121 /* UserWorkoutFailedReason.swift in Sources */,
+				0FB27F3D24060BFA00D7991B /* UserWorkoutResultBike.swift in Sources */,
 				A182D1D02372AB0F00112501 /* HTTPClient.swift in Sources */,
 				A182D1CE2372AB0F00112501 /* JSONEncodedBody.swift in Sources */,
 				A1EBDAD7237A1DE800834B21 /* MultipartEncodedBody.swift in Sources */,

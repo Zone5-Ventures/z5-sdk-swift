@@ -594,6 +594,8 @@ public struct UserWorkoutResult: Codable {
 	public var hour: UserWorkoutResultByHour?
 
 	public var turbo: UserWorkoutResultTurbo?
+	
+	public var bike: UserWorkoutResultBike?
 
 	public var channels: [UserWorkoutResultChannel]?
 
@@ -900,6 +902,7 @@ public struct UserWorkoutResult: Codable {
 		case lss = "lss"
 		case hour = "hour"
 		case turbo = "turbo"
+		case bike = "bike"
 		case channels = "channels"
 		case sum = "sum"
 		case minimum = "min"
