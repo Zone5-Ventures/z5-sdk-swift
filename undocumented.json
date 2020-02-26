@@ -1578,48 +1578,55 @@
     {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
       "line": 598,
+      "symbol": "UserWorkoutResult.bike",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
+      "line": 600,
       "symbol": "UserWorkoutResult.channels",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 602,
+      "line": 604,
       "symbol": "UserWorkoutResult.sum",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 603,
+      "line": 605,
       "symbol": "UserWorkoutResult.minimum",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 604,
+      "line": 606,
       "symbol": "UserWorkoutResult.maximum",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 605,
+      "line": 607,
       "symbol": "UserWorkoutResult.average",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 606,
+      "line": 608,
       "symbol": "UserWorkoutResult.weightedAverage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResult.swift",
-      "line": 608,
+      "line": 610,
       "symbol": "UserWorkoutResult.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -1663,6 +1670,20 @@
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultAlt.swift",
       "line": 12,
       "symbol": "UserWorkoutResultAlt.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultBike.swift",
+      "line": 11,
+      "symbol": "UserWorkoutResultBike",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultBike.swift",
+      "line": 27,
+      "symbol": "UserWorkoutResultBike.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
