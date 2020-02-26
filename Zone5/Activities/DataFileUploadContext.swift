@@ -43,7 +43,10 @@ public struct DataFileUploadContext: JSONEncodedBody {
 	/// A bit mask of UserConnectionsType.java ordinals - which 3rd party sites should be try to upload this file to
 	public var pushMask: Int?
 
-	public init() {}
+    /// An external bike UUID - used for component tracking
+    public var bikeID: String?
+
+    public init() {}
 
 	// MARK: Encodable
 
@@ -59,6 +62,7 @@ public struct DataFileUploadContext: JSONEncodedBody {
 		case workout
 		case callbackURL = "callbackUrl"
 		case pushMask
+        case bikeID = "bikeId"
 	}
 
 }
