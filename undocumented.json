@@ -16,7 +16,7 @@
     },
     {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadContext.swift",
-      "line": 46,
+      "line": 49,
       "symbol": "DataFileUploadContext.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
