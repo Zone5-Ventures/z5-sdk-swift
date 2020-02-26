@@ -6,7 +6,7 @@
 //  Copyright © 2020 Zone5 Ventures. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public struct UserWorkoutResultBike: Codable {
 	/** Display name for the bike */
