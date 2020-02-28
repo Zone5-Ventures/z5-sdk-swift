@@ -34,9 +34,4 @@ final class URLEncodedBodyTests: XCTestCase {
 			XCTAssertEqual(data, expectedData)
 		}
 	}
-
-    static var allTests = [
-        ("testLiterals", testLiterals),
-    ]
-
 }

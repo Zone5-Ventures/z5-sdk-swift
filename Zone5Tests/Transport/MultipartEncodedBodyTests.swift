@@ -290,13 +290,6 @@ final class MultipartEncodedBodyTests: XCTestCase {
 			XCTAssertEqual(parsedParameters, expectedParameters)
 		}
 	}
-
-	static var allTests = [
-        ("testMultipartEncoding", testMultipartEncoding),
-        ("testNoParts", testNoParts),
-		("testValidateKnownGoodMultipartData", testValidateKnownGoodMultipartData),
-		("testParseHeaderValue", testParseHeaderValue),
-    ]
 }
 
 private extension Data {

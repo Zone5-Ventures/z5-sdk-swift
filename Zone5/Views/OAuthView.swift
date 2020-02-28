@@ -23,7 +23,7 @@ public class OAuthView: APIView {
 	///   - completion: Handler called the authentication completes. If successful, the result will contain an access
 	///   	token that can be stored and used to authenticate the user in future sessions, and otherwise will contain a
 	///   	`Zone5.Error` value which represents the problem that occurred.
-	public func accessToken(username: String, password: String, completion: @escaping (_ result: Result<AccessToken, Zone5.Error>) -> Void) {
+	public func accessToken(username: String, password: String, completion: @escaping (_ result: Result<OAuthToken, Zone5.Error>) -> Void) {
 		guard let zone5 = zone5, let clientID = zone5.clientID, let clientSecret = zone5.clientSecret else {
 			completion(.failure(.invalidConfiguration))
 
@@ -39,11 +39,11 @@ public class OAuthView: APIView {
 			"redirect_uri": zone5.redirectURI,
 		]
 
-		post(Endpoints.accessToken, body: body, expectedType: AccessToken.self) { [weak self] result in
+		post(Endpoints.accessToken, body: body, expectedType: OAuthToken.self) { [weak self] result in
 			defer { completion(result) }
 
-			if let zone5 = self?.zone5, case .success(let accessToken) = result {
-				zone5.accessToken = accessToken
+			if let zone5 = self?.zone5, case .success(let token) = result {
+				zone5.accessToken = AccessToken(rawValue: token.accessToken)
 			}
 		}
 	}

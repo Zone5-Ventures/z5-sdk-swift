@@ -4,7 +4,7 @@ import XCTest
 class OAuthViewTests: XCTestCase {
 
 	func testAccessToken() {
-		let tests: [(prepareConfiguration: (_ configuration: inout ConfigurationForTesting) -> Void, response: TestHTTPClientURLSession.Result<String>, expectedResult: Zone5.Result<AccessToken>)] = [
+		let tests: [(prepareConfiguration: (_ configuration: inout ConfigurationForTesting) -> Void, response: TestHTTPClientURLSession.Result<String>, expectedResult: Zone5.Result<OAuthToken>)] = [
 			( // Should complete with .invalidConfiguration when client is not configured correctly.
 				prepareConfiguration: { $0.clientID = nil; $0.clientSecret = nil },
 				response: .message("{\"message\":\"UT010031: Login failed\"}", statusCode: 500),
@@ -28,12 +28,12 @@ class OAuthViewTests: XCTestCase {
 			( // Should succeed when a valid response is returned from the server.
 				prepareConfiguration: { $0.accessToken = nil },
 				response: .success("{\"access_token\":\"ACCESS_TOKEN_VALUE\",\"ignored_value\":\"that is dropped during decoding\"}"),
-				expectedResult: .success(AccessToken(rawValue: "ACCESS_TOKEN_VALUE"))
+				expectedResult: .success(OAuthToken(rawValue: "ACCESS_TOKEN_VALUE"))
 			),
 			( // Should succeed even if a valid AccessToken exists.
 				prepareConfiguration: { _ in },
 				response: .success("{\"access_token\":\"ACCESS_TOKEN_VALUE\"}"),
-				expectedResult: .success(AccessToken(rawValue: "ACCESS_TOKEN_VALUE"))
+				expectedResult: .success(OAuthToken(rawValue: "ACCESS_TOKEN_VALUE"))
 			),
 		]
 
@@ -57,8 +57,7 @@ class OAuthViewTests: XCTestCase {
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
 
 				case (.success(let lhs), .success(let rhs)):
-					XCTAssertEqual(lhs.rawValue, rhs.rawValue)
-					XCTAssertEqual("AccessToken(\(lhs))", rhs.debugDescription)
+					XCTAssertEqual(lhs.accessToken, rhs.accessToken)
 
 				default:
 					XCTFail("Unexpected result:\n\t- Got: \(result)\n\t- Expected: \(test.expectedResult)")
@@ -66,9 +65,4 @@ class OAuthViewTests: XCTestCase {
 			}
 		}
 	}
-
-    static var allTests = [
-        ("testAccessToken", testAccessToken),
-    ]
-
 }

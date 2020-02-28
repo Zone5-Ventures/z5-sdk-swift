@@ -26,10 +26,4 @@ final class RequestEndpointTests: XCTestCase {
 			XCTAssertEqual(detokenizedEndpoint.uri, test.expectedURI)
 		}
 	}
-
-    static var allTests = [
-        ("testRequiresAccessToken", testRequiresAccessToken),
-		("testReplacingTokens", testReplacingTokens),
-    ]
-
 }
