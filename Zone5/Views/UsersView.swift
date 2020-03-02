@@ -43,29 +43,18 @@ public class UsersView: APIView {
 	}
 	
 	/// Login as a user and obtain a bearer token - clientId and clientSecret are not required in Specialized featureset
-	public func login(username: String, password: String, clientID: String? = nil, clientSecret: String? = nil, completion: @escaping Zone5.ResultHandler<LoginResponse>) {
+	public func login(email: String, password: String, clientID: String? = nil, clientSecret: String? = nil, completion: @escaping Zone5.ResultHandler<LoginResponse>) {
 		guard let zone5 = zone5 else {
 			completion(.failure(.invalidConfiguration))
 			return
 		}
 		
-		let body: URLEncodedBody
-		
 		// Some hosts require clientID and clientSecret. Others do not.
+		let body: JSONEncodedBody
 		if !zone5.requiresClientSecret {
-			body = [
-				"username": username,
-				"password": password,
-				"token": "true"
-			]
+			body = LoginRequest(email: email, password: password)
 		} else if let clientID = clientID, let clientSecret = clientSecret {
-			body = [
-				"username": username,
-				"password": password,
-				"token": "true",
-				"client_id": clientID,
-				"client_secret": clientSecret
-			]
+			body = LoginRequest(email: email, password: password, clientID: clientID, clientSecret: clientSecret)
 		} else {
 			// requires clientID and secretID but it has not been provided. FAIL.
 			completion(.failure(.invalidConfiguration))
@@ -93,39 +82,50 @@ public class UsersView: APIView {
 		}
 	}
 	
-	/** Test if an email address is already registered in the system - true if the email already exists in the system */
-	public func isEmailRegistered(username: String, completion: @escaping Zone5.ResultHandler<Bool>) {
-		let body: URLEncodedBody = [username: nil]
+	/// Test if an email address is already registered in the system - true if the email already exists in the system
+	public func isEmailRegistered(email: String, completion: @escaping Zone5.ResultHandler<Bool>) {
+		let body = StringEncodedBody(email)
 		post(Endpoints.exists, body: body, with: completion)
 	}
 	
-	/** Request a password reset email - ie get a magic link to reset a user's password */
-	public func resetPassword(username: String, completion: @escaping Zone5.ResultHandler<Bool>) {
-		let body: URLEncodedBody = [username: nil]
+	/// Request a password reset email - ie get a magic link to reset a user's password
+	public func resetPassword(email: String, completion: @escaping Zone5.ResultHandler<Bool>) {
+		let body = StringEncodedBody(email)
 		post(Endpoints.passwordReset, body: body, with: completion)
 	}
 	
-	/** Change a user's password - oldPassword is only required in Specialized environment */
-	public func changePassword(oldPassword: String, newPassword: String, completion: @escaping Zone5.ResultHandler<VoidReply>) {
+	/// Change a user's password - oldPassword is only required in Specialized environment
+	public func changePassword(oldPassword: String?, newPassword: String, completion: @escaping Zone5.ResultHandler<VoidReply>) {
 		guard let zone5 = zone5 else {
 			completion(.failure(.invalidConfiguration))
 			return
 		}
 		
 		if zone5.requiresClientSecret {
-			let body: URLEncodedBody = [
-				"oldPassword": oldPassword,
-				"newPassword": newPassword
-			]
-			post(Endpoints.setUser, body: body, with: completion)
-		} else {
+			// we are in an authenticated session with client and secret, so we don't need old password. Just change new password.
 			var user = User()
 			user.password = newPassword
-			post(Endpoints.changePasswordSpecialized, body: user, with: completion)
+			post(Endpoints.setUser, body: user, expectedType: Bool.self) { result in
+				// convert reply into a void so that changePasswordSpecialized and setUser are coerced to look the same
+				switch result {
+				case .failure(let error):
+					completion(.failure(error))
+				case .success(let result):
+					if result {
+						completion(.success(VoidReply()))
+					} else {
+						completion(.failure(Zone5.Error.unknown))
+					}
+				}
+			}
+		} else if let oldPassword = oldPassword {
+			// Specialized usage with GIGYA token. We need old password and new password
+			let body = NewPassword(old: oldPassword, new: newPassword)
+			post(Endpoints.changePasswordSpecialized, body: body, with: completion)
 		}
 	}
 	
-	/** Refresh a bearer token - get a new token if the current one is nearing expiry */
+	/// Refresh a bearer token - get a new token if the current one is nearing expiry
 	public func refreshToken(completion: @escaping Zone5.ResultHandler<OAuthTokenAlt>) {
 		get(Endpoints.refreshToken, parameters: nil, expectedType: OAuthTokenAlt.self)  { [weak self] result in
 			defer { completion(result) }

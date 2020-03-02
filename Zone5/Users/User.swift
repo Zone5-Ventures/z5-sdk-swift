@@ -1,6 +1,6 @@
 import Foundation
 
-/// User Model
+/// Model object representing a User
 public struct User: Codable, JSONEncodedBody {
 
 	/// Unique user id (within Z5/TP database)

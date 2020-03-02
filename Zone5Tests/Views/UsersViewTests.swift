@@ -125,7 +125,7 @@ class UsersViewTests: XCTestCase {
 				return .success(test.json)
 			}
 
-			client.users.login(username: "jane.smith@example.com", password: "pword", clientID: test.clientId, clientSecret: test.secret) { result in
+			client.users.login(email: "jane.smith@example.com", password: "pword", clientID: test.clientId, clientSecret: test.secret) { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
@@ -371,7 +371,7 @@ class UsersViewTests: XCTestCase {
 				return .success(test.json)
 			}
 			
-			client.users.isEmailRegistered(username: "jame@example") { result in
+			client.users.isEmailRegistered(email: "jame@example") { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
@@ -443,7 +443,7 @@ class UsersViewTests: XCTestCase {
 				return .success(test.json)
 			}
 			
-			client.users.resetPassword(username: "jame@example") { result in
+			client.users.resetPassword(email: "jame@example") { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
@@ -479,7 +479,7 @@ class UsersViewTests: XCTestCase {
 				host: "http://google.com",
 				clientId: nil,
 				secret: nil,
-				json: "",
+				json: "true",
 				expectedResult: .success {
 					return VoidReply()
 				}

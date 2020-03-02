@@ -35,6 +35,8 @@ struct ContentView: View {
 	}
 
 	@State var displayConfiguration = false
+	
+	var newUser = RegisterUser(email: "jean+testingios@todaysplan.com.au", password: "password", firstname: "test", lastname: "person")
 
 	var body: some View {
 		NavigationView {
@@ -45,8 +47,74 @@ struct ContentView: View {
 					})
 				}
 				Section(header: Text("Users")) {
-					EndpointLink("Me") { client, completion in
-						client.users.me(completion: completion)
+					EndpointLink<Bool>("Check User Exists") { client, completion in
+						client.users.isEmailRegistered(email: self.newUser.email!, completion: completion)
+					}
+					EndpointLink<Bool>("Reset Password") { client, completion in
+						client.users.resetPassword(email: self.newUser.email!, completion: completion)
+					}
+					EndpointLink<VoidReply>("Change password") { client, completion in
+						let newpass = "MyNewP@ssword\(Date().milliseconds)"
+						let oldpass = self.keyValueStore.password
+						client.users.changePassword(oldPassword: oldpass, newPassword: newpass) { result in
+							switch(result) {
+							case .success(let r):
+								self.keyValueStore.password = newpass
+								completion(.success(r))
+							case .failure(let error):
+								completion(.failure(error))
+							}
+						}
+					}
+					EndpointLink("Refresh Token") { client, completion in
+						client.users.refreshToken(completion: completion)
+					}
+					EndpointLink<User>("Me") { client, completion in
+						client.users.me { value in
+							switch value {
+								case .success(let user):
+									if let id = user.id, id > 0 {
+										self.keyValueStore.userID = id
+									}
+								
+								case .failure(_):
+									self.keyValueStore.userID = -1
+							}
+								
+							completion(value)
+						}
+					}
+					EndpointLink<User>("Register New User") { client, completion in
+						client.users.register(user: self.newUser) { value in
+							switch value {
+								case .success(let user):
+									if let id = user.id, id > 0 {
+										self.keyValueStore.userID = id
+										self.keyValueStore.username = self.newUser.email!
+										self.keyValueStore.password = self.newUser.password!
+									}
+								
+								case .failure(_):
+									self.keyValueStore.userID = -1
+							}
+								
+							completion(value)
+						}
+					}
+					EndpointLink<LoginResponse>("Login") { client, completion in
+						let password = self.keyValueStore.password
+						let email = self.keyValueStore.username
+						client.users.login(email: email, password: password, clientID: self.apiClient.clientID, clientSecret: self.apiClient.clientSecret, completion: completion)
+					}
+					EndpointLink("Logout") { client, completion in
+						client.users.logout(completion: completion)
+					}
+					EndpointLink<VoidReply>("Delete Account") { client, completion in
+						if self.keyValueStore.userID > 0 {
+							client.users.deleteAccount(userID: self.keyValueStore.userID, completion: completion)
+						} else {
+							completion(.failure(.unknown))
+						}
 					}
 				}
 				Section(header: Text("Activities"), footer: Text("Attempting to view \"Next Page\" before performing a legitimate search request—such as by opening the \"Next 3 Months\" screen—will return an empty result.")) {

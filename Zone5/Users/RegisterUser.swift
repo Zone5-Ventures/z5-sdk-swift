@@ -61,4 +61,10 @@ public struct RegisterUser: Codable, JSONEncodedBody {
 	public var params: [String: String]?
 	
 	public init() { }
+	public init(email: String, password: String, firstname: String, lastname: String) {
+		self.email = email
+		self.password = password
+		self.firstname = firstname
+		self.lastname = lastname
+	}
 }

@@ -14,6 +14,9 @@
 		0FAA755824073FBB00CB3C73 /* UserThresholdPower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA755724073FBB00CB3C73 /* UserThresholdPower.swift */; };
 		0FAA755C24074F2E00CB3C73 /* OAuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA755B24074F2E00CB3C73 /* OAuthToken.swift */; };
 		0FAA75602407531900CB3C73 /* OAuthTokenAlt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA755F2407531900CB3C73 /* OAuthTokenAlt.swift */; };
+		0FAA75642408E56E00CB3C73 /* StringEncodedBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA75632408E56E00CB3C73 /* StringEncodedBody.swift */; };
+		0FAA7566240CA34300CB3C73 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA7565240CA34300CB3C73 /* LoginRequest.swift */; };
+		0FAA7568240CB88600CB3C73 /* NewPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA7567240CB88600CB3C73 /* NewPassword.swift */; };
 		0FB27F3D24060BFA00D7991B /* UserWorkoutResultBike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB27F3C24060BFA00D7991B /* UserWorkoutResultBike.swift */; };
 		0FB27F3F2406324900D7991B /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB27F3E2406324900D7991B /* LoginResponse.swift */; };
 		0FB27F41240634B900D7991B /* Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB27F40240634B900D7991B /* Roles.swift */; };
@@ -169,6 +172,9 @@
 		0FAA755724073FBB00CB3C73 /* UserThresholdPower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserThresholdPower.swift; sourceTree = "<group>"; };
 		0FAA755B24074F2E00CB3C73 /* OAuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthToken.swift; sourceTree = "<group>"; };
 		0FAA755F2407531900CB3C73 /* OAuthTokenAlt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenAlt.swift; sourceTree = "<group>"; };
+		0FAA75632408E56E00CB3C73 /* StringEncodedBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEncodedBody.swift; sourceTree = "<group>"; };
+		0FAA7565240CA34300CB3C73 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		0FAA7567240CB88600CB3C73 /* NewPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPassword.swift; sourceTree = "<group>"; };
 		0FB27F3C24060BFA00D7991B /* UserWorkoutResultBike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWorkoutResultBike.swift; sourceTree = "<group>"; };
 		0FB27F3E2406324900D7991B /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		0FB27F40240634B900D7991B /* Roles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roles.swift; sourceTree = "<group>"; };
@@ -356,6 +362,8 @@
 				0FAA75532407374B00CB3C73 /* UserThresholdHeart.swift */,
 				0FAA75552407383200CB3C73 /* UserThresholdPace.swift */,
 				0FAA755724073FBB00CB3C73 /* UserThresholdPower.swift */,
+				0FAA7565240CA34300CB3C73 /* LoginRequest.swift */,
+				0FAA7567240CB88600CB3C73 /* NewPassword.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -391,6 +399,7 @@
 				A182D1B72372AB0E00112501 /* URLEncodedBody.swift */,
 				A182D1B82372AB0E00112501 /* JSONEncodedBody.swift */,
 				A1EBDAD6237A1DE800834B21 /* MultipartEncodedBody.swift */,
+				0FAA75632408E56E00CB3C73 /* StringEncodedBody.swift */,
 				0F903483240692AA00051277 /* VoidReply.swift */,
 			);
 			path = Transport;
@@ -790,12 +799,14 @@
 				A196035823794DD200CEB121 /* RelativePeriod.swift in Sources */,
 				A182D1DA2372AB0F00112501 /* Order.swift in Sources */,
 				A10AB240237E147E00EBAC66 /* UserWorkoutResultAlt.swift in Sources */,
+				0FAA75642408E56E00CB3C73 /* StringEncodedBody.swift in Sources */,
 				A167D6CC238252CE00507276 /* RoutesView.swift in Sources */,
 				A182D1D42372AB0F00112501 /* View.swift in Sources */,
 				A1C28C64238B8BE000E67B05 /* Indirect.swift in Sources */,
 				A196035923794DD200CEB121 /* UserWorkoutFailedReason.swift in Sources */,
 				0FB27F3D24060BFA00D7991B /* UserWorkoutResultBike.swift in Sources */,
 				A182D1D02372AB0F00112501 /* HTTPClient.swift in Sources */,
+				0FAA7566240CA34300CB3C73 /* LoginRequest.swift in Sources */,
 				A182D1CE2372AB0F00112501 /* JSONEncodedBody.swift in Sources */,
 				A1EBDAD7237A1DE800834B21 /* MultipartEncodedBody.swift in Sources */,
 				0FB27F3F2406324900D7991B /* LoginResponse.swift in Sources */,
@@ -825,6 +836,7 @@
 				A10AB22D237D341900EBAC66 /* UserRouteSearch.swift in Sources */,
 				A196035023794DD200CEB121 /* ResultReview.swift in Sources */,
 				A182D1D82372AB0F00112501 /* UserWorkoutFileSearch.swift in Sources */,
+				0FAA7568240CB88600CB3C73 /* NewPassword.swift in Sources */,
 				A196036323794DD200CEB121 /* SwimType.swift in Sources */,
 				0F903484240692AA00051277 /* VoidReply.swift in Sources */,
 				A10AB23F237E147E00EBAC66 /* UserWorkoutResultRating.swift in Sources */,

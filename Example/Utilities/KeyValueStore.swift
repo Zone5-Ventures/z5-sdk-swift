@@ -105,5 +105,17 @@ struct KeyValueStore {
 			}
 		}
 	}
+	
+	var userID: Int {
+		get { return userDefaults.integer(forKey: "Zone5_userId")}
+		set {
+			if newValue > 0 {
+				userDefaults.set(newValue, forKey: "Zone5_userId")
+			}
+			else {
+				userDefaults.removeObject(forKey: "Zone5_userId")
+			}
+		}
+	}
 
 }
