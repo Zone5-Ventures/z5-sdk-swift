@@ -10,6 +10,9 @@ final public class Zone5 {
 	/// A light wrapper of the URLSession API, which enables communication with the server endpoints.
 	internal let httpClient: HTTPClient
 
+	internal static let specializedServer: String = "api-sp.todaysplan.com.au"
+	internal static let specializedStagingServer: String = "api-sp-staging.todaysplan.com.au"
+	
 	init(httpClient: HTTPClient = .init()) {
 		self.httpClient = httpClient
 
@@ -92,8 +95,20 @@ final public class Zone5 {
 		else if clientID != nil && clientSecret != nil {
 			return true // For authentication purposes, we need a valid clientID and clientSecret
 		}
+		else if !requiresClientSecret {
+			return true // For some hosts, we don't need a valid clientID and clientSecret
+		}
 
 		return false
+	}
+	
+	/// Check to see whether this host requires authentication using clientID and clientSecret
+	public var requiresClientSecret: Bool {
+		if let server = self.baseURL, (server.host == Zone5.specializedServer || server.host == Zone5.specializedStagingServer) {
+			return false
+		}
+		
+		return true;
 	}
 
 	// MARK: Views

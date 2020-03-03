@@ -13,7 +13,7 @@ extension XCTestCase {
 
 	struct ConfigurationForTesting {
 
-		var accessToken: AccessToken? = AccessToken(rawValue: "ACCESS_TOKEN")
+		var accessToken: AccessToken? = OAuthToken(rawValue: "ACCESS_TOKEN")
 
 		var baseURL: URL? = URL(string: "http://localhost")!
 

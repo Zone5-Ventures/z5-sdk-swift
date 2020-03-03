@@ -39,6 +39,9 @@ struct ObjectView: View {
 				properties.append(property(for: element, label: "Index \(i)"))
 			}
 		}
+		else if let b = object as? Bool {
+			properties.append(property(for: b, label: "result"))
+		}
 		else if let object = object {
 			for child in Mirror(reflecting: object).children {
 				guard let label = child.label else {

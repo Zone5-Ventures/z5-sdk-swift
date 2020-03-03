@@ -205,15 +205,4 @@ final class HTTPClientDownloadRequestTests: XCTestCase {
 			}
 		}
 	}
-
-	static var allTests = [
-        ("testInvalidConfiguration", testInvalidConfiguration),
-		("testMissingAccessToken", testMissingAccessToken),
-		("testUnexpectedRequestBody", testUnexpectedRequestBody),
-		("testMissingRequestBody", testMissingRequestBody),
-		("testServerFailure", testServerFailure),
-		("testTransportFailure", testTransportFailure),
-		("testSuccessfulRequest", testSuccessfulRequest),
-    ]
-
 }

@@ -233,6 +233,15 @@ private extension JSONDecoder {
 
 		do {
 			// Attempt to decode and return the `data` as the `expectedType` using our decoder
+			if expectedType == VoidReply.self {
+				// special handling required for Void types. Enforce enpty data. Create NoReply object.
+				if data.count > 0 {
+					return .failure(.failedDecodingResponse(Zone5.Error.unknown))
+				} else {
+					return .success(VoidReply() as! T)
+				}
+			}
+			
 			let decodedValue = try decode(expectedType, from: data)
 
 			#if DEBUG

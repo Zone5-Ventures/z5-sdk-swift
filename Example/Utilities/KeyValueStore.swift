@@ -51,7 +51,7 @@ struct KeyValueStore {
 				return nil
 			}
 
-			return AccessToken(rawValue: accessTokenString)
+			return OAuthToken(rawValue: accessTokenString)
 		}
 		set {
 			accessTokenString = newValue?.rawValue ?? ""
@@ -102,6 +102,18 @@ struct KeyValueStore {
 			}
 			else {
 				userDefaults.removeObject(forKey: "Zone5_password")
+			}
+		}
+	}
+	
+	var userID: Int {
+		get { return userDefaults.integer(forKey: "Zone5_userId")}
+		set {
+			if newValue > 0 {
+				userDefaults.set(newValue, forKey: "Zone5_userId")
+			}
+			else {
+				userDefaults.removeObject(forKey: "Zone5_userId")
 			}
 		}
 	}
