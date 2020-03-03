@@ -39,7 +39,7 @@ let clientSecret = "YOUR-CLIENT-SECRET"
 Zone5.shared.configure(for: baseURL, clientID: clientID, clientSecret: clientSecret)
 ```
 
-Once configured, you'll be able to authenticate users via the methods available through [`Zone5.shared.oAuth`](https://zone5-ventures.github.io/z5-sdk-swift/Classes/OAuthView.html):
+Once configured, you'll be able to authenticate users via the methods available through [`Zone5.shared.oAuth`](https://zone5-cloud.github.io/z5-sdk-swift/Classes/OAuthView.html):
 
 ```swift
 let username = "EXAMPLE-USERNAME"
@@ -57,7 +57,7 @@ Zone5.shared.oAuth.accessToken(username: username, password: password) { result 
 }
 ```
 
-Once the user successfully authenticates, these methods return an [`AccessToken`](https://zone5-ventures.github.io/z5-sdk-swift/Structs/AccessToken.html) object, but also update the [`Zone5.shared.accessToken`](https://zone5-ventures.github.io/z5-sdk-swift/Classes/Zone5.html#/s:5Zone5AAC11accessTokenAA06AccessC0VSgvp) with the returned token, allowing access to methods that require this token to be set.
+Once the user successfully authenticates, these methods return an [`AccessToken`](https://zone5-cloud.github.io/z5-sdk-swift/Structs/AccessToken.html) object, but also update the [`Zone5.shared.accessToken`](https://zone5-cloud.github.io/z5-sdk-swift/Classes/Zone5.html#/s:5Zone5AAC11accessTokenAA06AccessC0VSgvp) with the returned token, allowing access to methods that require this token to be set.
 
 ```swift
 Zone5.shared.users.me { result in
@@ -84,6 +84,6 @@ Run `swift test` from the repo's root directory. Test results will be logged dir
 In the _Product_ menu, select _Test_, or use the keyboard shortcut—typically &#8984;U. Test results are available from the Test Navigator (&#8984;6). Additional details—such as a coverage report—can be found in the Report Navigator (&#8984;9), by selecting the relevant Test report.
 
 ## Documentation
-You can [find documentation for this project here](https://zone5-ventures.github.io/z5-sdk-swift/). This documentation is automatically generated with [jazzy](https://github.com/realm/jazzy) from a [GitHub Action](https://github.com/Zone5-Cloud/z5-sdk-swift/blob/master/.github/workflows/documentation.yml) and hosted with [GitHub Pages](https://pages.github.com/).
+You can [find documentation for this project here](https://zone5-cloud.github.io/z5-sdk-swift/). This documentation is automatically generated with [jazzy](https://github.com/realm/jazzy) from a [GitHub Action](https://github.com/Zone5-Cloud/z5-sdk-swift/blob/master/.github/workflows/documentation.yml) and hosted with [GitHub Pages](https://pages.github.com/).
 
 To generate documentation locally, run `make documentation` or `sh ./scripts/prepare_docs.sh` from the repo's root directory. The output will be generated in the docs folder, and should _not_ be included with commits (as the online documentation is automatically generated and updated).
