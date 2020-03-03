@@ -51,7 +51,7 @@ struct KeyValueStore {
 				return nil
 			}
 
-			return AccessToken(rawValue: accessTokenString)
+			return OAuthToken(rawValue: accessTokenString)
 		}
 		set {
 			accessTokenString = newValue?.rawValue ?? ""

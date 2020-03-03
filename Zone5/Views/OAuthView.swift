@@ -43,7 +43,7 @@ public class OAuthView: APIView {
 			defer { completion(result) }
 
 			if let zone5 = self?.zone5, case .success(let token) = result {
-				zone5.accessToken = AccessToken(rawValue: token.accessToken)
+				zone5.accessToken = token
 			}
 		}
 	}

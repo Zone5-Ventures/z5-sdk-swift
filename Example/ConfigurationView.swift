@@ -125,7 +125,7 @@ struct ConfigurationView: View {
 
 				case .success(let accessToken):
 					// We'll hold on to the access token for later.
-					self.keyValueStore.accessToken = AccessToken(rawValue: accessToken.accessToken)
+					self.keyValueStore.accessToken = accessToken
 
 					// Now that we've successfully authenticated, we can dismiss this screen.
 					self.dismiss()

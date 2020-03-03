@@ -9,7 +9,7 @@
 import Foundation
 
 /// OAuth token model returned by the server for refresh token requests
-public struct OAuthTokenAlt: Codable {
+public struct OAuthTokenAlt: Codable, AccessToken {
 
 	/// The string value of the token.
 	public var token: String
@@ -19,5 +19,9 @@ public struct OAuthTokenAlt: Codable {
 	
 	public init(rawValue: String) {
 		token = rawValue
+	}
+	
+	public var rawValue: String {
+		return token
 	}
 }

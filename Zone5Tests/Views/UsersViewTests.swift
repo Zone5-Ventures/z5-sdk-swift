@@ -19,7 +19,7 @@ class UsersViewTests: XCTestCase {
 				expectedResult: .failure(.requiresAccessToken)
 			),
 			(
-				token: AccessToken(rawValue: UUID().uuidString),
+				token: OAuthToken(rawValue: UUID().uuidString),
 				json: "{\"id\": 12345678, \"email\": \"jame.smith@example.com\", \"firstname\": \"Jane\", \"lastname\": \"Smith\"}",
 				expectedResult: .success {
 					var user = User()
@@ -97,7 +97,7 @@ class UsersViewTests: XCTestCase {
 			(
 				// this test is for a host that requires client and secret, and it is provided, so should succeed.
 				// also, sticking in a bogus AccessToken which should get overwritten
-				token: AccessToken(rawValue: UUID().uuidString),
+				token: OAuthToken(rawValue: UUID().uuidString),
 				host: "http://google.com",
 				clientId: "CLIENT",
 				secret: "SECRET",
@@ -160,7 +160,7 @@ class UsersViewTests: XCTestCase {
 			),
 			(
 				// token set. Let's give false from server
-				token: AccessToken(rawValue: "1234567890"),
+				token: OAuthToken(rawValue: "1234567890"),
 				host: "http://\(Zone5.specializedStagingServer)",
 				clientId: nil,
 				secret: nil,
@@ -171,7 +171,7 @@ class UsersViewTests: XCTestCase {
 			),
 			(
 				// token set. Let's give true from server
-				token: AccessToken(rawValue: "1234567890"),
+				token: OAuthToken(rawValue: "1234567890"),
 				host: "http://\(Zone5.specializedStagingServer)",
 				clientId: nil,
 				secret: nil,
@@ -221,7 +221,7 @@ class UsersViewTests: XCTestCase {
 			),
 			(
 				// token set. Let's give true from server
-				token: AccessToken(rawValue: "1234567890"),
+				token: OAuthToken(rawValue: "1234567890"),
 				host: "http://\(Zone5.specializedStagingServer)",
 				clientId: nil,
 				secret: nil,
@@ -230,7 +230,7 @@ class UsersViewTests: XCTestCase {
 			),
 			(
 				// token set. Let's give true from server
-				token: AccessToken(rawValue: "1234567890"),
+				token: OAuthToken(rawValue: "1234567890"),
 				host: "http://\(Zone5.specializedStagingServer)",
 				clientId: nil,
 				secret: nil,
@@ -254,9 +254,9 @@ class UsersViewTests: XCTestCase {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
-					XCTAssertEqual(client.accessToken,  test.token)
+					XCTAssertEqual(client.accessToken?.rawValue,  test.token?.rawValue)
 				case (.success(_), .success(_)):
-					XCTAssertEqual(client.accessToken,  test.token)
+					XCTAssertEqual(client.accessToken?.rawValue,  test.token?.rawValue)
 				default:
 					print(result, test.expectedResult)
 					XCTFail()
@@ -403,7 +403,7 @@ class UsersViewTests: XCTestCase {
 			),
 			(
 				// test exists does not require authentication but can have
-				token: AccessToken(rawValue: "1234567890"),
+				token: OAuthToken(rawValue: "1234567890"),
 				host: "http://google.com",
 				clientId: nil,
 				secret: nil,
@@ -449,11 +449,11 @@ class UsersViewTests: XCTestCase {
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
 					// token unaffected either way
-					XCTAssertEqual(client.accessToken, test.token)
+					XCTAssertEqual(client.accessToken?.rawValue, test.token?.rawValue)
 				case (.success(let lhs), .success(let rhs)):
 					XCTAssertEqual(lhs, rhs)
 					// token unaffected either way
-					XCTAssertEqual(client.accessToken, test.token)
+					XCTAssertEqual(client.accessToken?.rawValue, test.token?.rawValue)
 				default:
 					print(result, test.expectedResult)
 					XCTFail()
@@ -475,7 +475,7 @@ class UsersViewTests: XCTestCase {
 			),
 			(
 				// token set.
-				token: AccessToken(rawValue: "1234567890"),
+				token: OAuthToken(rawValue: "1234567890"),
 				host: "http://google.com",
 				clientId: nil,
 				secret: nil,
@@ -486,7 +486,7 @@ class UsersViewTests: XCTestCase {
 			),
 			(
 				// token set.
-				token: AccessToken(rawValue: "1234567890"),
+				token: OAuthToken(rawValue: "1234567890"),
 				host: "http://google.com",
 				clientId: nil,
 				secret: nil,
@@ -509,9 +509,9 @@ class UsersViewTests: XCTestCase {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
-					XCTAssertEqual(client.accessToken,  test.token)
+					XCTAssertEqual(client.accessToken?.rawValue,  test.token?.rawValue)
 				case (.success(_), .success(_)):
-					XCTAssertEqual(client.accessToken,  test.token)
+					XCTAssertEqual(client.accessToken?.rawValue,  test.token?.rawValue)
 				default:
 					print(result, test.expectedResult)
 					XCTFail()
@@ -533,7 +533,7 @@ class UsersViewTests: XCTestCase {
 			),
 			(
 				// token set.
-				token: AccessToken(rawValue: "1234567890"),
+				token: OAuthToken(rawValue: "1234567890"),
 				host: "http://\(Zone5.specializedStagingServer)",
 				clientId: nil,
 				secret: nil,
@@ -544,7 +544,7 @@ class UsersViewTests: XCTestCase {
 			),
 			(
 				// token set.
-				token: AccessToken(rawValue: "1234567890"),
+				token: OAuthToken(rawValue: "1234567890"),
 				host: "http://\(Zone5.specializedStagingServer)",
 				clientId: nil,
 				secret: nil,
@@ -567,9 +567,9 @@ class UsersViewTests: XCTestCase {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
-					XCTAssertEqual(client.accessToken,  test.token)
+					XCTAssertEqual(client.accessToken?.rawValue,  test.token?.rawValue)
 				case (.success(_), .success(_)):
-					XCTAssertEqual(client.accessToken,  test.token)
+					XCTAssertEqual(client.accessToken?.rawValue,  test.token?.rawValue)
 				default:
 					print(result, test.expectedResult)
 					XCTFail()
@@ -589,7 +589,7 @@ class UsersViewTests: XCTestCase {
 			),
 			(
 				// this test is valid and should pass
-				token: AccessToken(rawValue: "1234567890"),
+				token: OAuthToken(rawValue: "1234567890"),
 				host: "http://\(Zone5.specializedStagingServer)",
 				json: "{\"token\": \"0987654321\", \"tokenExp\": 1234}",
 				expectedResult: .success {
@@ -600,7 +600,7 @@ class UsersViewTests: XCTestCase {
 			),
 			(
 				// this test should fail decode because compulsory token is no included
-				token: AccessToken(rawValue: "1234567890"),
+				token: OAuthToken(rawValue: "1234567890"),
 				host: "http://google.com",
 				json: "{\"tokenExp\": 1234}",
 				expectedResult: .failure(.failedDecodingResponse(Zone5.Error.unknown))
@@ -621,7 +621,7 @@ class UsersViewTests: XCTestCase {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
-					XCTAssertEqual(client.accessToken, test.token)
+					XCTAssertEqual(client.accessToken?.rawValue, test.token?.rawValue)
 				case (.success(let lhs), .success(let rhs)):
 					XCTAssertEqual(lhs.tokenExp, rhs.tokenExp)
 					XCTAssertEqual(lhs.token, rhs.token)

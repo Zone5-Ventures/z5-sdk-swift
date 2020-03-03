@@ -36,7 +36,7 @@ struct ContentView: View {
 
 	@State var displayConfiguration = false
 	
-	var newUser = RegisterUser(email: "jean+testingios@todaysplan.com.au", password: "password", firstname: "test", lastname: "person")
+	var newUser = RegisterUser(email: "jean+testingios2@todaysplan.com.au", password: "ComplexP@55word", firstname: "test", lastname: "person")
 
 	var body: some View {
 		NavigationView {

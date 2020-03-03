@@ -65,7 +65,7 @@ public class UsersView: APIView {
 		defer { completion(result) }
 
 			if let zone5 = self?.zone5, case .success(let loginResponse) = result, let token = loginResponse.token {
-				zone5.accessToken = AccessToken(rawValue: token)
+				zone5.accessToken = OAuthToken(rawValue: token)
 			}
 		}
 	}
@@ -131,8 +131,9 @@ public class UsersView: APIView {
 			defer { completion(result) }
 			
 			if let zone5 = self?.zone5, case .success(let token) = result {
-				// if we successfully logged out, invalidate the token
-				zone5.accessToken = AccessToken(rawValue: token.token)
+				// if we successfully refreshed, update the token
+				//zone5.accessToken = AccessToken(rawValue: token.token)
+				zone5.accessToken = token
 			}
 		}
 	}

@@ -9,7 +9,7 @@ final class RequestTests: XCTestCase {
 
 	func testExample() {
 		let baseURL = URL(string: "https://localhost")!
-		let accessToken = AccessToken(rawValue: UUID().uuidString)
+		let accessToken = OAuthToken(rawValue: UUID().uuidString)
 
 		let body: URLEncodedBody = [
 			"example": "example"
@@ -36,7 +36,7 @@ final class RequestTests: XCTestCase {
 	
 	func testExample2() {
 		let baseURL = URL(string: "https://localhost")!
-		let accessToken = AccessToken(rawValue: UUID().uuidString)
+		let accessToken = OAuthToken(rawValue: UUID().uuidString)
 		
 		let body: URLEncodedBody = [
 			"example": nil
