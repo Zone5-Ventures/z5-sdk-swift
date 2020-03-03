@@ -2850,6 +2850,48 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Company/Company.swift",
+      "line": 11,
+      "symbol": "Company",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Company/Company.swift",
+      "line": 13,
+      "symbol": "Company.id",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Company/Company.swift",
+      "line": 15,
+      "symbol": "Company.nic",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Company/Company.swift",
+      "line": 17,
+      "symbol": "Company.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Company/Company.swift",
+      "line": 19,
+      "symbol": "Company.url",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Company/Company.swift",
+      "line": 21,
+      "symbol": "Company.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/ActivityResultType.swift",
       "line": 11,
       "symbol": "ActivityResultType",
@@ -3441,6 +3483,167 @@
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/ResultSource.swift",
       "line": 16,
       "symbol": "ResultSource.import",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 10,
+      "symbol": "Roles",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 18,
+      "symbol": "Roles.device",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 45,
+      "symbol": "Roles.tfr",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 47,
+      "symbol": "Roles.sky",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 49,
+      "symbol": "Roles.doctor",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 51,
+      "symbol": "Roles.director",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 56,
+      "symbol": "Roles.audit",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 58,
+      "symbol": "Roles.ctm",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 60,
+      "symbol": "Roles.stages",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 62,
+      "symbol": "Roles.surveys",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 64,
+      "symbol": "Roles.teamadmin",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 66,
+      "symbol": "Roles.stagesadmin",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 68,
+      "symbol": "Roles.beta2",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 70,
+      "symbol": "Roles.pi",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 78,
+      "symbol": "Roles.stageslink",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 80,
+      "symbol": "Roles.hrv",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 82,
+      "symbol": "Roles.reports",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 84,
+      "symbol": "Roles.cinch",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 86,
+      "symbol": "Roles.alpha",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 94,
+      "symbol": "Roles.routes",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 102,
+      "symbol": "Roles.bora",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 104,
+      "symbol": "Roles.quickstep",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/Roles.swift",
+      "line": 107,
+      "symbol": "Roles.bahrain",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -4047,30 +4250,191 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/User.swift",
-      "line": 3,
-      "symbol": "User",
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Transport/VoidReply.swift",
+      "line": 11,
+      "symbol": "VoidReply",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/LoginResponse.swift",
+      "line": 11,
+      "symbol": "LoginResponse",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/LoginResponse.swift",
+      "line": 30,
+      "symbol": "LoginResponse.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/OAuthToken.swift",
+      "line": 15,
+      "symbol": "OAuthToken.refreshToken",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/OAuthToken.swift",
+      "line": 16,
+      "symbol": "OAuthToken.tokenType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/OAuthToken.swift",
+      "line": 17,
+      "symbol": "OAuthToken.expires",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/OAuthToken.swift",
+      "line": 19,
+      "symbol": "OAuthToken.init(rawValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/OAuthTokenAlt.swift",
+      "line": 20,
+      "symbol": "OAuthTokenAlt.init(rawValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/RegisterUser.swift",
+      "line": 11,
+      "symbol": "RegisterUser",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/RegisterUser.swift",
+      "line": 63,
+      "symbol": "RegisterUser.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/RegisterUser.swift",
+      "line": 64,
+      "symbol": "RegisterUser.init(email:password:firstname:lastname:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/User.swift",
-      "line": 14,
+      "line": 18,
       "symbol": "User.firstName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/User.swift",
-      "line": 16,
+      "line": 20,
       "symbol": "User.lastName",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/User.swift",
-      "line": 21,
+      "line": 25,
       "symbol": "User.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdHeart.swift",
+      "line": 11,
+      "symbol": "UserThresholdHeart",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdHeart.swift",
+      "line": 12,
+      "symbol": "UserThresholdHeart.maxHr",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdHeart.swift",
+      "line": 13,
+      "symbol": "UserThresholdHeart.testDate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdHeart.swift",
+      "line": 14,
+      "symbol": "UserThresholdHeart.threshold",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdHeart.swift",
+      "line": 16,
+      "symbol": "UserThresholdHeart.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPace.swift",
+      "line": 11,
+      "symbol": "UserThresholdPace",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPace.swift",
+      "line": 12,
+      "symbol": "UserThresholdPace.testDate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPace.swift",
+      "line": 13,
+      "symbol": "UserThresholdPace.threshold",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPace.swift",
+      "line": 15,
+      "symbol": "UserThresholdPace.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPower.swift",
+      "line": 11,
+      "symbol": "UserThresholdPower",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPower.swift",
+      "line": 12,
+      "symbol": "UserThresholdPower.testDate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPower.swift",
+      "line": 13,
+      "symbol": "UserThresholdPower.threshold",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPower.swift",
+      "line": 15,
+      "symbol": "UserThresholdPower.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -4117,13 +4481,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Views/UsersView.swift",
-      "line": 9,
-      "symbol": "UsersView.me(completion:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Views/View.swift",
       "line": 3,
       "symbol": "APIView",
@@ -4132,7 +4489,7 @@
     },
     {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 185,
+      "line": 200,
       "symbol": "Zone5.Error.ServerMessage.message",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"

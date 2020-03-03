@@ -128,6 +128,9 @@
                 <a class="nav-group-task-link" href="../Enums/ResultSource.html">ResultSource</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Roles.html">Roles</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/RunType.html">RunType</a>
               </li>
               <li class="nav-group-task">
@@ -183,6 +186,9 @@
             <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AccessToken.html">AccessToken</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/MillisecondsRepresentable.html">MillisecondsRepresentable</a>
               </li>
               <li class="nav-group-task">
@@ -197,10 +203,10 @@
             <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/AccessToken.html">AccessToken</a>
+                <a class="nav-group-task-link" href="../Structs/Activity.html">Activity</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Structs/Activity.html">Activity</a>
+                <a class="nav-group-task-link" href="../Structs/Company.html">Company</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/DataFileUploadContext.html">DataFileUploadContext</a>
@@ -215,13 +221,25 @@
                 <a class="nav-group-task-link" href="../Structs.html#/s:5Zone58DayRangeV">DayRange</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/LoginResponse.html">LoginResponse</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Milliseconds.html">Milliseconds</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/OAuthToken.html">OAuthToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/OAuthTokenAlt.html">OAuthTokenAlt</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Order.html">Order</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Order/Direction.html">– Direction</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/RegisterUser.html">RegisterUser</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/SearchInput.html">SearchInput</a>
@@ -263,6 +281,15 @@
                 <a class="nav-group-task-link" href="../Structs/UserRouteSearch.html">UserRouteSearch</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserThresholdHeart.html">UserThresholdHeart</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserThresholdPace.html">UserThresholdPace</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/UserThresholdPower.html">UserThresholdPower</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/UserWorkoutDetails.html">UserWorkoutDetails</a>
               </li>
               <li class="nav-group-task">
@@ -300,6 +327,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/UserWorkoutResultTurbo.html">UserWorkoutResultTurbo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs.html#/s:5Zone59VoidReplyV">VoidReply</a>
               </li>
             </ul>
           </li>
@@ -346,7 +376,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Return User information about the logged in user</p>
 
                       </div>
                       <div class="declaration">
@@ -354,6 +384,222 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">me</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/User.html">User</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">Error</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59UsersViewC8register4user10completionyAA12RegisterUserV_ys6ResultOyAA0H0VA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/register(user:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59UsersViewC8register4user10completionyAA12RegisterUserV_ys6ResultOyAA0H0VA2AC5ErrorOGctF">register(user:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Register a new user account</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">register</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="kt"><a href="../Structs/RegisterUser.html">RegisterUser</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/User.html">User</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59UsersViewC13deleteAccount6userID10completionySi_ys6ResultOyAA9VoidReplyVA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/deleteAccount(userID:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59UsersViewC13deleteAccount6userID10completionySi_ys6ResultOyAA9VoidReplyVA2AC5ErrorOGctF">deleteAccount(userID:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a user account</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">deleteAccount</span><span class="p">(</span><span class="nv">userID</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Structs.html#/s:5Zone59VoidReplyV">VoidReply</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59UsersViewC5login5email8password8clientID0G6Secret10completionySS_S2SSgAJys6ResultOyAA13LoginResponseVA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/login(email:password:clientID:clientSecret:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59UsersViewC5login5email8password8clientID0G6Secret10completionySS_S2SSgAJys6ResultOyAA13LoginResponseVA2AC5ErrorOGctF">login(email:password:clientID:clientSecret:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Login as a user and obtain a bearer token - clientId and clientSecret are not required in Specialized featureset</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">login</span><span class="p">(</span><span class="nv">email</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">clientID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">clientSecret</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/LoginResponse.html">LoginResponse</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59UsersViewC6logout10completionyys6ResultOySbA2AC5ErrorOGc_tF"></a>
+                    <a name="//apple_ref/swift/Method/logout(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59UsersViewC6logout10completionyys6ResultOySbA2AC5ErrorOGc_tF">logout(completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Logout - this will invalidate any active JSESSION and will also invalidate your bearer token</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">logout</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59UsersViewC17isEmailRegistered5email10completionySS_ys6ResultOySbA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/isEmailRegistered(email:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59UsersViewC17isEmailRegistered5email10completionySS_ys6ResultOySbA2AC5ErrorOGctF">isEmailRegistered(email:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Test if an email address is already registered in the system - true if the email already exists in the system</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isEmailRegistered</span><span class="p">(</span><span class="nv">email</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59UsersViewC13resetPassword5email10completionySS_ys6ResultOySbA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/resetPassword(email:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59UsersViewC13resetPassword5email10completionySS_ys6ResultOySbA2AC5ErrorOGctF">resetPassword(email:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Request a password reset email - ie get a magic link to reset a user&rsquo;s password</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">resetPassword</span><span class="p">(</span><span class="nv">email</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59UsersViewC14changePassword03oldE003newE010completionySSSg_SSys6ResultOyAA9VoidReplyVA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/changePassword(oldPassword:newPassword:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59UsersViewC14changePassword03oldE003newE010completionySSSg_SSys6ResultOyAA9VoidReplyVA2AC5ErrorOGctF">changePassword(oldPassword:newPassword:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Change a user&rsquo;s password - oldPassword is only required in Specialized environment</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">changePassword</span><span class="p">(</span><span class="nv">oldPassword</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">newPassword</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Structs.html#/s:5Zone59VoidReplyV">VoidReply</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59UsersViewC12refreshToken10completionyys6ResultOyAA05OAuthE3AltVA2AC5ErrorOGc_tF"></a>
+                    <a name="//apple_ref/swift/Method/refreshToken(completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59UsersViewC12refreshToken10completionyys6ResultOyAA05OAuthE3AltVA2AC5ErrorOGc_tF">refreshToken(completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Refresh a bearer token - get a new token if the current one is nearing expiry</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">refreshToken</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/OAuthTokenAlt.html">OAuthTokenAlt</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -368,7 +614,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://zone5ventures.com" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-02-26)</p>
+      <p>&copy; 2020 <a class="link" href="https://zone5ventures.com" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-03-03)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

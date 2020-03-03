@@ -127,6 +127,9 @@
                 <a class="nav-group-task-link" href="Enums/ResultSource.html">ResultSource</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Roles.html">Roles</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/RunType.html">RunType</a>
               </li>
               <li class="nav-group-task">
@@ -182,6 +185,9 @@
             <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/AccessToken.html">AccessToken</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Protocols/MillisecondsRepresentable.html">MillisecondsRepresentable</a>
               </li>
               <li class="nav-group-task">
@@ -196,10 +202,10 @@
             <a class="nav-group-name-link" href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Structs/AccessToken.html">AccessToken</a>
+                <a class="nav-group-task-link" href="Structs/Activity.html">Activity</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Structs/Activity.html">Activity</a>
+                <a class="nav-group-task-link" href="Structs/Company.html">Company</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/DataFileUploadContext.html">DataFileUploadContext</a>
@@ -214,13 +220,25 @@
                 <a class="nav-group-task-link" href="Structs.html#/s:5Zone58DayRangeV">DayRange</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/LoginResponse.html">LoginResponse</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/Milliseconds.html">Milliseconds</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/OAuthToken.html">OAuthToken</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/OAuthTokenAlt.html">OAuthTokenAlt</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/Order.html">Order</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/Order/Direction.html">– Direction</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/RegisterUser.html">RegisterUser</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/SearchInput.html">SearchInput</a>
@@ -262,6 +280,15 @@
                 <a class="nav-group-task-link" href="Structs/UserRouteSearch.html">UserRouteSearch</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/UserThresholdHeart.html">UserThresholdHeart</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/UserThresholdPace.html">UserThresholdPace</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/UserThresholdPower.html">UserThresholdPower</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/UserWorkoutDetails.html">UserWorkoutDetails</a>
               </li>
               <li class="nav-group-task">
@@ -299,6 +326,9 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/UserWorkoutResultTurbo.html">UserWorkoutResultTurbo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs.html#/s:5Zone59VoidReplyV">VoidReply</a>
               </li>
             </ul>
           </li>
@@ -366,7 +396,7 @@
 <span class="p">}</span>
 </code></pre>
 
-<p>Once the user successfully authenticates, these methods return an <a href="https://zone5-cloud.github.io/z5-sdk-swift/Structs/AccessToken.html"><code><a href="Structs/AccessToken.html">AccessToken</a></code></a> object, but also update the <a href="https://zone5-cloud.github.io/z5-sdk-swift/Classes/Zone5.html#/s:5Zone5AAC11accessTokenAA06AccessC0VSgvp"><code>Zone5.shared.accessToken</code></a> with the returned token, allowing access to methods that require this token to be set.</p>
+<p>Once the user successfully authenticates, these methods return an <a href="https://zone5-cloud.github.io/z5-sdk-swift/Structs/AccessToken.html"><code><a href="Protocols/AccessToken.html">AccessToken</a></code></a> object, but also update the <a href="https://zone5-cloud.github.io/z5-sdk-swift/Classes/Zone5.html#/s:5Zone5AAC11accessTokenAA06AccessC0VSgvp"><code>Zone5.shared.accessToken</code></a> with the returned token, allowing access to methods that require this token to be set.</p>
 <pre class="highlight swift"><code><span class="kt">Zone5</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">me</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
     <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
     <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
@@ -399,7 +429,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://zone5ventures.com" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-02-26)</p>
+      <p>&copy; 2020 <a class="link" href="https://zone5ventures.com" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-03-03)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
