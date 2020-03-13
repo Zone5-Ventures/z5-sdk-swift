@@ -242,8 +242,36 @@ private extension JSONDecoder {
 				}
 			}
 			
-			let decodedValue = try decode(expectedType, from: data)
-
+			//
+			let decodedValue: T
+			if #available(iOS 13.0, *) {
+				// from iOS 13 fragments are correctly decoded
+				decodedValue = try decode(expectedType, from: data)
+			}
+			else if expectedType == Bool.self || expectedType == String.self {
+				// prior to iOS 13 top level fragments cannot be decoded with JSONDecoder.
+				// If we know that we are a fragment, decode fragement
+				let jsonObject = try JSONSerialization.jsonObject(with: data, options: [.fragmentsAllowed])
+				decodedValue = jsonObject as! T
+				
+			} else {
+				// prior to iOS 13 top level fragments cannot be decoded with JSONDecoder.
+				// If we do not know that we are a fragement, attempt normal decode and fall back to fragment
+				do {
+					decodedValue = try decode(expectedType, from: data)
+				}
+				catch {
+					let jsonObject = try JSONSerialization.jsonObject(with: data, options: [.fragmentsAllowed])
+					if let value = jsonObject as? T {
+						decodedValue = value
+					} else if let value = jsonObject as? Zone5.Error.ServerMessage {
+						return .failure(.serverError(value))
+					} else {
+						throw error
+					}
+				}
+			}
+			
 			#if DEBUG
 			debugMessage = "Successfully decoded server response as `\(expectedType)`."
 			#endif
