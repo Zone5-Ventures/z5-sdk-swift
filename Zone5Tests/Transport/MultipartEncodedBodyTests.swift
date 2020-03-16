@@ -249,6 +249,20 @@ final class MultipartEncodedBodyTests: XCTestCase {
 		return (mime, parameters)
 	}
 
+    func getStringBetweenStrings(text: String, delimiter1: String, delimiter2: String)->String? {
+
+        let str = (text.range(of: delimiter1)?.upperBound).flatMap { substringFrom in
+            (text.range(of: delimiter2, range: substringFrom..<text.endIndex)?.lowerBound).map { substringTo in
+                text[substringFrom..<substringTo]
+            }
+        }
+        if let str = str {
+            return String(str)
+        } else {
+            return nil
+        }
+    }
+    
 	// MARK: Utility tests
 
 	func testValidateKnownGoodMultipartData() {
@@ -274,6 +288,32 @@ final class MultipartEncodedBodyTests: XCTestCase {
 		}
 	}
 
+    func testValidatePartSize() {
+        let testString = "1234567890"
+        let testData = testString.data(using: .utf8)!
+        
+        var multipart = MultipartEncodedBody()
+        try? multipart.appendPart(name: "TEST", content: testData)
+
+        guard let encoded =  try? multipart.encodedData() else {
+            XCTFail("Could not multipart encode test string")
+            return
+        }
+        let decoded = String(decoding: encoded, as: UTF8.self)
+        
+        // we expect a tag like "Content-Disposition: form-data; name=\"TEST\", followed by TWO pairs of CR/LF,
+        // followed by our test string. A single CR/LF should preceed the terminating boundary tag which begins with "--"
+        
+        guard let dataSection = getStringBetweenStrings(text: decoded,
+                                                        delimiter1: "Content-Disposition: form-data; name=\"TEST\"\r\n\r\n",
+                                                        delimiter2: "\r\n--Zone5Multipart") else {
+            XCTFail("Could not extract test string from multipart")
+            return
+        }
+        
+        XCTAssertEqual(testString, dataSection, "Mismatch between encoded and decoded parts")
+    }
+        
 	func testParseHeaderValue() {
 		let tests: [(String, String, [String: String])] = [
 			("application/json", "application/json", [:]),
