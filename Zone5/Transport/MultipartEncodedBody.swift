@@ -94,10 +94,11 @@ struct MultipartEncodedBody: RequestBody {
 		}
 
 		for part in parts {
-			output.append(components: .divider, boundary, .newline, part.data, .newline, .newline)
+            output.append(components: .divider, boundary, .newline, part.data, .newline)
+            // a binary data section should end with a single newline which preceeds the final boundary
 		}
 
-		output.append(components: .divider, boundary, .divider, .newline)
+		output.append(components: .divider, boundary, .divider /*, .newline */)
 
 		return output
 	}
