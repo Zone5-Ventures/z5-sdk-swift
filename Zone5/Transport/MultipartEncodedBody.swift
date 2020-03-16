@@ -98,7 +98,7 @@ struct MultipartEncodedBody: RequestBody {
             // a binary data section should end with a single newline which preceeds the final boundary
 		}
 
-		output.append(components: .divider, boundary, .divider /*, .newline */)
+		output.append(components: .divider, boundary, .divider)
 
 		return output
 	}
