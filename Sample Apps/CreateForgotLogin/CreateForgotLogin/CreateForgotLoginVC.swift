@@ -14,10 +14,10 @@ class CreateForgotLoginVC: UIViewController {
     
     //TODO: Set these to proper values:
     let stagingURL = URL(string: "https://staging.todaysplan.com.au")!
-    let clientID = "tp-john"
-    let stagingSecret = "4b0dac4f-85dc-4838-bf89-c22535671a10"
+    let clientID = "wwwww"
+    let stagingSecret = "yyyyy"
     let username = "john.covele@zone5cloud.com"
-    let password = "letmein"
+    let password = "xxxxx"
     
     @IBOutlet weak var statusLabel: UILabel!
     
