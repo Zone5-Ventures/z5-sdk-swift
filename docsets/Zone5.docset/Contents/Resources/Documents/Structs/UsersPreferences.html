@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>UserDelegateState Enumeration Reference</title>
+    <title>UsersPreferences Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Enum/UserDelegateState" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/UsersPreferences" class="dashAnchor"></a>
 
-    <a title="UserDelegateState Enumeration Reference"></a>
+    <a title="UsersPreferences Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Zone5 Reference</a>
       <img class="carat" src="../img/carat.png" />
-      UserDelegateState Enumeration Reference
+      UsersPreferences Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -350,10 +350,10 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>UserDelegateState</h1>
+            <h1>UsersPreferences</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UserDelegateState</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UsersPreferences</span> <span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">JSONEncodedBody</span></code></pre>
 
                 </div>
               </div>
@@ -369,9 +369,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Zone517UserDelegateStateO12pendingCoachyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/pendingCoach" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone517UserDelegateStateO12pendingCoachyA2CmF">pendingCoach</a>
+                    <a name="/s:5Zone516UsersPreferencesV6metricAA15UnitMeasurementOSgvp"></a>
+                    <a name="//apple_ref/swift/Property/metric" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone516UsersPreferencesV6metricAA15UnitMeasurementOSgvp">metric</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -379,14 +379,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A request is pending - the coach needs to accept this request</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">pendingCoach</span> <span class="o">=</span> <span class="s">"pending_coach"</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">metric</span><span class="p">:</span> <span class="kt"><a href="../Enums/UnitMeasurement.html">UnitMeasurement</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -396,9 +396,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Zone517UserDelegateStateO13pendingClientyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/pendingClient" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone517UserDelegateStateO13pendingClientyA2CmF">pendingClient</a>
+                    <a name="/s:5Zone516UsersPreferencesVACycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone516UsersPreferencesVACycfc">init()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -406,68 +406,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A request is pending - the client needs to accept this request</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">pendingClient</span> <span class="o">=</span> <span class="s">"pending_client"</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Zone517UserDelegateStateO6activeyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/active" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone517UserDelegateStateO6activeyA2CmF">active</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The delegate relationship is active</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">active</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Zone517UserDelegateStateO8declinedyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/declined" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone517UserDelegateStateO8declinedyA2CmF">declined</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The delegate relationship was cancelled or declined</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">declined</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>

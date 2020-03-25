@@ -4439,6 +4439,27 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UsersPreferences.swift",
+      "line": 11,
+      "symbol": "UsersPreferences",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UsersPreferences.swift",
+      "line": 13,
+      "symbol": "UsersPreferences.metric",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UsersPreferences.swift",
+      "line": 15,
+      "symbol": "UsersPreferences.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/runner/runners/2.165.2/work/z5-sdk-swift/z5-sdk-swift/Zone5/Views/ActivitiesView.swift",
       "line": 3,
       "symbol": "ActivitiesView",
