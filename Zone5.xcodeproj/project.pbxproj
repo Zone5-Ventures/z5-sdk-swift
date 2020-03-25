@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F903484240692AA00051277 /* VoidReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F903483240692AA00051277 /* VoidReply.swift */; };
+		0FA1F1B6242AECB5005AD490 /* UsersPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1F1B5242AECB5005AD490 /* UsersPreferences.swift */; };
 		0FAA75502407350E00CB3C73 /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA754F2407350E00CB3C73 /* RegisterUser.swift */; };
 		0FAA75542407374B00CB3C73 /* UserThresholdHeart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA75532407374B00CB3C73 /* UserThresholdHeart.swift */; };
 		0FAA75562407383200CB3C73 /* UserThresholdPace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA75552407383200CB3C73 /* UserThresholdPace.swift */; };
@@ -166,6 +167,7 @@
 
 /* Begin PBXFileReference section */
 		0F903483240692AA00051277 /* VoidReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidReply.swift; sourceTree = "<group>"; };
+		0FA1F1B5242AECB5005AD490 /* UsersPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPreferences.swift; sourceTree = "<group>"; };
 		0FAA754F2407350E00CB3C73 /* RegisterUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUser.swift; sourceTree = "<group>"; };
 		0FAA75532407374B00CB3C73 /* UserThresholdHeart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserThresholdHeart.swift; sourceTree = "<group>"; };
 		0FAA75552407383200CB3C73 /* UserThresholdPace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserThresholdPace.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				0FAA755724073FBB00CB3C73 /* UserThresholdPower.swift */,
 				0FAA7565240CA34300CB3C73 /* LoginRequest.swift */,
 				0FAA7567240CB88600CB3C73 /* NewPassword.swift */,
+				0FA1F1B5242AECB5005AD490 /* UsersPreferences.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -858,6 +861,7 @@
 				A182D1DC2372AB0F00112501 /* User.swift in Sources */,
 				A10AB23E237E147E00EBAC66 /* UserWorkoutResultPeakLss.swift in Sources */,
 				A190FFE5237938420059561D /* DataFileUploadContext.swift in Sources */,
+				0FA1F1B6242AECB5005AD490 /* UsersPreferences.swift in Sources */,
 				A10AB21F237D161900EBAC66 /* ActivityType.swift in Sources */,
 				A10AB21B237D110200EBAC66 /* UserWorkoutDetails.swift in Sources */,
 				A196035F23794DD200CEB121 /* TimeOfDay.swift in Sources */,

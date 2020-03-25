@@ -35,6 +35,7 @@ struct ContentView: View {
 	}
 
 	@State var displayConfiguration = false
+	@State var metric: UnitMeasurement = .metric
 	
 	var newUser = RegisterUser(email: "jean+testingios2@todaysplan.com.au", password: "ComplexP@55word", firstname: "test", lastname: "person")
 
@@ -47,6 +48,44 @@ struct ContentView: View {
 					})
 				}
 				Section(header: Text("Users")) {
+					EndpointLink<UsersPreferences>("Get user preferences") { client, completion in
+						client.users.getPreferences(userID: self.keyValueStore.userID) { value in
+							switch value {
+							case .success(let prefs):
+								if let metric = prefs.metric, metric == .metric {
+									self.metric = .imperial
+								}
+								else {
+									self.metric = .metric
+								}
+								completion(value)
+							case .failure(_):
+								completion(value)
+							}
+						}
+					}
+					EndpointLink<Bool>("Set User Preferences") { client, completion in
+						var prefs = UsersPreferences()
+						prefs.metric = self.metric
+						client.users.setPreferences(preferences: prefs, completion: completion)
+					}
+					EndpointLink<User>("Me") { client, completion in
+						client.users.me { value in
+							switch value {
+								case .success(let user):
+									if let id = user.id, id > 0 {
+										self.keyValueStore.userID = id
+									}
+								
+								case .failure(_):
+									self.keyValueStore.userID = -1
+							}
+								
+							completion(value)
+						}
+					}
+				}
+				Section(header: Text("Auth")) {
 					EndpointLink<Bool>("Check User Exists") { client, completion in
 						client.users.isEmailRegistered(email: self.newUser.email!, completion: completion)
 					}
@@ -68,21 +107,6 @@ struct ContentView: View {
 					}
 					EndpointLink("Refresh Token") { client, completion in
 						client.users.refreshToken(completion: completion)
-					}
-					EndpointLink<User>("Me") { client, completion in
-						client.users.me { value in
-							switch value {
-								case .success(let user):
-									if let id = user.id, id > 0 {
-										self.keyValueStore.userID = id
-									}
-								
-								case .failure(_):
-									self.keyValueStore.userID = -1
-							}
-								
-							completion(value)
-						}
 					}
 					EndpointLink<User>("Register New User") { client, completion in
 						client.users.register(user: self.newUser) { value in
@@ -144,7 +168,7 @@ struct ContentView: View {
 						context.equipment = .gravel
 						context.name = "Epic Ride"
 						context.startTime = .now
-						context.bikeID = "d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c"
+						//context.bikeID = "d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c"
 
 						client.activities.upload(fileURL, context: context) { result in
 							switch result {

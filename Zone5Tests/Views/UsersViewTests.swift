@@ -633,4 +633,130 @@ class UsersViewTests: XCTestCase {
 			}
 		}
 	}
+	
+	func testGetPrefs() {
+		let tests: [(token: AccessToken?, host: String, json: String, expectedResult: Result<UsersPreferences, Zone5.Error>)] = [
+			(
+				// test requires authentication
+				token: nil,
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "",
+				expectedResult: .failure(.requiresAccessToken)
+			),
+			(
+				// success
+				token: OAuthToken(rawValue: "1234567890"),
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "{\"metric\": \"metric\"}",
+				expectedResult: .success {
+					var prefs = UsersPreferences()
+					prefs.metric = .metric
+					return prefs
+				}
+			),
+			(
+				// success
+				token: OAuthToken(rawValue: "1234567890"),
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "{\"metric\": \"imperial\"}",
+				expectedResult: .success {
+					var prefs = UsersPreferences()
+					prefs.metric = .imperial
+					return prefs
+				}
+			),
+			(
+				// invalid json
+				token: OAuthToken(rawValue: "1234567890"),
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "{\"metric\": \"imperiall\"}", // type should fail deserialisation
+				expectedResult: .failure(Zone5.Error.failedDecodingResponse(Zone5.Error.unknown))
+			)
+		]
+
+		execute(with: tests) { client, _, urlSession, test in
+			client.baseURL = URL(string: test.host)
+			client.accessToken = test.token
+			
+			urlSession.dataTaskHandler = { request in
+				return .success(test.json)
+			}
+			
+			client.users.getPreferences(userID: 123) { result in
+				switch (result, test.expectedResult) {
+				case (.failure(let lhs), .failure(let rhs)):
+					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
+					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
+				case (.success(let lhs), .success(let rhs)):
+					XCTAssertEqual(lhs.metric, rhs.metric)
+					XCTAssertEqual(client.accessToken?.rawValue, "1234567890")
+				default:
+					print(result, test.expectedResult)
+					XCTFail()
+				}
+			}
+		}
+	}
+	
+	func testSetPrefs() {
+		let tests: [(token: AccessToken?, host: String, json: String, expectedResult: Result<Bool, Zone5.Error>)] = [
+			(
+				// test requires authentication
+				token: nil,
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "",
+				expectedResult: .failure(.requiresAccessToken)
+			),
+			(
+				// success
+				token: OAuthToken(rawValue: "1234567890"),
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "true",
+				expectedResult: .success {
+					return true
+				}
+			),
+			(
+				// false from server
+				token: OAuthToken(rawValue: "1234567890"),
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "false",
+				expectedResult: .success {
+					return false
+				}
+			),
+			(
+				// invalid json
+				token: OAuthToken(rawValue: "1234567890"),
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "{\"metric\": \"imperiall\"}", // type should fail deserialisation
+				expectedResult: .failure(Zone5.Error.failedDecodingResponse(Zone5.Error.unknown))
+			)
+		]
+
+		execute(with: tests) { client, _, urlSession, test in
+			client.baseURL = URL(string: test.host)
+			client.accessToken = test.token
+			
+			urlSession.dataTaskHandler = { request in
+				return .success(test.json)
+			}
+			 
+			var prefs = UsersPreferences()
+			prefs.metric = .metric
+			client.users.setPreferences(preferences: prefs) { result in
+				switch (result, test.expectedResult) {
+				case (.failure(let lhs), .failure(let rhs)):
+					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
+					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
+				case (.success(let lhs), .success(let rhs)):
+					XCTAssertEqual(lhs, rhs)
+					XCTAssertEqual(client.accessToken?.rawValue, "1234567890")
+				default:
+					print(result, test.expectedResult)
+					XCTFail()
+				}
+			}
+		}
+	}
 }

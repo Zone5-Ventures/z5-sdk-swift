@@ -14,6 +14,8 @@ public class UsersView: APIView {
 		case passwordReset = "/rest/auth/reset"
 		case changePasswordSpecialized = "/rest/auth/set/password"
 		case refreshToken = "/rest/auth/refresh"
+		case setPreferences = "/rest/users/set/UserPreferences"
+		case getPreferences = "/rest/users/prefs/{userID}"
 
 		var requiresAccessToken: Bool {
 			switch self {
@@ -138,4 +140,14 @@ public class UsersView: APIView {
 		}
 	}
 
+	/// Set the given user's preferences, e.g. metric/imperial units
+	public func getPreferences(userID: Int, completion: @escaping Zone5.ResultHandler<UsersPreferences>) {
+		let endpoint = Endpoints.getPreferences.replacingTokens(["userID": userID])
+		get(endpoint, with: completion)
+	}
+	
+	/// Get the current user's preferences, e.g. metric/imperial units
+	public func setPreferences(preferences: UsersPreferences, completion: @escaping Zone5.ResultHandler<Bool>) {
+		post(Endpoints.setPreferences, body: preferences, with: completion)
+	}
 }
