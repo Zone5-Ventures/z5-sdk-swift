@@ -14,11 +14,14 @@ public struct SearchInputReport: JSONEncodedBody, SearchInputCriteria {
 
 	// public var depth: Int?
 
-	public var userIDs: [Int]?
+	public var userIDs: [Int64]?
 
 	// public var groupID: Int?
 
 	public var ranges: [DateRange]?
+	
+	/// Limit the search to UserBike.uuid
+	public var bikeUids: [String]?
 
 	// public var teamActivities: [VTeamActivity]?
 
@@ -27,7 +30,7 @@ public struct SearchInputReport: JSONEncodedBody, SearchInputCriteria {
 	/// Only include results related to these activities
 	public var limit: [Activity]?
 
-	// public var groupBy: String?
+	public var groupBy: String?
 
 	// public var exclude: VTeamMultiRidePeriod?
 
@@ -102,7 +105,7 @@ public struct SearchInputReport: JSONEncodedBody, SearchInputCriteria {
 		return report
 	}
 
-	public static func forInstanceMetrics(sport: ActivityType, userIDs: [Int], ranges: [DateRange], fields: [String]) -> SearchInput<SearchInputReport> {
+	public static func forInstanceMetrics(sport: ActivityType, userIDs: [Int64], ranges: [DateRange], fields: [String]) -> SearchInput<SearchInputReport> {
 		precondition(!userIDs.isEmpty, "At least one user ID must be set.")
 		precondition(!fields.isEmpty, "At least one field must be set.")
 
@@ -118,6 +121,30 @@ public struct SearchInputReport: JSONEncodedBody, SearchInputCriteria {
 
 		var input = SearchInput(criteria: report)
 		input.fields = fields
+		input.options = 3
+
+		return input
+	}
+	
+	/// Build a metrics API query grouped by bike uuids - ie get summary stats by bike
+	/// ranges can be empty and will defult to all time
+	/// fields should not be empty. Must be at least one field
+	/// bikeUids should not be empty.
+	public static func forInstanceMetricsBikes(ranges: [DateRange], fields: [String], bikeUids: [String]) -> SearchInput<SearchInputReport> {
+		precondition(!fields.isEmpty, "At least one field must be set.")
+		precondition(!bikeUids.isEmpty, "At least one bike UUID must be set.")
+
+		var report = self.init()
+		report.bikeUids = bikeUids
+		report.type = .ride // we are searching by bike. This can only be rides.
+		if !ranges.isEmpty {
+			report.ranges = ranges
+		}
+		report.groupBy = "bike.uuid"
+
+		var input = SearchInput(criteria: report)
+		input.fields = fields
+		input.options = 3
 
 		return input
 	}
@@ -133,10 +160,11 @@ public struct SearchInputReport: JSONEncodedBody, SearchInputCriteria {
 		case userIDs = "userIds"
 		//case groupID = "groupId"
 		case ranges
+		case bikeUids
 		//case teamActivities = "teamactivities"
 		case activities
 		case limit
-		//case groupBy
+		case groupBy
 		//case exclude
 		//case flag1
 		//case flag2

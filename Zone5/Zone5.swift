@@ -132,6 +132,11 @@ final public class Zone5 {
 	public lazy var routes: RoutesView = {
 		return RoutesView(zone5: self)
 	}()
+	
+	/// A collection of API endpoints related to metrics.
+	public lazy var metrics: MetricsView = {
+		return MetricsView(zone5: self)
+	}()
 
 	// MARK: Errors
 

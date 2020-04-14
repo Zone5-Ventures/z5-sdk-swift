@@ -104,7 +104,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route to be downloaded.
 	///   - completion: Function called with the location of the downloaded file on disk, or the error if one occurred.
-	public func downloadStagesSRO(for routeID: Int, completion: @escaping Zone5.ResultHandler<URL>) {
+	public func downloadStagesSRO(for routeID: Int64, completion: @escaping Zone5.ResultHandler<URL>) {
 		let endpoint = Endpoints.downloadStagesSRO.replacingTokens(["routeID": routeID])
 		download(endpoint, with: completion)
 	}
@@ -115,7 +115,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route to be downloaded.
 	///   - completion: Function called with the location of the downloaded file on disk, or the error if one occurred.
-	public func downloadStagesFIT(for routeID: Int, completion: @escaping Zone5.ResultHandler<URL>) {
+	public func downloadStagesFIT(for routeID: Int64, completion: @escaping Zone5.ResultHandler<URL>) {
 		let endpoint = Endpoints.downloadStagesFIT.replacingTokens(["routeID": routeID])
 		download(endpoint, with: completion)
 	}
@@ -162,7 +162,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The fileID for the activity to be cloned.
 	///   - completion: Function called with the created route, or the error if one occurred.
-	public func createRoute(fromActivity fileID: Int, completion: @escaping Zone5.ResultHandler<UserRoute>) {
+	public func createRoute(fromActivity fileID: Int64, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.cloneActivity.replacingTokens(["fileID": fileID])
 		get(endpoint, with: completion)
 	}
@@ -172,7 +172,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route to be cloned.
 	///   - completion: Function called with the created route, or the error if one occurred.
-	public func createRoute(fromRoute routeID: Int, completion: @escaping Zone5.ResultHandler<UserRoute>) {
+	public func createRoute(fromRoute routeID: Int64, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.cloneRoute.replacingTokens(["routeID": routeID])
 		get(endpoint, with: completion)
 	}
@@ -198,7 +198,7 @@ public class RoutesView: APIView {
 	///   - fileURL: The URL for a JSON-formatted route file for updating the route.
 	///   - metadata: The updated metadata for the route.
 	///   - completion: Function called with the updated route, or the error if one occurred.
-	public func updateRoute(with routeID: Int, fromJSON fileURL: URL, metadata: UserRoute, completion: @escaping Zone5.ResultHandler<UserRoute>) {
+	public func updateRoute(with routeID: Int64, fromJSON fileURL: URL, metadata: UserRoute, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.uploadUpdate.replacingTokens(["routeID": routeID, "format": UserRouteOutputType.js])
 		upload(endpoint, contentsOf: fileURL, body: metadata, with: completion)
 	}
@@ -209,7 +209,7 @@ public class RoutesView: APIView {
 	///   - fileURL: The URL for a FIT-based route file for updating the route.
 	///   - metadata: The updated metadata for the route.
 	///   - completion: Function called with the updated route, or the error if one occurred.
-	public func updateRoute(with routeID: Int, fromFIT fileURL: URL, metadata: UserRoute, completion: @escaping Zone5.ResultHandler<UserRoute>) {
+	public func updateRoute(with routeID: Int64, fromFIT fileURL: URL, metadata: UserRoute, completion: @escaping Zone5.ResultHandler<UserRoute>) {
 		let endpoint = Endpoints.uploadUpdate.replacingTokens(["routeID": routeID, "format": UserRouteOutputType.fit])
 		upload(endpoint, contentsOf: fileURL, body: metadata, with: completion)
 	}
@@ -220,7 +220,7 @@ public class RoutesView: APIView {
 	///   - routeID: The identifier for the route to be updated.
 	///   - metadata: The updated metadata for the route.
 	///   - completion: Function called with the updated route, or the error if one occurred.
-	public func updateMetadata(for routeID: Int, metadata: UserRoute, completion: @escaping Zone5.ResultHandler<Bool>) {
+	public func updateMetadata(for routeID: Int64, metadata: UserRoute, completion: @escaping Zone5.ResultHandler<Bool>) {
 		let endpoint = Endpoints.update.replacingTokens(["routeID": routeID])
 		post(endpoint, body: metadata, with: completion)
 	}
@@ -229,7 +229,7 @@ public class RoutesView: APIView {
 	/// - Parameters:
 	///   - routeID: The identifier for the route to be deleted.
 	///   - completion: Function called with the result of the deletion attempt, or the error if one occurred.
-	public func delete(routeID: Int, completion: @escaping Zone5.ResultHandler<Bool>) {
+	public func delete(routeID: Int64, completion: @escaping Zone5.ResultHandler<Bool>) {
 		let endpoint = Endpoints.delete.replacingTokens(["routeID": routeID])
 		get(endpoint, with: completion)
 	}

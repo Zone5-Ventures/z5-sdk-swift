@@ -19,7 +19,6 @@ public class ActivitiesView: APIView {
 		case peakPaceCurve = "/rest/reports/activity/peakspace/get";
 		case peakLSSCurve = "/rest/reports/activity/peakslss/get";
 		case peakLSSKgCurve = "/rest/reports/activity/peakslsskg/get";
-		case metrics = "/rest/reports/metrics/summary/get";
 
 		// Specialized only
 		case setBike = "/rest/users/activities/set/bike/{activityType}/{activityID}/{bikeID}";
