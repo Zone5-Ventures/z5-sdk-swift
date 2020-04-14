@@ -23,10 +23,12 @@ public class MetricsView: APIView {
 	///<li>wavg - weighted average (weighted by time)
 	///<li>sum - sum of values
 	///</ol>
-	///@param sport - required - the sport type
-	///@param userIds - required - 1 or more userIds can be requested
-	///@param ranges - the date ranges - 1 or more ranges can be requested. If the ranges overlap it is indeterministic which range the metrics will be included in.
-	///@param fields - the aggregate fields being requested
+	///- Parameters:
+	/// - sport: required - the sport type
+	/// - userIds: required - 1 or more userIds can be requested
+	/// - ranges: the date ranges - 1 or more ranges can be requested. If the ranges overlap it is indeterministic which range the metrics will be included in.
+	/// - fields: the aggregate fields being requested
+	/// - completion: Function called with the `UserWorkoutResult` values returned by the server, or the error if one occurred.
 	public func get(sport: ActivityType, userIds: [Int64], ranges: [DateRange], fields: [String], completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) {
 		let criteria = SearchInputReport.forInstanceMetrics(sport: sport, userIDs: userIds, ranges: ranges, fields: fields)
 		post(Endpoints.metrics, body: criteria, with: completion)
@@ -41,9 +43,11 @@ public class MetricsView: APIView {
 	///<li>wavg - weighted average (weighted by time)
 	///<li>sum - sum of values
 	///</ol>
-	///@param ranges - may be null or empty, and will then default to all time
-	///@param fields - the aggregate fields being requested - this should not be null or empty
-	///@param bikeUids - the UserBike.uuid entries which we will limit the search to and group by
+	///- Parameters:
+	/// - ranges: may be null or empty, and will then default to all time
+	/// - fields:  the aggregate fields being requested. This should not be null or empty
+	/// - bikeUids: the UserBike.uuid entries which we will limit the search to and group by
+	/// - completion: Function called with the `UserWorkoutResult` values returned by the server, or the error if one occurred.
 	public func getBikeMetrics(ranges: [DateRange], fields: [String], bikeUids: [String], completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) {
 		let criteria = SearchInputReport.forInstanceMetricsBikes(ranges: ranges, fields: fields, bikeUids: bikeUids)
 		post(Endpoints.metrics, body: criteria, with: completion)
