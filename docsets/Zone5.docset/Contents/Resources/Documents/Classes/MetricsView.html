@@ -393,11 +393,6 @@ Supported aggregates include;</p>
 <li>sum - sum of values
 </ol>
 
-<p>@param sport - required - the sport type
-@param userIds - required - 1 or more userIds can be requested
-@param ranges - the date ranges - 1 or more ranges can be requested. If the ranges overlap it is indeterministic which range the metrics will be included in.
-@param fields - the aggregate fields being requested</p>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -433,10 +428,6 @@ Supported aggregates include;</p>
 <li>wavg - weighted average (weighted by time)
 <li>sum - sum of values
 </ol>
-
-<p>@param ranges - may be null or empty, and will then default to all time
-@param fields - the aggregate fields being requested - this should not be null or empty
-@param bikeUids - the UserBike.uuid entries which we will limit the search to and group by</p>
 
                       </div>
                       <div class="declaration">
