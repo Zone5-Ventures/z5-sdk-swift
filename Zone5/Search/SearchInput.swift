@@ -14,8 +14,11 @@ public struct SearchInput<Criteria: SearchInputCriteria>: JSONEncodedBody {
 
 	public var ctx: String = ""
 
-	/// Bitmask that defines server options that is intended for internal use only.
-	private let options: Int = 1
+	/// Bitmask that defines server options.
+	/// 1 << 0 - set that we don't need the verbose field mapping
+	/// 1 << 1 - set a no-cache flag for this search
+	/// 1 << 3 - set a no-decorate flag for this search (not needed if the tp-nodecorate header is set)
+	public var options: Int = 1
 
 	/// Creates a new `SearchInput` with the given criteria.
 	/// - Parameter criteria: The criteria to be used in performing the intended search.

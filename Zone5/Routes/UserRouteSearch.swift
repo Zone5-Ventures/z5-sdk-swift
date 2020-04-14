@@ -10,7 +10,7 @@ public struct UserRouteSearch: SearchInputCriteria {
 	public var route: UserRoute?
 
 	/// User Ids to search on
-	public var userIDs: [Int]?
+	public var userIDs: [Int64]?
 
 	/// Order by fields ascending/descending
 	public var orderBy: [Order]?

@@ -155,6 +155,10 @@ struct ContentView: View {
 					EndpointLink("Next Page") { client, completion in
 						client.activities.next(offset: 10, count: 10, completion: completion)
 					}
+					EndpointLink<MappedResult<UserWorkoutResult>>("Search by Bike") { client, completion in
+						let bikeID = "d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c" // andrew's bike. Only works on sepcialized servers
+						client.metrics.getBikeMetrics(ranges: [], fields: ["sum.training","sum.distance","sum.ascent","wavg.avgSpeed","max.maxSpeed","wavg.avgWatts","max.maxWatts"], bikeUids: [bikeID], completion: completion)
+					}
 				}
 				Section {
 					EndpointLink<DataFileUploadIndex>("Upload File") { client, completion in

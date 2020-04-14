@@ -242,10 +242,10 @@ private extension JSONDecoder {
 				}
 			}
 			
-			//
 			let decodedValue: T
 			if #available(iOS 13.0, *) {
 				// from iOS 13 fragments are correctly decoded
+				//print(String(bytes: data, encoding: .utf8))
 				decodedValue = try decode(expectedType, from: data)
 			}
 			else if expectedType == Bool.self || expectedType == String.self {
