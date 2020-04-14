@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>UserDelegateRelationship Enumeration Reference</title>
+    <title>MetricsView Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Enum/UserDelegateRelationship" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/MetricsView" class="dashAnchor"></a>
 
-    <a title="UserDelegateRelationship Enumeration Reference"></a>
+    <a title="MetricsView Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Zone5 Reference</a>
       <img class="carat" src="../img/carat.png" />
-      UserDelegateRelationship Enumeration Reference
+      MetricsView Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -353,10 +353,10 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>UserDelegateRelationship</h1>
+            <h1>MetricsView</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">UserDelegateRelationship</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MetricsView</span> <span class="p">:</span> <span class="kt"><a href="../Classes.html#/s:5Zone57APIViewC">APIView</a></span></code></pre>
 
                 </div>
               </div>
@@ -372,9 +372,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Zone524UserDelegateRelationshipO5coachyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/coach" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone524UserDelegateRelationshipO5coachyA2CmF">coach</a>
+                    <a name="/s:5Zone511MetricsViewC3get5sport7userIds6ranges6fields10completionyAA12ActivityTypeO_Says5Int64VGSayAA9DateRangeVGSaySSGys6ResultOyAA06SearchP0V4PageVyAA011UserWorkoutP0V_GA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/get(sport:userIds:ranges:fields:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone511MetricsViewC3get5sport7userIds6ranges6fields10completionyAA12ActivityTypeO_Says5Int64VGSayAA9DateRangeVGSaySSGys6ResultOyAA06SearchP0V4PageVyAA011UserWorkoutP0V_GA2AC5ErrorOGctF">get(sport:userIds:ranges:fields:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -382,14 +382,28 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Coach/client relationship</p>
+                        <p>Get aggregate metrics for a given set of users and date ranges.<br>
+Supported aggregates include;</p>
+
+<ol>
+<li>avg - simple average
+<li>min - minimum value
+<li>max - maximim value
+<li>wavg - weighted average (weighted by time)
+<li>sum - sum of values
+</ol>
+
+<p>@param sport - required - the sport type
+@param userIds - required - 1 or more userIds can be requested
+@param ranges - the date ranges - 1 or more ranges can be requested. If the ranges overlap it is indeterministic which range the metrics will be included in.
+@param fields - the aggregate fields being requested</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">coach</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">sport</span><span class="p">:</span> <span class="kt"><a href="../Enums/ActivityType.html">ActivityType</a></span><span class="p">,</span> <span class="nv">userIds</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int64</span><span class="p">],</span> <span class="nv">ranges</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/DateRange.html">DateRange</a></span><span class="p">],</span> <span class="nv">fields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:5Zone512MappedResulta">MappedResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></span><span class="o">&gt;&gt;</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -399,9 +413,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Zone524UserDelegateRelationshipO7manageryA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/manager" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone524UserDelegateRelationshipO7manageryA2CmF">manager</a>
+                    <a name="/s:5Zone511MetricsViewC07getBikeB06ranges6fields8bikeUids10completionySayAA9DateRangeVG_SaySSGALys6ResultOyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/getBikeMetrics(ranges:fields:bikeUids:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone511MetricsViewC07getBikeB06ranges6fields8bikeUids10completionySayAA9DateRangeVG_SaySSGALys6ResultOyAA06SearchM0V4PageVyAA011UserWorkoutM0V_GA2AC5ErrorOGctF">getBikeMetrics(ranges:fields:bikeUids:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -409,68 +423,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Team manager/client relationship</p>
+                        <p>Get aggregate metrics by bike.<br>
+Supported aggregates include;</p>
+
+<ol>
+<li>avg - simple average
+<li>min - minimum value
+<li>max - maximim value
+<li>wavg - weighted average (weighted by time)
+<li>sum - sum of values
+</ol>
+
+<p>@param ranges - may be null or empty, and will then default to all time
+@param fields - the aggregate fields being requested - this should not be null or empty
+@param bikeUids - the UserBike.uuid entries which we will limit the search to and group by</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">manager</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Zone524UserDelegateRelationshipO4teamyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/team" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone524UserDelegateRelationshipO4teamyA2CmF">team</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Team mates</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">team</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Zone524UserDelegateRelationshipO6friendyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/friend" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Zone524UserDelegateRelationshipO6friendyA2CmF">friend</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Friend</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">friend</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getBikeMetrics</span><span class="p">(</span><span class="nv">ranges</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/DateRange.html">DateRange</a></span><span class="p">],</span> <span class="nv">fields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">bikeUids</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">],</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">ResultHandler</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:5Zone512MappedResulta">MappedResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/UserWorkoutResult.html">UserWorkoutResult</a></span><span class="o">&gt;&gt;</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
