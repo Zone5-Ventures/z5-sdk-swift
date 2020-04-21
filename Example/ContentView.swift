@@ -37,7 +37,7 @@ struct ContentView: View {
 	@State var displayConfiguration = false
 	@State var metric: UnitMeasurement = .metric
 	
-	var newUser = RegisterUser(email: "jean+testingios2@todaysplan.com.au", password: "ComplexP@55word", firstname: "test", lastname: "person")
+	@State var newUser = RegisterUser(email: "jean+testingios2@todaysplan.com.au", password: "ComplexP@55word", firstname: "test", lastname: "person")
 
 	var body: some View {
 		NavigationView {
@@ -109,6 +109,7 @@ struct ContentView: View {
 						client.users.refreshToken(completion: completion)
 					}
 					EndpointLink<User>("Register New User") { client, completion in
+						self.newUser.units = UnitMeasurement.imperial
 						client.users.register(user: self.newUser) { value in
 							switch value {
 								case .success(let user):

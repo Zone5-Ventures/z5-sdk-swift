@@ -313,6 +313,7 @@ class UsersViewTests: XCTestCase {
 			var newUser = RegisterUser()
 			newUser.email = "jame.smith@example.com"
 			newUser.firstname = "Jane"
+			newUser.units = UnitMeasurement.imperial
 			
 			client.users.register(user: newUser) { result in
 				switch (result, test.expectedResult) {

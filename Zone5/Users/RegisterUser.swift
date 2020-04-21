@@ -42,6 +42,9 @@ public struct RegisterUser: Codable, JSONEncodedBody {
 	/// Optional - Coach ID you wish to associate with
 	public var coachId: Int?
 
+	/// Optional - Units of measurement
+	public var units: UnitMeasurement?
+	
 	/// Optional - The athlete's threshold power for by sport
 	public var pwr: [ActivityType: UserThresholdPower]?
 
