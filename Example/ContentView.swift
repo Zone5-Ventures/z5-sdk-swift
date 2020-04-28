@@ -14,6 +14,10 @@ struct ContentView: View {
 	let apiClient: Zone5
 
 	@State var keyValueStore: KeyValueStore = .shared
+	@State var displayConfiguration = false
+	@State var metric: UnitMeasurement = .metric
+	@State var newUser: User = User(email: "jean+testingios3@todaysplan.com.au", password: "ComplexP@55word", firstname: "test", lastname: "person")
+	@State var me: User = User()
 
 	init(apiClient: Zone5 = .shared, keyValueStore: KeyValueStore = .shared) {
 		self.apiClient = apiClient
@@ -27,17 +31,12 @@ struct ContentView: View {
 		// the user authentication process.
 		let baseURL = keyValueStore.baseURL
 		if !keyValueStore.clientID.isEmpty, !keyValueStore.clientSecret.isEmpty {
-			apiClient.configure(for: baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret, accessToken: keyValueStore.accessToken)
+			apiClient.configure(for: baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret)
 		}
-		else if let accessToken = keyValueStore.accessToken {
-			apiClient.configure(for: baseURL, accessToken: accessToken)
+		else {
+			apiClient.configure(for: baseURL)
 		}
 	}
-
-	@State var displayConfiguration = false
-	@State var metric: UnitMeasurement = .metric
-	
-	@State var newUser = RegisterUser(email: "jean+testingios2@todaysplan.com.au", password: "ComplexP@55word", firstname: "test", lastname: "person")
 
 	var body: some View {
 		NavigationView {
@@ -49,94 +48,125 @@ struct ContentView: View {
 				}
 				Section(header: Text("Users")) {
 					EndpointLink<UsersPreferences>("Get user preferences") { client, completion in
-						client.users.getPreferences(userID: self.keyValueStore.userID) { value in
-							switch value {
-							case .success(let prefs):
-								if let metric = prefs.metric, metric == .metric {
-									self.metric = .imperial
+						if let id = self.me.id {
+							client.users.getPreferences(userID: id) { value in
+								switch value {
+								case .success(let prefs):
+									if let metric = prefs.metric, metric == .metric {
+										self.metric = .imperial
+									}
+									else {
+										self.metric = .metric
+									}
+									completion(value)
+								case .failure(_):
+									completion(value)
 								}
-								else {
-									self.metric = .metric
-								}
-								completion(value)
-							case .failure(_):
-								completion(value)
 							}
+						} else {
+							completion(.failure(.requiresAccessToken))
 						}
 					}
 					EndpointLink<Bool>("Set User Preferences") { client, completion in
-						var prefs = UsersPreferences()
-						prefs.metric = self.metric
-						client.users.setPreferences(preferences: prefs, completion: completion)
+						if let _ = self.me.id {
+							var prefs = UsersPreferences()
+							prefs.metric = self.metric
+							client.users.setPreferences(preferences: prefs, completion: completion)
+						} else {
+							completion(.failure(.requiresAccessToken))
+						}
 					}
 					EndpointLink<User>("Me") { client, completion in
 						client.users.me { value in
 							switch value {
 								case .success(let user):
 									if let id = user.id, id > 0 {
-										self.keyValueStore.userID = id
+										self.me.id = id
 									}
 								
 								case .failure(_):
-									self.keyValueStore.userID = -1
+									print("Not logged in")
 							}
 								
 							completion(value)
 						}
 					}
 				}
-				Section(header: Text("Auth")) {
+				Section(header: Text("Auth"), footer: Text("Note that Register New User on TP servers makes an immediately usable user but on Specialized servers it requires a second auth step of going to the email for the user and clicking confirm email")) {
 					EndpointLink<Bool>("Check User Exists") { client, completion in
 						client.users.isEmailRegistered(email: self.newUser.email!, completion: completion)
+					}
+					EndpointLink<[String:Bool]>("Check Email Status") { client, completion in
+						if let email = self.newUser.email {
+							client.users.getEmailValidationStatus(email: email, completion: completion)
+						}
 					}
 					EndpointLink<Bool>("Reset Password") { client, completion in
 						client.users.resetPassword(email: self.newUser.email!, completion: completion)
 					}
 					EndpointLink<VoidReply>("Change password") { client, completion in
-						let newpass = "MyNewP@ssword\(Date().milliseconds)"
-						let oldpass = self.keyValueStore.password
-						client.users.changePassword(oldPassword: oldpass, newPassword: newpass) { result in
-							switch(result) {
-							case .success(let r):
-								self.keyValueStore.password = newpass
-								completion(.success(r))
-							case .failure(let error):
-								completion(.failure(error))
+						if let oldpass = self.me.password {
+							let newpass = "MyNewP@ssword\(Date().milliseconds)"
+							client.users.changePassword(oldPassword: oldpass, newPassword: newpass) { result in
+								switch(result) {
+								case .success(let r):
+									self.newUser.password = newpass
+									self.me.password = newpass
+									completion(.success(r))
+								case .failure(let error):
+									completion(.failure(error))
+								}
 							}
+						} else {
+							completion(.failure(.requiresAccessToken))
 						}
 					}
 					EndpointLink("Refresh Token") { client, completion in
 						client.users.refreshToken(completion: completion)
 					}
 					EndpointLink<User>("Register New User") { client, completion in
-						self.newUser.units = UnitMeasurement.imperial
-						client.users.register(user: self.newUser) { value in
-							switch value {
-								case .success(let user):
-									if let id = user.id, id > 0 {
-										self.keyValueStore.userID = id
-										self.keyValueStore.username = self.newUser.email!
-										self.keyValueStore.password = self.newUser.password!
-									}
-								
-								case .failure(_):
-									self.keyValueStore.userID = -1
+						if let email = self.newUser.email, let password = self.newUser.password, let firstname = self.newUser.firstName, let lastname = self.newUser.lastName {
+							var registerUser = RegisterUser(email: email, password: password, firstname: firstname, lastname: lastname)
+							registerUser.units = UnitMeasurement.imperial
+							client.users.register(user: registerUser) { value in
+								switch value {
+									case .success(let user):
+										if let id = user.id, id > 0 {
+											self.newUser.id = id
+										}
+									
+									case .failure(_):
+										print("failed to create new user")
+								}
+									
+								completion(value)
 							}
-								
-							completion(value)
+						} else {
+							completion(.failure(.unknown))
 						}
 					}
 					EndpointLink<LoginResponse>("Login") { client, completion in
-						let password = self.keyValueStore.password
-						let email = self.keyValueStore.username
-						client.users.login(email: email, password: password, clientID: self.apiClient.clientID, clientSecret: self.apiClient.clientSecret, completion: completion)
+						let password = self.newUser.password
+						let email = self.newUser.email
+						client.users.login(email: email!, password: password!, clientID: self.apiClient.clientID, clientSecret: self.apiClient.clientSecret) { value in
+							switch(value) {
+								case .success(let response):
+									if let user = response.user, let id = user.id, id > 0 {
+										self.me.id = id
+										self.newUser.id = id
+									}
+								case .failure(_):
+									print("failed to log in")
+							}
+							completion(value)
+						}
 					}
 					EndpointLink("Logout") { client, completion in
 						client.users.logout(completion: completion)
 					}
 					EndpointLink<VoidReply>("Delete Account") { client, completion in
-						if self.keyValueStore.userID > 0 {
-							client.users.deleteAccount(userID: self.keyValueStore.userID, completion: completion)
+						if let id = self.newUser.id {
+							client.users.deleteAccount(userID: id, completion: completion)
 						} else {
 							completion(.failure(.unknown))
 						}
@@ -158,7 +188,8 @@ struct ContentView: View {
 					}
 					EndpointLink<MappedResult<UserWorkoutResult>>("Search by Bike") { client, completion in
 						let bikeID = "d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c" // andrew's bike. Only works on sepcialized servers
-						client.metrics.getBikeMetrics(ranges: [], fields: ["sum.training","sum.distance","sum.ascent","wavg.avgSpeed","max.maxSpeed","wavg.avgWatts","max.maxWatts"], bikeUids: [bikeID], completion: completion)
+						let dates = DateRange(name: "last 10 days", floor: Date().timeIntervalSince1970.milliseconds - (10*24*60*60*1000), ceiling: Date().timeIntervalSince1970.milliseconds)
+						client.metrics.getBikeMetrics(ranges: [dates], fields: ["sum.training","sum.distance","sum.ascent","wavg.avgSpeed","max.maxSpeed","wavg.avgWatts","max.maxWatts"], bikeUids: [bikeID], completion: completion)
 					}
 				}
 				Section {

@@ -50,7 +50,7 @@ final public class Zone5 {
 	///   - clientSecret: The secret key, as provided by Zone5.
 	///   - accessToken: An access token representing a user authenticated during a previous session. If `nil`, any
 	///   		existing access token will be cleared.
-	public func configure(for baseURL: URL, clientID: String, clientSecret: String, accessToken: AccessToken?) {
+	public func configure(for baseURL: URL, clientID: String? = nil, clientSecret: String? = nil, accessToken: AccessToken?) {
 		self.baseURL = baseURL
 		self.clientID = clientID
 		self.clientSecret = clientSecret
@@ -62,7 +62,7 @@ final public class Zone5 {
 	///   - baseURL: The API url to use.
 	///   - clientID: The clientID, as provided by Zone5.
 	///   - clientSecret: The secret key, as provided by Zone5.
-	public func configure(for baseURL: URL, clientID: String, clientSecret: String) {
+	public func configure(for baseURL: URL, clientID: String? = nil, clientSecret: String? = nil) {
 		self.baseURL = baseURL
 		self.clientID = clientID
 		self.clientSecret = clientSecret

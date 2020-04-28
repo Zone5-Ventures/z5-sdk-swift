@@ -23,6 +23,12 @@ public struct User: Codable, JSONEncodedBody {
 	public var avatar: URL?
 
 	public init() { }
+	public init(email: String, password: String, firstname: String, lastname: String) {
+		self.email = email
+		self.password = password
+		self.firstName = firstname
+		self.lastName = lastname
+	}
 
 	// MARK: Codable
 

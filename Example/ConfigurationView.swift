@@ -37,7 +37,7 @@ struct ConfigurationView: View {
 			VStack(alignment: HorizontalAlignment.center, spacing: 0) {
 				Picker("Boop", selection: $pickerIndex) {
 					Text("OAuth Client").tag(0)
-					Text("Access Token").tag(1)
+					Text("GIGYA").tag(1)
 				}
 				.pickerStyle(SegmentedPickerStyle())
 				.padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
@@ -54,18 +54,6 @@ struct ConfigurationView: View {
 						Section(header: Text("Client Details"), footer: Text("These values are used to identify your application during user authentication.")) {
 							TextField("ID", text: $keyValueStore.clientID)
 							TextField("Secret", text: $keyValueStore.clientSecret)
-						}
-						Section(header: Text("User Details")) {
-							TextField("Username", text: $keyValueStore.username)
-								.textContentType(.emailAddress)
-								.keyboardType(.emailAddress)
-							SecureField("Password", text: $keyValueStore.password)
-								.textContentType(.password)
-						}
-					}
-					else if self.pickerIndex == 1 {
-						Section(header: Text("Access Token"), footer: Text("You can completely bypass the client configuration and authentication steps by configuring the SDK with a valid user token that is either stored from a previous session, or sourced externally.")) {
-							TextField("Token", text: $keyValueStore.accessTokenString)
 						}
 					}
 				}
@@ -99,8 +87,8 @@ struct ConfigurationView: View {
 	func configureAndDismiss() {
 		error = nil
 
-		// There are two ways to prepare your client for accessing the Zone5 API. If you already have a valid access
-		// token, you can simply configure using that, as it identifies both your user and your application.
+		// There are two ways to prepare your client for accessing the Zone5 API. If you are using Specialized Staging or Prod
+		// then no clientID or clientSecret are required as all auth goes through GIGYA.
 		//
 		// Otherwise, you'll need to first configure your application with a valid `clientID` and `clientSecret` before
 		// then authenticating the user to retrieve an access token.
@@ -109,38 +97,10 @@ struct ConfigurationView: View {
 			// These values would normally be embedded in your application and thus hidden from the user, as they
 			// identify your application.
 			apiClient.configure(for: keyValueStore.baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret)
-
-			// Once we've configured the client, we can retrieve an access token for the user, using the credentials
-			// given in the UI.
-			isLoading = true
-			apiClient.oAuth.accessToken(username: keyValueStore.username, password: keyValueStore.password) { result in
-				self.isLoading = false
-
-				switch result {
-				case .failure(let error):
-					// We have an error, so we should surface that. You may want to handle different errors in different
-					// ways, as some may not be directly relevant to the user, but for the purposes of this example,
-					// we're just going to throw up an alert.
-					self.error = error
-
-				case .success(let accessToken):
-					// We'll hold on to the access token for later.
-					self.keyValueStore.accessToken = accessToken
-
-					// Now that we've successfully authenticated, we can dismiss this screen.
-					self.dismiss()
-				}
-			}
-		}
-		else if pickerIndex == 1,
-			let accessToken = keyValueStore.accessToken {
-
-			// If you already have a valid access token, you can completely bypass the client configuration and
-			// authentication steps, and opt for directly providing the access token.
-			apiClient.configure(for: keyValueStore.baseURL, accessToken: accessToken)
-
-			// Now that we've successfully authenticated, we can dismiss this screen.
-			dismiss()
+			self.dismiss()
+		} else if pickerIndex == 1 {
+			apiClient.configure(for: keyValueStore.baseURL)
+			self.dismiss()
 		}
 		else {
 			error = .invalidConfiguration
