@@ -16,6 +16,7 @@ public class UsersView: APIView {
 		case refreshToken = "/rest/auth/refresh"
 		case setPreferences = "/rest/users/set/UserPreferences"
 		case getPreferences = "/rest/users/prefs/{userID}"
+		case getEmailStatus = "/rest/auth/status"
 
 		var requiresAccessToken: Bool {
 			switch self {
@@ -23,6 +24,7 @@ public class UsersView: APIView {
 			case .exists: return false
 			case .registerUser: return false
 			case .passwordReset: return false
+			case .getEmailStatus: return false
 			default: return true
 			}
 		}
@@ -149,5 +151,13 @@ public class UsersView: APIView {
 	/// Get the current user's preferences, e.g. metric/imperial units
 	public func setPreferences(preferences: UsersPreferences, completion: @escaping Zone5.ResultHandler<Bool>) {
 		post(Endpoints.setPreferences, body: preferences, with: completion)
+	}
+	
+	public func getEmailValidationStatus(email: String, completion: @escaping Zone5.ResultHandler<[String:Bool]>) {
+		let params: URLEncodedBody = [
+			"email": email,
+		]
+		
+		get(Endpoints.getEmailStatus, parameters: params, with: completion)
 	}
 }

@@ -39,6 +39,11 @@ struct ObjectView: View {
 				properties.append(property(for: element, label: "Index \(i)"))
 			}
 		}
+		else if let dict = object as? Dictionary<String,Any> {
+			for (_, (key, value)) in dict.enumerated() {
+				properties.append(property(for: value, label: key))
+			}
+		}
 		else if let b = object as? Bool {
 			properties.append(property(for: b, label: "result"))
 		}
