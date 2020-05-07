@@ -153,6 +153,10 @@ final public class Zone5 {
 
 		/// An unknown error occurred.
 		case unknown
+		
+		
+		/// Invalid parameters passed to request
+		case invalidParameters
 
 		/// The Zone5 configuration is invalid. It is required that you call `configure(for:clientID:clientSecret:)`
 		/// with your client details, which are included in calls to the Zone5 API.
@@ -210,6 +214,7 @@ final public class Zone5 {
 		public var debugDescription: String {
 			switch self {
 			case .unknown: return ".unknown"
+			case .invalidParameters: return ".invalidParameters"
 			case .invalidConfiguration: return ".invalidConfiguration"
 			case .requiresAccessToken: return ".requiresAccessToken"
 			case .serverError(let serverMessage): return ".serverError(message: \(serverMessage.message))"

@@ -39,7 +39,7 @@ public class OAuthView: APIView {
 			"redirect_uri": zone5.redirectURI,
 		]
 
-		post(Endpoints.accessToken, body: body, expectedType: OAuthToken.self) { [weak self] result in
+		_ = post(Endpoints.accessToken, body: body, expectedType: OAuthToken.self) { [weak self] result in
 			defer { completion(result) }
 
 			if let zone5 = self?.zone5, case .success(let token) = result {

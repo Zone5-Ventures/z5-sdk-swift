@@ -23,7 +23,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 				return .error(Zone5.Error.unknown)
 			}
 
-			httpClient.perform(request, expectedType: User.self) { result in
+			_ = httpClient.perform(request, expectedType: User.self) { result in
 				if case .failure(let error) = result,
 					case .invalidConfiguration = error {
 						return // Success!
@@ -52,7 +52,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 				return .error(Zone5.Error.unknown)
 			}
 
-			httpClient.perform(request, expectedType: User.self) { result in
+			_ = httpClient.perform(request, expectedType: User.self) { result in
 				if case .failure(let error) = result,
 					case .requiresAccessToken = error {
 						return // Success!
@@ -74,7 +74,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 				return .error(Zone5.Error.unknown)
 			}
 
-			httpClient.perform(request, expectedType: User.self) { result in
+			_ = httpClient.perform(request, expectedType: User.self) { result in
 				if case .failure(let error) = result,
 					case .unexpectedRequestBody = error {
 						return // Success!
@@ -95,7 +95,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 				return .error(Zone5.Error.unknown)
 			}
 
-			httpClient.perform(request, expectedType: User.self) { result in
+			_ = httpClient.perform(request, expectedType: User.self) { result in
 				if case .failure(let error) = result,
 					case .missingRequestBody = error {
 						return // Success!
@@ -126,7 +126,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 				return .message(serverMessage.message, statusCode: 500)
 			}
 
-			httpClient.perform(request, expectedType: User.self) { result in
+			_ = httpClient.perform(request, expectedType: User.self) { result in
 				if case .failure(let error) = result,
 					case .serverError(let message) = error,
 					message == serverMessage {
@@ -158,7 +158,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 				return .error(transportError)
 			}
 
-			httpClient.perform(request, expectedType: User.self) { result in
+			_ = httpClient.perform(request, expectedType: User.self) { result in
 				if case .failure(let error) = result,
 					case .transportFailure(let underlyingError) = error,
 					(underlyingError as NSError).domain == (transportError as NSError).domain,
@@ -191,7 +191,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 				return .success("{\"id\": 12345678, \"email\": \"jame.smith@example.com\", \"firstname\": \"Jane\", \"lastname\": \"Smith\"}")
 			}
 
-			httpClient.perform(request, expectedType: User.self) { result in
+			_ = httpClient.perform(request, expectedType: User.self) { result in
 				if case .success(let user) = result {
 					XCTAssertEqual(user.id, 12345678)
 					XCTAssertEqual(user.email, "jame.smith@example.com")

@@ -33,9 +33,10 @@ public class ActivitiesView: APIView {
 	///   - offset: The pagination offset for the retrieved set of `UserWorkoutResult` values.
 	///   - count: The number of `UserWorkoutResult` values to retrieve.
 	///   - completion: Function called with the `UserWorkoutResult` results matching the given criteria, or the error if one occurred.
-	public func search(_ parameters: SearchInput<UserWorkoutFileSearch>, offset: Int, count: Int, completion: @escaping Zone5.ResultHandler<SearchResult<UserWorkoutResult>>) {
+	@discardableResult
+	public func search(_ parameters: SearchInput<UserWorkoutFileSearch>, offset: Int, count: Int, completion: @escaping Zone5.ResultHandler<SearchResult<UserWorkoutResult>>) -> PendingRequest? {
 		let endpoint = Endpoints.search.replacingTokens(["offset": offset, "count": count])
-		post(endpoint, body: parameters, with: completion)
+		return post(endpoint, body: parameters, with: completion)
 	}
 
 	/// Get the next paginated set from the previous search.
@@ -43,24 +44,26 @@ public class ActivitiesView: APIView {
 	///   - offset: The pagination offset for the retrieved set of `UserWorkoutResult` values.
 	///   - count: The number of `UserWorkoutResult` values to retrieve.
 	///   - completion: Function called with the `UserWorkoutResult` results matching the given criteria, or the error if one occurred.
-	public func next(offset: Int, count: Int, completion: @escaping Zone5.ResultHandler<SearchResult<UserWorkoutResult>>) {
+	@discardableResult
+	public func next(offset: Int, count: Int, completion: @escaping Zone5.ResultHandler<SearchResult<UserWorkoutResult>>) -> PendingRequest? {
 		let endpoint = Endpoints.next.replacingTokens(["offset": offset, "count": count])
-		get(endpoint, with: completion)
+		return get(endpoint, with: completion)
 	}
 
 	// MARK: Uploading files
-
-	public func upload(_ fileURL: URL, context: DataFileUploadContext, completion: @escaping Zone5.ResultHandler<DataFileUploadIndex>) {
-		upload(Endpoints.upload, contentsOf: fileURL, body: context, with: completion)
+	@discardableResult
+	public func upload(_ fileURL: URL, context: DataFileUploadContext, completion: @escaping Zone5.ResultHandler<DataFileUploadIndex>) -> PendingRequest? {
+		return upload(Endpoints.upload, contentsOf: fileURL, body: context, with: completion)
 	}
 
 	/// Request the processing status of an uploaded file with the given `indexID`.
 	/// - Parameters:
 	///   - indexID: The `id` from the result of a previous upload's `DataFileUploadIndex` response.
 	///   - completion: Function called with the upload status for the requested file, or the error if one occurred.
-	public func uploadStatus(of indexID: Int, completion: @escaping Zone5.ResultHandler<DataFileUploadIndex>) {
+	@discardableResult
+	public func uploadStatus(of indexID: Int, completion: @escaping Zone5.ResultHandler<DataFileUploadIndex>) -> PendingRequest? {
 		let endpoint = Endpoints.uploadStatus.replacingTokens(["indexID": indexID])
-		get(endpoint, with: completion)
+		return get(endpoint, with: completion)
 	}
 
 	// MARK: Downloading files
@@ -71,9 +74,10 @@ public class ActivitiesView: APIView {
 	/// - Parameters:
 	///   - fileID: The identifier for the file to be downloaded.
 	///   - completion: Function called with the location of the downloaded file on disk, or the error if one occurred.
-	public func downloadOriginal(_ fileID: Int, completion: @escaping Zone5.ResultHandler<URL>) {
+	@discardableResult
+	public func downloadOriginal(_ fileID: Int, completion: @escaping Zone5.ResultHandler<URL>) -> PendingRequest? {
 		let endpoint = Endpoints.downloadOriginal.replacingTokens(["fileID": fileID])
-		download(endpoint, with: completion)
+		return download(endpoint, with: completion)
 	}
 
 	/// Download a normalized FIT file which contains typed numeric data channels.
@@ -83,9 +87,10 @@ public class ActivitiesView: APIView {
 	/// - Parameters:
 	///   - fileID: The identifier for the file to be downloaded.
 	///   - completion: Function called with the location of the downloaded file on disk, or the error if one occurred.
-	public func downloadRaw(_ fileID: Int, completion: @escaping Zone5.ResultHandler<URL>) {
+	@discardableResult
+	public func downloadRaw(_ fileID: Int, completion: @escaping Zone5.ResultHandler<URL>) -> PendingRequest? {
 		let endpoint = Endpoints.downloadRaw.replacingTokens(["fileID": fileID])
-		download(endpoint, with: completion)
+		return download(endpoint, with: completion)
 	}
 
 	/// Download the normalized CSV file.
@@ -94,9 +99,10 @@ public class ActivitiesView: APIView {
 	/// - Parameters:
 	///   - fileID: The identifier for the file to be downloaded.
 	///   - completion: Function called with the location of the downloaded file on disk, or the error if one occurred.
-	public func downloadCSV(_ fileID: Int, completion: @escaping Zone5.ResultHandler<URL>) {
+	@discardableResult
+	public func downloadCSV(_ fileID: Int, completion: @escaping Zone5.ResultHandler<URL>) -> PendingRequest? {
 		let endpoint = Endpoints.downloadCSV.replacingTokens(["fileID": fileID])
-		download(endpoint, with: completion)
+		return download(endpoint, with: completion)
 	}
 
 	/// Download a PNG image with the ride plotted on a map.
@@ -105,9 +111,10 @@ public class ActivitiesView: APIView {
 	/// - Parameters:
 	///   - fileID: The identifier for the file to be downloaded.
 	///   - completion: Function called with the location of the downloaded file on disk, or the error if one occurred.
-	public func downloadMap(_ fileID: Int, completion: @escaping Zone5.ResultHandler<URL>) {
+	@discardableResult
+	public func downloadMap(_ fileID: Int, completion: @escaping Zone5.ResultHandler<URL>) -> PendingRequest? {
 		let endpoint = Endpoints.downloadPNG.replacingTokens(["fileID": fileID])
-		download(endpoint, with: completion)
+		return download(endpoint, with: completion)
 	}
 
 	// MARK: Deleting
@@ -117,17 +124,19 @@ public class ActivitiesView: APIView {
 	///   - type: The result type of the activity to be deleted.
 	///   - id: The identifier for the activity to be deleted.
 	///   - completion: Function called with the result of the deletion, or the error if one occurred.
-	public func delete(type: ActivityResultType, id: Int, completion: @escaping Zone5.ResultHandler<Bool>) {
+	@discardableResult
+	public func delete(type: ActivityResultType, id: Int, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
 		let endpoint = Endpoints.delete.replacingTokens(["activityType": type, "activityID": id])
-		get(endpoint, with: completion)
+		return get(endpoint, with: completion)
 	}
 
 	// MARK: Time in Zones
-
-	public func timeInZones(type: ActivityResultType, id: Int, zoneType: IntensityZoneType, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) {
+	
+	@discardableResult
+	public func timeInZones(type: ActivityResultType, id: Int, zoneType: IntensityZoneType, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) -> PendingRequest? {
 		let input = SearchInputReport.forInstance(activityType: type, identifier: id)
 		let endpoint = Endpoints.timeInZones.replacingTokens(["zoneType": zoneType.description])
-		post(endpoint, body: input, with: completion)
+		return post(endpoint, body: input, with: completion)
 	}
 
 	// MARK: Instance Peak Curves
@@ -138,9 +147,10 @@ public class ActivitiesView: APIView {
 	///   - id: The identifier for the activity in question.
 	///   - referencePeriod: The optional reference period to use for the search. Defaults to `nil`.
 	///   - completion: Function called with the `UserWorkoutResult` values returned by the server, or the error if one occurred.
-	public func peakPowerCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) {
+	@discardableResult
+	public func peakPowerCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) -> PendingRequest? {
 		let searchInputReport = SearchInputReport.forInstancePeaksCurve(activityType: type, identifier: id, referencePeriod: referencePeriod)
-		post(Endpoints.peakPowerCurve, body: searchInputReport, with: completion)
+		return post(Endpoints.peakPowerCurve, body: searchInputReport, with: completion)
 	}
 
 	/// Get the peak heart rate curve for this activity, and include a reference series.
@@ -149,9 +159,10 @@ public class ActivitiesView: APIView {
 	///   - id: The identifier for the activity in question.
 	///   - referencePeriod: The optional reference period to use for the search. Defaults to `nil`.
 	///   - completion: Function called with the `UserWorkoutResult` values returned by the server, or the error if one occurred.
-	public func peakHeartRateCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) {
+	@discardableResult
+	public func peakHeartRateCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) -> PendingRequest? {
 		let searchInputReport = SearchInputReport.forInstancePeaksCurve(activityType: type, identifier: id, referencePeriod: referencePeriod)
-		post(Endpoints.peakHeartRateCurve, body: searchInputReport, with: completion)
+		return post(Endpoints.peakHeartRateCurve, body: searchInputReport, with: completion)
 	}
 
 	/// Get the peak w/kg curve for this activity, and include a reference series.
@@ -160,9 +171,10 @@ public class ActivitiesView: APIView {
 	///   - id: The identifier for the activity in question.
 	///   - referencePeriod: The optional reference period to use for the search. Defaults to `nil`.
 	///   - completion: Function called with the `UserWorkoutResult` values returned by the server, or the error if one occurred.
-	public func peakWKgCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) {
+	@discardableResult
+	public func peakWKgCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) -> PendingRequest? {
 		let searchInputReport = SearchInputReport.forInstancePeaksCurve(activityType: type, identifier: id, referencePeriod: referencePeriod)
-		post(Endpoints.peakWKgCurve, body: searchInputReport, with: completion)
+		return post(Endpoints.peakWKgCurve, body: searchInputReport, with: completion)
 	}
 
 	/// Get the peak pace curve for this activity, and include a reference series.
@@ -171,9 +183,10 @@ public class ActivitiesView: APIView {
 	///   - id: The identifier for the activity in question.
 	///   - referencePeriod: The optional reference period to use for the search. Defaults to `nil`.
 	///   - completion: Function called with the `UserWorkoutResult` values returned by the server, or the error if one occurred.
-	public func peakPaceCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) {
+	@discardableResult
+	public func peakPaceCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) -> PendingRequest? {
 		let searchInputReport = SearchInputReport.forInstancePeaksCurve(activityType: type, identifier: id, referencePeriod: referencePeriod)
-		post(Endpoints.peakPaceCurve, body: searchInputReport, with: completion)
+		return post(Endpoints.peakPaceCurve, body: searchInputReport, with: completion)
 	}
 
 	/// Get the peak leg spring stiffness curve for this activity, and include a reference series.
@@ -182,9 +195,10 @@ public class ActivitiesView: APIView {
 	///   - id: The identifier for the activity in question.
 	///   - referencePeriod: The optional reference period to use for the search. Defaults to `nil`.
 	///   - completion: Function called with the `UserWorkoutResult` values returned by the server, or the error if one occurred.
-	public func peakLSSCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) {
+	@discardableResult
+	public func peakLSSCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) -> PendingRequest? {
 		let searchInputReport = SearchInputReport.forInstancePeaksCurve(activityType: type, identifier: id, referencePeriod: referencePeriod)
-		post(Endpoints.peakLSSCurve, body: searchInputReport, with: completion)
+		return post(Endpoints.peakLSSCurve, body: searchInputReport, with: completion)
 	}
 
 	/// Get the peak leg spring stiffness/kg for this activity, and include a reference series.
@@ -193,9 +207,10 @@ public class ActivitiesView: APIView {
 	///   - id: The identifier for the activity in question.
 	///   - referencePeriod: The optional reference period to use for the search. Defaults to `nil`.
 	///   - completion: Function called with the `UserWorkoutResult` values returned by the server, or the error if one occurred.
-	public func peakLSSKgCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) {
+	@discardableResult
+	public func peakLSSKgCurve(type: ActivityResultType, id: Int, referencePeriod: RelativePeriod? = nil, completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) -> PendingRequest? {
 		let searchInputReport = SearchInputReport.forInstancePeaksCurve(activityType: type, identifier: id, referencePeriod: referencePeriod)
-		post(Endpoints.peakLSSKgCurve, body: searchInputReport, with: completion)
+		return post(Endpoints.peakLSSKgCurve, body: searchInputReport, with: completion)
 	}
 
 	// MARK: Specialized Feature Set
@@ -207,9 +222,10 @@ public class ActivitiesView: APIView {
 	///   - bikeID: The identifier for the bike to be added.
 	///   - completion: Function called with the result of the bike addition, or the error if one occurred.
 	/// - Warning: Specialized feature set only.
-	public func setBike(type: ActivityResultType, id: Int, bikeID: String, completion: @escaping Zone5.ResultHandler<Bool>) {
+	@discardableResult
+	public func setBike(type: ActivityResultType, id: Int, bikeID: String, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
 		let endpoint = Endpoints.setBike.replacingTokens(["activityType": type, "activityID": id, "bikeID": bikeID])
-		get(endpoint, with: completion)
+		return get(endpoint, with: completion)
 	}
 
 	/// Remove the Specialized bike from a completed activity.
@@ -218,9 +234,10 @@ public class ActivitiesView: APIView {
 	///   - id: The identifier for the activity to remove the bike from.
 	///   - completion: Function called with the result of the bike removal, or the error if one occurred.
 	/// - Warning: Specialized feature set only.
-	public func removeBike(type: ActivityResultType, id: Int, completion: @escaping Zone5.ResultHandler<Bool>) {
+	@discardableResult
+	public func removeBike(type: ActivityResultType, id: Int, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
 		let endpoint = Endpoints.removeBike.replacingTokens(["activityType": type, "activityID": id])
-		get(endpoint, with: completion)
+		return get(endpoint, with: completion)
 	}
 
 }

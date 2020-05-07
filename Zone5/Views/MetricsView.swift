@@ -29,9 +29,10 @@ public class MetricsView: APIView {
 	/// - ranges: the date ranges - 1 or more ranges can be requested. If the ranges overlap it is indeterministic which range the metrics will be included in.
 	/// - fields: the aggregate fields being requested
 	/// - completion: Function called with the `UserWorkoutResult` values returned by the server, or the error if one occurred.
-	public func get(sport: ActivityType, userIds: [Int64], ranges: [DateRange], fields: [String], completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) {
+	@discardableResult
+	public func get(sport: ActivityType, userIds: [Int64], ranges: [DateRange], fields: [String], completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) -> PendingRequest? {
 		let criteria = SearchInputReport.forInstanceMetrics(sport: sport, userIDs: userIds, ranges: ranges, fields: fields)
-		post(Endpoints.metrics, body: criteria, with: completion)
+		return post(Endpoints.metrics, body: criteria, with: completion)
 	}
 	
 	///Get aggregate metrics by bike.<br>
@@ -48,8 +49,9 @@ public class MetricsView: APIView {
 	/// - fields:  the aggregate fields being requested. This should not be null or empty
 	/// - bikeUids: the UserBike.uuid entries which we will limit the search to and group by
 	/// - completion: Function called with the `UserWorkoutResult` values returned by the server, or the error if one occurred.
-	public func getBikeMetrics(ranges: [DateRange], fields: [String], bikeUids: [String], completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) {
+	@discardableResult
+	public func getBikeMetrics(ranges: [DateRange], fields: [String], bikeUids: [String], completion: @escaping Zone5.ResultHandler<MappedResult<UserWorkoutResult>>) -> PendingRequest? {
 		let criteria = SearchInputReport.forInstanceMetricsBikes(ranges: ranges, fields: fields, bikeUids: bikeUids)
-		post(Endpoints.metrics, body: criteria, with: completion)
+		return post(Endpoints.metrics, body: criteria, with: completion)
 	}
 }
