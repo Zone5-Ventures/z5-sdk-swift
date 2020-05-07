@@ -4356,7 +4356,7 @@
     },
     {
       "file": "/Users/runner/runners/2.169.1/work/z5-sdk-swift/z5-sdk-swift/Zone5/Transport/PendingRequest.swift",
-      "line": 27,
+      "line": 31,
       "symbol": "PendingRequest.isCancelled",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
