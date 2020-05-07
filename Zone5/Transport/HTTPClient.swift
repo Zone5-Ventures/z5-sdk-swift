@@ -65,13 +65,13 @@ final internal class HTTPClient {
 	/// - Parameters:
 	///   - completion: Function called with errors that are thrown in the `block`.
 	///   - block: The function containing the work to perform. It receives a strong copy of the parent `Zone5` class, and the configured `baseURL`.
-	private func execute<T: Decodable>(with completion: (_ result: Result<T, Zone5.Error>) -> Void, _ block: (_ zone5: Zone5, _ baseURL: URL) throws -> Void) {
+	private func execute<T: Decodable>(with completion: (_ result: Result<T, Zone5.Error>) -> Void, _ block: (_ zone5: Zone5, _ baseURL: URL) throws -> PendingRequest) -> PendingRequest? {
 		do {
 			guard let zone5 = zone5, zone5.isConfigured, let baseURL = zone5.baseURL else {
 				throw Zone5.Error.invalidConfiguration
 			}
 
-			try block(zone5, baseURL)
+			return try block(zone5, baseURL)
 		}
 		catch {
 			if let error = error as? Zone5.Error {
@@ -80,6 +80,7 @@ final internal class HTTPClient {
 			else {
 				completion(.failure(.unknown))
 			}
+			return nil
 		}
 	}
 
@@ -89,8 +90,8 @@ final internal class HTTPClient {
 	///   - expectedType: The expected, `Decodable` type that is used to decode the response data.
 	///   - completion: Function called with the result of the download. If successful, the response data is returned,
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
-	func perform<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) {
-		execute(with: completion) { zone5, baseURL in
+	func perform<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
+		return execute(with: completion) { zone5, baseURL in
 			let urlRequest = try request.urlRequest(with: baseURL, accessToken: zone5.accessToken)
 
 			let decoder = self.decoder
@@ -105,8 +106,9 @@ final internal class HTTPClient {
 					completion(.failure(.unknown))
 				}
 			}
-
+			
 			task.resume()
+			return PendingRequest(task)
 		}
 	}
 
@@ -122,8 +124,8 @@ final internal class HTTPClient {
 	///   - expectedType: The expected, `Decodable` type that is used to decode the response data.
 	///   - completion: Function called with the result of the download. If successful, the response data is returned,
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
-	func upload<T: Decodable>(_ fileURL: URL, with request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) {
-		execute(with: completion) { zone5, baseURL in
+	func upload<T: Decodable>(_ fileURL: URL, with request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
+		return execute(with: completion) { zone5, baseURL in
 			let (urlRequest, multipartData) = try request.urlRequest(toUpload: fileURL, with: baseURL, accessToken: zone5.accessToken)
 			let cacheURL = HTTPClient.uploadsDirectory.appendingPathComponent(fileURL.lastPathComponent).appendingPathExtension("multipart")
 
@@ -150,6 +152,7 @@ final internal class HTTPClient {
 			}
 
 			task.resume()
+			return PendingRequest(task)
 		}
 	}
 
@@ -158,8 +161,8 @@ final internal class HTTPClient {
 	///   - request: A request that defines the endpoint, method and body used.
 	///   - completion: Function called with the result of the download. If successful, the location of the downloaded
 	///			file on disk is returned, otherwise the error that was encountered.
-	func download(_ request: Request, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) {
-		execute(with: completion) { zone5, baseURL in
+	func download(_ request: Request, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
+		return execute(with: completion) { zone5, baseURL in
 			let urlRequest = try request.urlRequest(with: baseURL, accessToken: zone5.accessToken)
 
 			let decoder = self.decoder
@@ -193,6 +196,7 @@ final internal class HTTPClient {
 			}
 
 			task.resume()
+			return PendingRequest(task)
 		}
 	}
 

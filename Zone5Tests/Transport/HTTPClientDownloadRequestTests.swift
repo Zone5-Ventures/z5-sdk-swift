@@ -25,7 +25,7 @@ final class HTTPClientDownloadRequestTests: XCTestCase {
 				return .error(Zone5.Error.unknown)
 			}
 
-			httpClient.download(request) { result in
+			_ = httpClient.download(request) { result in
 				if case .failure(let error) = result,
 					case .invalidConfiguration = error {
 						return // Success!
@@ -54,7 +54,7 @@ final class HTTPClientDownloadRequestTests: XCTestCase {
 				return .error(Zone5.Error.unknown)
 			}
 
-			httpClient.download(request) { result in
+			_ = httpClient.download(request) { result in
 				if case .failure(let error) = result,
 					case .requiresAccessToken = error {
 						return // Success!
@@ -76,7 +76,7 @@ final class HTTPClientDownloadRequestTests: XCTestCase {
 				return .error(Zone5.Error.unknown)
 			}
 
-			httpClient.download(request) { result in
+			_ = httpClient.download(request) { result in
 				if case .failure(let error) = result,
 					case .unexpectedRequestBody = error {
 						return // Success!
@@ -97,7 +97,7 @@ final class HTTPClientDownloadRequestTests: XCTestCase {
 				return .error(Zone5.Error.unknown)
 			}
 
-			httpClient.download(request) { result in
+			_ = httpClient.download(request) { result in
 				if case .failure(let error) = result,
 					case .missingRequestBody = error {
 						return // Success!
@@ -128,7 +128,7 @@ final class HTTPClientDownloadRequestTests: XCTestCase {
 				return .message(serverMessage.message, statusCode: 500)
 			}
 
-			httpClient.download(request) { result in
+			_ = httpClient.download(request) { result in
 				if case .failure(let error) = result,
 					case .serverError(let message) = error,
 					message == serverMessage {
@@ -160,7 +160,7 @@ final class HTTPClientDownloadRequestTests: XCTestCase {
 				return .error(transportError)
 			}
 
-			httpClient.download(request) { result in
+			_ = httpClient.download(request) { result in
 				if case .failure(let error) = result,
 					case .transportFailure(let underlyingError) = error,
 					(underlyingError as NSError).domain == (transportError as NSError).domain,
@@ -195,7 +195,7 @@ final class HTTPClientDownloadRequestTests: XCTestCase {
 				return .success(fileURL)
 			}
 
-			httpClient.download(request) { result in
+			_ = httpClient.download(request) { result in
 				if case .success(let downloadedURL) = result {
 					XCTAssert(FileManager.default.contentsEqual(atPath: downloadedURL.path, andPath: fileURL.path))
 				}
