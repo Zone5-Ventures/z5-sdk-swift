@@ -21,10 +21,18 @@ public class PendingRequest: NSObject {
 	}
 	
 	public var isComplete: Bool {
-		return self.task.progress.isFinished
+		if #available(iOS 11.0, macOS 13.0, *) {
+			return self.task.progress.isFinished
+		} else {
+			return self.task.state == .completed
+		}
 	}
 	
 	public var isCancelled: Bool {
-		return self.task.progress.isCancelled
+		if #available(iOS 11.0, macOS 13.0, *) {
+			return self.task.progress.isCancelled
+		} else {
+			return self.task.state == .canceling
+		}
 	}
 }
