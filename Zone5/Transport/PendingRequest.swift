@@ -21,7 +21,7 @@ public class PendingRequest: NSObject {
 	}
 	
 	public var isComplete: Bool {
-		if #available(iOS 11.0, macCatalyst 13.0, *) {
+		if #available(iOS 11.0, macOS 13.0, *) {
 			return self.task.progress.isFinished
 		} else {
 			return self.task.state == .completed
@@ -29,7 +29,7 @@ public class PendingRequest: NSObject {
 	}
 	
 	public var isCancelled: Bool {
-		if #available(iOS 11.0, macCatalyst 13.0, *) {
+		if #available(iOS 11.0, macOS 13.0, *) {
 			return self.task.progress.isCancelled
 		} else {
 			return self.task.state == .canceling
