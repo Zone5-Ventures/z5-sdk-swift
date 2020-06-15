@@ -16,7 +16,7 @@ struct ContentView: View {
 	@State var keyValueStore: KeyValueStore = .shared
 	@State var displayConfiguration = false
 	@State var metric: UnitMeasurement = .metric
-	@State var newUser: User = User(email: "jean+testingios3@todaysplan.com.au", password: "ComplexP@55word", firstname: "test", lastname: "person")
+	@State var newUser: User = User(email: "insert-email-here", password: "ComplexP@55word", firstname: "test", lastname: "person")
 	@State var me: User = User()
 
 	init(apiClient: Zone5 = .shared, keyValueStore: KeyValueStore = .shared) {

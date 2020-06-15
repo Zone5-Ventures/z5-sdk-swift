@@ -50,7 +50,7 @@ public class UsersView: APIView {
 	}
 	
 	/// Login as a user and obtain a bearer token - clientId and clientSecret are not required in Specialized featureset
-	public func login(email: String, password: String, clientID: String? = nil, clientSecret: String? = nil, completion: @escaping Zone5.ResultHandler<LoginResponse>) {
+	public func login(email: String, password: String, clientID: String? = nil, clientSecret: String? = nil, accept: [String]? = nil, completion: @escaping Zone5.ResultHandler<LoginResponse>) {
 		guard let zone5 = zone5 else {
 			completion(.failure(.invalidConfiguration))
 			return
@@ -59,9 +59,9 @@ public class UsersView: APIView {
 		// Some hosts require clientID and clientSecret. Others do not.
 		let body: JSONEncodedBody
 		if !zone5.requiresClientSecret {
-			body = LoginRequest(email: email, password: password)
+			body = LoginRequest(email: email, password: password, accept: accept)
 		} else if let clientID = clientID, let clientSecret = clientSecret {
-			body = LoginRequest(email: email, password: password, clientID: clientID, clientSecret: clientSecret)
+			body = LoginRequest(email: email, password: password, clientID: clientID, clientSecret: clientSecret, accept: accept)
 		} else {
 			// requires clientID and secretID but it has not been provided. FAIL.
 			completion(.failure(.invalidConfiguration))

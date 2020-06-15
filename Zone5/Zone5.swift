@@ -207,8 +207,8 @@ final public class Zone5 {
 		public struct ServerMessage: Swift.Error, Codable, Equatable {
 
 			public let message: String
-			public var reason: String
-			public var error: String
+			public var reason: String?
+			public var error: String?
 
 		}
 

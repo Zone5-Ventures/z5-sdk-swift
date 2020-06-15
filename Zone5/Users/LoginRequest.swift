@@ -14,6 +14,7 @@ struct LoginRequest: JSONEncodedBody {
 	let token: String = "true"
 	var clientID: String?
 	var clientSecret: String?
+	var accept: [String]?
 	
 	private enum CodingKeys: String, CodingKey {
 		case email = "username"
@@ -23,10 +24,11 @@ struct LoginRequest: JSONEncodedBody {
 		case clientSecret
 	}
 	
-	public init(email: String, password: String, clientID: String? = nil, clientSecret: String? = nil) {
+	public init(email: String, password: String, clientID: String? = nil, clientSecret: String? = nil, accept: [String]? = nil) {
 		self.email = email
 		self.password = password
 		self.clientID = clientID
 		self.clientSecret = clientSecret
+		self.accept = accept
 	}
 }

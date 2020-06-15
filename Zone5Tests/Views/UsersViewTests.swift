@@ -65,13 +65,14 @@ class UsersViewTests: XCTestCase {
 	}
 	
 	func testLogin() {
-		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<LoginResponse, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, accept: [String]?, json: String, expectedResult: Result<LoginResponse, Zone5.Error>)] = [
 			(
 				// this test is for a host that requires client and secret, which is not set, so this should fail
 				token: nil,
 				host: "http://google.com",
 				clientId: nil,
 				secret: nil,
+				accept: nil,
 				json: "{\"user\": {\"id\": 12345678, \"email\": \"jame.smith@example.com\", \"firstname\": \"Jane\", \"lastname\": \"Smith\"}, \"token\": \"1234567890\"}",
 				expectedResult: .failure(.invalidConfiguration)
 			),
@@ -81,6 +82,27 @@ class UsersViewTests: XCTestCase {
 				host: "http://\(Zone5.specializedStagingServer)",
 				clientId: nil,
 				secret: nil,
+				accept: nil,
+				json: "{\"user\": {\"id\": 12345678, \"email\": \"jame.smith@example.com\", \"firstname\": \"Jane\", \"lastname\": \"Smith\"}, \"token\": \"1234567890\"}",
+				expectedResult: .success {
+					var user = User()
+					user.id = 12345678
+					user.email = "jame.smith@example.com"
+					user.firstName = "Jane"
+					user.lastName = "Smith"
+					var lr = LoginResponse()
+					lr.user = user
+					lr.token = "1234567890"
+					return lr
+				}
+			),
+			(
+				// this test is the same as above but includes accept strings
+				token: nil,
+				host: "http://\(Zone5.specializedStagingServer)",
+				clientId: nil,
+				secret: nil,
+				accept: ["id1", "id2"],
 				json: "{\"user\": {\"id\": 12345678, \"email\": \"jame.smith@example.com\", \"firstname\": \"Jane\", \"lastname\": \"Smith\"}, \"token\": \"1234567890\"}",
 				expectedResult: .success {
 					var user = User()
@@ -101,6 +123,7 @@ class UsersViewTests: XCTestCase {
 				host: "http://google.com",
 				clientId: "CLIENT",
 				secret: "SECRET",
+				accept: nil,
 				json: "{\"user\": {\"id\": 12345678, \"email\": \"jame.smith@example.com\", \"firstname\": \"Jane\", \"lastname\": \"Smith\"}, \"token\": \"1234567890\"}",
 				expectedResult: .success {
 					var user = User()
@@ -125,7 +148,7 @@ class UsersViewTests: XCTestCase {
 				return .success(test.json)
 			}
 
-			client.users.login(email: "jane.smith@example.com", password: "pword", clientID: test.clientId, clientSecret: test.secret) { result in
+			client.users.login(email: "jane.smith@example.com", password: "pword", clientID: test.clientId, clientSecret: test.secret, accept: test.accept) { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
