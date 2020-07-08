@@ -22,7 +22,7 @@ struct LoginRequest: JSONEncodedBody {
 		case token
 		case clientID = "clientId"
 		case clientSecret
-		case accept
+		case accept 
 	}
 	
 	public init(email: String, password: String, clientID: String? = nil, clientSecret: String? = nil, accept: [String]? = nil) {
