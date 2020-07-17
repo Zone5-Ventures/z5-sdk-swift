@@ -59,7 +59,7 @@ public class UsersView: APIView {
 		// Some hosts require clientID and clientSecret. Others do not.
 		let body: JSONEncodedBody
 		if !zone5.requiresClientSecret {
-			body = LoginRequest(email: email, password: password, accept: accept)
+			body = LoginRequest(email: email, password: password, clientID: clientID, clientSecret: clientSecret, accept: accept)
 		} else if let clientID = clientID, let clientSecret = clientSecret {
 			body = LoginRequest(email: email, password: password, clientID: clientID, clientSecret: clientSecret, accept: accept)
 		} else {

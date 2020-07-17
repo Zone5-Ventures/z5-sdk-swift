@@ -24,7 +24,7 @@ public class OAuthView: APIView {
 	///   	token that can be stored and used to authenticate the user in future sessions, and otherwise will contain a
 	///   	`Zone5.Error` value which represents the problem that occurred.
 	public func accessToken(username: String, password: String, completion: @escaping (_ result: Result<OAuthToken, Zone5.Error>) -> Void) {
-		guard let zone5 = zone5, let clientID = zone5.clientID, let clientSecret = zone5.clientSecret else {
+		guard let zone5 = zone5, zone5.isConfigured else {
 			completion(.failure(.invalidConfiguration))
 
 			return
@@ -33,8 +33,8 @@ public class OAuthView: APIView {
 		let body: URLEncodedBody = [
 			"username": username,
 			"password": password,
-			"client_id": clientID,
-			"client_secret": clientSecret,
+			"client_id": zone5.clientID,
+			"client_secret": zone5.clientSecret,
 			"grant_type": "password",
 			"redirect_uri": zone5.redirectURI,
 		]
