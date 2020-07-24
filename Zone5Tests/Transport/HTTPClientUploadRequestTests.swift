@@ -135,7 +135,7 @@ final class HTTPClientUploadRequestTests: XCTestCase {
 			let fileURL = developmentAssets.randomElement()!
 			XCTAssertNotNil(fileURL)
 
-			let serverMessage = Zone5.Error.ServerMessage(message: "A server error occurred.")
+			let serverMessage = Zone5.Error.ServerMessage(message: "A server error occurred.", statusCode: 500)
 
 			urlSession.uploadTaskHandler = { urlRequest, uploadedURL in
 				XCTAssertEqual(urlRequest.url?.path, request.endpoint.uri)

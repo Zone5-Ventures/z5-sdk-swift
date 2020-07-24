@@ -225,7 +225,8 @@ private extension JSONDecoder {
 				#endif
 
 				do {
-					let decodedMessage = try decode(Zone5.Error.ServerMessage.self, from: data)
+					var decodedMessage = try decode(Zone5.Error.ServerMessage.self, from: data)
+					decodedMessage.statusCode = httpResponse.statusCode
 
 					return .failure(.serverError(decodedMessage))
 				}

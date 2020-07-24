@@ -206,9 +206,15 @@ final public class Zone5 {
 		/// Structure that represents a message produced by the server when an error occurs.
 		public struct ServerMessage: Swift.Error, Codable, Equatable {
 
+			internal init(message: String, statusCode: Int? = nil) {
+				self.message = message
+				self.statusCode = statusCode
+			}
+			
 			public let message: String
 			public var reason: String?
 			public var error: String?
+			public var statusCode: Int?
 
 		}
 

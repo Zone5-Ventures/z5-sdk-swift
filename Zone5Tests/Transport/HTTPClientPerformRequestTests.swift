@@ -116,7 +116,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
 			request.body = parameters.body
 
-			let serverMessage = Zone5.Error.ServerMessage(message: "A server error occurred.")
+			let serverMessage = Zone5.Error.ServerMessage(message: "A server error occurred.", statusCode: 500)
 
 			urlSession.dataTaskHandler = { urlRequest in
 				XCTAssertEqual(urlRequest.url?.path, request.endpoint.uri)
