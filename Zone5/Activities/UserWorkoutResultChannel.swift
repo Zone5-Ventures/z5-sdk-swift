@@ -9,16 +9,15 @@ public struct UserWorkoutResultChannel: Codable {
 	public var type: MappedFieldType?
 
 	/// The native record number
-	public var recordNumber: Int?
+	public var num: Int?
+	
+	/// aggregates
+	public var min: Double?
+	
+	public var max: Double?
+	
+	public var avg: Double?
 
 	public init() {}
-
-	// MARK: Codable
-
-	private enum CodingKeys: String, CodingKey {
-		case name
-		case type
-		case recordNumber = "num"
-	}
 
 }

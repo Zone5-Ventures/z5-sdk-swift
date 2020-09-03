@@ -244,6 +244,12 @@ public enum MappedFieldType: String, Codable {
 	/// rsscribe FootStrike
 	case rsstrike
 	
+	/// Force[N]
+	case n
+		
+	/// Acceleration
+	case a
+	
 	/// Respiration rate - Breaths/minute
 	case respiration
 	
