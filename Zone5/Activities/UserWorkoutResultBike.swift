@@ -21,6 +21,10 @@ public struct UserWorkoutResultBike: Codable {
 	/** External system bike_id */
 	public var uuid: String?
 	
+	public var registrationId: String?
+	
+	public var bikeUuid: String?
+	
 	/** URL image */
 	public var avatar: String?
 	
@@ -34,5 +38,7 @@ public struct UserWorkoutResultBike: Codable {
 		case serial = "serial"
 		case uuid = "uuid"
 		case avatar = "avatar"
+		case bikeUuid = "bikeUuid"
+		case registrationId = "registrationId"
 	}
 }

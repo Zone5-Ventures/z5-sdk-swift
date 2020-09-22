@@ -140,7 +140,7 @@ public struct SearchInputReport: JSONEncodedBody, SearchInputCriteria {
 		if !ranges.isEmpty {
 			report.ranges = ranges
 		}
-		report.groupBy = "bike.uuid"
+		report.groupBy = "bike.bikeUuid"
 
 		var input = SearchInput(criteria: report)
 		input.fields = fields
