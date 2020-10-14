@@ -25,6 +25,9 @@
 		0FB27F3F2406324900D7991B /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB27F3E2406324900D7991B /* LoginResponse.swift */; };
 		0FB27F41240634B900D7991B /* Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB27F40240634B900D7991B /* Roles.swift */; };
 		0FB27F442406389C00D7991B /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB27F432406389C00D7991B /* Company.swift */; };
+		80D51FD625366CA7000BEC54 /* PushRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51FD525366CA7000BEC54 /* PushRegistration.swift */; };
+		80D51FDA25378E4D000BEC54 /* ThirdPartyConnectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51FD925378E4C000BEC54 /* ThirdPartyConnectionsView.swift */; };
+		80D51FE02537A946000BEC54 /* ThirdPartyToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51FDF2537A946000BEC54 /* ThirdPartyToken.swift */; };
 		A10AB213237D0B5100EBAC66 /* UserHeadunit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB212237D0B5100EBAC66 /* UserHeadunit.swift */; };
 		A10AB215237D0C9400EBAC66 /* UserIntensityZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB214237D0C9400EBAC66 /* UserIntensityZone.swift */; };
 		A10AB217237D0D0000EBAC66 /* UserIntensityZoneRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AB216237D0D0000EBAC66 /* UserIntensityZoneRange.swift */; };
@@ -187,6 +190,9 @@
 		0FB27F3E2406324900D7991B /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		0FB27F40240634B900D7991B /* Roles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roles.swift; sourceTree = "<group>"; };
 		0FB27F432406389C00D7991B /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		80D51FD525366CA7000BEC54 /* PushRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushRegistration.swift; sourceTree = "<group>"; };
+		80D51FD925378E4C000BEC54 /* ThirdPartyConnectionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyConnectionsView.swift; sourceTree = "<group>"; };
+		80D51FDF2537A946000BEC54 /* ThirdPartyToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyToken.swift; sourceTree = "<group>"; };
 		A10AB212237D0B5100EBAC66 /* UserHeadunit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHeadunit.swift; sourceTree = "<group>"; };
 		A10AB214237D0C9400EBAC66 /* UserIntensityZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntensityZone.swift; sourceTree = "<group>"; };
 		A10AB216237D0D0000EBAC66 /* UserIntensityZoneRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntensityZoneRange.swift; sourceTree = "<group>"; };
@@ -373,6 +379,8 @@
 				0FAA7565240CA34300CB3C73 /* LoginRequest.swift */,
 				0FAA7567240CB88600CB3C73 /* NewPassword.swift */,
 				0FA1F1B5242AECB5005AD490 /* UsersPreferences.swift */,
+				80D51FD525366CA7000BEC54 /* PushRegistration.swift */,
+				80D51FDF2537A946000BEC54 /* ThirdPartyToken.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -425,6 +433,7 @@
 				A182D1C12372AB0F00112501 /* OAuthView.swift */,
 				A167D6CB238252CE00507276 /* RoutesView.swift */,
 				0F9D70FD2445723E0053C6FD /* MetricsView.swift */,
+				80D51FD925378E4C000BEC54 /* ThirdPartyConnectionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -834,6 +843,7 @@
 				A182D1DF2372AB0F00112501 /* DateRange.swift in Sources */,
 				A196035D23794DD200CEB121 /* TScoreType.swift in Sources */,
 				A196035123794DD200CEB121 /* IntensityZoneType.swift in Sources */,
+				80D51FE02537A946000BEC54 /* ThirdPartyToken.swift in Sources */,
 				A196033523794C4B00CEB121 /* Equipment.swift in Sources */,
 				A10AB241237E147E00EBAC66 /* UserWorkoutResultExt2.swift in Sources */,
 				A10AB221237D174C00EBAC66 /* UserWorkoutResult.swift in Sources */,
@@ -846,6 +856,7 @@
 				A196033723794CCD00CEB121 /* EventTarget.swift in Sources */,
 				A196033B23794D7B00CEB121 /* FileUploadState.swift in Sources */,
 				A182D1DD2372AB0F00112501 /* Activity.swift in Sources */,
+				80D51FD625366CA7000BEC54 /* PushRegistration.swift in Sources */,
 				A10AB22D237D341900EBAC66 /* UserRouteSearch.swift in Sources */,
 				A196035023794DD200CEB121 /* ResultReview.swift in Sources */,
 				A182D1D82372AB0F00112501 /* UserWorkoutFileSearch.swift in Sources */,
@@ -855,6 +866,7 @@
 				A10AB23F237E147E00EBAC66 /* UserWorkoutResultRating.swift in Sources */,
 				0FAA75542407374B00CB3C73 /* UserThresholdHeart.swift in Sources */,
 				A182D1D32372AB0F00112501 /* ActivitiesView.swift in Sources */,
+				80D51FDA25378E4D000BEC54 /* ThirdPartyConnectionsView.swift in Sources */,
 				A10AB213237D0B5100EBAC66 /* UserHeadunit.swift in Sources */,
 				A10AB22C237D341900EBAC66 /* UserRouteVisibilityMask.swift in Sources */,
 				A196035423794DD200CEB121 /* UserConnectionsType.swift in Sources */,
