@@ -42,7 +42,7 @@ public class APIView {
 		return get(endpoint, parameters: parameters, expectedType: T.self, with: completionHandler)
 	}
 
-	internal func post<T>(_ endpoint: RequestEndpoint, body: RequestBody, expectedType: T.Type, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
+	internal func post<T>(_ endpoint: RequestEndpoint, body: RequestBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
 		let request = Request(endpoint: endpoint, method: .post, body: body)
 
 		return perform(with: completionHandler) { zone5 in
@@ -50,8 +50,20 @@ public class APIView {
 		}
 	}
 
-	internal func post<T>(_ endpoint: RequestEndpoint, body: RequestBody, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
+	internal func post<T>(_ endpoint: RequestEndpoint, body: RequestBody?, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
 		return post(endpoint, body: body, expectedType: T.self, with: completionHandler)
+	}
+
+	internal func delete<T>(_ endpoint: RequestEndpoint, body: RequestBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
+		let request = Request(endpoint: endpoint, method: .delete, body: body)
+
+		return perform(with: completionHandler) { zone5 in
+			return zone5.httpClient.perform(request, expectedType: T.self, completion: completionHandler)
+		}
+	}
+
+	internal func delete<T>(_ endpoint: RequestEndpoint, body: RequestBody?, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
+		return delete(endpoint, body: body, expectedType: T.self, with: completionHandler)
 	}
 
 	internal func upload<T>(_ endpoint: RequestEndpoint, contentsOf fileURL: URL, body: RequestBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
