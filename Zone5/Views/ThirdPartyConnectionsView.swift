@@ -23,7 +23,7 @@ public class ThirdPartyConnectionsView: APIView {
 	/// - token: 3rd party access token
 	/// - platform:
 	/// - deviceId: ID of device being registered
-	public func registerDeviceWithThirdParty(registration: PushRegistration, completion: @escaping Zone5.ResultHandler<VoidReply>) -> PendingRequest? {
+	public func registerDeviceWithThirdParty(registration: PushRegistration, completion: @escaping Zone5.ResultHandler<Int64>) -> PendingRequest? {
 		return post(Endpoints.registerDevice, body: registration, with: completion)
 	}
 	
