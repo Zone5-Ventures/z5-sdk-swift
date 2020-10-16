@@ -23,7 +23,7 @@ public class ThirdPartyConnectionsView: APIView {
 	/// - token: 3rd party access token
 	/// - platform:
 	/// - deviceId: ID of device being registered
-	public func registerDeviceWithThirdParty(registration: PushRegistration, completion: @escaping Zone5.ResultHandler<Int64>) -> PendingRequest? {
+	public func registerDeviceWithThirdParty(registration: PushRegistration, completion: @escaping Zone5.ResultHandler<PushRegistrationResponse>) -> PendingRequest? {
 		return post(Endpoints.registerDevice, body: registration, with: completion)
 	}
 	
@@ -36,7 +36,7 @@ public class ThirdPartyConnectionsView: APIView {
 	}
 
 	///Query whether an upgrade is available for the current user agent (client app).
-	public func getDeprecated(completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
+	public func getDeprecated(completion: @escaping Zone5.ResultHandler<UpgradeAvailableResponse>) -> PendingRequest? {
 		return get(Endpoints.getDeprecated, with: completion)
 	}
 

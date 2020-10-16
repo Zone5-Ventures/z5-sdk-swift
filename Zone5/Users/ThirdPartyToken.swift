@@ -1,21 +1,21 @@
 import Foundation
 
 public struct ThirdPartyToken: Codable, JSONEncodedBody {
-    let serviceName: String
-    let token: String
-    let refreshToken: String
-    let expiresIn: Double
-    let scope: String
+    var serviceName: String?
+	var token: String?
+	var refreshToken: String?
+	var expiresIn: Double?
+	var scope: String?
 }
 
 public struct ThirdPartyTokenResponse: Codable {
-    let available: Bool
-    let token: TokenResponse?
+	var available: Bool?
+	var token: TokenResponse?
 }
 
 public struct TokenResponse: Codable {
-    let token: String
-    let expiresIn: Double
-    let refreshToken: String
-    let scope: String
+	var token: String?
+	var expiresIn: Double?
+	var refreshToken: String?
+	var scope: String?
 }

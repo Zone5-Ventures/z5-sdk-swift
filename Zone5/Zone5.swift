@@ -138,6 +138,11 @@ final public class Zone5 {
 		return MetricsView(zone5: self)
 	}()
 
+	/// A collection of API endpoints related to third party connections (like Strava).
+	public lazy var thirdPartyConnections: ThirdPartyConnectionsView = {
+		return ThirdPartyConnectionsView(zone5: self)
+	}()
+
 	// MARK: Errors
 
 	/// Enumeration containing the decoded value on success, or the error that occurred on failure.

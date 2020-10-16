@@ -32,3 +32,15 @@ public struct PushRegistration: Codable, JSONEncodedBody {
 	}
 
 }
+
+public struct UpgradeAvailableResponse: Codable, JSONEncodedBody {
+	
+	public var upgrade: Bool
+	
+}
+
+public struct PushRegistrationResponse: Codable, JSONEncodedBody {
+	
+	public var token: String
+	
+}
