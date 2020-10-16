@@ -58,18 +58,15 @@ struct Request {
 			}
 
 		case .post:
-			guard let body = body else {
-				print("POST request for endpoint `\(endpoint)` is missing the body content. Is this intended to be a GET request?")
-				throw Zone5.Error.missingRequestBody
-			}
-
-			do {
-				request.setValue(body.contentType, forHTTPHeaderField: "Content-Type")
-				request.httpBody = try body.encodedData()
-			}
-			catch {
-				print("An error was thrown while encoding the request body: \(error)")
-				throw Zone5.Error.failedEncodingRequestBody
+			if let body = body as? URLEncodedBody {
+				do {
+					request.setValue(body.contentType, forHTTPHeaderField: "Content-Type")
+					request.httpBody = try body.encodedData()
+				}
+				catch {
+					print("An error was thrown while encoding the request body: \(error)")
+					throw Zone5.Error.failedEncodingRequestBody
+				}
 			}
 
 		default:
