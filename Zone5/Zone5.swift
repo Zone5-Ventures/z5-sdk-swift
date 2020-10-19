@@ -40,7 +40,6 @@ final public class Zone5 {
 	/// - Note: This value can be set using the `configure(for:clientID:clientSecret:)` method.
 	public internal(set) var clientSecret: String?
 
-	/// The secret key, as provided by Zone5.
 	public var redirectURI: String = "https://localhost"
 
 	/// Configures the SDK to use the application specified by the given `clientID` and `clientSecret`.
