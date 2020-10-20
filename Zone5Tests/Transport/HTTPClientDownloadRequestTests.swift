@@ -87,27 +87,6 @@ final class HTTPClientDownloadRequestTests: XCTestCase {
 		}
 	}
 
-	func testMissingRequestBody() {
-		execute { zone5, httpClient, urlSession in
-			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: .post)
-
-			urlSession.downloadTaskHandler = { urlRequest in
-				XCTFail("Request should never be performed when encountering an unexpected request body.")
-
-				return .error(Zone5.Error.unknown)
-			}
-
-			_ = httpClient.download(request) { result in
-				if case .failure(let error) = result,
-					case .missingRequestBody = error {
-						return // Success!
-				}
-
-				XCTFail("Request unexpectedly completed with \(result).")
-			}
-		}
-	}
-
 	func testServerFailure() {
 		let parameters: [(method: Request.Method, body: RequestBody?)] = [
 			(.get, nil),
@@ -174,17 +153,19 @@ final class HTTPClientDownloadRequestTests: XCTestCase {
 	}
 
 	func testSuccessfulRequest() {
-		let parameters: [(method: Request.Method, body: RequestBody?)] = [
-			(.get, nil),
-			(.get, ["string": "hello world", "integer": 1234567890] as URLEncodedBody),
-			(.post, ["string": "hello world", "integer": 1234567890] as URLEncodedBody),
-			(.post, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
+		let parameters: [(method: Request.Method, params: URLEncodedBody?, body: RequestBody?)] = [
+			(.get, nil, nil),
+			(.get, ["string": "hello world", "integer": 1234567890] as URLEncodedBody, nil),
+			(.post, ["string": "hello world", "integer": 1234567890] as URLEncodedBody, nil),
+			(.post, ["string": "hello again", "integer": 0987654321] as URLEncodedBody, ["string": "hello world", "integer": 1234567890] as URLEncodedBody),
+			(.post, ["string": "hello again", "integer": 0987654321] as URLEncodedBody, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
+			(.post, nil, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
+			(.post, nil, ["string": "hello world", "integer": 1234567890] as URLEncodedBody),
+			(.post, nil, nil)
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
-			request.body = parameters.body
-
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, queryParams: parameters.params, body: parameters.body)
 			let fileURL = developmentAssets.randomElement()!
 
 			urlSession.downloadTaskHandler = { urlRequest in
@@ -202,6 +183,38 @@ final class HTTPClientDownloadRequestTests: XCTestCase {
 				else {
 					XCTFail("\(parameters.method.rawValue) request unexpectedly completed with \(result).")
 				}
+			}
+		}
+	}
+	
+	func testFailedRequest() {
+		let parameters: [(method: Request.Method, params: URLEncodedBody?, body: RequestBody?)] = [
+			(.get, nil, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)), // get cannot have body
+			(.get, ["string": "hello world", "integer": 1234567890] as URLEncodedBody, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)), // get cannot have body
+			(.get, nil, ["string": "hello world", "integer": 1234567890] as URLEncodedBody), // get cannot have body
+			(.get, ["string": "hello world", "integer": 1234567890] as URLEncodedBody, ["string": "hello world", "integer": 1234567890] as URLEncodedBody), // get cannot have body
+			// post can have any combo
+		]
+
+		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, queryParams: parameters.params, body: parameters.body)
+			let fileURL = developmentAssets.randomElement()!
+
+			urlSession.downloadTaskHandler = { urlRequest in
+				XCTAssertEqual(urlRequest.url?.path, request.endpoint.uri)
+				XCTAssertEqual(urlRequest.httpMethod, request.method.rawValue)
+				XCTAssertEqual(urlRequest.allHTTPHeaderFields?["Authorization"], "Bearer \(zone5.accessToken!)")
+
+				return .success(fileURL)
+			}
+
+			_ = httpClient.download(request) { result in
+				if case .failure(let error) = result,
+				   case .unexpectedRequestBody = error {
+						return // Success!
+				}
+
+				XCTFail("\(parameters.method.rawValue) request unexpectedly completed with \(result).")
 			}
 		}
 	}

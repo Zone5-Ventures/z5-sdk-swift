@@ -77,8 +77,7 @@ final class HTTPClientUploadRequestTests: XCTestCase {
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
-			request.body = parameters.body
+			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
 
 			let fileURL = developmentAssets.randomElement()!
 
@@ -91,29 +90,6 @@ final class HTTPClientUploadRequestTests: XCTestCase {
 			_ = httpClient.upload(fileURL, with: request, expectedType: User.self) { result in
 				if case .failure(let error) = result,
 					case .unexpectedRequestBody = error {
-						return // Success!
-				}
-
-				XCTFail("Request unexpectedly completed with \(result).")
-			}
-		}
-	}
-
-	func testMissingRequestBody() {
-		execute { zone5, httpClient, urlSession in
-			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: .post)
-
-			let fileURL = developmentAssets.randomElement()!
-
-			urlSession.uploadTaskHandler = { urlRequest, uploadedURL in
-				XCTFail("Request should never be performed when encountering an unexpected request body.")
-
-				return .error(Zone5.Error.unknown)
-			}
-
-			_ = httpClient.upload(fileURL, with: request, expectedType: User.self) { result in
-				if case .failure(let error) = result,
-					case .missingRequestBody = error {
 						return // Success!
 				}
 

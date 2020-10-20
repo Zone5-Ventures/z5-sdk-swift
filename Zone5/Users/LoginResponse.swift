@@ -27,5 +27,7 @@ public struct LoginResponse: Codable {
 	/// Bearer token expiry (ms since Epoch)
 	public var tokenExp: Int?
 	
+	public var refresh: String?
+	
 	public init() { }
 }

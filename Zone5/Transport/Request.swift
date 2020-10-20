@@ -7,10 +7,13 @@ struct Request {
 	var method: Method
 
 	var body: RequestBody?
+	
+	var queryParams: URLEncodedBody?
 
-	init(endpoint: RequestEndpoint, method: Method, body: RequestBody? = nil) {
+	init(endpoint: RequestEndpoint, method: Method, queryParams: URLEncodedBody? = nil, body: RequestBody? = nil) {
 		self.endpoint = endpoint
 		self.method = method
+		self.queryParams = queryParams
 		self.body = body
 	}
 
@@ -40,42 +43,43 @@ struct Request {
 			throw Zone5.Error.requiresAccessToken
 		}
 
-		// Prepare the request parameters, either as the request body or as URL parameters.
+		// if there are queryParams, set them in the request. This is valid on all types.
+		if let queryParams = queryParams {
+			guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+				print("Request URL could not be converted to URLComponents: \(url)")
+				throw Zone5.Error.failedEncodingRequestBody
+			}
+
+			components.queryItems = queryParams.queryItems
+			request.url = components.url
+		}
+		
+		// process body of request
 		switch method {
 		case .get, .head:
-			if let body = body as? URLEncodedBody {
-				guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-					print("Request URL could not be converted to URLComponents: \(url)")
-					throw Zone5.Error.failedEncodingRequestBody
-				}
-
-				components.queryItems = body.queryItems
-				request.url = components.url
-			}
-			else if let body = body {
+			// no body allowed
+			if let body = body {
 				print("GET request for endpoint `\(endpoint)` has body content of type `\(type(of: body))`. Is this intended to be a POST request?")
 				throw Zone5.Error.unexpectedRequestBody
 			}
 
-		case .post:
-			guard let body = body else {
-				print("POST request for endpoint `\(endpoint)` is missing the body content. Is this intended to be a GET request?")
-				throw Zone5.Error.missingRequestBody
-			}
-
-			do {
-				request.setValue(body.contentType, forHTTPHeaderField: "Content-Type")
-				request.httpBody = try body.encodedData()
-			}
-			catch {
-				print("An error was thrown while encoding the request body: \(error)")
-				throw Zone5.Error.failedEncodingRequestBody
+		case .post, .delete:
+			// body is optional
+			if let body = body {
+				do {
+					request.setValue(body.contentType, forHTTPHeaderField: "Content-Type")
+					request.httpBody = try body.encodedData()
+				}
+				catch {
+					print("An error was thrown while encoding the request body: \(error)")
+					throw Zone5.Error.failedEncodingRequestBody
+				}
 			}
 
 		default:
 			throw Zone5.Error.unknown
 		}
-
+		
 		return request
 	}
 
