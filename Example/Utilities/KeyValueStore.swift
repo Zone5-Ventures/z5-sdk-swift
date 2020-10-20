@@ -32,19 +32,19 @@ struct KeyValueStore {
 		get { return URL(string: baseURLString) ?? defaultURL }
 		set { baseURLString = newValue.absoluteString }
 	}
-
-	var accessTokenString: String {
-		get { return userDefaults.string(forKey: "Zone5_accessToken") ?? "" }
+	
+	var userEmail: String {
+		get { return userDefaults.string(forKey: "Zone5_userEmail") ?? "" }
 		set {
 			if !newValue.isEmpty {
-				userDefaults.set(newValue, forKey: "Zone5_accessToken")
+				userDefaults.set(newValue, forKey: "Zone5_userEmail")
 			}
 			else {
-				userDefaults.removeObject(forKey: "Zone5_accessToken")
+				userDefaults.removeObject(forKey: "Zone5_userEmail")
 			}
 		}
 	}
-
+	
 	var clientID: String {
 		get { return userDefaults.string(forKey: "Zone5_clientID") ?? "" }
 		set {

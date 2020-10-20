@@ -12,12 +12,13 @@ import Zone5
 struct ContentView: View {
 
 	let apiClient: Zone5
+	let password: Password = Password()
 
 	@State var keyValueStore: KeyValueStore = .shared
 	@State var displayConfiguration = false
 	@State var metric: UnitMeasurement = .metric
-	@State var newUser: User = User(email: "insert-email-here", password: "ComplexP@55word", firstname: "test", lastname: "person")
-	@State var me: User = User()
+	@State var me: User = User() // currently logged in user
+	@State var lastRegisteredId: Int? // last registered user, this is also who you can delete
 
 	init(apiClient: Zone5 = .shared, keyValueStore: KeyValueStore = .shared) {
 		self.apiClient = apiClient
@@ -94,15 +95,13 @@ struct ContentView: View {
 				}
 				Section(header: Text("Auth"), footer: Text("Note that Register New User on TP servers makes an immediately usable user but on Specialized servers it requires a second auth step of going to the email for the user and clicking confirm email")) {
 					EndpointLink<Bool>("Check User Exists") { client, completion in
-						client.users.isEmailRegistered(email: self.newUser.email!, completion: completion)
+						client.users.isEmailRegistered(email: keyValueStore.userEmail, completion: completion)
 					}
 					EndpointLink<[String:Bool]>("Check Email Status") { client, completion in
-						if let email = self.newUser.email {
-							client.users.getEmailValidationStatus(email: email, completion: completion)
-						}
+						client.users.getEmailValidationStatus(email: keyValueStore.userEmail, completion: completion)
 					}
 					EndpointLink<Bool>("Reset Password") { client, completion in
-						client.users.resetPassword(email: self.newUser.email!, completion: completion)
+						client.users.resetPassword(email: keyValueStore.userEmail, completion: completion)
 					}
 					EndpointLink<VoidReply>("Change password") { client, completion in
 						if let oldpass = self.me.password {
@@ -110,7 +109,7 @@ struct ContentView: View {
 							client.users.changePassword(oldPassword: oldpass, newPassword: newpass) { result in
 								switch(result) {
 								case .success(let r):
-									self.newUser.password = newpass
+									self.password.password = newpass
 									self.me.password = newpass
 									completion(.success(r))
 								case .failure(let error):
@@ -125,14 +124,18 @@ struct ContentView: View {
 						client.users.refreshToken(completion: completion)
 					}
 					EndpointLink<User>("Register New User") { client, completion in
-						if let email = self.newUser.email, let password = self.newUser.password, let firstname = self.newUser.firstName, let lastname = self.newUser.lastName {
+						let email = keyValueStore.userEmail
+						let password = self.password.password
+						let firstname = "test"
+						let lastname = "person"
+						if !email.isEmpty, !password.isEmpty {
 							var registerUser = RegisterUser(email: email, password: password, firstname: firstname, lastname: lastname)
 							registerUser.units = UnitMeasurement.imperial
 							client.users.register(user: registerUser) { value in
 								switch value {
 									case .success(let user):
 										if let id = user.id, id > 0 {
-											self.newUser.id = id
+											self.lastRegisteredId = id
 										}
 									
 									case .failure(_):
@@ -146,14 +149,12 @@ struct ContentView: View {
 						}
 					}
 					EndpointLink<LoginResponse>("Login") { client, completion in
-						let password = self.newUser.password
-						let email = self.newUser.email
-						client.users.login(email: email!, password: password!, clientID: self.apiClient.clientID, clientSecret: self.apiClient.clientSecret) { value in
+						let userPassword: String = self.password.password
+						client.users.login(email: keyValueStore.userEmail, password: userPassword, clientID: self.apiClient.clientID, clientSecret: self.apiClient.clientSecret) { value in
 							switch(value) {
 								case .success(let response):
 									if let user = response.user, let id = user.id, id > 0 {
 										self.me.id = id
-										self.newUser.id = id
 									}
 								case .failure(_):
 									print("failed to log in")
@@ -164,8 +165,8 @@ struct ContentView: View {
 					EndpointLink("Logout") { client, completion in
 						client.users.logout(completion: completion)
 					}
-					EndpointLink<VoidReply>("Delete Account") { client, completion in
-						if let id = self.newUser.id {
+					EndpointLink<VoidReply>("Delete last registered Account (if any)") { client, completion in
+						if let id = self.lastRegisteredId {
 							client.users.deleteAccount(userID: id, completion: completion)
 						} else {
 							completion(.failure(.unknown))
@@ -186,6 +187,11 @@ struct ContentView: View {
 					EndpointLink("Next Page") { client, completion in
 						client.activities.next(offset: 10, count: 10, completion: completion)
 					}
+					EndpointLink<Bool>("Set Bike") { client, completion in
+						// change activity.id and bike.bikeUuid to set desired association. The below is a past ride and bike
+						// for jean+turbo on Specialized Staging
+						client.activities.setBike(type: .file, id: 120647, bikeID: "01cf97af-880b-4869-bf36-a7d7e438203d", completion: completion)
+					}
 					EndpointLink<MappedResult<UserWorkoutResult>>("Search by Bike") { client, completion in
 						// andrew's sepcialized staging bike.
 						let bikeIDAndrewStaging = "d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c"
@@ -198,7 +204,7 @@ struct ContentView: View {
 						// jean+turbo's prod bike
 						let bikeIDJean3Prod = "389994ba-464e-4bdd-b24e-cdb0172a6f28"
 						let dates = DateRange(name: "last 60 days", floor: Date(Date().timeIntervalSince1970.milliseconds - (60*24*60*60*1000)), ceiling: Date())
-						client.metrics.getBikeMetrics(ranges: [dates], fields: ["bike", "bike.name", "bike.serial","bike.avatar", "bike.descr", "bike.bikeUuid", "bike.registrationId", "bike.uuid", "sum.training","sum.distance","sum.ascent","wavg.avgSpeed","max.maxSpeed","wavg.avgWatts","max.maxWatts"], bikeUids: [bikeIDJean1Prod, bikeIDJean2Prod, bikeIDJean3Prod, bikeIDJean2Staging, bikeIDJean1Staging, bikeIDAndrewStaging], completion: completion)
+						client.metrics.getBikeMetrics(ranges: [dates], fields: ["sum.distance","sum.elapsed","bike.uuid"], bikeUids: [bikeIDJean1Prod, bikeIDJean2Prod, bikeIDJean3Prod, bikeIDJean2Staging, bikeIDJean1Staging, bikeIDAndrewStaging], completion: completion)
 					}
 				}
 				Section {
@@ -289,12 +295,35 @@ struct ContentView: View {
 						}
 					}
 				}
+				Section(header: Text("Third Party Connections"), footer: Text("")) {
+					EndpointLink<ThirdPartyTokenResponse>("Has Strava Connection") { client, completion in
+						client.thirdPartyConnections.hasThirdPartyToken(type: .strava, completion: completion)
+					}
+					EndpointLink<ThirdPartyResponse>("Set Strava Connection") { client, completion in
+						let token = ThirdPartyToken(token: "123", expiresIn: 10000, refreshToken: "456", scope: "aaa")
+						client.thirdPartyConnections.setThirdPartyToken(type: .strava, connection: token, completion: completion)
+					}
+					EndpointLink<ThirdPartyResponse>("Remove Strava Connection") { client, completion in
+						client.thirdPartyConnections.removeThirdPartyToken(type: .strava, completion: completion)
+					}
+					EndpointLink<PushRegistrationResponse>("Register Device") { client, completion in
+						let rego = PushRegistration(token: "1234", platform: "strava", deviceId: "gwjh4")
+						client.thirdPartyConnections.registerDeviceWithThirdParty(registration: rego, completion: completion)
+					}
+					EndpointLink<VoidReply>("Deregister Device") { client, completion in
+						client.thirdPartyConnections.deregisterDeviceWithThirdParty(token: "1234", completion: completion)
+					}
+					EndpointLink<UpgradeAvailableResponse>("Is upgrade available") { client, completion in
+						client.thirdPartyConnections.getDeprecated(completion: completion)
+					}
+					
+				}
 			}
 			.listStyle(GroupedListStyle())
 			.navigationBarTitle("Zone5 Example")
 		}
 		.sheet(isPresented: $displayConfiguration) {
-			ConfigurationView(apiClient: self.apiClient, keyValueStore: self.keyValueStore)
+			ConfigurationView(apiClient: self.apiClient, keyValueStore: self.keyValueStore, password: self.password)
 		}
 		.onAppear {
 			if !self.apiClient.isConfigured {

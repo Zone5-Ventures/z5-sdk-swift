@@ -30,40 +30,41 @@ public class APIView {
 		}
 	}
 
-	internal func get<T>(_ endpoint: RequestEndpoint, parameters: URLEncodedBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
-		let request = Request(endpoint: endpoint, method: .get, body: parameters)
+	internal func get<T>(_ endpoint: RequestEndpoint, parameters queryParams: URLEncodedBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
+		let request = Request(endpoint: endpoint, method: .get, queryParams: queryParams)
 
 		return perform(with: completionHandler) { zone5 in
 			return zone5.httpClient.perform(request, expectedType: T.self, completion: completionHandler)
 		}
 	}
 
-	internal func get<T>(_ endpoint: RequestEndpoint, parameters: URLEncodedBody? = nil, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
-		return get(endpoint, parameters: parameters, expectedType: T.self, with: completionHandler)
+	internal func get<T>(_ endpoint: RequestEndpoint, parameters queryParams: URLEncodedBody? = nil, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
+		return get(endpoint, parameters: queryParams, expectedType: T.self, with: completionHandler)
 	}
 
-	internal func post<T>(_ endpoint: RequestEndpoint, body: RequestBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
-		let request = Request(endpoint: endpoint, method: .post, body: body)
+	/// post request may contain only a body *or* query params and a body
+	internal func post<T>(_ endpoint: RequestEndpoint, parameters queryParams: URLEncodedBody? = nil, body: RequestBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
+		let request = Request(endpoint: endpoint, method: .post, queryParams: queryParams, body: body)
 
 		return perform(with: completionHandler) { zone5 in
 			return zone5.httpClient.perform(request, expectedType: T.self, completion: completionHandler)
 		}
 	}
 
-	internal func post<T>(_ endpoint: RequestEndpoint, body: RequestBody?, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
-		return post(endpoint, body: body, expectedType: T.self, with: completionHandler)
+	internal func post<T>(_ endpoint: RequestEndpoint, parameters queryParams: URLEncodedBody? = nil, body: RequestBody?, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
+		return post(endpoint, parameters: queryParams, body: body, expectedType: T.self, with: completionHandler)
 	}
 
-	internal func delete<T>(_ endpoint: RequestEndpoint, body: RequestBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
-		let request = Request(endpoint: endpoint, method: .delete, body: body)
+	internal func delete<T>(_ endpoint: RequestEndpoint, parameters queryParams: URLEncodedBody? = nil, expectedType: T.Type, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
+		let request = Request(endpoint: endpoint, method: .delete, queryParams: queryParams)
 
 		return perform(with: completionHandler) { zone5 in
 			return zone5.httpClient.perform(request, expectedType: T.self, completion: completionHandler)
 		}
 	}
 
-	internal func delete<T>(_ endpoint: RequestEndpoint, body: RequestBody?, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
-		return delete(endpoint, body: body, expectedType: T.self, with: completionHandler)
+	internal func delete<T>(_ endpoint: RequestEndpoint, parameters queryParams: URLEncodedBody? = nil, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
+		return delete(endpoint, parameters: queryParams, expectedType: T.self, with: completionHandler)
 	}
 
 	internal func upload<T>(_ endpoint: RequestEndpoint, contentsOf fileURL: URL, body: RequestBody?, expectedType: T.Type, with completionHandler: @escaping Completion<T>) -> PendingRequest? {
@@ -78,8 +79,8 @@ public class APIView {
 		return upload(endpoint, contentsOf: fileURL, body: body, expectedType: T.self, with: completionHandler)
 	}
 
-	internal func download(_ endpoint: RequestEndpoint, parameters: URLEncodedBody? = nil, with completionHandler: @escaping Completion<URL>) -> PendingRequest? {
-		let request = Request(endpoint: endpoint, method: .get, body: parameters)
+	internal func download(_ endpoint: RequestEndpoint, queryParams: URLEncodedBody? = nil, with completionHandler: @escaping Completion<URL>) -> PendingRequest? {
+		let request = Request(endpoint: endpoint, method: .get, queryParams: queryParams)
 
 		return perform(with: completionHandler) { zone5 in
 			return zone5.httpClient.download(request, completion: completionHandler)

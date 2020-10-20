@@ -9,11 +9,22 @@
 import SwiftUI
 import Zone5
 
+// class so that we can pass by reference
+class Password {
+	var password: String
+	init(_ password: String = "") {
+		self.password = password
+	}
+}
+
 struct ConfigurationView: View {
 
 	let apiClient: Zone5
-
+	let userPassword: Password
+	
 	@State var keyValueStore: KeyValueStore = .shared
+	
+	@State var boundPassword: Password = Password("")
 
 	@Environment(\.presentationMode) var presentationMode
 
@@ -27,8 +38,9 @@ struct ConfigurationView: View {
 
 	@State private var displayingError = false
 
-	init(apiClient: Zone5 = .shared, keyValueStore: KeyValueStore = .shared) {
+	init(apiClient: Zone5 = .shared, keyValueStore: KeyValueStore = .shared, password: Password) {
 		self.apiClient = apiClient
+		self.userPassword = password
 		self.keyValueStore = keyValueStore
 	}
 
@@ -48,6 +60,17 @@ struct ConfigurationView: View {
 						TextField("Base URL", text: $keyValueStore.baseURLString)
 							.textContentType(.URL)
 							.keyboardType(.URL)
+					}
+					
+					Section(header: Text("User"), footer: Text("The User to register/log in/delete.")) {
+						TextField("User Email", text: $keyValueStore.userEmail)
+							.textContentType(.emailAddress)
+							.keyboardType(.emailAddress)
+					}
+					
+					Section(header: Text("Password"), footer: Text("Passwod for the User to register/log in/delete.")) {
+						TextField("User Password", text: $boundPassword.password)
+							.textContentType(.password)
 					}
 
 					if self.pickerIndex == 0 {
@@ -86,6 +109,10 @@ struct ConfigurationView: View {
 
 	func configureAndDismiss() {
 		error = nil
+		
+		if !boundPassword.password.isEmpty {
+			self.userPassword.password = boundPassword.password
+		}
 
 		// There are two ways to prepare your client for accessing the Zone5 API. If you are using Specialized Staging or Prod
 		// then no clientID or clientSecret are required as all auth goes through GIGYA.
@@ -115,6 +142,6 @@ struct ConfigurationView: View {
 
 struct ConfigurationView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigurationView()
+		ConfigurationView(password: Password())
     }
 }

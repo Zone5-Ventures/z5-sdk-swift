@@ -85,27 +85,6 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 		}
 	}
 
-	func testMissingRequestBody() {
-		execute { zone5, httpClient, urlSession in
-			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: .post)
-
-			urlSession.dataTaskHandler = { urlRequest in
-				XCTFail("Request should never be performed when encountering an unexpected request body.")
-
-				return .error(Zone5.Error.unknown)
-			}
-
-			_ = httpClient.perform(request, expectedType: User.self) { result in
-				if case .failure(let error) = result,
-					case .missingRequestBody = error {
-						return // Success!
-				}
-
-				XCTFail("Request unexpectedly completed with \(result).")
-			}
-		}
-	}
-
 	func testServerFailure() {
 		let parameters: [(method: Request.Method, body: RequestBody?)] = [
 			(.get, nil),
@@ -172,16 +151,19 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 	}
 
 	func testSuccessfulRequest() {
-		let parameters: [(method: Request.Method, body: RequestBody?)] = [
-			(.get, nil),
-			(.get, ["string": "hello world", "integer": 1234567890] as URLEncodedBody),
-			(.post, ["string": "hello world", "integer": 1234567890] as URLEncodedBody),
-			(.post, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
+		let parameters: [(method: Request.Method, params: URLEncodedBody?, body: RequestBody?)] = [
+			(.get, nil, nil),
+			(.get, ["string": "hello world", "integer": 1234567890] as URLEncodedBody, nil),
+			(.post, ["string": "hello world", "integer": 1234567890] as URLEncodedBody, nil),
+			(.post, ["string": "hello again", "integer": 0987654321] as URLEncodedBody, ["string": "hello world", "integer": 1234567890] as URLEncodedBody),
+			(.post, ["string": "hello again", "integer": 0987654321] as URLEncodedBody, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
+			(.post, nil, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
+			(.post, nil, ["string": "hello world", "integer": 1234567890] as URLEncodedBody),
+			(.post, nil, nil)
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
-			request.body = parameters.body
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, queryParams: parameters.params, body: parameters.body)
 
 			urlSession.dataTaskHandler = { urlRequest in
 				XCTAssertEqual(urlRequest.url?.path, request.endpoint.uri)

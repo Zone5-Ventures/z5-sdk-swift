@@ -10,12 +10,9 @@ import Foundation
 
 public struct PushRegistration: Codable, JSONEncodedBody {
 	
-	public var token: String
-	
-	public var platform: String
-	
-	public var deviceId: String
-	
+	public let token: String
+	public let platform: String
+	public let deviceId: String
 	
 	public init(token: String, platform: String, deviceId: String) {
 		self.token = token
@@ -28,19 +25,6 @@ public struct PushRegistration: Codable, JSONEncodedBody {
 	private enum CodingKeys: String, CodingKey {
 		case token
 		case platform
-		case deviceId
+		case deviceId = "device_id"
 	}
-
-}
-
-public struct UpgradeAvailableResponse: Codable, JSONEncodedBody {
-	
-	public var upgrade: Bool
-	
-}
-
-public struct PushRegistrationResponse: Codable, JSONEncodedBody {
-	
-	public var token: String
-	
 }

@@ -10,24 +10,36 @@ import XCTest
 @testable import Zone5
 
 class ThirdPartyViewTests: XCTestCase {
-	let response1 = TokenResponse(token: "12345", expiresIn: 100, refreshToken: "54321", scope: "???")
-	let token1 = ThirdPartyToken(token: "12345", refreshToken: "54321", expiresIn: 100, scope: "???")
+	let token1 = ThirdPartyToken(token: "12345", expiresIn: 100, refreshToken: "54321", scope: "???")
+	let response1 = ThirdPartyTokenResponse(available: true, token: ThirdPartyToken(token: "12345", expiresIn: 100, refreshToken: "54321", scope: "???"))
 	let pushRegistration1 = PushRegistration(token: "12345", platform: "ios", deviceId: "johhny")
 
 	func testSetThirdPartyToken() {
-		let tests: [(token: AccessToken?, json: String, expectedResult: Result<ThirdPartyTokenResponse, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, json: String, expectedResult: Result<ThirdPartyResponse, Zone5.Error>)] = [
 			(
 				token: nil,
-				json: "{}",
+				json: "{\"success\":true}",
 				expectedResult: .failure(.requiresAccessToken)
 			),
 			(
 				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"available\":true,\"token\":{\"token\":\"12345\", \"scope\":\"???\", \"expiresIn\":100, \"refreshToken\":\"54321\"}}",
+				json: "{\"success\":true}",
 				expectedResult: .success {
-					let result = ThirdPartyTokenResponse(available: true, token: response1)
-					return result
+					return ThirdPartyResponse(success: true)
 				}
+			),
+			(
+				token: OAuthToken(rawValue: UUID().uuidString),
+				json: "{\"success\":false}",
+				expectedResult: .success {
+					return ThirdPartyResponse(success: false)
+				}
+			),
+			(
+				// incorrect response
+				token: OAuthToken(rawValue: UUID().uuidString),
+				json: "{\"available\":true,\"token\":{\"token\":\"12345\", \"scope\":\"???\", \"expires_in\":100, \"refresh_token\":\"54321\"}}",
+				expectedResult: .failure(.failedDecodingResponse(Zone5.Error.unknown))
 			),
 		]
 
@@ -46,11 +58,7 @@ class ThirdPartyViewTests: XCTestCase {
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
 
 				case (.success(let lhs), .success(let rhs)):
-					XCTAssertEqual(lhs.available, rhs.available)
-					XCTAssertEqual(lhs.token?.token, rhs.token?.token)
-					XCTAssertEqual(lhs.token?.scope, rhs.token?.scope)
-					XCTAssertEqual(lhs.token?.expiresIn, rhs.token?.expiresIn)
-					XCTAssertEqual(lhs.token?.refreshToken, rhs.token?.refreshToken)
+					XCTAssertEqual(lhs.success, rhs.success)
 
 				default:
 					print(result, test.expectedResult)
@@ -63,18 +71,41 @@ class ThirdPartyViewTests: XCTestCase {
 	func testHasThirdPartyToken() {
 		let tests: [(token: AccessToken?, json: String, expectedResult: Result<ThirdPartyTokenResponse, Zone5.Error>)] = [
 			(
+				// this endpoint requires auth
 				token: nil,
-				json: "{}",
+				json: "{\"available\":false}",
 				expectedResult: .failure(.requiresAccessToken)
 			),
 			(
+				// successful request, result is false
 				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"available\":true,\"token\":{\"token\":\"12345\", \"scope\":\"???\", \"expiresIn\":100, \"refreshToken\":\"54321\"}}",
+				json: "{\"available\":false}",
 				expectedResult: .success {
-					let result = ThirdPartyTokenResponse(available: true, token: response1)
-					return result
+					return ThirdPartyTokenResponse(available:false)
 				}
 			),
+			(
+				// successful request, result contains full info
+				token: OAuthToken(rawValue: UUID().uuidString),
+				json: "{\"available\":true,\"token\":{\"token\":\"12345\", \"scope\":\"???\", \"expires_in\":100, \"refresh_token\":\"54321\"}}",
+				expectedResult: .success {
+					return ThirdPartyTokenResponse(available:true, token: ThirdPartyToken(token:"12345", expiresIn: 100,  refreshToken: "54321", scope:"???"))
+				}
+			),
+			(
+				// successful request, result contrains minimal allowed info
+				token: OAuthToken(rawValue: UUID().uuidString),
+				json: "{\"available\":true,\"token\":{\"token\":\"12345\"}}",
+				expectedResult: .success {
+					return ThirdPartyTokenResponse(available:true, token: ThirdPartyToken(token:"12345"))
+				}
+			),
+			(
+				// incorrect payload
+				token: OAuthToken(rawValue: UUID().uuidString),
+				json: "{\"success\":true}",
+				expectedResult: .failure(.failedDecodingResponse(Zone5.Error.unknown))
+			)
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
@@ -108,19 +139,30 @@ class ThirdPartyViewTests: XCTestCase {
 
 	
 	func testRemoveThirdPartyToken() {
-		let tests: [(token: AccessToken?, json: String, expectedResult: Result<ThirdPartyTokenResponse, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, json: String, expectedResult: Result<ThirdPartyResponse, Zone5.Error>)] = [
 			(
+				// endpoint requires auth
 				token: nil,
-				json: "{}",
+				json: "{\"success\":true}",
 				expectedResult: .failure(.requiresAccessToken)
 			),
 			(
+				// successful response, with false result
+				token: OAuthToken(rawValue: UUID().uuidString),
+				json: "{\"success\":false}",
+				expectedResult: .success { return ThirdPartyResponse(success: false)}
+			),
+			(
+				// successful response, with true result
+				token: OAuthToken(rawValue: UUID().uuidString),
+				json: "{\"success\":true}",
+				expectedResult: .success { return ThirdPartyResponse(success: true)}
+			),
+			(
+				// incorrect payload
 				token: OAuthToken(rawValue: UUID().uuidString),
 				json: "{\"available\":true,\"token\":{\"token\":\"12345\", \"scope\":\"???\", \"expiresIn\":100, \"refreshToken\":\"54321\"}}",
-				expectedResult: .success {
-					let result = ThirdPartyTokenResponse(available: true, token: response1)
-					return result
-				}
+				expectedResult: .failure(.failedDecodingResponse(Zone5.Error.unknown))
 			),
 		]
 
@@ -139,11 +181,7 @@ class ThirdPartyViewTests: XCTestCase {
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
 
 				case (.success(let lhs), .success(let rhs)):
-					XCTAssertEqual(lhs.available, rhs.available)
-					XCTAssertEqual(lhs.token?.token, rhs.token?.token)
-					XCTAssertEqual(lhs.token?.scope, rhs.token?.scope)
-					XCTAssertEqual(lhs.token?.expiresIn, rhs.token?.expiresIn)
-					XCTAssertEqual(lhs.token?.refreshToken, rhs.token?.refreshToken)
+					XCTAssertEqual(lhs.success, rhs.success)
 
 				default:
 					print(result, test.expectedResult)
@@ -158,17 +196,25 @@ class ThirdPartyViewTests: XCTestCase {
 	func testRegisterDeviceWithThirdParty() {
 		let tests: [(token: AccessToken?, json: String, expectedResult: Result<PushRegistrationResponse, Zone5.Error>)] = [
 			(
+				// endpoint requires auth
 				token: nil,
-				json: "{}",
+				json: "{\"token\": 12345}",
 				expectedResult: .failure(.requiresAccessToken)
 			),
 			(
+				// success
 				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"token\": \"12345\"}",
+				json: "{\"token\": 12345}",
 				expectedResult: .success {
-					return PushRegistrationResponse(token: "12345")
+					return PushRegistrationResponse(token: 12345)
 				}
 			),
+			(
+				// invalid response
+				token: OAuthToken(rawValue: UUID().uuidString),
+				json: "{\"success\": true}",
+				expectedResult: .failure(.failedDecodingResponse(Zone5.Error.unknown))
+			)
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
@@ -205,7 +251,7 @@ class ThirdPartyViewTests: XCTestCase {
 			),
 			(
 				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"result\": 999}",  //TODO: Find out what the tag/result really is
+				json: "{}",
 				expectedResult: .success {
 					return VoidReply()
 				}
@@ -249,7 +295,7 @@ class ThirdPartyViewTests: XCTestCase {
 				token: OAuthToken(rawValue: UUID().uuidString),
 				json: "{\"upgrade\": true}",  //TODO: Find out what the tag/result really is
 				expectedResult: .success {
-					return UpgradeAvailableResponse(upgrade: true)
+					return UpgradeAvailableResponse(isUpgradeAvailable: true)
 				}
 			),
 		]
@@ -269,7 +315,7 @@ class ThirdPartyViewTests: XCTestCase {
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
 
 				case (.success(let lhs), .success(let rhs)):
-					XCTAssertEqual(lhs.upgrade, rhs.upgrade)
+					XCTAssertEqual(lhs.isUpgradeAvailable, rhs.isUpgradeAvailable)
 
 				default:
 					print(result, test.expectedResult)
