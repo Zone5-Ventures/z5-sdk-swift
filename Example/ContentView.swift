@@ -100,6 +100,11 @@ struct ContentView: View {
 					EndpointLink<[String:Bool]>("Check Email Status") { client, completion in
 						client.users.getEmailValidationStatus(email: keyValueStore.userEmail, completion: completion)
 					}
+					EndpointLink<Bool>("Update User Name") { client, completion in
+						me.firstName = "first\(Date().timeIntervalSince1970)"
+						me.lastName = "last\(Date().timeIntervalSince1970)"
+						client.users.updateUser(user: me, completion: completion)
+					}
 					EndpointLink<Bool>("Reset Password") { client, completion in
 						client.users.resetPassword(email: keyValueStore.userEmail, completion: completion)
 					}
@@ -300,7 +305,7 @@ struct ContentView: View {
 						client.thirdPartyConnections.hasThirdPartyToken(type: .strava, completion: completion)
 					}
 					EndpointLink<ThirdPartyResponse>("Set Strava Connection") { client, completion in
-						let token = ThirdPartyToken(token: "123", expiresIn: 10000, refreshToken: "456", scope: "aaa")
+						let token = ThirdPartyToken(token: "0faf113fed3a1c7b9db1c567cfd65fb992b9d4f5", refreshToken: "d92923e388d25f3c2d2fcc1d6caf56b9a4e462e5")
 						client.thirdPartyConnections.setThirdPartyToken(type: .strava, connection: token, completion: completion)
 					}
 					EndpointLink<ThirdPartyResponse>("Remove Strava Connection") { client, completion in
