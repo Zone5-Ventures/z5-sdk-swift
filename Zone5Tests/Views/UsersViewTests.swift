@@ -602,6 +602,67 @@ class UsersViewTests: XCTestCase {
 		}
 	}
 	
+	func testUpdateUser() {
+		let tests: [(token: AccessToken?, host: String, json: String, expectedResult: Result<Bool, Zone5.Error>)] = [
+			(
+				// update user requires a token, so this will fail authentication
+				token: nil,
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "true",
+				expectedResult: .failure(.requiresAccessToken)
+			),
+			(
+				// token set.
+				token: OAuthToken(rawValue: "1234567890"),
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "true",
+				expectedResult: .success {
+					return true
+				}
+			),
+			(
+				// token set.
+				token: OAuthToken(rawValue: "1234567890"),
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "false",
+				expectedResult: .success {
+					return false
+				}
+			),
+			(
+				// token set.
+				token: OAuthToken(rawValue: "1234567890"),
+				host: "http://\(Zone5.specializedStagingServer)",
+				json: "should fail decode",
+				expectedResult: .failure(.failedDecodingResponse(Zone5.Error.unknown))
+			)
+		]
+
+		execute(with: tests) { client, _, urlSession, test in
+			client.baseURL = URL(string: test.host)
+			client.accessToken = test.token
+			
+			urlSession.dataTaskHandler = { request in
+				XCTAssertEqual(request.url?.path, UsersView.Endpoints.setUser.rawValue)
+				return .success(test.json)
+			}
+
+			client.users.updateUser(user: User(email: "test@gmail.com", password: "34123", firstname: "first", lastname: "name")) { result in
+				switch (result, test.expectedResult) {
+				case (.failure(let lhs), .failure(let rhs)):
+					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
+					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
+					XCTAssertEqual(client.accessToken?.rawValue,  test.token?.rawValue)
+				case (.success(_), .success(_)):
+					XCTAssertEqual(client.accessToken?.rawValue,  test.token?.rawValue)
+				default:
+					print(result, test.expectedResult)
+					XCTFail()
+				}
+			}
+		}
+	}
+	
 	func testRefreshToken() {
 		let tests: [(token: AccessToken?, host: String, json: String, expectedResult: Result<OAuthTokenAlt, Zone5.Error>)] = [
 			(

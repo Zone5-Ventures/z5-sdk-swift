@@ -103,6 +103,12 @@ public class UsersView: APIView {
 		return post(Endpoints.passwordReset, body: body, with: completion)
 	}
 	
+	/// Update properties on the User
+	@discardableResult
+	public func updateUser(user: User, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
+		post(Endpoints.setUser, body: user, with: completion)
+	}
+	
 	/// Change a user's password - oldPassword is only required in Specialized environment
 	public func changePassword(oldPassword: String?, newPassword: String, completion: @escaping Zone5.ResultHandler<VoidReply>) {
 		guard let zone5 = zone5 else {
