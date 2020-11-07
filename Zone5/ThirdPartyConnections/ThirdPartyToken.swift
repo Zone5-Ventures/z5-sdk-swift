@@ -1,10 +1,10 @@
 import Foundation
 
 public struct ThirdPartyToken: Codable, JSONEncodedBody {
-    let token: String
-	var expiresIn: Int?
-	var refreshToken: String?
-	var scope: String?
+	public let token: String
+	public var expiresIn: Int?
+	public var refreshToken: String?
+	public var scope: String?
 	
 	public init(token: String, expiresIn: Int? = nil, refreshToken: String? = nil, scope: String? = nil) {
 		self.token = token
