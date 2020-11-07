@@ -1,7 +1,7 @@
 import Foundation
 
 public struct ThirdPartyToken: Codable, JSONEncodedBody {
-    public let token: String
+	public let token: String
 	public var expiresIn: Int?
 	public var refreshToken: String?
 	public var scope: String?
