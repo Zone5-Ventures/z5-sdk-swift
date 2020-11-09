@@ -4546,7 +4546,7 @@
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/OAuthToken.swift",
       "line": 17,
-      "symbol": "OAuthToken.expires",
+      "symbol": "OAuthToken.expiresIn",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -4554,6 +4554,13 @@
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/OAuthToken.swift",
       "line": 19,
       "symbol": "OAuthToken.init(rawValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/OAuthToken.swift",
+      "line": 23,
+      "symbol": "OAuthToken.init(token:refresh:expiresIn:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },

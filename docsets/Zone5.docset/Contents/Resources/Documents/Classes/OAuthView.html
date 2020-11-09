@@ -481,6 +481,145 @@ token that can be stored and used to authenticate the user in future sessions, a
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59OAuthViewC18refreshAccessToken8username10completionySS_ys6ResultOyAA0bF0VA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/refreshAccessToken(username:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59OAuthViewC18refreshAccessToken8username10completionySS_ys6ResultOyAA0bF0VA2AC5ErrorOGctF">refreshAccessToken(username:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Refresh the token that is already configured on the Zone5 entity
+This method requires that the SDK has been configured with a valid <code>clientID</code> and <code>clientSecret</code> and <code>token</code>, using
+<code>Zone5.configure(baseURL:clientID:clientSecret)</code>. If this has not been done, the method will call the completion
+with <code><a href="../Classes/Zone5/Error.html#/s:5Zone5AAC5ErrorO20invalidConfigurationyA2DmF">Zone5.Error.invalidConfiguration</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">refreshAccessToken</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/OAuthToken.html">OAuthToken</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">Error</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The user&rsquo;s username.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Handler called the authentication completes. If successful, the result will contain an access
+token that can be stored and used to authenticate the user in future sessions, and otherwise will contain a
+<code><a href="../Classes/Zone5/Error.html">Zone5.Error</a></code> value which represents the problem that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Zone59OAuthViewC18refreshAccessToken8username0dF010completionySS_SSys6ResultOyAA0bF0VA2AC5ErrorOGctF"></a>
+                    <a name="//apple_ref/swift/Method/refreshAccessToken(username:refreshToken:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Zone59OAuthViewC18refreshAccessToken8username0dF010completionySS_SSys6ResultOyAA0bF0VA2AC5ErrorOGctF">refreshAccessToken(username:refreshToken:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method requires that the SDK has been configured with a valid <code>clientID</code> and <code>clientSecret</code>, using
+<code>Zone5.configure(baseURL:clientID:clientSecret)</code>. If this has not been done, the method will call the completion
+with <code><a href="../Classes/Zone5/Error.html#/s:5Zone5AAC5ErrorO20invalidConfigurationyA2DmF">Zone5.Error.invalidConfiguration</a></code>.</p>
+
+<p>Refresh the token with the given refresh token.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">refreshAccessToken</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">refreshToken</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/OAuthToken.html">OAuthToken</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/Zone5.html">Zone5</a></span><span class="o">.</span><span class="kt">Error</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The user&rsquo;s username.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>refreshToken</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>refresh token to use</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Handler called the authentication completes. If successful, the result will contain an access
+token that can be stored and used to authenticate the user in future sessions, and otherwise will contain a
+<code><a href="../Classes/Zone5/Error.html">Zone5.Error</a></code> value which represents the problem that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -489,7 +628,7 @@ token that can be stored and used to authenticate the user in future sessions, a
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://zone5ventures.com" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-11-08)</p>
+      <p>&copy; 2020 <a class="link" href="https://zone5ventures.com" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-11-09)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
