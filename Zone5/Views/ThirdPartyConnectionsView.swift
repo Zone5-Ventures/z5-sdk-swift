@@ -41,7 +41,7 @@ public class ThirdPartyConnectionsView: APIView {
 		return delete(endpoint, with: completion)
 	}
 
-	/// Query whether an upgrade is available for the current user agent (client app).
+	/// Query whether the version of the current user agent (client app) has been deprecated and requires an upgrade.
 	@discardableResult
 	public func getDeprecated(completion: @escaping Zone5.ResultHandler<UpgradeAvailableResponse>) -> PendingRequest? {
 		return get(Endpoints.getDeprecated, with: completion)
