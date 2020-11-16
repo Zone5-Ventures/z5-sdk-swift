@@ -72,6 +72,10 @@ struct ConfigurationView: View {
 						TextField("User Password", text: $boundPassword.password)
 							.textContentType(.password)
 					}
+					
+					Section(header: Text("User Agent"), footer: Text("String passed with User-Agent header (useful for testing getDeprecated)")) {
+						TextField("User Agent", text: $keyValueStore.userAgent)
+					}
 
 					if self.pickerIndex == 0 {
 						Section(header: Text("Client Details"), footer: Text("These values are used to identify your application during user authentication.")) {
@@ -123,10 +127,10 @@ struct ConfigurationView: View {
 			// First we'll configure our client using the `baseURL`, `clientID` and `clientSecret` entered via the UI.
 			// These values would normally be embedded in your application and thus hidden from the user, as they
 			// identify your application.
-			apiClient.configure(for: keyValueStore.baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret)
+			apiClient.configure(for: keyValueStore.baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret, userAgent: keyValueStore.userAgent)
 			self.dismiss()
 		} else if pickerIndex == 1 {
-			apiClient.configure(for: keyValueStore.baseURL)
+			apiClient.configure(for: keyValueStore.baseURL, userAgent: keyValueStore.userAgent)
 			self.dismiss()
 		}
 		else {

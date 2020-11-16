@@ -18,6 +18,10 @@ final public class Zone5 {
 
 		httpClient.zone5 = self
 	}
+	
+	public convenience init(httpConfig: URLSessionConfiguration) {
+		self.init(httpClient: HTTPClient(configuration: httpConfig))
+	}
 
 	// MARK: Configuring the SDK
 
@@ -39,6 +43,9 @@ final public class Zone5 {
 	/// The secret key, as provided by Zone5.
 	/// - Note: This value can be set using the `configure(for:clientID:clientSecret:)` method.
 	public internal(set) var clientSecret: String?
+	
+	/// The user agent to set in the User-Agent header
+	public internal(set) var userAgent: String?
 
 	public var redirectURI: String = "https://localhost"
 
@@ -49,10 +56,11 @@ final public class Zone5 {
 	///   - clientSecret: The secret key, as provided by Zone5.
 	///   - accessToken: An access token representing a user authenticated during a previous session. If `nil`, any
 	///   		existing access token will be cleared.
-	public func configure(for baseURL: URL, clientID: String? = nil, clientSecret: String? = nil, accessToken: AccessToken?) {
+	public func configure(for baseURL: URL, clientID: String? = nil, clientSecret: String? = nil, userAgent: String? = nil, accessToken: AccessToken?) {
 		self.baseURL = baseURL
 		self.clientID = clientID
 		self.clientSecret = clientSecret
+		self.userAgent = userAgent
 		self.accessToken = accessToken
 	}
 
@@ -61,10 +69,11 @@ final public class Zone5 {
 	///   - baseURL: The API url to use.
 	///   - clientID: The clientID, as provided by Zone5.
 	///   - clientSecret: The secret key, as provided by Zone5.
-	public func configure(for baseURL: URL, clientID: String? = nil, clientSecret: String? = nil) {
+	public func configure(for baseURL: URL, clientID: String? = nil, clientSecret: String? = nil, userAgent: String? = nil) {
 		self.baseURL = baseURL
 		self.clientID = clientID
 		self.clientSecret = clientSecret
+		self.userAgent = userAgent
 	}
 
 	/// Configures the SDK on behalf of a user, represented by the given `accessToken`.

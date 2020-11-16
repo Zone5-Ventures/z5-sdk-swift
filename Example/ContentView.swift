@@ -24,12 +24,6 @@ struct ContentView: View {
 		self.apiClient = apiClient
 		self.keyValueStore = keyValueStore
 
-		// Do not use UserDefaults for storing user credentials in a production application. It is incredibly insecure,
-		// and a terrible idea. Don't do it.
-		//
-		// If you have stored your AccessToken (nice and securely), you can quite easily configure the SDK to use that
-		// at any point, and completely bypass configuring the clientID and clientSecret, which are only used as part of
-		// the user authentication process.
 		let baseURL = keyValueStore.baseURL
 		if !keyValueStore.clientID.isEmpty, !keyValueStore.clientSecret.isEmpty {
 			apiClient.configure(for: baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret)
@@ -92,6 +86,11 @@ struct ContentView: View {
 							completion(value)
 						}
 					}
+					EndpointLink<Bool>("Update User Name") { client, completion in
+						me.firstName = "first\(Date().timeIntervalSince1970)"
+						me.lastName = "last\(Date().timeIntervalSince1970)"
+						client.users.updateUser(user: me, completion: completion)
+					}
 				}
 				Section(header: Text("Auth"), footer: Text("Note that Register New User on TP servers makes an immediately usable user but on Specialized servers it requires a second auth step of going to the email for the user and clicking confirm email")) {
 					EndpointLink<Bool>("Check User Exists") { client, completion in
@@ -99,11 +98,6 @@ struct ContentView: View {
 					}
 					EndpointLink<[String:Bool]>("Check Email Status") { client, completion in
 						client.users.getEmailValidationStatus(email: keyValueStore.userEmail, completion: completion)
-					}
-					EndpointLink<Bool>("Update User Name") { client, completion in
-						me.firstName = "first\(Date().timeIntervalSince1970)"
-						me.lastName = "last\(Date().timeIntervalSince1970)"
-						client.users.updateUser(user: me, completion: completion)
 					}
 					EndpointLink<Bool>("Reset Password") { client, completion in
 						client.users.resetPassword(email: keyValueStore.userEmail, completion: completion)
@@ -125,8 +119,11 @@ struct ContentView: View {
 							completion(.failure(.requiresAccessToken))
 						}
 					}
-					EndpointLink("Refresh Token") { client, completion in
+					EndpointLink("Refresh Gigya Token") { client, completion in
 						client.users.refreshToken(completion: completion)
+					}
+					EndpointLink("Refresh Cognito Token") { client, completion in
+						client.oAuth.refreshAccessToken(username: keyValueStore.userEmail, completion: completion)
 					}
 					EndpointLink<User>("Register New User") { client, completion in
 						let email = keyValueStore.userEmail
@@ -331,7 +328,7 @@ struct ContentView: View {
 			ConfigurationView(apiClient: self.apiClient, keyValueStore: self.keyValueStore, password: self.password)
 		}
 		.onAppear {
-			if !self.apiClient.isConfigured {
+			if !self.apiClient.isConfigured || self.password.password.isEmpty {
 				self.displayConfiguration = true
 			}
 		}

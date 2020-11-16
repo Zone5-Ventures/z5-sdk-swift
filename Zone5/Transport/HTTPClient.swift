@@ -92,7 +92,7 @@ final internal class HTTPClient {
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
 	func perform<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5, baseURL in
-			let urlRequest = try request.urlRequest(with: baseURL, accessToken: zone5.accessToken)
+			let urlRequest = try request.urlRequest(with: baseURL, accessToken: zone5.accessToken, userAgent: zone5.userAgent)
 
 			let decoder = self.decoder
 			let task = urlSession.dataTask(with: urlRequest) { data, response, error in
@@ -126,7 +126,7 @@ final internal class HTTPClient {
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
 	func upload<T: Decodable>(_ fileURL: URL, with request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5, baseURL in
-			let (urlRequest, multipartData) = try request.urlRequest(toUpload: fileURL, with: baseURL, accessToken: zone5.accessToken)
+			let (urlRequest, multipartData) = try request.urlRequest(toUpload: fileURL, with: baseURL, accessToken: zone5.accessToken, userAgent: zone5.userAgent)
 			let cacheURL = HTTPClient.uploadsDirectory.appendingPathComponent(fileURL.lastPathComponent).appendingPathExtension("multipart")
 
 			do {
@@ -163,7 +163,7 @@ final internal class HTTPClient {
 	///			file on disk is returned, otherwise the error that was encountered.
 	func download(_ request: Request, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5, baseURL in
-			let urlRequest = try request.urlRequest(with: baseURL, accessToken: zone5.accessToken)
+			let urlRequest = try request.urlRequest(with: baseURL, accessToken: zone5.accessToken, userAgent: zone5.userAgent)
 
 			let decoder = self.decoder
 			let task = urlSession.downloadTask(with: urlRequest) { location, response, error in
