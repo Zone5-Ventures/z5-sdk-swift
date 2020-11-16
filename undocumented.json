@@ -4608,14 +4608,14 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/User.swift",
-      "line": 25,
+      "line": 28,
       "symbol": "User.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/User.swift",
-      "line": 26,
+      "line": 29,
       "symbol": "User.init(email:password:firstname:lastname:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
