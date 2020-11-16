@@ -72,7 +72,7 @@ public class UsersView: APIView {
 		defer { completion(result) }
 
 			if let zone5 = self?.zone5, case .success(let loginResponse) = result, let token = loginResponse.token {
-				zone5.accessToken = OAuthToken(rawValue: token)
+				zone5.accessToken = OAuthToken(token: token, refresh: loginResponse.refresh, expiresIn: loginResponse.tokenExp)
 			}
 		}
 	}

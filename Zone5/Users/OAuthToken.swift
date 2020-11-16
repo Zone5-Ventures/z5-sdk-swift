@@ -14,10 +14,16 @@ public struct OAuthToken: Codable, Equatable, AccessToken {
 	public var accessToken: String
 	public var refreshToken: String?
 	public var tokenType: String?
-	public var expires: Int?
+	public var expiresIn: Int?
 	
 	public init(rawValue: String) {
 		accessToken = rawValue
+	}
+	
+	public init(token: String, refresh: String?, expiresIn: Int?) {
+		accessToken = token
+		refreshToken = refresh
+		self.expiresIn = expiresIn
 	}
 	
 	public var rawValue: String {
@@ -30,6 +36,6 @@ public struct OAuthToken: Codable, Equatable, AccessToken {
 		case accessToken = "access_token"
 		case refreshToken = "refresh_token"
 		case tokenType = "token_type"
-		case expires
+		case expiresIn = "expires_in"
 	}
 }
