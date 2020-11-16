@@ -21,6 +21,9 @@ public struct User: Codable, JSONEncodedBody {
 
 	/// URL to an avatar image
 	public var avatar: URL?
+	
+	/// User's Locale
+	public var locale: String?
 
 	public init() { }
 	public init(email: String, password: String, firstname: String, lastname: String) {
@@ -40,6 +43,7 @@ public struct User: Codable, JSONEncodedBody {
 		case firstName = "firstname"
 		case lastName = "lastname"
 		case avatar
+		case locale
 	}
 
 }

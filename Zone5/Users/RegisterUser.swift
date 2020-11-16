@@ -24,8 +24,8 @@ public struct RegisterUser: Codable, JSONEncodedBody {
 	/// Optional - date of birth - UTC timestamp
 	public var dob: Int?
 
-	/// Optional - A Java Locale ID
-	public var locale: String?
+	/// Optional - A Java Locale ID - defaults to current locale
+	public var locale: String? = Locale.current.identifier
 
 	/// Optional - A Java TimeZone ID
 	public var timezone: String?

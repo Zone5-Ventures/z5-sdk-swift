@@ -77,7 +77,7 @@ final class HTTPClientUploadRequestTests: XCTestCase {
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
 
 			let fileURL = developmentAssets.randomElement()!
 
