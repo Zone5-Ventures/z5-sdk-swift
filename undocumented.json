@@ -4811,35 +4811,42 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 43,
+      "line": 22,
+      "symbol": "Zone5.init(httpConfig:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
+      "line": 50,
       "symbol": "Zone5.redirectURI",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 218,
+      "line": 227,
       "symbol": "Zone5.Error.ServerMessage.message",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 219,
+      "line": 228,
       "symbol": "Zone5.Error.ServerMessage.reason",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 220,
+      "line": 229,
       "symbol": "Zone5.Error.ServerMessage.error",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 221,
+      "line": 230,
       "symbol": "Zone5.Error.ServerMessage.statusCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
