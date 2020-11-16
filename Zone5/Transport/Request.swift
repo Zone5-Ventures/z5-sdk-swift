@@ -29,7 +29,7 @@ struct Request {
 		case patch = "PATCH"
 	}
 
-	func urlRequest(with baseURL: URL, accessToken: AccessToken?) throws -> URLRequest {
+	func urlRequest(with baseURL: URL, accessToken: AccessToken?, userAgent: String? = nil) throws -> URLRequest {
 		let url = baseURL.appendingPathComponent(endpoint.uri)
 		var request = URLRequest(url: url)
 		request.httpMethod = method.rawValue
@@ -42,7 +42,11 @@ struct Request {
 		else if endpoint.requiresAccessToken {
 			throw Zone5.Error.requiresAccessToken
 		}
-
+		
+		if let agent = userAgent, !agent.isEmpty {
+			request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
+		}
+		
 		// if there are queryParams, set them in the request. This is valid on all types.
 		if let queryParams = queryParams {
 			guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
@@ -83,7 +87,7 @@ struct Request {
 		return request
 	}
 
-	func urlRequest(toUpload fileURL: URL, with baseURL: URL, accessToken: AccessToken?) throws -> (URLRequest, Data) {
+	func urlRequest(toUpload fileURL: URL, with baseURL: URL, accessToken: AccessToken?, userAgent: String? = nil) throws -> (URLRequest, Data) {
 		var request = try urlRequest(with: baseURL, accessToken: accessToken)
 		request.httpBody = nil
 
@@ -100,6 +104,10 @@ struct Request {
 			}
 
 			request.setValue(multipart.contentType, forHTTPHeaderField: "Content-Type")
+			
+			if let agent = userAgent, !agent.isEmpty {
+				request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
+			}
 
 			return (request, try multipart.encodedData())
 		}

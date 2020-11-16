@@ -7,7 +7,7 @@ final class RequestTests: XCTestCase {
 		case test = "endpoint/uri"
 	}
 
-	func testExample() {
+	func testRequest() {
 		let baseURL = URL(string: "https://localhost")!
 		let accessToken = OAuthToken(rawValue: UUID().uuidString)
 
@@ -21,7 +21,13 @@ final class RequestTests: XCTestCase {
 			let urlRequest = try request.urlRequest(with: baseURL, accessToken: accessToken)
 
 			XCTAssertNotNil(urlRequest.httpBody)
+			XCTAssertNil(urlRequest.value(forHTTPHeaderField: "User-Agent"))
+			
+			let urlRequest2 = try request.urlRequest(with: baseURL, accessToken: accessToken, userAgent: "testagent/1.1.1 (222)")
 
+			XCTAssertNotNil(urlRequest2.httpBody)
+			XCTAssertEqual("testagent/1.1.1 (222)", urlRequest2.value(forHTTPHeaderField: "User-Agent"))
+			
 //			let decoded = try JSONDecoder().decode(URLEncodedBody.self, from: urlRequest.httpBody!)
 //
 //			XCTAssertNotNil(decoded)
@@ -34,7 +40,7 @@ final class RequestTests: XCTestCase {
 		}
 	}
 	
-	func testExample2() {
+	func testRequest2() {
 		let baseURL = URL(string: "https://localhost")!
 		let accessToken = OAuthToken(rawValue: UUID().uuidString)
 		

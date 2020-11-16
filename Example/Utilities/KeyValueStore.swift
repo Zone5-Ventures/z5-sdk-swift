@@ -68,5 +68,17 @@ struct KeyValueStore {
 			}
 		}
 	}
+	
+	var userAgent: String {
+		get { return userDefaults.string(forKey: "Zone5_userAgent") ?? "" }
+		set {
+			if !newValue.isEmpty {
+				userDefaults.set(newValue, forKey: "Zone5_userAgent")
+			}
+			else {
+				userDefaults.removeObject(forKey: "Zone5_userAgent")
+			}
+		}
+	}
 
 }
