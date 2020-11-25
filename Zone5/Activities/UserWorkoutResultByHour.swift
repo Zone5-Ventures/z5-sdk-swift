@@ -55,5 +55,47 @@ public struct UserWorkoutResultByHour: Codable {
 	public var kjhkg12: Double?
 
 	public init() {}
+	
+	public enum CodingKeys: String, CodingKey, CaseIterable {
+		case avgW1
+		case kj1
+		case kjhkg1
+		case avgW2
+		case kj2
+		case kjhkg2
+		case avgW3
+		case kj3
+		case kjhkg3
+		case avgW4
+		case kj4
+		case kjhkg4
+		case avgW5
+		case kj5
+		case kjhkg5
+		case avgW6
+		case kj6
+		case kjhkg6
+		case avgW7
+		case kj7
+		case kjhkg7
+		case avgW8
+		case kj8
+		case kjhkg8
+		case avgW9
+		case kj9
+		case kjhkg9
+		case avgW10
+		case kj10
+		case kjhkg10
+		case avgW11
+		case kj11
+		case kjhkg11
+		case avgW12
+		case kj12
+		case kjhkg12
+	}
 
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
+		return fields.map { "\(prefix).\($0.rawValue)" }
+	}
 }

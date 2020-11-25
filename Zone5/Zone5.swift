@@ -18,10 +18,6 @@ final public class Zone5 {
 
 		httpClient.zone5 = self
 	}
-	
-	public convenience init(httpConfig: URLSessionConfiguration) {
-		self.init(httpClient: HTTPClient(configuration: httpConfig))
-	}
 
 	// MARK: Configuring the SDK
 
@@ -30,7 +26,7 @@ final public class Zone5 {
 	/// This property automatically captures the token returned by the server when using methods such as
 	/// `OAuthView.accessToken(username:password:completion:)`, but can also be set using a token that was stored
 	/// during a previous session.
-	public var accessToken: AccessToken?
+	public internal(set) var accessToken: AccessToken?
 
 	/// The root URL for the server that we want to communicate with.
 	/// - Note: This value can be set using the `configure(for:clientID:clientSecret:)` method.
@@ -149,6 +145,11 @@ final public class Zone5 {
 	/// A collection of API endpoints related to third party connections (like Strava).
 	public lazy var thirdPartyConnections: ThirdPartyConnectionsView = {
 		return ThirdPartyConnectionsView(zone5: self)
+	}()
+	
+	/// A collection of API endpoints related to payments.
+	public lazy var payments: PaymentsView = {
+		return PaymentsView(zone5: self)
 	}()
 
 	// MARK: Errors

@@ -595,6 +595,8 @@ public struct UserWorkoutResult: Codable {
 
 	public var turbo: UserWorkoutResultTurbo?
 	
+	public var turboExt: UserWorkoutResultTurboExt?
+	
 	public var bike: UserWorkoutResultBike?
 
 	public var channels: [UserWorkoutResultChannel]?
@@ -611,7 +613,7 @@ public struct UserWorkoutResult: Codable {
 
 	// MARK: Codable
 
-	private enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey, CaseIterable {
 		case id = "id"
 		case year = "year"
 		case dayOfYear = "dayOfYear"
@@ -902,6 +904,7 @@ public struct UserWorkoutResult: Codable {
 		case lss = "lss"
 		case hour = "hour"
 		case turbo = "turbo"
+		case turboExt = "turboExt"
 		case bike = "bike"
 		case channels = "channels"
 		case sum = "sum"
@@ -911,4 +914,7 @@ public struct UserWorkoutResult: Codable {
 		case weightedAverage = "wavg"
 	}
 
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
+		return fields.map { "\(prefix).\($0.rawValue)" }
+	}
 }

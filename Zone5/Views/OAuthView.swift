@@ -2,7 +2,7 @@ import Foundation
 
 public class OAuthView: APIView {
 
-	private enum Endpoints: String, RequestEndpoint {
+	internal enum Endpoints: String, RequestEndpoint {
 		case accessToken = "/rest/oauth/access_token"
 
 		var requiresAccessToken: Bool {
@@ -40,10 +40,16 @@ public class OAuthView: APIView {
 		]
 
 		_ = post(Endpoints.accessToken, body: body, expectedType: OAuthToken.self) { [weak self] result in
-			defer { completion(result) }
 
-			if let zone5 = self?.zone5, case .success(let token) = result {
+			if let zone5 = self?.zone5, case .success(var token) = result {
+				if let expiresIn = token.expiresIn {
+					token.tokenExp = Date().addingTimeInterval(Double(expiresIn)).milliseconds.rawValue
+				}
 				zone5.accessToken = token
+				
+				completion(Zone5.Result.success(token))
+			} else {
+				completion(result)
 			}
 		}
 	}
@@ -57,6 +63,8 @@ public class OAuthView: APIView {
 	///		- completion: Handler called the authentication completes. If successful, the result will contain an access
 	///   	token that can be stored and used to authenticate the user in future sessions, and otherwise will contain a
 	///   	`Zone5.Error` value which represents the problem that occurred.
+	///
+	/// Don't pass back a PendingRequest as this is not something that we want to cancel mid-request
 	public func refreshAccessToken(username: String, completion: @escaping (_ result: Result<OAuthToken, Zone5.Error>) -> Void) {
 		guard let zone5 = zone5, zone5.isConfigured, let token = zone5.accessToken as? OAuthToken, let refresh = token.refreshToken else {
 			completion(.failure(.invalidConfiguration))
@@ -78,6 +86,8 @@ public class OAuthView: APIView {
 	///		- completion: Handler called the authentication completes. If successful, the result will contain an access
 	///   	token that can be stored and used to authenticate the user in future sessions, and otherwise will contain a
 	///   	`Zone5.Error` value which represents the problem that occurred.
+	///
+	/// Don't pass back a PendingRequest as this is not something that we want to cancel mid-request
 	public func refreshAccessToken(username: String, refreshToken: String, completion: @escaping (_ result: Result<OAuthToken, Zone5.Error>) -> Void) {
 		guard let zone5 = zone5, zone5.isConfigured else {
 			completion(.failure(.invalidConfiguration))
@@ -94,10 +104,16 @@ public class OAuthView: APIView {
 		]
 
 		_ = post(Endpoints.accessToken, body: body, expectedType: OAuthToken.self) { [weak self] result in
-			defer { completion(result) }
 
-			if let zone5 = self?.zone5, case .success(let token) = result {
+			if let zone5 = self?.zone5, case .success(var token) = result {
+				if let expiresIn = token.expiresIn {
+					token.tokenExp = Date().addingTimeInterval(Double(expiresIn)).milliseconds.rawValue
+				}
 				zone5.accessToken = token
+				
+				completion(Zone5.Result.success(token))
+			} else {
+				completion(result)
 			}
 		}
 	}

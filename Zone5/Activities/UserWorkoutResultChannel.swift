@@ -19,5 +19,17 @@ public struct UserWorkoutResultChannel: Codable {
 	public var avg: Double?
 
 	public init() {}
+	
+	public enum CodingKeys: String, CodingKey, CaseIterable {
+		case name
+		case type
+		case num
+		case min
+		case max
+		case avg
+	}
 
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
+		return fields.map { "\(prefix).\($0.rawValue)" }
+	}
 }

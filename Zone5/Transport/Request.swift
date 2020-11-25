@@ -29,23 +29,21 @@ struct Request {
 		case patch = "PATCH"
 	}
 
-	func urlRequest(with baseURL: URL, accessToken: AccessToken?, userAgent: String? = nil) throws -> URLRequest {
+	func urlRequest(with baseURL: URL, zone5: Zone5, taskType: URLSessionTaskType) throws -> URLRequest {
 		let url = baseURL.appendingPathComponent(endpoint.uri)
 		var request = URLRequest(url: url)
 		request.httpMethod = method.rawValue
-		request.setValue("true", forHTTPHeaderField: "tp-nodecorate")
 
-		// Sign the request with the access token if we have one
-		if endpoint.requiresAccessToken, let accessToken = accessToken {
-			request.setValue("Bearer \(accessToken.rawValue)", forHTTPHeaderField: "Authorization")
+		// mark if token auth is required for the request
+		if endpoint.requiresAccessToken, zone5.accessToken != nil {
+			request = request.setMeta(key: .requiresAccessToken, value: true)
 		}
 		else if endpoint.requiresAccessToken {
 			throw Zone5.Error.requiresAccessToken
 		}
 		
-		if let agent = userAgent, !agent.isEmpty {
-			request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
-		}
+		// pass reference to Zone5 instance and set task type (data|upload|download)
+		request = request.setMeta(key: .zone5, value: zone5).setMeta(key: .taskType, value: taskType)
 		
 		// if there are queryParams, set them in the request. This is valid on all types.
 		if let queryParams = queryParams {
@@ -87,8 +85,9 @@ struct Request {
 		return request
 	}
 
-	func urlRequest(toUpload fileURL: URL, with baseURL: URL, accessToken: AccessToken?, userAgent: String? = nil) throws -> (URLRequest, Data) {
-		var request = try urlRequest(with: baseURL, accessToken: accessToken)
+	func urlRequest(toUpload fileURL: URL, with baseURL: URL, zone5: Zone5) throws -> (URLRequest, Data) {
+		var request = try urlRequest(with: baseURL, zone5: zone5, taskType: .upload)
+		
 		request.httpBody = nil
 
 		do {
@@ -105,10 +104,6 @@ struct Request {
 
 			request.setValue(multipart.contentType, forHTTPHeaderField: "Content-Type")
 			
-			if let agent = userAgent, !agent.isEmpty {
-				request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
-			}
-
 			return (request, try multipart.encodedData())
 		}
 		catch Zone5.Error.unexpectedRequestBody {

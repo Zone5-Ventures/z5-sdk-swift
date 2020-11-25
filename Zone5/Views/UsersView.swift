@@ -50,6 +50,7 @@ public class UsersView: APIView {
 	}
 	
 	/// Login as a user and obtain a bearer token - clientId and clientSecret are not required in Specialized featureset
+	/// Don't pass back a PendingRequest as this is not something that we can cancel mid-request
 	public func login(email: String, password: String, clientID: String? = nil, clientSecret: String? = nil, accept: [String]? = nil, completion: @escaping Zone5.ResultHandler<LoginResponse>) {
 		guard let zone5 = zone5 else {
 			completion(.failure(.invalidConfiguration))
@@ -71,13 +72,14 @@ public class UsersView: APIView {
 		_ = post(Endpoints.login, body: body, expectedType: LoginResponse.self) { [weak self] result in
 		defer { completion(result) }
 
-			if let zone5 = self?.zone5, case .success(let loginResponse) = result, let token = loginResponse.token {
-				zone5.accessToken = OAuthToken(token: token, refresh: loginResponse.refresh, expiresIn: loginResponse.tokenExp)
+			if let zone5 = self?.zone5, case .success(let loginResponse) = result {
+				zone5.accessToken = OAuthToken(loginResponse: loginResponse)
 			}
 		}
 	}
 	
 	/// Logout - this will invalidate any active JSESSION and will also invalidate your bearer token
+	/// Don't pass back a PendingRequest as this is not something that we can cancel mid-request
 	public func logout(completion: @escaping Zone5.ResultHandler<Bool>) {
 		_ = get(Endpoints.logout, parameters: nil, expectedType: Bool.self)  { [weak self] result in
 			defer { completion(result) }
