@@ -196,7 +196,7 @@ class SpyURLRequestInterceptor: URLRequestInterceptor {
 		expectation?.fulfill()
 	}
 	
-	override internal func decodeJWT(jwtToken jwt: String) throws -> [String: Any] {
-		return ["username":"testuser"]
+	override internal func extractUsername(from jwt: String) -> String? {
+		return "testuser"
 	}
 }

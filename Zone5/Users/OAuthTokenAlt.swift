@@ -25,4 +25,12 @@ public struct OAuthTokenAlt: Codable, AccessToken {
 	public var rawValue: String {
 		return token
 	}
+	
+	public func equals(_ other: AccessToken?) -> Bool {
+		if let other = other as? OAuthTokenAlt, other.token == self.token, other.tokenExp == self.tokenExp {
+			return true
+		}
+		
+		return false
+	}
 }

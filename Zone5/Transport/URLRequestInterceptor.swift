@@ -37,33 +37,7 @@ internal class URLRequestInterceptor: URLProtocol {
 		return request
 	}
 
-	/// decorate the request with headers, based on the given Zone5 configuraion
-	/// - Parameters:
-    ///   - request: The request being decorated
-	///	  - with: The Zone5 instance to decorate the request with
-	class func decorate(request: URLRequest) -> URLRequest {
-		let mutableRequest = (request as NSURLRequest).mutableCopy() as! NSMutableURLRequest
-		let zone5 = request.getMeta(key: .zone5) as? Zone5
-		
-		// set user agent if configured
-		if let agent = zone5?.userAgent, !agent.isEmpty {
-			mutableRequest.setValue(agent, forHTTPHeaderField: "User-Agent")
-		}
-		
-		// set legacy tp-nodecorate header
-		mutableRequest.setValue("true", forHTTPHeaderField: "tp-nodecorate")
-		
-		// Sign the request with the access token if required
-		if let requiresAccessToken = request.getMeta(key: .requiresAccessToken) as? Bool, requiresAccessToken, let zone5 = zone5, let token = zone5.accessToken {
-			mutableRequest.setValue("Bearer \(token.rawValue)", forHTTPHeaderField: "Authorization")
-		}
-		
-		return mutableRequest as URLRequest
-	}
-	
 	override func startLoading() {
-		let request = URLRequestInterceptor.decorate(request: self.request)
-		
 		// if we have a Cognito token with an expiry and this request requires auth token, check the expiry
 		if let requiresAccessToken = request.getMeta(key: .requiresAccessToken) as? Bool, requiresAccessToken, let zone5 = request.getMeta(key: .zone5) as? Zone5, let token = zone5.accessToken as? OAuthToken, token.refreshToken != nil, let expiresAt = token.tokenExp, expiresAt < Date().addingTimeInterval(30.0).milliseconds.rawValue {
 			// our token expires in less than 30 seconds. Do a refresh before sending the request
@@ -71,22 +45,22 @@ internal class URLRequestInterceptor: URLProtocol {
 			URLRequestInterceptor.refreshDispatchQueue.async {
 				URLRequestInterceptor.refreshDispatchSemaphore.wait() // should let first 1 through
 				// recheck TTL once inside mutex block, cos it might have been updated by another refresh while we were waiting for mutex
-				if let token = zone5.accessToken as? OAuthToken, token.refreshToken != nil, let expiresAt = token.tokenExp, expiresAt < Date().addingTimeInterval(30.0).milliseconds.rawValue, let jwt = try? self.decodeJWT(jwtToken: token.accessToken), let username = jwt["username"] as? String {
+				if let token = zone5.accessToken as? OAuthToken, token.refreshToken != nil, let expiresAt = token.tokenExp, expiresAt < Date().addingTimeInterval(30.0).milliseconds.rawValue, let username = self.extractUsername(from: token.accessToken) {
 					zone5.oAuth.refreshAccessToken(username: username) { result in
 						// note that refresh does not require auth so it will not cyclicly enter this path
 						URLRequestInterceptor.refreshDispatchSemaphore.signal()
-						self.sendRequest(request)
+						self.decorateAndSendRequest()
 					}
 				} else {
 					// the refresh must've been performed while we were waiting for mutex. Signal and sendRequest immediately
 					URLRequestInterceptor.refreshDispatchSemaphore.signal()
-					self.sendRequest(request)
+					self.decorateAndSendRequest()
 				}
 			}
 			return
 		} else {
 			// token is not about to expire, has no refresh token, or we don't need auth. Send request immediately
-			sendRequest(request)
+			decorateAndSendRequest()
 		}
 	}
 	
@@ -110,6 +84,38 @@ internal class URLRequestInterceptor: URLProtocol {
 		self.client?.urlProtocolDidFinishLoading(self)
 	}
 	
+	/// call decorate(...) and then sendRequest(...)
+	private func decorateAndSendRequest() {
+		// decorate headers. This needs to be after the refresh code as the token may change
+		let request = URLRequestInterceptor.decorate(request: self.request)
+		// send
+		sendRequest(request)
+	}
+	
+	/// decorate the request with headers, based on the given Zone5 configuraion
+	/// - Parameters:
+	///   - request: The request being decorated
+	///	  - with: The Zone5 instance to decorate the request with
+	class func decorate(request: URLRequest) -> URLRequest {
+		let mutableRequest = (request as NSURLRequest).mutableCopy() as! NSMutableURLRequest
+		let zone5 = request.getMeta(key: .zone5) as? Zone5
+		
+		// set user agent if configured
+		if let agent = zone5?.userAgent, !agent.isEmpty {
+			mutableRequest.setValue(agent, forHTTPHeaderField: "User-Agent")
+		}
+		
+		// set legacy tp-nodecorate header
+		mutableRequest.setValue("true", forHTTPHeaderField: "tp-nodecorate")
+		
+		// Sign the request with the access token if required
+		if let requiresAccessToken = request.getMeta(key: .requiresAccessToken) as? Bool, requiresAccessToken, let zone5 = zone5, let token = zone5.accessToken {
+			mutableRequest.setValue("Bearer \(token.rawValue)", forHTTPHeaderField: "Authorization")
+		}
+		
+		return mutableRequest as URLRequest
+	}
+	
 	/// We have finished with intercepting this request. Send the request for real with the real url session
 	internal func sendRequest(_ request: URLRequest) {
 		switch request.taskType {
@@ -131,7 +137,7 @@ internal class URLRequestInterceptor: URLProtocol {
 	}
 	
 	/// Decode the Cognito token to get the username out of it. It is required (for some reason) for the cognito refresh
-	internal func decodeJWT(jwtToken jwt: String) throws -> [String: Any] {
+	internal func extractUsername(from jwt: String) -> String? {
 		
 		enum DecodeErrors: Error {
 			case badToken
@@ -156,8 +162,8 @@ internal class URLRequestInterceptor: URLProtocol {
 		}
 		
 		let segments = jwt.components(separatedBy: ".")
-		
-		return segments.count > 1 ? try decodeJWTPart(segments[1]) : [:]
+		let part = segments.count > 1 ? (try? decodeJWTPart(segments[1])) ?? [:] : [:]
+		return part["email"] as? String
 	}
 	
 }

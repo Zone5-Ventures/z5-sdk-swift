@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Products: Codable, JSONEncodedBody {
-	public let bundle: String
+	public let bundle: String?
 	public var secret: String?
 	public var monthlyPlanId: String?
 	

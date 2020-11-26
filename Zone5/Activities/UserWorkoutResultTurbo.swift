@@ -37,22 +37,22 @@ public struct UserWorkoutResultTurbo: Codable {
 	public var timeInAssist2P: Double?
 	public var timeInAssist3P: Double?
 	public var timeInAssist4P: Double?
-	public var timeInAssist5P: Double?
-	public var timeInAssist6P: Double?
+	//public var timeInAssist5P: Double?
+	//public var timeInAssist6P: Double?
 	public var bat1DecayAssist0P: Int?
 	public var bat1DecayAssist1P: Int?
 	public var bat1DecayAssist2P: Int?
 	public var bat1DecayAssist3P: Int?
 	public var bat1DecayAssist4P: Int?
-	public var bat1DecayAssist5P: Int?
-	public var bat1DecayAssist6P: Int?
-	public var bat2DecayAssist0P: Int?
-	public var bat2DecayAssist1P: Int?
-	public var bat2DecayAssist2P: Int?
-	public var bat2DecayAssist3P: Int?
-	public var bat2DecayAssist4P: Int?
-	public var bat2DecayAssist5P: Int?
-	public var bat2DecayAssist6P: Int?
+	//public var bat1DecayAssist5P: Int?
+	//public var bat1DecayAssist6P: Int?
+	public var bat2DecayAssist0P: Int? // off
+	public var bat2DecayAssist1P: Int? // eco
+	public var bat2DecayAssist2P: Int? // sport/trail
+	public var bat2DecayAssist3P: Int? // turbo
+	public var bat2DecayAssist4P: Int? // smart
+	//public var bat2DecayAssist5P: Int?
+	//public var bat2DecayAssist6P: Int?
 
 
 	public init() {}
@@ -95,22 +95,22 @@ public struct UserWorkoutResultTurbo: Codable {
 		case timeInAssist2P
 		case timeInAssist3P
 		case timeInAssist4P
-		case timeInAssist5P
-		case timeInAssist6P
+		//case timeInAssist5P
+		//case timeInAssist6P
 		case bat1DecayAssist0P
 		case bat1DecayAssist1P
 		case bat1DecayAssist2P
 		case bat1DecayAssist3P
 		case bat1DecayAssist4P
-		case bat1DecayAssist5P
-		case bat1DecayAssist6P
+		//case bat1DecayAssist5P
+		//case bat1DecayAssist6P
 		case bat2DecayAssist0P
 		case bat2DecayAssist1P
 		case bat2DecayAssist2P
 		case bat2DecayAssist3P
 		case bat2DecayAssist4P
-		case bat2DecayAssist5P
-		case bat2DecayAssist6P
+		//case bat2DecayAssist5P
+		//case bat2DecayAssist6P
 	}
 	
 	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {

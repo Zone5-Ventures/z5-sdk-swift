@@ -56,6 +56,14 @@ public struct OAuthToken: Codable, Equatable, AccessToken {
 		return accessToken
 	}
 	
+	public func equals(_ other: AccessToken?) -> Bool {
+		if let other = other as? OAuthToken, other.accessToken == self.accessToken, other.refreshToken == self.refreshToken, other.tokenExp == self.tokenExp {
+			return true
+		}
+		
+		return false
+	}
+	
 	private mutating func calculateExpiry() {
 		if expiresIn == nil, let exp = tokenExp {
 			self.expiresIn = Int((Double(exp) / 1000.0) - Date().timeIntervalSince1970)
