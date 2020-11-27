@@ -30,8 +30,8 @@ public class PaymentsView: APIView {
 	///   - app: app that this purchase relates to
 	///   - completion: Function called with the `Products` results matching the given criteria, or the error if one occurred.
 	@discardableResult
-	public func verify(for app: String = "", with receipt: PaymentReceipt, completion: @escaping Zone5.ResultHandler<VerificationResponse>) -> PendingRequest? {
-		let endpoint = Endpoints.iapTransactionVerify.replacingTokens(["app": app.isEmpty ? app : "/\(app)"])
+	public func verify(for app: String = "", with receipt: PaymentVerification, completion: @escaping Zone5.ResultHandler<PaymentVerification>) -> PendingRequest? {
+		let endpoint = Endpoints.iapTransactionVerify.replacingTokens(["app": (app.isEmpty ? app : "/\(app)")])
 		return post(endpoint, body: receipt, with: completion)
 	}
 }

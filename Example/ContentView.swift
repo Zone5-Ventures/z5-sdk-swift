@@ -346,8 +346,8 @@ struct ContentView: View {
 					EndpointLink<Products>("List Products") { client, completion in
 						client.payments.products(for: "tp-app", completion: completion)
 					}
-					EndpointLink<VerificationResponse>("verify") { client, completion in
-						let receipt = PaymentReceipt(provider: "apple", data: "asd", productId: "asdf", productDesc: "asdf", currencyCode: "au", cost: 3)
+					EndpointLink<PaymentVerification>("verify") { client, completion in
+						let receipt = PaymentVerification(provider: "apple", data: "asd", productId: "asdf", productDesc: "asdf", currencyCode: "au", cost: 3)
 						client.payments.verify(for: "tp-app", with: receipt, completion: completion)
 					}
 				}
