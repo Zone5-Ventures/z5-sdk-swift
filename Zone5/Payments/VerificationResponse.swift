@@ -9,14 +9,14 @@
 import Foundation
 
 public struct VerificationResponse: Codable, JSONEncodedBody {
-	var id: Int?
-	var status: IAPVerificationStatus?
-	var errorId: IAPVerificationErrorId?
-	var message: String?
-	var provider: String // Payment provider to verify the receipt with
-	var data: String?
-	var currencyCode: String?
-	var cost: Double?
+	public var id: Int?
+	public var status: IAPVerificationStatus?
+	public var errorId: IAPVerificationErrorId?
+	public var message: String?
+	public var provider: String // Payment provider to verify the receipt with
+	public var data: String?
+	public var currencyCode: String?
+	public var cost: Double?
 }
 
 public enum IAPVerificationErrorId: String, Codable {
