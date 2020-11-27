@@ -13,14 +13,12 @@ final public class Zone5 {
 	internal static let specializedServer: String = "api-sp.todaysplan.com.au"
 	internal static let specializedStagingServer: String = "api-sp-staging.todaysplan.com.au"
 	
+	public static let authTokenChangedNotification = Notification.Name("authTokenChangedNotification")
+	
 	init(httpClient: HTTPClient = .init()) {
 		self.httpClient = httpClient
 
 		httpClient.zone5 = self
-	}
-	
-	public convenience init(httpConfig: URLSessionConfiguration) {
-		self.init(httpClient: HTTPClient(configuration: httpConfig))
 	}
 
 	// MARK: Configuring the SDK
@@ -30,7 +28,17 @@ final public class Zone5 {
 	/// This property automatically captures the token returned by the server when using methods such as
 	/// `OAuthView.accessToken(username:password:completion:)`, but can also be set using a token that was stored
 	/// during a previous session.
-	public var accessToken: AccessToken?
+	public internal(set) var accessToken: AccessToken? {
+		didSet {
+			if let token = accessToken, !token.equals(oldValue) {
+				notificationCenter.post(name: Zone5.authTokenChangedNotification, object: self, userInfo: [
+					"accessToken": token
+				])
+			} else if accessToken == nil && oldValue != nil {
+				notificationCenter.post(name: Zone5.authTokenChangedNotification, object: self)
+			}
+		}
+	}
 
 	/// The root URL for the server that we want to communicate with.
 	/// - Note: This value can be set using the `configure(for:clientID:clientSecret:)` method.
@@ -48,6 +56,8 @@ final public class Zone5 {
 	public internal(set) var userAgent: String?
 
 	public var redirectURI: String = "https://localhost"
+	
+	public var notificationCenter: NotificationCenter = .default
 
 	/// Configures the SDK to use the application specified by the given `clientID` and `clientSecret`.
 	/// - Parameters:
@@ -149,6 +159,11 @@ final public class Zone5 {
 	/// A collection of API endpoints related to third party connections (like Strava).
 	public lazy var thirdPartyConnections: ThirdPartyConnectionsView = {
 		return ThirdPartyConnectionsView(zone5: self)
+	}()
+	
+	/// A collection of API endpoints related to payments.
+	public lazy var payments: PaymentsView = {
+		return PaymentsView(zone5: self)
 	}()
 
 	// MARK: Errors

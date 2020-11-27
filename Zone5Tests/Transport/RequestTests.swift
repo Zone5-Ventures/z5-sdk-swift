@@ -7,10 +7,15 @@ final class RequestTests: XCTestCase {
 		case test = "endpoint/uri"
 	}
 
-	func testRequest() {
-		let baseURL = URL(string: "https://localhost")!
-		let accessToken = OAuthToken(rawValue: UUID().uuidString)
+	let zone5 = Zone5(httpClient: HTTPClient(urlSession: TestHTTPClientURLSession()))
+	let baseURL = URL(string: "https://localhost")!
 
+	override func setUpWithError() throws {
+		// configure auth token
+		zone5.configure(for: baseURL, userAgent: "testagent/1.1.1 (222)", accessToken: OAuthToken(rawValue: UUID().uuidString))
+	}
+	
+	func testRequest() {
 		let body: URLEncodedBody = [
 			"example": "example"
 		]
@@ -18,12 +23,12 @@ final class RequestTests: XCTestCase {
 		let request = Request(endpoint: Endpoints.test, method: .post, body: body)
 
 		do {
-			let urlRequest = try request.urlRequest(with: baseURL, accessToken: accessToken)
+			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .data)
 
 			XCTAssertNotNil(urlRequest.httpBody)
 			XCTAssertNil(urlRequest.value(forHTTPHeaderField: "User-Agent"))
 			
-			let urlRequest2 = try request.urlRequest(with: baseURL, accessToken: accessToken, userAgent: "testagent/1.1.1 (222)")
+			let urlRequest2 = URLRequestInterceptor.decorate(request: try request.urlRequest(with: baseURL, zone5: zone5, taskType: .download))
 
 			XCTAssertNotNil(urlRequest2.httpBody)
 			XCTAssertEqual("testagent/1.1.1 (222)", urlRequest2.value(forHTTPHeaderField: "User-Agent"))
@@ -41,9 +46,6 @@ final class RequestTests: XCTestCase {
 	}
 	
 	func testRequest2() {
-		let baseURL = URL(string: "https://localhost")!
-		let accessToken = OAuthToken(rawValue: UUID().uuidString)
-		
 		let body: URLEncodedBody = [
 			"example": nil
 		]
@@ -51,7 +53,7 @@ final class RequestTests: XCTestCase {
 		let request = Request(endpoint: Endpoints.test, method: .post, body: body)
 		
 		do {
-			let urlRequest = try request.urlRequest(with: baseURL, accessToken: accessToken)
+			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .data)
 			
 			XCTAssertNotNil(urlRequest.httpBody)
 			

@@ -10,7 +10,6 @@ import Foundation
 @testable import Zone5
 
 class TestHTTPClientURLSession: HTTPClientURLSession {
-
 	enum Result<Success> {
 		case success(Success)
 		case message(String, statusCode: Int)
@@ -24,7 +23,7 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 
 	func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
 		return DataTask {
-			let result = self.dataTaskHandler?(request)
+			let result = self.dataTaskHandler?(URLRequestInterceptor.decorate(request: request))
 
 			switch result {
 			case .none:
@@ -73,7 +72,7 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 
 	func uploadTask(with request: URLRequest, fromFile fileURL: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionUploadTask {
 		return UploadTask {
-			let result = self.uploadTaskHandler?(request, fileURL)
+			let result = self.uploadTaskHandler?(URLRequestInterceptor.decorate(request: request), fileURL)
 
 			switch result {
 			case .none:
@@ -122,7 +121,7 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 
 	func downloadTask(with request: URLRequest, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask {
 		return DownloadTask {
-			let result = self.downloadTaskHandler?(request)
+			let result = self.downloadTaskHandler?(URLRequestInterceptor.decorate(request: request))
 
 			switch result {
 			case .none:

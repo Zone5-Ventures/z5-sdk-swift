@@ -24,6 +24,10 @@ public struct User: Codable, JSONEncodedBody {
 	
 	/// User's Locale
 	public var locale: String?
+	
+	public var timezone: String?
+	
+	public var identities: [String: String]?
 
 	public init() { }
 	public init(email: String, password: String, firstname: String, lastname: String) {
@@ -35,7 +39,7 @@ public struct User: Codable, JSONEncodedBody {
 
 	// MARK: Codable
 
-	private enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey, CaseIterable {
 		case id
 		case uuid
 		case password
@@ -44,6 +48,11 @@ public struct User: Codable, JSONEncodedBody {
 		case lastName = "lastname"
 		case avatar
 		case locale
+		case timezone
+		case identities
 	}
 
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
+		return fields.map { "\(prefix).\($0.rawValue)" }
+	}
 }

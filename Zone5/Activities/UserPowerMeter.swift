@@ -64,7 +64,7 @@ public struct UserPowerMeter: Codable {
 
 	// MARK: Codable
 
-	private enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey, CaseIterable {
 		case id
 		case user
 		case timestamp = "ts"
@@ -84,6 +84,10 @@ public struct UserPowerMeter: Codable {
 		case name
 		case equipment
 		case isRetired = "retired"
+	}
+	
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
+		return fields.map { "\(prefix).\($0.rawValue)" }
 	}
 
 }

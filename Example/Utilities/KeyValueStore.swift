@@ -9,7 +9,7 @@
 import Foundation
 import Zone5
 
-struct KeyValueStore {
+class KeyValueStore {
 
 	static var shared = KeyValueStore()
 
@@ -43,6 +43,48 @@ struct KeyValueStore {
 				userDefaults.removeObject(forKey: "Zone5_userEmail")
 			}
 		}
+	}
+	
+	var token: String {
+		get { return userDefaults.string(forKey: "Zone5_token") ?? "" }
+		set {
+			if !newValue.isEmpty {
+				userDefaults.set(newValue, forKey: "Zone5_token")
+			}
+			else {
+				userDefaults.removeObject(forKey: "Zone5_token")
+			}
+		}
+	}
+	
+	var refresh: String {
+		get { return userDefaults.string(forKey: "Zone5_token_refresh") ?? "" }
+		set {
+			if !newValue.isEmpty {
+				userDefaults.set(newValue, forKey: "Zone5_token_refresh")
+			}
+			else {
+				userDefaults.removeObject(forKey: "Zone5_token_refresh")
+			}
+		}
+	}
+	
+	var tokenExp: Int {
+		get { return userDefaults.integer(forKey: "Zone5_token_expiry") }
+		set {
+			if newValue > 0 {
+				userDefaults.set(newValue, forKey: "Zone5_token_expiry")
+			}
+			else {
+				userDefaults.removeObject(forKey: "Zone5_token_expiry")
+			}
+		}
+	}
+	
+	func updateToken(_ accessToken: AccessToken?) {
+		token = accessToken?.rawValue ?? ""
+		tokenExp = accessToken?.tokenExp ?? 0
+		refresh = (accessToken as? OAuthToken)?.refreshToken ?? ""
 	}
 	
 	var clientID: String {

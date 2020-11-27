@@ -140,7 +140,7 @@ public struct UserRoute: Codable, JSONEncodedBody {
 
 	// MARK: Codable
 
-	private enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey, CaseIterable {
 			case id
 			case uuid
 			case createdTime
@@ -188,6 +188,9 @@ public struct UserRoute: Codable, JSONEncodedBody {
 			case publicRatingCount = "publicRatingCnt"
 	}
 
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
+		return fields.map { "\(prefix).\($0.rawValue)" }
+	}
 }
 
 extension UserRoute.Identifier: UserRouteServerIdentifier {}

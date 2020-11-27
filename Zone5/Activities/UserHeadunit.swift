@@ -36,7 +36,7 @@ public struct UserHeadunit: Codable {
 
 	// MARK: Codable
 
-	private enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey, CaseIterable {
 		case name
 		case model
 		case serial
@@ -50,5 +50,8 @@ public struct UserHeadunit: Codable {
 		case user
 		case isRetired = "retired"
 	}
-
+	
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
+		return fields.map { "\(prefix).\($0.rawValue)" }
+	}
 }
