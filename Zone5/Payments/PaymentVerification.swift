@@ -13,20 +13,17 @@ public struct PaymentVerification: JSONEncodedBody, Codable {
 	public var data: String // receipt
 	public var id: Int?
 	public var status: IAPVerificationStatus?
-	public var errorId: IAPVerificationErrorId?
 	public var message: String?
 	public var currencyCode: String?
 	public var cost: Double?
-	public var productId: String
-	public var productDesc: String // supply description
+	public var productDescr: String // supply description
 	public var retry: Bool?
 
 	/// Initialise a PaymentVerification for uploading to the server
-	public init(provider: String = "apple", data: String, productId: String, productDesc: String, currencyCode: String, cost: Double) {
+	public init(provider: String = "apple", data: String, productDescr: String, currencyCode: String, cost: Double) {
 		self.provider = provider
 		self.data = data
-		self.productId = productId
-		self.productDesc = productDesc
+		self.productDescr = productDescr
 		self.currencyCode = currencyCode
 		self.cost = cost
 	}
