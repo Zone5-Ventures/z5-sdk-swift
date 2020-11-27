@@ -15,6 +15,7 @@ public struct PaymentReceipt: Codable, JSONEncodedBody {
 	public var productDesc: String // supply description
 	public var currencyCode: String
 	public var cost: Double
+	public var retry: Bool?
 	
 	public init(provider: String = "apple", data: String, productId: String, productDesc: String, currencyCode: String, cost: Double) {
 		self.provider = provider
