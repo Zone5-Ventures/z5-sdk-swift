@@ -12,18 +12,22 @@ final internal class HTTPClient {
 	/// Object used for managing the various delegate calls made by our `urlSession`.
 	private let urlSessionDelegate: URLSessionDelegate?
 
-	/// Initializes a new instance of the `HTTPClient` with the given `configuration`
-	init(configuration: URLSessionConfiguration = .default) {
+	/// Initializes a new instance of the `HTTPClient` that uses the URLRequestInterceptor to process requests
+	init() {
 		let urlSessionDelegate = URLSessionDelegate()
-		let urlSession = URLSession(configuration: configuration, delegate: urlSessionDelegate, delegateQueue: nil)
-
-		self.urlSession = urlSession
+		
+		// create a URLSession which routes all requests into the interceptor
+		let configuration: URLSessionConfiguration = .default
+		configuration.protocolClasses = [ URLRequestInterceptor.self ]
+		
+		self.urlSession = URLSession(configuration: configuration, delegate: urlSessionDelegate, delegateQueue: nil)
 		self.urlSessionDelegate = urlSessionDelegate
 
 		urlSessionDelegate.httpClient = self
 	}
 
-	/// Initializes a new instance of the `HTTPClient`.
+	/// Initializes a new instance of the `HTTPClient` with the given URLSession
+	/// This is used in unit tests to mock a URLSesson
 	/// - Parameter urlSession: A custom `HTTPClientURLSession` instance to use for handling calls.
 	/// - Note: For testing purposes _only_.
 	init(urlSession: HTTPClientURLSession) {
@@ -92,7 +96,7 @@ final internal class HTTPClient {
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
 	func perform<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5, baseURL in
-			let urlRequest = try request.urlRequest(with: baseURL, accessToken: zone5.accessToken, userAgent: zone5.userAgent)
+			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .data)
 
 			let decoder = self.decoder
 			let task = urlSession.dataTask(with: urlRequest) { data, response, error in
@@ -126,9 +130,12 @@ final internal class HTTPClient {
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
 	func upload<T: Decodable>(_ fileURL: URL, with request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5, baseURL in
-			let (urlRequest, multipartData) = try request.urlRequest(toUpload: fileURL, with: baseURL, accessToken: zone5.accessToken, userAgent: zone5.userAgent)
+			var (urlRequest, multipartData) = try request.urlRequest(toUpload: fileURL, with: baseURL, zone5: zone5)
 			let cacheURL = HTTPClient.uploadsDirectory.appendingPathComponent(fileURL.lastPathComponent).appendingPathExtension("multipart")
 
+			// save URL against the request (needed to create actual uploadTask in interceptor)
+			urlRequest = urlRequest.setMeta(key: .fileURL, value: cacheURL)
+			
 			do {
 				try multipartData.write(to: cacheURL)
 			}
@@ -163,7 +170,7 @@ final internal class HTTPClient {
 	///			file on disk is returned, otherwise the error that was encountered.
 	func download(_ request: Request, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5, baseURL in
-			let urlRequest = try request.urlRequest(with: baseURL, accessToken: zone5.accessToken, userAgent: zone5.userAgent)
+			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .download)
 
 			let decoder = self.decoder
 			let task = urlSession.downloadTask(with: urlRequest) { location, response, error in
@@ -231,7 +238,8 @@ private extension JSONDecoder {
 					return .failure(.serverError(decodedMessage))
 				}
 				catch {
-					return .failure(.failedDecodingResponse(error))
+					let serverError = Zone5.Error.ServerMessage(message: HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode), statusCode: httpResponse.statusCode)
+					return .failure(.serverError(serverError))
 				}
 			}
 		}

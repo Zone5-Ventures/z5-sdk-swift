@@ -8,14 +8,15 @@
 
 import Foundation
 
-/// OAuth token model returned by the server for refresh token requests
+/// OAuth token model returned by the server for gigya refresh token requests
+/// These OAuth tokens are Gigya tokens
 public struct OAuthTokenAlt: Codable, AccessToken {
 
 	/// The string value of the token.
 	public var token: String
 	
-	/// timestamp of when this token expires
-	public var tokenExp: Int?
+	/// timestamp of when this token expires, ms since epoch
+	public var tokenExp: Int? 
 	
 	public init(rawValue: String) {
 		token = rawValue
@@ -23,5 +24,13 @@ public struct OAuthTokenAlt: Codable, AccessToken {
 	
 	public var rawValue: String {
 		return token
+	}
+	
+	public func equals(_ other: AccessToken?) -> Bool {
+		if let other = other as? OAuthTokenAlt, other.token == self.token, other.tokenExp == self.tokenExp {
+			return true
+		}
+		
+		return false
 	}
 }

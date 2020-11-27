@@ -29,7 +29,7 @@ public struct UserWorkoutResultPeakPace: Codable {
 
 	// MARK: Codable
 
-	private enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey, CaseIterable {
 		case peak3SecondPace = "peak3secPace"
 		case peak4SecondPace = "peak4secPace"
 		case peak5SecondPace = "peak5secPace"
@@ -53,4 +53,7 @@ public struct UserWorkoutResultPeakPace: Codable {
 		case peak180MinutePace = "peak180minPace"
 	}
 
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
+		return fields.map { "\(prefix).\($0.rawValue)" }
+	}
 }

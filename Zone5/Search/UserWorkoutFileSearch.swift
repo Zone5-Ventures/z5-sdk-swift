@@ -137,5 +137,4 @@ public struct UserWorkoutFileSearch: SearchInputCriteria {
 		case sports
 		case meta
 	}
-
 }

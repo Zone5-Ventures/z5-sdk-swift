@@ -106,7 +106,7 @@ public struct UserWorkoutResultExt: Codable {
 
 	// MARK: Codable
 
-	private enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey, CaseIterable {
 		case aerobicDec = "aerobicDec"
 		case wscore
 		case averagePace = "avgPace"
@@ -156,4 +156,7 @@ public struct UserWorkoutResultExt: Codable {
 		case rearTireAverage = "rearTireAvg"
 	}
 
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
+		return fields.map { "\(prefix).\($0.rawValue)" }
+	}
 }

@@ -27,6 +27,9 @@ public struct LoginResponse: Codable {
 	/// Bearer token expiry (ms since Epoch)
 	public var tokenExp: Int?
 	
+	/// seconds until expiry. This allows for differences in Server clock vs Client clock as the Client can calculate as Date() + Double(expiresIn)
+	public var expiresIn: Int?
+	
 	public var refresh: String?
 	
 	public init() { }

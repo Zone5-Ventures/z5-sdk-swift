@@ -4,8 +4,10 @@ import Foundation
 public protocol AccessToken: Codable, CustomStringConvertible, CustomDebugStringConvertible {
 
 	/// The string value of the token.
-	var rawValue: String {get}
-
+	var rawValue: String { get }
+	var tokenExp: Int? { get set }
+	
+	func equals(_ other: AccessToken?) -> Bool
 }
 
 extension AccessToken  {

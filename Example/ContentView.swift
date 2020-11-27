@@ -13,8 +13,8 @@ struct ContentView: View {
 
 	let apiClient: Zone5
 	let password: Password = Password()
-
-	@State var keyValueStore: KeyValueStore = .shared
+	let keyValueStore: KeyValueStore
+	
 	@State var displayConfiguration = false
 	@State var metric: UnitMeasurement = .metric
 	@State var me: User = User() // currently logged in user
@@ -26,13 +26,18 @@ struct ContentView: View {
 
 		let baseURL = keyValueStore.baseURL
 		if !keyValueStore.clientID.isEmpty, !keyValueStore.clientSecret.isEmpty {
-			apiClient.configure(for: baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret)
+			apiClient.configure(for: baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret, accessToken: OAuthToken(token: keyValueStore.token, refresh: keyValueStore.refresh, tokenExp: keyValueStore.tokenExp))
 		}
 		else {
-			apiClient.configure(for: baseURL)
+			apiClient.configure(for: baseURL, accessToken: OAuthToken(token: keyValueStore.token, refresh: keyValueStore.refresh, tokenExp: keyValueStore.tokenExp))
+		}
+		
+		apiClient.notificationCenter.addObserver(forName: Zone5.authTokenChangedNotification, object: apiClient, queue: nil) { notification in
+			let token = notification.userInfo?["accessToken"] as? AccessToken
+			keyValueStore.updateToken(token)
 		}
 	}
-
+	
 	var body: some View {
 		NavigationView {
 			List {
@@ -91,13 +96,13 @@ struct ContentView: View {
 						me.lastName = "last\(Date().timeIntervalSince1970)"
 						client.users.updateUser(user: me, completion: completion)
 					}
+					EndpointLink<[String:Bool]>("Check Email Status") { client, completion in
+						client.users.getEmailValidationStatus(email: keyValueStore.userEmail, completion: completion)
+					}
 				}
 				Section(header: Text("Auth"), footer: Text("Note that Register New User on TP servers makes an immediately usable user but on Specialized servers it requires a second auth step of going to the email for the user and clicking confirm email")) {
 					EndpointLink<Bool>("Check User Exists") { client, completion in
 						client.users.isEmailRegistered(email: keyValueStore.userEmail, completion: completion)
-					}
-					EndpointLink<[String:Bool]>("Check Email Status") { client, completion in
-						client.users.getEmailValidationStatus(email: keyValueStore.userEmail, completion: completion)
 					}
 					EndpointLink<Bool>("Reset Password") { client, completion in
 						client.users.resetPassword(email: keyValueStore.userEmail, completion: completion)
@@ -119,10 +124,10 @@ struct ContentView: View {
 							completion(.failure(.requiresAccessToken))
 						}
 					}
-					EndpointLink("Refresh Gigya Token") { client, completion in
+					EndpointLink<OAuthTokenAlt>("Refresh Gigya Token") { client, completion in
 						client.users.refreshToken(completion: completion)
 					}
-					EndpointLink("Refresh Cognito Token") { client, completion in
+					EndpointLink<OAuthToken>("Refresh Cognito Token") { client, completion in
 						client.oAuth.refreshAccessToken(username: keyValueStore.userEmail, completion: completion)
 					}
 					EndpointLink<User>("Register New User") { client, completion in
@@ -167,6 +172,9 @@ struct ContentView: View {
 					EndpointLink("Logout") { client, completion in
 						client.users.logout(completion: completion)
 					}
+					EndpointLink<OAuthToken>("Get Access Token") { client, completion in
+						client.oAuth.accessToken(username: keyValueStore.userEmail, password: self.password.password, completion: completion)
+					}
 					EndpointLink<VoidReply>("Delete last registered Account (if any)") { client, completion in
 						if let id = self.lastRegisteredId {
 							client.users.deleteAccount(userID: id, completion: completion)
@@ -176,13 +184,17 @@ struct ContentView: View {
 					}
 				}
 				Section(header: Text("Activities"), footer: Text("Attempting to view \"Next Page\" before performing a legitimate search request—such as by opening the \"Last 30 days\" screen—will return an empty result.")) {
-					EndpointLink<SearchResult<UserWorkoutResult>>("Last 30 days") { client, completion in
+					EndpointLink<SearchResult<UserWorkoutResult>>("Last 3 days") { client, completion in
 						var criteria = UserWorkoutFileSearch()
-						criteria.dateRanges = [DateRange(component: .month, value: 1, starting: .now - (1000 * 60 * 60 * 24 * 30))!]
+						criteria.dateRanges = [DateRange(component: .month, value: 1, starting: .now - (1000 * 60 * 60 * 24 * 3))!]
 						criteria.order = [.descending("ts")]
 
 						var parameters = SearchInput(criteria: criteria)
-						parameters.fields = ["name", "distance", "ascent", "peak3minWatts", "peak20minWatts", "channels", "bike", "bike.serial", "bike.name", "bike.uuid", "bike.avatar", "bike.descr", "bike.bikeUuid"]
+						parameters.fields = ["name", "distance", "ascent", "peak3minWatts", "peak20minWatts", "channels", "sum.turboExt.battery1DecayWh", "sum.distance"]
+						parameters.fields += UserHeadunit.fields([.manufacturer], prefix: "headunit")
+						parameters.fields += UserWorkoutResultTurboExt.fields(prefix: "turboExt")
+						parameters.fields += UserWorkoutResultBike.fields(prefix: "bike")
+						parameters.fields += UserWorkoutResultTurbo.fields(prefix: "turbo")
 
 						client.activities.search(parameters, offset: 0, count: 10, completion: completion)
 					}
@@ -205,8 +217,18 @@ struct ContentView: View {
 						let bikeIDJean2Staging = "004ac351-baff-4640-90f5-882ea2c1718e" // bikeUUid
 						// jean+turbo's prod bike
 						let bikeIDJean3Prod = "389994ba-464e-4bdd-b24e-cdb0172a6f28"
-						let dates = DateRange(name: "last 60 days", floor: Date(Date().timeIntervalSince1970.milliseconds - (60*24*60*60*1000)), ceiling: Date())
-						client.metrics.getBikeMetrics(ranges: [dates], fields: ["sum.distance","sum.elapsed","bike.uuid"], bikeUids: [bikeIDJean1Prod, bikeIDJean2Prod, bikeIDJean3Prod, bikeIDJean2Staging, bikeIDJean1Staging, bikeIDAndrewStaging], completion: completion)
+						let dates = DateRange(name: "last 60 days", floor: Date(Date().timeIntervalSince1970.milliseconds - (60*24*60*60*1000)), ceiling: Date() + 10)
+						var fields: [String] = ["sum.distance","sum.elapsed","bike.uuid","max.turbo.numAssistChanges"]
+						fields += UserWorkoutResultTurbo.fields(prefix: "max.turbo")
+						fields += UserWorkoutResultTurbo.fields(prefix: "min.turbo")
+						fields += UserWorkoutResultTurbo.fields(prefix: "sum.turbo")
+						fields += UserWorkoutResultTurbo.fields(prefix: "avg.turbo")
+						fields += UserWorkoutResultTurboExt.fields(prefix: "avg.turboExt")
+						fields += UserWorkoutResultTurboExt.fields(prefix: "max.turboExt")
+						fields += UserWorkoutResultTurboExt.fields(prefix: "min.turboExt")
+						fields += UserWorkoutResultTurboExt.fields(prefix: "sum.turboExt")
+						
+						client.metrics.getBikeMetrics(ranges: [dates], fields: fields, bikeUids: [bikeIDJean1Prod, bikeIDJean2Prod, bikeIDJean3Prod, bikeIDJean2Staging, bikeIDJean1Staging, bikeIDAndrewStaging], completion: completion)
 					}
 				}
 				Section {
@@ -319,6 +341,15 @@ struct ContentView: View {
 						client.thirdPartyConnections.getDeprecated(completion: completion)
 					}
 					
+				}
+				Section(header: Text("In App Purchases")) {
+					EndpointLink<Products>("List Products") { client, completion in
+						client.payments.products(for: "tp-app", completion: completion)
+					}
+					EndpointLink<PaymentVerification>("verify") { client, completion in
+						let receipt = PaymentVerification(provider: "apple", data: "asd", productDescr: "asdf", currencyCode: "au", cost: 3)
+						client.payments.verify(for: "tp-app", with: receipt, completion: completion)
+					}
 				}
 			}
 			.listStyle(GroupedListStyle())
