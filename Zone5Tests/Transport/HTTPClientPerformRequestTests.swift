@@ -1,7 +1,7 @@
 import XCTest
 @testable import Zone5
 
-final class HTTPClientPerformRequestTests: XCTestCase {
+final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 
 	func testInvalidConfiguration() {
 		var configuration = ConfigurationForTesting()

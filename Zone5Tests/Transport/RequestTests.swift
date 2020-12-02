@@ -7,7 +7,7 @@ final class RequestTests: XCTestCase {
 		case test = "endpoint/uri"
 	}
 
-	let zone5 = Zone5(httpClient: HTTPClient(urlSession: TestHTTPClientURLSession()))
+	let zone5 = Zone5(httpClient: Zone5HTTPClient(urlSession: TestHTTPClientURLSession()))
 	let baseURL = URL(string: "https://localhost")!
 
 	override func setUpWithError() throws {

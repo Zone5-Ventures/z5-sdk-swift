@@ -1,6 +1,6 @@
 import Foundation
 
-struct Request {
+public struct Request {
 
 	var endpoint: RequestEndpoint
 
@@ -10,14 +10,14 @@ struct Request {
 	
 	var queryParams: URLEncodedBody?
 
-	init(endpoint: RequestEndpoint, method: Method, queryParams: URLEncodedBody? = nil, body: RequestBody? = nil) {
+	public init(endpoint: RequestEndpoint, method: Method, queryParams: URLEncodedBody? = nil, body: RequestBody? = nil) {
 		self.endpoint = endpoint
 		self.method = method
 		self.queryParams = queryParams
 		self.body = body
 	}
 
-	enum Method: String {
+	public enum Method: String {
 		case get = "GET"
 		case head = "HEAD"
 		case post = "POST"

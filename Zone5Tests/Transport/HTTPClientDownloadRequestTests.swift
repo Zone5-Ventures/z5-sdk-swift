@@ -1,7 +1,7 @@
 import XCTest
 @testable import Zone5
 
-final class HTTPClientDownloadRequestTests: XCTestCase {
+final class Zone5HTTPClientDownloadRequestTests: XCTestCase {
 
 	private let developmentAssets = Bundle.tests.urlsForDevelopmentAssets()!.filter { $0.pathExtension != "multipart" }
 
