@@ -68,11 +68,7 @@ public class UsersView: APIView {
 			completion(.failure(.invalidConfiguration))
 			return
 		}
-        guard let data = try? body.encodedData() else { fatalError() }
-        guard let raw = String(data: data, encoding: .utf8) else { fatalError() }
-        print("Result:\n\(raw)")
-        print("email: \(email), password: \(password)")
-		
+        
 		_ = post(Endpoints.login, body: body, expectedType: LoginResponse.self) { [weak self] result in
 		defer { completion(result) }
 
