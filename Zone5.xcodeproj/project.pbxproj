@@ -79,7 +79,7 @@
 		A182D1CD2372AB0F00112501 /* URLEncodedBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B72372AB0E00112501 /* URLEncodedBody.swift */; };
 		A182D1CE2372AB0F00112501 /* JSONEncodedBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B82372AB0E00112501 /* JSONEncodedBody.swift */; };
 		A182D1CF2372AB0F00112501 /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1B92372AB0E00112501 /* RequestBody.swift */; };
-		A182D1D02372AB0F00112501 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1BA2372AB0E00112501 /* HTTPClient.swift */; };
+		A182D1D02372AB0F00112501 /* Zone5HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1BA2372AB0E00112501 /* Zone5HTTPClient.swift */; };
 		A182D1D12372AB0F00112501 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1BB2372AB0E00112501 /* Request.swift */; };
 		A182D1D32372AB0F00112501 /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1BE2372AB0F00112501 /* ActivitiesView.swift */; };
 		A182D1D42372AB0F00112501 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A182D1BF2372AB0F00112501 /* View.swift */; };
@@ -257,7 +257,7 @@
 		A182D1B72372AB0E00112501 /* URLEncodedBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLEncodedBody.swift; sourceTree = "<group>"; };
 		A182D1B82372AB0E00112501 /* JSONEncodedBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodedBody.swift; sourceTree = "<group>"; };
 		A182D1B92372AB0E00112501 /* RequestBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBody.swift; sourceTree = "<group>"; };
-		A182D1BA2372AB0E00112501 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		A182D1BA2372AB0E00112501 /* Zone5HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone5HTTPClient.swift; sourceTree = "<group>"; };
 		A182D1BB2372AB0E00112501 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		A182D1BE2372AB0F00112501 /* ActivitiesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
 		A182D1BF2372AB0F00112501 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -451,7 +451,7 @@
 		A182D1B52372AB0E00112501 /* Transport */ = {
 			isa = PBXGroup;
 			children = (
-				A182D1BA2372AB0E00112501 /* HTTPClient.swift */,
+				A182D1BA2372AB0E00112501 /* Zone5HTTPClient.swift */,
 				A182D1C52372AB0F00112501 /* AccessToken.swift */,
 				A182D1BB2372AB0E00112501 /* Request.swift */,
 				A182D1B62372AB0E00112501 /* RequestEndpoint.swift */,
@@ -879,7 +879,7 @@
 				A196035923794DD200CEB121 /* UserWorkoutFailedReason.swift in Sources */,
 				0FB27F3D24060BFA00D7991B /* UserWorkoutResultBike.swift in Sources */,
 				0F4A88CA2564A1ED005C20A2 /* URLProtocolProperty.swift in Sources */,
-				A182D1D02372AB0F00112501 /* HTTPClient.swift in Sources */,
+				A182D1D02372AB0F00112501 /* Zone5HTTPClient.swift in Sources */,
 				0F7ED32825708B1200452C13 /* PaymentVerification.swift in Sources */,
 				0F7D4722253D4998005B21A9 /* PushRegistrationResponse.swift in Sources */,
 				0FAA7566240CA34300CB3C73 /* LoginRequest.swift in Sources */,
@@ -1152,10 +1152,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 986GGC5BDP;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1165,6 +1166,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zone5ventures.Zone5SDK.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1176,10 +1179,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 986GGC5BDP;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1189,6 +1193,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zone5ventures.Zone5SDK.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 			};

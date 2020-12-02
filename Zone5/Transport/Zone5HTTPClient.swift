@@ -1,6 +1,6 @@
 import Foundation
 
-final internal class HTTPClient {
+final public class Zone5HTTPClient {
 
 	/// The parent instance of the `Zone5` SDK.
 	weak var zone5: Zone5?
@@ -13,7 +13,7 @@ final internal class HTTPClient {
 	private let urlSessionDelegate: URLSessionDelegate?
 
 	/// Initializes a new instance of the `HTTPClient` that uses the URLRequestInterceptor to process requests
-	init() {
+	public init() {
 		let urlSessionDelegate = URLSessionDelegate()
 		
 		// create a URLSession which routes all requests into the interceptor
@@ -38,7 +38,7 @@ final internal class HTTPClient {
 	/// Delegate class used for managing the various calls made by our `urlSession`.
 	final fileprivate class URLSessionDelegate: NSObject, Foundation.URLSessionDelegate {
 
-		weak var httpClient: HTTPClient?
+		weak var httpClient: Zone5HTTPClient?
 
 	}
 
@@ -94,10 +94,9 @@ final internal class HTTPClient {
 	///   - expectedType: The expected, `Decodable` type that is used to decode the response data.
 	///   - completion: Function called with the result of the download. If successful, the response data is returned,
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
-	func perform<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
+	public func perform<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5, baseURL in
 			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .data)
-
 			let decoder = self.decoder
 			let task = urlSession.dataTask(with: urlRequest) { data, response, error in
 				if let error = error {
@@ -128,10 +127,10 @@ final internal class HTTPClient {
 	///   - expectedType: The expected, `Decodable` type that is used to decode the response data.
 	///   - completion: Function called with the result of the download. If successful, the response data is returned,
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
-	func upload<T: Decodable>(_ fileURL: URL, with request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
+	public func upload<T: Decodable>(_ fileURL: URL, with request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5, baseURL in
 			var (urlRequest, multipartData) = try request.urlRequest(toUpload: fileURL, with: baseURL, zone5: zone5)
-			let cacheURL = HTTPClient.uploadsDirectory.appendingPathComponent(fileURL.lastPathComponent).appendingPathExtension("multipart")
+			let cacheURL = Zone5HTTPClient.uploadsDirectory.appendingPathComponent(fileURL.lastPathComponent).appendingPathExtension("multipart")
 
 			// save URL against the request (needed to create actual uploadTask in interceptor)
 			urlRequest = urlRequest.setMeta(key: .fileURL, value: cacheURL)
@@ -168,7 +167,7 @@ final internal class HTTPClient {
 	///   - request: A request that defines the endpoint, method and body used.
 	///   - completion: Function called with the result of the download. If successful, the location of the downloaded
 	///			file on disk is returned, otherwise the error that was encountered.
-	func download(_ request: Request, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
+	public func download(_ request: Request, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5, baseURL in
 			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .download)
 
@@ -183,7 +182,7 @@ final internal class HTTPClient {
 					let location = location,
 					let filename = response?.suggestedFilename {
 					do {
-						let cacheURL = HTTPClient.downloadsDirectory.appendingPathComponent(filename)
+						let cacheURL = Zone5HTTPClient.downloadsDirectory.appendingPathComponent(filename)
 						try FileManager.default.copyItem(at: location, to: cacheURL)
 
 						completion(.success(cacheURL))
@@ -209,7 +208,7 @@ final internal class HTTPClient {
 
 }
 
-private extension JSONDecoder {
+public extension JSONDecoder {
 
 	func decode<T: Decodable>(_ data: Data, response: URLResponse?, from request: Request, as expectedType: T.Type) -> Result<T, Zone5.Error> {
 		#if DEBUG

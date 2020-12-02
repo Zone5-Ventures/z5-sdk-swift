@@ -1,7 +1,7 @@
 import Foundation
 
 /// Protocol defining the requirements for endpoints accepted when generating requests for the API.
-protocol RequestEndpoint {
+public protocol RequestEndpoint {
 
 	/// The string value containing the endpoint's actual URI.
 	/// - Note: This value may contain tokens wrapped in braces that can be replaced at runtime with dynamic values.
