@@ -191,7 +191,7 @@ struct ContentView: View {
 
 						var parameters = SearchInput(criteria: criteria)
 						parameters.fields = ["name", "distance", "ascent", "peak3minWatts", "peak20minWatts", "channels", "sum.turboExt.battery1DecayWh", "sum.distance"]
-						parameters.fields += UserHeadunit.fields([.manufacturer], prefix: "headunit")
+						parameters.fields += UserHeadunit.fields([.manufacturer, .name], prefix: "headunit")
 						parameters.fields += UserWorkoutResultTurboExt.fields(prefix: "turboExt")
 						parameters.fields += UserWorkoutResultBike.fields(prefix: "bike")
 						parameters.fields += UserWorkoutResultTurbo.fields(prefix: "turbo")
