@@ -12,7 +12,7 @@ extension JSONEncodedBody {
 	// MARK: RequestBody
 
     public var contentType: String {
-        return "application/jpublic son"
+        return "application/json"
 	}
 
     public func encodedData() throws -> Data {
