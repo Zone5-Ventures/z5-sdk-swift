@@ -7,12 +7,15 @@ public struct Request {
 	var method: Method
 
 	var body: RequestBody?
+    
+    var headers: [String: String]?
 	
 	var queryParams: URLEncodedBody?
 
-	public init(endpoint: RequestEndpoint, method: Method, queryParams: URLEncodedBody? = nil, body: RequestBody? = nil) {
+    public init(endpoint: RequestEndpoint, method: Method, headers: [String: String]? = nil, queryParams: URLEncodedBody? = nil, body: RequestBody? = nil) {
 		self.endpoint = endpoint
 		self.method = method
+        self.headers = headers
 		self.queryParams = queryParams
 		self.body = body
 	}
@@ -30,7 +33,13 @@ public struct Request {
 	}
 
 	func urlRequest(with baseURL: URL, zone5: Zone5, taskType: URLSessionTaskType) throws -> URLRequest {
-		let url = baseURL.appendingPathComponent(endpoint.uri)
+        let url: URL
+        if !endpoint.uri.contains("http") {
+            url = baseURL.appendingPathComponent(endpoint.uri)
+        } else {
+            guard let unwrapped = URL(string: endpoint.uri) else { throw Zone5.Error.invalidParameters }
+            url = unwrapped
+        }
 		var request = URLRequest(url: url)
 		request.httpMethod = method.rawValue
 
@@ -55,7 +64,14 @@ public struct Request {
 			components.queryItems = queryParams.queryItems
 			request.url = components.url
 		}
-		
+        
+        // if there are headers, add it to the request
+        if let addtlHeaders = headers {
+            for addtl in addtlHeaders {
+                request.addValue(addtl.value, forHTTPHeaderField: addtl.key)
+            }
+        }
+        
 		// process body of request
 		switch method {
 		case .get, .head:

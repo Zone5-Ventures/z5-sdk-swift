@@ -232,7 +232,7 @@ class UsersViewTests: XCTestCase {
 	}
 	
 	func testDelete() {
-		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<VoidReply, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
 				// delete requires a token, so this will fail authentication
 				token: nil,
@@ -259,7 +259,7 @@ class UsersViewTests: XCTestCase {
 				secret: nil,
 				json: "",
 				expectedResult: .success {
-					return VoidReply()
+					return Zone5.VoidReply()
 				}
 			)
 		]
@@ -487,7 +487,7 @@ class UsersViewTests: XCTestCase {
 	}
 	
 	func testChangePassword() {
-		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<VoidReply, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
 				// changepassword requires a token, so this will fail authentication
 				token: nil,
@@ -505,7 +505,7 @@ class UsersViewTests: XCTestCase {
 				secret: nil,
 				json: "true",
 				expectedResult: .success {
-					return VoidReply()
+					return Zone5.VoidReply()
 				}
 			),
 			(
@@ -545,7 +545,7 @@ class UsersViewTests: XCTestCase {
 	}
 	
 	func testChangePasswordSpecialized() {
-		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<VoidReply, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
 				// changepassword requires a token, so this will fail authentication
 				token: nil,
@@ -563,7 +563,7 @@ class UsersViewTests: XCTestCase {
 				secret: nil,
 				json: "",
 				expectedResult: .success {
-					return VoidReply()
+					return Zone5.VoidReply()
 				}
 			),
 			(

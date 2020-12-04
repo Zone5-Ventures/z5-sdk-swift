@@ -36,7 +36,7 @@ public class ThirdPartyConnectionsView: APIView {
 	/// - Parameters:
 	/// - token: 3rd party push token to deregister
 	@discardableResult
-	public func deregisterDeviceWithThirdParty(token: String, completion: @escaping Zone5.ResultHandler<VoidReply>) -> PendingRequest? {
+	public func deregisterDeviceWithThirdParty(token: String, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
 		let endpoint = Endpoints.deregisterDeviceWithThirdParty.replacingTokens(["token": token])
 		return delete(endpoint, with: completion)
 	}

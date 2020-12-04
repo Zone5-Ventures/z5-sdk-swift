@@ -88,6 +88,7 @@ internal class URLRequestInterceptor: URLProtocol {
 	private func decorateAndSendRequest() {
 		// decorate headers. This needs to be after the refresh code as the token may change
 		let request = URLRequestInterceptor.decorate(request: self.request)
+        print("Decorated for \(request.url?.absoluteString ?? ""): \(request.allHTTPHeaderFields ?? [:])")
 		// send
 		sendRequest(request)
 	}

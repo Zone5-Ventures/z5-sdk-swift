@@ -94,10 +94,15 @@ final public class Zone5HTTPClient {
 	///   - expectedType: The expected, `Decodable` type that is used to decode the response data.
 	///   - completion: Function called with the result of the download. If successful, the response data is returned,
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
-	public func perform<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
+    public func perform<T: Decodable>(_ request: Request, additionalHeaders: [String: String]? = nil, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5, baseURL in
-			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .data)
+			var urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .data)
 			let decoder = self.decoder
+            if let headers = additionalHeaders {
+                for header in headers {
+                    urlRequest.addValue(header.value, forHTTPHeaderField: header.key)
+                }
+            }
 			let task = urlSession.dataTask(with: urlRequest) { data, response, error in
 				if let error = error {
 					completion(.failure(.transportFailure(error)))
@@ -215,7 +220,7 @@ public extension JSONDecoder {
 		var debugMessage = ""
 		defer {
 			if let requestData = try? request.body?.encodedData(), let requestString = String(data: requestData, encoding: .utf8) {
-				debugMessage += "\n\t- Request: \(requestString)"
+                debugMessage += "\n\t- Request to \(response?.url?.absoluteString ?? "unknown"): \(requestString)"
 			}
 			if let responseString = String(data: data, encoding: .utf8) {
 				debugMessage += "\n\t- Response: \(responseString)"
@@ -227,7 +232,7 @@ public extension JSONDecoder {
 		if let httpResponse = response as? HTTPURLResponse {
 			guard (200..<400).contains(httpResponse.statusCode) else {
 				#if DEBUG
-				debugMessage = "Server responded with status code of \(httpResponse.statusCode)."
+                debugMessage = "Server responded with status code of \(httpResponse.statusCode) to \(request.endpoint.uri). (headers were \(request.headers ?? [:]))"
 				#endif
 
 				do {
@@ -245,12 +250,12 @@ public extension JSONDecoder {
 
 		do {
 			// Attempt to decode and return the `data` as the `expectedType` using our decoder
-			if expectedType == VoidReply.self {
+			if expectedType == Zone5.VoidReply.self {
 				// special handling required for Void types. Enforce enpty data. Create NoReply object.
 				if data.count > 0 {
 					return .failure(.failedDecodingResponse(Zone5.Error.unknown))
 				} else {
-					return .success(VoidReply() as! T)
+					return .success(Zone5.VoidReply() as! T)
 				}
 			}
 			
@@ -285,7 +290,7 @@ public extension JSONDecoder {
 			}
 			
 			#if DEBUG
-			debugMessage = "Successfully decoded server response as `\(expectedType)`."
+            debugMessage = "Successfully decoded server response from \(response?.url?.absoluteString ?? "") as `\(expectedType)`."
 			#endif
 
 			return .success(decodedValue)

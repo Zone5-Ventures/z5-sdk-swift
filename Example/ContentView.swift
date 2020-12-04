@@ -107,7 +107,7 @@ struct ContentView: View {
 					EndpointLink<Bool>("Reset Password") { client, completion in
 						client.users.resetPassword(email: keyValueStore.userEmail, completion: completion)
 					}
-					EndpointLink<VoidReply>("Change password") { client, completion in
+					EndpointLink<Zone5.VoidReply>("Change password") { client, completion in
 						if let oldpass = self.me.password {
 							let newpass = "MyNewP@ssword\(Date().milliseconds)"
 							client.users.changePassword(oldPassword: oldpass, newPassword: newpass) { result in
@@ -175,7 +175,7 @@ struct ContentView: View {
 					EndpointLink<OAuthToken>("Get Access Token") { client, completion in
 						client.oAuth.accessToken(username: keyValueStore.userEmail, password: self.password.password, completion: completion)
 					}
-					EndpointLink<VoidReply>("Delete last registered Account (if any)") { client, completion in
+					EndpointLink<Zone5.VoidReply>("Delete last registered Account (if any)") { client, completion in
 						if let id = self.lastRegisteredId {
 							client.users.deleteAccount(userID: id, completion: completion)
 						} else {
@@ -334,7 +334,7 @@ struct ContentView: View {
 						let rego = PushRegistration(token: "1234", platform: "strava", deviceId: "gwjh4")
 						client.thirdPartyConnections.registerDeviceWithThirdParty(registration: rego, completion: completion)
 					}
-					EndpointLink<VoidReply>("Deregister Device") { client, completion in
+					EndpointLink<Zone5.VoidReply>("Deregister Device") { client, completion in
 						client.thirdPartyConnections.deregisterDeviceWithThirdParty(token: "1234", completion: completion)
 					}
 					EndpointLink<UpgradeAvailableResponse>("Is upgrade available") { client, completion in
