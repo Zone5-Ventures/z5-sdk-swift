@@ -81,7 +81,7 @@ public struct Request {
 				throw Zone5.Error.unexpectedRequestBody
 			}
 
-		case .post, .delete:
+        default:
 			// body is optional
 			if let body = body {
 				do {
@@ -93,9 +93,6 @@ public struct Request {
 					throw Zone5.Error.failedEncodingRequestBody
 				}
 			}
-
-		default:
-			throw Zone5.Error.unknown
 		}
 		
 		return request

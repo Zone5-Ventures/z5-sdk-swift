@@ -69,7 +69,7 @@ final public class Zone5HTTPClient {
 	/// - Parameters:
 	///   - completion: Function called with errors that are thrown in the `block`.
 	///   - block: The function containing the work to perform. It receives a strong copy of the parent `Zone5` class, and the configured `baseURL`.
-	private func execute<T: Decodable>(with completion: (_ result: Result<T, Zone5.Error>) -> Void, _ block: (_ zone5: Zone5, _ baseURL: URL) throws -> PendingRequest) -> PendingRequest? {
+	private func execute<T>(with completion: (_ result: Result<T, Zone5.Error>) -> Void, _ block: (_ zone5: Zone5, _ baseURL: URL) throws -> PendingRequest) -> PendingRequest? {
 		do {
 			guard let zone5 = zone5, zone5.isConfigured, let baseURL = zone5.baseURL else {
 				throw Zone5.Error.invalidConfiguration
@@ -123,6 +123,40 @@ final public class Zone5HTTPClient {
 			return PendingRequest(task)
 		}
 	}
+    
+    /// Perform a data task using the given `request`, calling the completion with the result.
+    /// - Parameters:
+    ///   - request: A request that defines the endpoint, method and body used.
+    ///   - completion: Function called with the result of the download. If successful, the response data is returned,
+    public func perform(_ request: Request,
+                        additionalHeaders: [String: String]? = nil,
+                        completion: @escaping (_ result: Result<(Data, URLResponse), Zone5.Error>) -> Void) -> PendingRequest? {
+        return execute(with: completion) { zone5, baseURL in
+            var urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .data)
+            if let headers = additionalHeaders {
+                for header in headers {
+                    urlRequest.addValue(header.value, forHTTPHeaderField: header.key)
+                }
+            }
+            let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+                if let error = error {
+                    completion(.failure(.transportFailure(error)))
+                }
+                else if let data = data {
+                    guard let response = response else {
+                        completion(.failure(Zone5.Error.failedDecodingResponse(Zone5.Error.unknown)))
+                        return
+                    }
+                    completion(.success((data, response)))
+                }
+                else {
+                    completion(.failure(.unknown))
+                }
+            }
+            task.resume()
+            return PendingRequest(task)
+        }
+    }
 
 	/// Perform an upload task using the given `fileURL` and `request`, calling the completion with the result.
 	///
