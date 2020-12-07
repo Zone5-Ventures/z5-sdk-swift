@@ -36,6 +36,8 @@
 		0FB27F3F2406324900D7991B /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB27F3E2406324900D7991B /* LoginResponse.swift */; };
 		0FB27F41240634B900D7991B /* Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB27F40240634B900D7991B /* Roles.swift */; };
 		0FB27F442406389C00D7991B /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB27F432406389C00D7991B /* Company.swift */; };
+		0FE9E2D0257DD6520036B44A /* Zone5HttpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9E2CF257DD6520036B44A /* Zone5HttpHeader.swift */; };
+		0FE9E2D6257DDCFE0036B44A /* UserAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9E2D5257DDCFE0036B44A /* UserAgentView.swift */; };
 		801D9721253A377900A20433 /* ThirdPartyViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801D9720253A377900A20433 /* ThirdPartyViewTests.swift */; };
 		80D51FD625366CA7000BEC54 /* PushRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51FD525366CA7000BEC54 /* PushRegistration.swift */; };
 		80D51FDA25378E4D000BEC54 /* ThirdPartyConnectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51FD925378E4C000BEC54 /* ThirdPartyConnectionsView.swift */; };
@@ -213,6 +215,8 @@
 		0FB27F3E2406324900D7991B /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		0FB27F40240634B900D7991B /* Roles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roles.swift; sourceTree = "<group>"; };
 		0FB27F432406389C00D7991B /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		0FE9E2CF257DD6520036B44A /* Zone5HttpHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone5HttpHeader.swift; sourceTree = "<group>"; };
+		0FE9E2D5257DDCFE0036B44A /* UserAgentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgentView.swift; sourceTree = "<group>"; };
 		801D9720253A377900A20433 /* ThirdPartyViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyViewTests.swift; sourceTree = "<group>"; };
 		80D51FD525366CA7000BEC54 /* PushRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushRegistration.swift; sourceTree = "<group>"; };
 		80D51FD925378E4C000BEC54 /* ThirdPartyConnectionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyConnectionsView.swift; sourceTree = "<group>"; };
@@ -478,6 +482,7 @@
 				0F9D70FD2445723E0053C6FD /* MetricsView.swift */,
 				80D51FD925378E4C000BEC54 /* ThirdPartyConnectionsView.swift */,
 				0F7C8E63256CCB02005CF025 /* PaymentsView.swift */,
+				0FE9E2D5257DDCFE0036B44A /* UserAgentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -573,6 +578,7 @@
 				A182D1CA2372AB0F00112501 /* WorkoutType.swift */,
 				0FB27F40240634B900D7991B /* Roles.swift */,
 				0F4A88C92564A1ED005C20A2 /* URLProtocolProperty.swift */,
+				0FE9E2CF257DD6520036B44A /* Zone5HttpHeader.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -876,6 +882,7 @@
 				A167D6CC238252CE00507276 /* RoutesView.swift in Sources */,
 				A182D1D42372AB0F00112501 /* View.swift in Sources */,
 				A1C28C64238B8BE000E67B05 /* Indirect.swift in Sources */,
+				0FE9E2D6257DDCFE0036B44A /* UserAgentView.swift in Sources */,
 				A196035923794DD200CEB121 /* UserWorkoutFailedReason.swift in Sources */,
 				0FB27F3D24060BFA00D7991B /* UserWorkoutResultBike.swift in Sources */,
 				0F4A88CA2564A1ED005C20A2 /* URLProtocolProperty.swift in Sources */,
@@ -927,6 +934,7 @@
 				A182D1D32372AB0F00112501 /* ActivitiesView.swift in Sources */,
 				80D51FDA25378E4D000BEC54 /* ThirdPartyConnectionsView.swift in Sources */,
 				A10AB213237D0B5100EBAC66 /* UserHeadunit.swift in Sources */,
+				0FE9E2D0257DD6520036B44A /* Zone5HttpHeader.swift in Sources */,
 				A10AB22C237D341900EBAC66 /* UserRouteVisibilityMask.swift in Sources */,
 				A196035423794DD200CEB121 /* UserConnectionsType.swift in Sources */,
 				A182D1D72372AB0F00112501 /* SearchInput.swift in Sources */,
@@ -1163,6 +1171,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zone5ventures.Zone5SDK.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -1187,6 +1196,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zone5ventures.Zone5SDK.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -1215,6 +1225,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zone5ventures.Zone5SDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1246,6 +1257,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zone5ventures.Zone5SDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1267,6 +1279,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zone5ventures.Zone5SDK.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1285,6 +1298,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zone5ventures.Zone5SDK.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
