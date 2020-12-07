@@ -2,7 +2,7 @@ import Foundation
 
 public struct Request {
 
-	var endpoint: RequestEndpoint
+	public var endpoint: RequestEndpoint
 
 	var method: Method
 

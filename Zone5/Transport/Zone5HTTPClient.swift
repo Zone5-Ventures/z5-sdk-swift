@@ -94,10 +94,15 @@ final public class Zone5HTTPClient {
 	///   - expectedType: The expected, `Decodable` type that is used to decode the response data.
 	///   - completion: Function called with the result of the download. If successful, the response data is returned,
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
-    public func perform<T: Decodable>(_ request: Request, additionalHeaders: [String: String]? = nil, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
+    public func perform<T: Decodable>(_ request: Request,
+                                      additionalHeaders: [String: String]? = nil,
+                                      keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
+                                      expectedType: T.Type,
+                                      completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5, baseURL in
 			var urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .data)
 			let decoder = self.decoder
+            decoder.keyDecodingStrategy = keyDecodingStrategy
             if let headers = additionalHeaders {
                 for header in headers {
                     urlRequest.addValue(header.value, forHTTPHeaderField: header.key)
@@ -114,7 +119,6 @@ final public class Zone5HTTPClient {
 					completion(.failure(.unknown))
 				}
 			}
-			
 			task.resume()
 			return PendingRequest(task)
 		}
@@ -148,6 +152,7 @@ final public class Zone5HTTPClient {
 			}
 
 			let decoder = self.decoder
+            decoder.keyDecodingStrategy = .useDefaultKeys
 			let task = urlSession.uploadTask(with: urlRequest, fromFile: cacheURL) { data, response, error in
 				defer { try? FileManager.default.removeItem(at: cacheURL) }
 
@@ -177,6 +182,7 @@ final public class Zone5HTTPClient {
 			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .download)
 
 			let decoder = self.decoder
+            decoder.keyDecodingStrategy = .useDefaultKeys
 			let task = urlSession.downloadTask(with: urlRequest) { location, response, error in
 				if let error = error {
 					completion(.failure(.transportFailure(error)))
