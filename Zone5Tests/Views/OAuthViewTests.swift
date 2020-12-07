@@ -65,4 +65,32 @@ class OAuthViewTests: XCTestCase {
 			}
 		}
 	}
+	
+	func testAdhocToken() {
+		var expected = OAuthToken(token: "test token", expiresIn: 123)
+		expected.scope = "things"
+		
+		let tests = [expected]
+		execute(with: tests) { client, _, urlSession, expected in
+			
+			urlSession.dataTaskHandler = { request in
+				XCTAssertEqual(request.url?.path, "/rest/oauth/access_token")
+				XCTAssertNil(request.allHTTPHeaderFields?["Authorization"])
+
+				return .success("{\"access_token\": \"test token\", \"scope\": \"things\", \"expires_in\":123}")
+			}
+
+			client.oAuth.accessToken(username: "username", password: "password") { result in
+				switch result {
+				case .success(let token):
+					XCTAssertEqual(token.accessToken, expected.accessToken)
+					XCTAssertEqual(token.expiresIn, expected.expiresIn)
+					XCTAssertEqual(token.scope, expected.scope)
+					
+				default:
+					XCTFail()
+				}
+			}
+		}
+	}
 }

@@ -308,7 +308,7 @@ class ThirdPartyViewTests: XCTestCase {
 				return .success(test.json)
 			}
 
-			let _ = client.thirdPartyConnections.getDeprecated() { result in
+			let _ = client.userAgents.getDeprecated() { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)

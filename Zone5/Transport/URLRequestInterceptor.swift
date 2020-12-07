@@ -105,15 +105,23 @@ internal class URLRequestInterceptor: URLProtocol {
 		
 		// set user agent if configured
 		if let agent = zone5?.userAgent, !agent.isEmpty {
-			mutableRequest.setValue(agent, forHTTPHeaderField: "User-Agent")
+			mutableRequest.setValue(agent, forHTTPHeaderField: Zone5HttpHeader.userAgent.rawValue)
 		}
 		
 		// set legacy tp-nodecorate header
-		mutableRequest.setValue("true", forHTTPHeaderField: "tp-nodecorate")
+		mutableRequest.setValue("true", forHTTPHeaderField: Zone5HttpHeader.tpNoDecorate.rawValue)
 		
 		// Sign the request with the access token if required
 		if let requiresAccessToken = request.getMeta(key: .requiresAccessToken) as? Bool, requiresAccessToken, let zone5 = zone5, let token = zone5.accessToken {
-			mutableRequest.setValue("Bearer \(token.rawValue)", forHTTPHeaderField: "Authorization")
+			mutableRequest.setValue("Bearer \(token.rawValue)", forHTTPHeaderField: Zone5HttpHeader.authorization.rawValue)
+		}
+		
+		if let clientID = zone5?.clientID {
+			mutableRequest.setValue(clientID, forHTTPHeaderField: Zone5HttpHeader.apiKey.rawValue)
+		}
+		
+		if let clientSecret = zone5?.clientSecret {
+			mutableRequest.setValue(clientSecret, forHTTPHeaderField: Zone5HttpHeader.apiSecret.rawValue)
 		}
 		
 		return mutableRequest as URLRequest

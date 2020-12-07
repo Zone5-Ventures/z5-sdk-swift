@@ -19,7 +19,7 @@ class URLRequestInterceptorTests: XCTestCase {
 		var oauth = OAuthToken(rawValue: "testauth")
 		oauth.refreshToken = "refresh"
 		oauth.tokenExp = Date().milliseconds.rawValue + 100000
-		zone5.configure(for: URL(string: "https://api-sp-staging.todaysplan.com.au")!, accessToken: oauth)
+		zone5.configure(for: URL(string: "https://api-sp-staging.todaysplan.com.au")!, clientID: "CLIENT ID", clientSecret: "CLIENT SECRET", userAgent: "agent 123", accessToken: oauth)
 	}
 
 	
@@ -36,8 +36,11 @@ class URLRequestInterceptorTests: XCTestCase {
 		XCTAssertNotNil(interceptor.lastRequest)
 		XCTAssertEqual(request.url, interceptor.lastRequest!.url)
 		XCTAssertEqual(URLSessionTaskType.data, interceptor.lastRequest?.taskType)
-		// sould be no auth header
+		// should be no auth header
 		XCTAssertNil(interceptor.lastRequest!.value(forHTTPHeaderField: "Authorization"))
+		
+		XCTAssertEqual(interceptor.lastRequest!.value(forHTTPHeaderField: "Api-Key"), "CLIENT ID")
+		XCTAssertEqual(interceptor.lastRequest!.value(forHTTPHeaderField: "Api-Key-Secret"), "CLIENT SECRET")
 	}
 
 	func testAuthNotExpiredData() {
@@ -67,6 +70,8 @@ class URLRequestInterceptorTests: XCTestCase {
 		XCTAssertEqual(taskType, interceptor.lastRequest!.taskType)
 		// suth header should be set
 		XCTAssertEqual("Bearer testauth", interceptor.lastRequest!.value(forHTTPHeaderField: "Authorization"))
+		XCTAssertEqual(interceptor.lastRequest!.value(forHTTPHeaderField: "Api-Key"), "CLIENT ID")
+		XCTAssertEqual(interceptor.lastRequest!.value(forHTTPHeaderField: "Api-Key-Secret"), "CLIENT SECRET")
 	}
 	
 	func testAuthExpired() {
@@ -112,6 +117,8 @@ class URLRequestInterceptorTests: XCTestCase {
 		// auth header should be added
 		XCTAssertNil(interceptor.request.value(forHTTPHeaderField: "Authorization"))
 		XCTAssertEqual("Bearer testauth", interceptor.lastRequest!.value(forHTTPHeaderField: "Authorization"))
+		XCTAssertEqual(interceptor.lastRequest!.value(forHTTPHeaderField: "Api-Key"), "CLIENT ID")
+		XCTAssertEqual(interceptor.lastRequest!.value(forHTTPHeaderField: "Api-Key-Secret"), "CLIENT SECRET")
 	}
 	
 	func testAuthExpiredPipelineOnlyRefreshesOnce() {
@@ -165,6 +172,8 @@ class URLRequestInterceptorTests: XCTestCase {
 			// the authorization header is added during startLoading
 			XCTAssertNil($0.request.value(forHTTPHeaderField: "Authorization"))
 			XCTAssertEqual("Bearer testauth", $0.lastRequest!.value(forHTTPHeaderField: "Authorization"))
+			XCTAssertEqual($0.lastRequest!.value(forHTTPHeaderField: "Api-Key"), "CLIENT ID")
+			XCTAssertEqual($0.lastRequest!.value(forHTTPHeaderField: "Api-Key-Secret"), "CLIENT SECRET")
 		}
 		
 		XCTAssertEqual("123", (zone5.accessToken as! OAuthToken).refreshToken) // no longer "refresh"
