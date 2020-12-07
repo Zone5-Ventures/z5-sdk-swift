@@ -161,6 +161,11 @@ final public class Zone5 {
 		return ThirdPartyConnectionsView(zone5: self)
 	}()
 	
+	/// A collection of API endpoints related to the calling UserAgent
+	public lazy var userAgents: UserAgentView = {
+		return UserAgentView(zone5: self)
+	}()
+	
 	/// A collection of API endpoints related to payments.
 	public lazy var payments: PaymentsView = {
 		return PaymentsView(zone5: self)
@@ -234,6 +239,12 @@ final public class Zone5 {
 		/// Structure that represents a message produced by the server when an error occurs.
 		public struct ServerMessage: Swift.Error, Codable, Equatable {
 
+			public struct ServerError: Codable, Equatable {
+				public var field: String?
+				public var message: String?
+				public var code: Int?
+			}
+			
 			internal init(message: String, statusCode: Int? = nil) {
 				self.message = message
 				self.statusCode = statusCode
@@ -243,6 +254,7 @@ final public class Zone5 {
 			public var reason: String?
 			public var error: String?
 			public var statusCode: Int?
+			public var errors: [ServerError]?
 
 		}
 

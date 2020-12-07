@@ -99,6 +99,38 @@ struct ContentView: View {
 					EndpointLink<[String:Bool]>("Check Email Status") { client, completion in
 						client.users.getEmailValidationStatus(email: keyValueStore.userEmail, completion: completion)
 					}
+					EndpointLink<User>("Register New User") { client, completion in
+						let email = keyValueStore.userEmail
+						let password = self.password.password
+						let firstname = "test"
+						let lastname = "person"
+						if !email.isEmpty, !password.isEmpty {
+							var registerUser = RegisterUser(email: email, password: password, firstname: firstname, lastname: lastname)
+							registerUser.units = UnitMeasurement.imperial
+							client.users.register(user: registerUser) { value in
+								switch value {
+									case .success(let user):
+										if let id = user.id, id > 0 {
+											self.lastRegisteredId = id
+										}
+									
+									case .failure(_):
+										print("failed to create new user")
+								}
+									
+								completion(value)
+							}
+						} else {
+							completion(.failure(.unknown))
+						}
+					}
+					EndpointLink<VoidReply>("Delete last registered Account (if any)") { client, completion in
+						if let id = self.lastRegisteredId {
+							client.users.deleteAccount(userID: id, completion: completion)
+						} else {
+							completion(.failure(.unknown))
+						}
+					}
 				}
 				Section(header: Text("Auth"), footer: Text("Note that Register New User on TP servers makes an immediately usable user but on Specialized servers it requires a second auth step of going to the email for the user and clicking confirm email")) {
 					EndpointLink<Bool>("Check User Exists") { client, completion in
@@ -130,31 +162,6 @@ struct ContentView: View {
 					EndpointLink<OAuthToken>("Refresh Cognito Token") { client, completion in
 						client.oAuth.refreshAccessToken(username: keyValueStore.userEmail, completion: completion)
 					}
-					EndpointLink<User>("Register New User") { client, completion in
-						let email = keyValueStore.userEmail
-						let password = self.password.password
-						let firstname = "test"
-						let lastname = "person"
-						if !email.isEmpty, !password.isEmpty {
-							var registerUser = RegisterUser(email: email, password: password, firstname: firstname, lastname: lastname)
-							registerUser.units = UnitMeasurement.imperial
-							client.users.register(user: registerUser) { value in
-								switch value {
-									case .success(let user):
-										if let id = user.id, id > 0 {
-											self.lastRegisteredId = id
-										}
-									
-									case .failure(_):
-										print("failed to create new user")
-								}
-									
-								completion(value)
-							}
-						} else {
-							completion(.failure(.unknown))
-						}
-					}
 					EndpointLink<LoginResponse>("Login") { client, completion in
 						let userPassword: String = self.password.password
 						client.users.login(email: keyValueStore.userEmail, password: userPassword, clientID: self.apiClient.clientID, clientSecret: self.apiClient.clientSecret) { value in
@@ -175,12 +182,8 @@ struct ContentView: View {
 					EndpointLink<OAuthToken>("Get Access Token") { client, completion in
 						client.oAuth.accessToken(username: keyValueStore.userEmail, password: self.password.password, completion: completion)
 					}
-					EndpointLink<VoidReply>("Delete last registered Account (if any)") { client, completion in
-						if let id = self.lastRegisteredId {
-							client.users.deleteAccount(userID: id, completion: completion)
-						} else {
-							completion(.failure(.unknown))
-						}
+					EndpointLink<OAuthToken>("Get Adhoc Access Token") { client, completion in
+						_ = client.oAuth.adhocAccessToken(for: "wahooride", completion: completion)
 					}
 				}
 				Section(header: Text("Activities"), footer: Text("Attempting to view \"Next Page\" before performing a legitimate search request—such as by opening the \"Last 30 days\" screen—will return an empty result.")) {
@@ -337,10 +340,11 @@ struct ContentView: View {
 					EndpointLink<VoidReply>("Deregister Device") { client, completion in
 						client.thirdPartyConnections.deregisterDeviceWithThirdParty(token: "1234", completion: completion)
 					}
+				}
+				Section(header: Text("User Agent Queries")) {
 					EndpointLink<UpgradeAvailableResponse>("Is upgrade available") { client, completion in
-						client.thirdPartyConnections.getDeprecated(completion: completion)
+						client.userAgents.getDeprecated(completion: completion)
 					}
-					
 				}
 				Section(header: Text("In App Purchases")) {
 					EndpointLink<Products>("List Products") { client, completion in

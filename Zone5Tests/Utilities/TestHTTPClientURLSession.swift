@@ -14,6 +14,7 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 		case success(Success)
 		case message(String, statusCode: Int)
 		case error(Error)
+		case failure(String, statusCode: Int)
 	}
 
 	// MARK: Data tasks
@@ -34,6 +35,12 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 				])
 
 				let json = "{\"message\": \"\(message)\"}"
+				completionHandler(json.data(using: .utf8), response, nil)
+			case .failure(let json, let statusCode):
+				let response = HTTPURLResponse.init(url: request.url!, statusCode: statusCode, httpVersion: "HTTP/1.1", headerFields: [
+					"Content-Type": "application/json",
+				])
+
 				completionHandler(json.data(using: .utf8), response, nil)
 			case .error(let error):
 				let response = HTTPURLResponse.init(url: request.url!, statusCode: 500, httpVersion: "HTTP/1.1", headerFields: [
@@ -84,6 +91,12 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 
 				let json = "{\"message\": \"\(message)\"}"
 				completionHandler(json.data(using: .utf8), response, nil)
+			case .failure(let json, let statusCode):
+				let response = HTTPURLResponse.init(url: request.url!, statusCode: statusCode, httpVersion: "HTTP/1.1", headerFields: [
+					"Content-Type": "application/json",
+				])
+
+				completionHandler(json.data(using: .utf8), response, nil)
 			case .error(let error):
 				let response = HTTPURLResponse.init(url: request.url!, statusCode: 500, httpVersion: "HTTP/1.1", headerFields: [
 					"Content-Type": "application/json",
@@ -131,6 +144,14 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 				let json = "{\"message\": \"\(message)\"}"
 				try! json.write(to: tempURL, atomically: true, encoding: .utf8)
 
+				let response = HTTPURLResponse.init(url: request.url!, statusCode: statusCode, httpVersion: "HTTP/1.1", headerFields: [
+					"Content-Type": "application/json",
+				])
+
+				completionHandler(tempURL, response!, nil)
+			case .failure(let json, let statusCode):
+				let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("dataResponse.tmp")
+				try! json.write(to: tempURL, atomically: true, encoding: .utf8)
 				let response = HTTPURLResponse.init(url: request.url!, statusCode: statusCode, httpVersion: "HTTP/1.1", headerFields: [
 					"Content-Type": "application/json",
 				])

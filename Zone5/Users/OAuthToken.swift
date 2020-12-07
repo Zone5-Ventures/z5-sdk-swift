@@ -19,6 +19,7 @@ public struct OAuthToken: Codable, Equatable, AccessToken {
 	public var tokenType: String?
 	public var expiresIn: Int? // seconds til expiry
 	public var tokenExp: Int? // timestamp of expiry, ms since epoch
+	public var scope: String?
 	
 	public init(rawValue: String) {
 		accessToken = rawValue
@@ -79,5 +80,6 @@ public struct OAuthToken: Codable, Equatable, AccessToken {
 		case refreshToken = "refresh_token"
 		case tokenType = "token_type"
 		case expiresIn = "expires_in"
+		case scope = "scope"
 	}
 }
