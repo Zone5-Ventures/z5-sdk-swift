@@ -69,13 +69,13 @@ final public class Zone5HTTPClient {
 	/// - Parameters:
 	///   - completion: Function called with errors that are thrown in the `block`.
 	///   - block: The function containing the work to perform. It receives a strong copy of the parent `Zone5` class, and the configured `baseURL`.
-	private func execute<T: Decodable>(with completion: (_ result: Result<T, Zone5.Error>) -> Void, _ block: (_ zone5: Zone5, _ baseURL: URL) throws -> PendingRequest) -> PendingRequest? {
+	private func execute<T>(with completion: (_ result: Result<T, Zone5.Error>) -> Void, _ block: (_ zone5: Zone5) throws -> PendingRequest) -> PendingRequest? {
 		do {
-			guard let zone5 = zone5, zone5.isConfigured, let baseURL = zone5.baseURL else {
+			guard let zone5 = zone5, zone5.isConfigured else {
 				throw Zone5.Error.invalidConfiguration
 			}
 
-			return try block(zone5, baseURL)
+			return try block(zone5)
 		}
 		catch {
 			if let error = error as? Zone5.Error {
@@ -94,10 +94,16 @@ final public class Zone5HTTPClient {
 	///   - expectedType: The expected, `Decodable` type that is used to decode the response data.
 	///   - completion: Function called with the result of the download. If successful, the response data is returned,
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
-	public func perform<T: Decodable>(_ request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
-		return execute(with: completion) { zone5, baseURL in
-			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .data)
+    func perform<T: Decodable>(_ request: Request,
+                                      keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
+                                      expectedType: T.Type,
+                                      completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
+		return execute(with: completion) { zone5 in
+			let urlRequest = try request.urlRequest(zone5: zone5, taskType: .data)
+			
 			let decoder = self.decoder
+            decoder.keyDecodingStrategy = keyDecodingStrategy
+            
 			let task = urlSession.dataTask(with: urlRequest) { data, response, error in
 				if let error = error {
 					completion(.failure(.transportFailure(error)))
@@ -114,6 +120,31 @@ final public class Zone5HTTPClient {
 			return PendingRequest(task)
 		}
 	}
+    
+    /// Perform a data task using the given `request`, calling the completion with the result.
+    /// - Parameters:
+    ///   - request: A request that defines the endpoint, method and body used.
+    ///   - completion: Function called with the result of the download. If successful, the response data is returned,
+    func perform(_ request: Request,
+				completion: @escaping (_ result: Result<(Data?, URLResponse), Zone5.Error>) -> Void) -> PendingRequest? {
+        return execute(with: completion) { zone5 in
+            let urlRequest = try request.urlRequest(zone5: zone5, taskType: .data)
+            
+            let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+                if let error = error {
+                    completion(.failure(.transportFailure(error)))
+                }
+				else if let response = response {
+					completion(.success((data, response)))
+				}
+                else {
+					completion(.failure(.failedDecodingResponse(Zone5.Error.unknown)))
+                }
+            }
+            task.resume()
+            return PendingRequest(task)
+        }
+    }
 
 	/// Perform an upload task using the given `fileURL` and `request`, calling the completion with the result.
 	///
@@ -127,9 +158,9 @@ final public class Zone5HTTPClient {
 	///   - expectedType: The expected, `Decodable` type that is used to decode the response data.
 	///   - completion: Function called with the result of the download. If successful, the response data is returned,
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
-	public func upload<T: Decodable>(_ fileURL: URL, with request: Request, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
-		return execute(with: completion) { zone5, baseURL in
-			var (urlRequest, multipartData) = try request.urlRequest(toUpload: fileURL, with: baseURL, zone5: zone5)
+	func upload<T: Decodable>(_ fileURL: URL, with request: Request, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
+		return execute(with: completion) { zone5 in
+			var (urlRequest, multipartData) = try request.urlRequest(toUpload: fileURL, zone5: zone5)
 			let cacheURL = Zone5HTTPClient.uploadsDirectory.appendingPathComponent(fileURL.lastPathComponent).appendingPathExtension("multipart")
 
 			// save URL against the request (needed to create actual uploadTask in interceptor)
@@ -143,6 +174,8 @@ final public class Zone5HTTPClient {
 			}
 
 			let decoder = self.decoder
+            decoder.keyDecodingStrategy = keyDecodingStrategy
+			
 			let task = urlSession.uploadTask(with: urlRequest, fromFile: cacheURL) { data, response, error in
 				defer { try? FileManager.default.removeItem(at: cacheURL) }
 
@@ -167,11 +200,13 @@ final public class Zone5HTTPClient {
 	///   - request: A request that defines the endpoint, method and body used.
 	///   - completion: Function called with the result of the download. If successful, the location of the downloaded
 	///			file on disk is returned, otherwise the error that was encountered.
-	public func download(_ request: Request, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
-		return execute(with: completion) { zone5, baseURL in
-			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .download)
+	func download(_ request: Request, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
+		return execute(with: completion) { zone5 in
+			let urlRequest = try request.urlRequest(zone5: zone5, taskType: .download)
 
 			let decoder = self.decoder
+			decoder.keyDecodingStrategy = .useDefaultKeys
+			
 			let task = urlSession.downloadTask(with: urlRequest) { location, response, error in
 				if let error = error {
 					completion(.failure(.transportFailure(error)))
@@ -208,14 +243,14 @@ final public class Zone5HTTPClient {
 
 }
 
-public extension JSONDecoder {
+extension JSONDecoder {
 
 	func decode<T: Decodable>(_ data: Data, response: URLResponse?, from request: Request, as expectedType: T.Type) -> Result<T, Zone5.Error> {
 		#if DEBUG
 		var debugMessage = ""
 		defer {
 			if let requestData = try? request.body?.encodedData(), let requestString = String(data: requestData, encoding: .utf8) {
-				debugMessage += "\n\t- Request: \(requestString)"
+				debugMessage += "\n\t- Request to \(request.endpoint.uri): \(requestString)"
 			}
 			if let responseString = String(data: data, encoding: .utf8) {
 				debugMessage += "\n\t- Response: \(responseString)"
@@ -227,7 +262,7 @@ public extension JSONDecoder {
 		if let httpResponse = response as? HTTPURLResponse {
 			guard (200..<400).contains(httpResponse.statusCode) else {
 				#if DEBUG
-				debugMessage = "Server responded with status code of \(httpResponse.statusCode)."
+                debugMessage = "Server responded with status code of \(httpResponse.statusCode) to \(request.endpoint.uri). (headers were \(request.headers ?? [:]))"
 				#endif
 
 				do {
@@ -245,12 +280,12 @@ public extension JSONDecoder {
 
 		do {
 			// Attempt to decode and return the `data` as the `expectedType` using our decoder
-			if expectedType == VoidReply.self {
+			if expectedType == Zone5.VoidReply.self {
 				// special handling required for Void types. Enforce enpty data. Create NoReply object.
 				if data.count > 0 {
 					return .failure(.failedDecodingResponse(Zone5.Error.unknown))
 				} else {
-					return .success(VoidReply() as! T)
+					return .success(Zone5.VoidReply() as! T)
 				}
 			}
 			
@@ -285,7 +320,7 @@ public extension JSONDecoder {
 			}
 			
 			#if DEBUG
-			debugMessage = "Successfully decoded server response as `\(expectedType)`."
+            debugMessage = "Successfully decoded server response from \(response?.url?.absoluteString ?? "") as `\(expectedType)`."
 			#endif
 
 			return .success(decodedValue)

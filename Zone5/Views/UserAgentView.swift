@@ -9,7 +9,7 @@
 import Foundation
 
 public class UserAgentView: APIView {
-	private enum Endpoints: String, RequestEndpoint {
+	private enum Endpoints: String, InternalRequestEndpoint {
 		case getDeprecated = "/rest/users/scheduled/activities/api/v1/deprecated"
 	}
 	

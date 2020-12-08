@@ -131,7 +131,7 @@ private extension Data {
 // MARK: Multipart data convertible
 
 /// Protocol to convert objects to data for inclusion in a multipart POST body.
-protocol MultipartDataConvertible {
+public protocol MultipartDataConvertible {
 
 	var multipartData: Data? { get }
 
@@ -139,7 +139,7 @@ protocol MultipartDataConvertible {
 
 extension Data: MultipartDataConvertible {
 
-	var multipartData: Data? {
+	public var multipartData: Data? {
 		return self
 	}
 
@@ -147,7 +147,7 @@ extension Data: MultipartDataConvertible {
 
 extension String: MultipartDataConvertible {
 
-	var multipartData: Data? {
+	public var multipartData: Data? {
 		return data(using: .utf8)
 	}
 
@@ -155,7 +155,7 @@ extension String: MultipartDataConvertible {
 
 extension NSNumber: MultipartDataConvertible {
 
-	var multipartData: Data? {
+	public var multipartData: Data? {
 		return stringValue.multipartData
 	}
 

@@ -1,37 +1,32 @@
 import Foundation
 
-public struct Request {
+struct Request {
 
-	var endpoint: RequestEndpoint
+	let endpoint: RequestEndpoint
 
-	var method: Method
+	let method: Zone5.Method
 
-	var body: RequestBody?
+	let body: RequestBody?
+    
+    let headers: [String: String]?
 	
-	var queryParams: URLEncodedBody?
+	let queryParams: URLEncodedBody?
+	
+	let isZone5Endpoint: Bool
 
-	public init(endpoint: RequestEndpoint, method: Method, queryParams: URLEncodedBody? = nil, body: RequestBody? = nil) {
+	init(endpoint: RequestEndpoint, method: Zone5.Method, headers: [String: String]? = nil, queryParams: URLEncodedBody? = nil, body: RequestBody? = nil) {
 		self.endpoint = endpoint
 		self.method = method
+        self.headers = headers
 		self.queryParams = queryParams
 		self.body = body
+		self.isZone5Endpoint = endpoint is Zone5RequestEndpoint
 	}
 
-	public enum Method: String {
-		case get = "GET"
-		case head = "HEAD"
-		case post = "POST"
-		case put = "PUT"
-		case delete = "DELETE"
-		case connect = "CONNECT"
-		case options = "OPTIONS"
-		case trace = "TRACE"
-		case patch = "PATCH"
-	}
-
-	func urlRequest(with baseURL: URL, zone5: Zone5, taskType: URLSessionTaskType) throws -> URLRequest {
-		let url = baseURL.appendingPathComponent(endpoint.uri)
-		var request = URLRequest(url: url)
+	func urlRequest(zone5: Zone5, taskType: URLSessionTaskType) throws -> URLRequest {
+		guard let url = endpoint.url else { throw Zone5.Error.invalidParameters }
+		
+		var request = URLRequest(url: url).setMeta(key: .zone5, value: zone5).setMeta(key: .taskType, value: taskType).setMeta(key: .isZone5Endpoint, value: isZone5Endpoint)
 		request.httpMethod = method.rawValue
 
 		// mark if token auth is required for the request
@@ -41,9 +36,6 @@ public struct Request {
 		else if endpoint.requiresAccessToken {
 			throw Zone5.Error.requiresAccessToken
 		}
-		
-		// pass reference to Zone5 instance and set task type (data|upload|download)
-		request = request.setMeta(key: .zone5, value: zone5).setMeta(key: .taskType, value: taskType)
 		
 		// if there are queryParams, set them in the request. This is valid on all types.
 		if let queryParams = queryParams {
@@ -55,17 +47,24 @@ public struct Request {
 			components.queryItems = queryParams.queryItems
 			request.url = components.url
 		}
-		
+        
+        // if there are headers, add it to the request
+        if let headers = headers {
+            for header in headers {
+                request.addValue(header.value, forHTTPHeaderField: header.key)
+            }
+        }
+        
 		// process body of request
 		switch method {
-		case .get, .head:
+		case .get, .head, .trace:
 			// no body allowed
 			if let body = body {
-				print("GET request for endpoint `\(endpoint)` has body content of type `\(type(of: body))`. Is this intended to be a POST request?")
+				print("\(method.rawValue) request for endpoint `\(endpoint)` has body content of type `\(type(of: body))`. Is this intended to be a POST request?")
 				throw Zone5.Error.unexpectedRequestBody
 			}
 
-		case .post, .delete:
+        default:
 			// body is optional
 			if let body = body {
 				do {
@@ -77,16 +76,13 @@ public struct Request {
 					throw Zone5.Error.failedEncodingRequestBody
 				}
 			}
-
-		default:
-			throw Zone5.Error.unknown
 		}
 		
 		return request
 	}
 
-	func urlRequest(toUpload fileURL: URL, with baseURL: URL, zone5: Zone5) throws -> (URLRequest, Data) {
-		var request = try urlRequest(with: baseURL, zone5: zone5, taskType: .upload)
+	func urlRequest(toUpload fileURL: URL, zone5: Zone5) throws -> (URLRequest, Data) {
+		var request = try urlRequest(zone5: zone5, taskType: .upload)
 		
 		request.httpBody = nil
 

@@ -8,4 +8,6 @@
 
 import Foundation
 
-public struct VoidReply: Decodable {}
+public extension Zone5 {
+    struct VoidReply: Decodable {}
+}

@@ -243,7 +243,7 @@ class ThirdPartyViewTests: XCTestCase {
 	}
 	
 	func testDeregisterDeviceWithThirdParty() {
-		let tests: [(token: AccessToken?, json: String, expectedResult: Result<VoidReply, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
 				token: nil,
 				json: "{}",
@@ -253,7 +253,7 @@ class ThirdPartyViewTests: XCTestCase {
 				token: OAuthToken(rawValue: UUID().uuidString),
 				json: "{}",
 				expectedResult: .success {
-					return VoidReply()
+					return Zone5.VoidReply()
 				}
 			),
 		]

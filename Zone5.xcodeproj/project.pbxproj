@@ -38,6 +38,8 @@
 		0FB27F442406389C00D7991B /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB27F432406389C00D7991B /* Company.swift */; };
 		0FE9E2D0257DD6520036B44A /* Zone5HttpHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9E2CF257DD6520036B44A /* Zone5HttpHeader.swift */; };
 		0FE9E2D6257DDCFE0036B44A /* UserAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9E2D5257DDCFE0036B44A /* UserAgentView.swift */; };
+		0FE9E2EE257F0CF90036B44A /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9E2ED257F0CF90036B44A /* Method.swift */; };
+		0FE9E2F2257F1FB10036B44A /* ExternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9E2F1257F1FB10036B44A /* ExternalView.swift */; };
 		801D9721253A377900A20433 /* ThirdPartyViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801D9720253A377900A20433 /* ThirdPartyViewTests.swift */; };
 		80D51FD625366CA7000BEC54 /* PushRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51FD525366CA7000BEC54 /* PushRegistration.swift */; };
 		80D51FDA25378E4D000BEC54 /* ThirdPartyConnectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51FD925378E4C000BEC54 /* ThirdPartyConnectionsView.swift */; };
@@ -217,6 +219,8 @@
 		0FB27F432406389C00D7991B /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		0FE9E2CF257DD6520036B44A /* Zone5HttpHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone5HttpHeader.swift; sourceTree = "<group>"; };
 		0FE9E2D5257DDCFE0036B44A /* UserAgentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgentView.swift; sourceTree = "<group>"; };
+		0FE9E2ED257F0CF90036B44A /* Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
+		0FE9E2F1257F1FB10036B44A /* ExternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalView.swift; sourceTree = "<group>"; };
 		801D9720253A377900A20433 /* ThirdPartyViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyViewTests.swift; sourceTree = "<group>"; };
 		80D51FD525366CA7000BEC54 /* PushRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushRegistration.swift; sourceTree = "<group>"; };
 		80D51FD925378E4C000BEC54 /* ThirdPartyConnectionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyConnectionsView.swift; sourceTree = "<group>"; };
@@ -483,6 +487,7 @@
 				80D51FD925378E4C000BEC54 /* ThirdPartyConnectionsView.swift */,
 				0F7C8E63256CCB02005CF025 /* PaymentsView.swift */,
 				0FE9E2D5257DDCFE0036B44A /* UserAgentView.swift */,
+				0FE9E2F1257F1FB10036B44A /* ExternalView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -579,6 +584,7 @@
 				0FB27F40240634B900D7991B /* Roles.swift */,
 				0F4A88C92564A1ED005C20A2 /* URLProtocolProperty.swift */,
 				0FE9E2CF257DD6520036B44A /* Zone5HttpHeader.swift */,
+				0FE9E2ED257F0CF90036B44A /* Method.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -883,6 +889,7 @@
 				A182D1D42372AB0F00112501 /* View.swift in Sources */,
 				A1C28C64238B8BE000E67B05 /* Indirect.swift in Sources */,
 				0FE9E2D6257DDCFE0036B44A /* UserAgentView.swift in Sources */,
+				0FE9E2F2257F1FB10036B44A /* ExternalView.swift in Sources */,
 				A196035923794DD200CEB121 /* UserWorkoutFailedReason.swift in Sources */,
 				0FB27F3D24060BFA00D7991B /* UserWorkoutResultBike.swift in Sources */,
 				0F4A88CA2564A1ED005C20A2 /* URLProtocolProperty.swift in Sources */,
@@ -926,6 +933,7 @@
 				A10AB22D237D341900EBAC66 /* UserRouteSearch.swift in Sources */,
 				A196035023794DD200CEB121 /* ResultReview.swift in Sources */,
 				A182D1D82372AB0F00112501 /* UserWorkoutFileSearch.swift in Sources */,
+				0FE9E2EE257F0CF90036B44A /* Method.swift in Sources */,
 				0FAA7568240CB88600CB3C73 /* NewPassword.swift in Sources */,
 				A196036323794DD200CEB121 /* SwimType.swift in Sources */,
 				0F903484240692AA00051277 /* VoidReply.swift in Sources */,

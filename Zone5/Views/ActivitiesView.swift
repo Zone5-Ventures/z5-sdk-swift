@@ -2,7 +2,7 @@ import Foundation
 
 public class ActivitiesView: APIView {
 
-	private enum Endpoints: String, RequestEndpoint {
+	private enum Endpoints: String, InternalRequestEndpoint {
 		case search = "/rest/users/activities/search/{offset}/{count}"
 		case next = "/rest/users/activities/page/{offset}/{count}";
 		case upload = "/rest/files/upload";

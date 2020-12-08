@@ -8,7 +8,7 @@ final public class Zone5 {
 	public static let shared = Zone5()
 
 	/// A light wrapper of the URLSession API, which enables communication with the server endpoints.
-	public let httpClient: Zone5HTTPClient
+	internal let httpClient: Zone5HTTPClient
 
 	internal static let specializedServer: String = "api-sp.todaysplan.com.au"
 	internal static let specializedStagingServer: String = "api-sp-staging.todaysplan.com.au"
@@ -169,6 +169,11 @@ final public class Zone5 {
 	/// A collection of API endpoints related to payments.
 	public lazy var payments: PaymentsView = {
 		return PaymentsView(zone5: self)
+	}()
+	
+	/// A collection of functions to call API endpoints to a server external to Zone5
+	public lazy var external: ExternalView = {
+		return ExternalView(zone5: self)
 	}()
 
 	// MARK: Errors

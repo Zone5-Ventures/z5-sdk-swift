@@ -9,6 +9,8 @@
 import Foundation
 
 internal class URLRequestInterceptor: URLProtocol {
+	static private let refreshExpiresInThreshold = 30.0
+	
 	// shared session that all requests ultimately go out on. The one in httpClient funnels all requests to this interceptor which then get routed out this one
 	static private let urlSession = URLSession(configuration: .default)
 	// synchronize auto refresh so that only 1 request at a time can issue a refresh
@@ -38,14 +40,21 @@ internal class URLRequestInterceptor: URLProtocol {
 	}
 
 	override func startLoading() {
-		// if we have a Cognito token with an expiry and this request requires auth token, check the expiry
-		if let requiresAccessToken = request.getMeta(key: .requiresAccessToken) as? Bool, requiresAccessToken, let zone5 = request.getMeta(key: .zone5) as? Zone5, let token = zone5.accessToken as? OAuthToken, token.refreshToken != nil, let expiresAt = token.tokenExp, expiresAt < Date().addingTimeInterval(30.0).milliseconds.rawValue {
+        // if we have a Cognito token with an expiry and this request requires auth token, check the expiry
+		if let requiresAccessToken = request.getMeta(key: .requiresAccessToken) as? Bool, requiresAccessToken,
+           let zone5 = request.getMeta(key: .zone5) as? Zone5,
+           let token = zone5.accessToken as? OAuthToken, token.refreshToken != nil,
+           let expiresAt = token.tokenExp,
+		   expiresAt < Date().addingTimeInterval(URLRequestInterceptor.refreshExpiresInThreshold).milliseconds.rawValue {
 			// our token expires in less than 30 seconds. Do a refresh before sending the request
 			// do these refresh requests synchronously so only one executes at a time and others wait for first refresh to complete - at which point duplicate refresh not necessary
 			URLRequestInterceptor.refreshDispatchQueue.async {
 				URLRequestInterceptor.refreshDispatchSemaphore.wait() // should let first 1 through
 				// recheck TTL once inside mutex block, cos it might have been updated by another refresh while we were waiting for mutex
-				if let token = zone5.accessToken as? OAuthToken, token.refreshToken != nil, let expiresAt = token.tokenExp, expiresAt < Date().addingTimeInterval(30.0).milliseconds.rawValue, let username = self.extractUsername(from: token.accessToken) {
+				if let token = zone5.accessToken as? OAuthToken, token.refreshToken != nil,
+                   let expiresAt = token.tokenExp,
+                   let username = self.extractUsername(from: token.accessToken),
+				   expiresAt < Date().addingTimeInterval(URLRequestInterceptor.refreshExpiresInThreshold).milliseconds.rawValue {
 					zone5.oAuth.refreshAccessToken(username: username) { result in
 						// note that refresh does not require auth so it will not cyclicly enter this path
 						URLRequestInterceptor.refreshDispatchSemaphore.signal()
@@ -88,6 +97,11 @@ internal class URLRequestInterceptor: URLProtocol {
 	private func decorateAndSendRequest() {
 		// decorate headers. This needs to be after the refresh code as the token may change
 		let request = URLRequestInterceptor.decorate(request: self.request)
+		
+        #if DEBUG
+        print("Decorated for \(request.url?.absoluteString ?? ""): \(request.allHTTPHeaderFields ?? [:])")
+        #endif
+		
 		// send
 		sendRequest(request)
 	}
@@ -99,6 +113,7 @@ internal class URLRequestInterceptor: URLProtocol {
 	class func decorate(request: URLRequest) -> URLRequest {
 		let mutableRequest = (request as NSURLRequest).mutableCopy() as! NSMutableURLRequest
 		let zone5 = request.getMeta(key: .zone5) as? Zone5
+		let isZone5Endpoint = request.getMeta(key: .isZone5Endpoint) as? Bool ?? true
 		
 		// set user agent if configured
 		if let agent = zone5?.userAgent, !agent.isEmpty {
@@ -106,18 +121,20 @@ internal class URLRequestInterceptor: URLProtocol {
 		}
 		
 		// set legacy tp-nodecorate header
-		mutableRequest.setValue("true", forHTTPHeaderField: Zone5HttpHeader.tpNoDecorate.rawValue)
+		if isZone5Endpoint {
+			mutableRequest.setValue("true", forHTTPHeaderField: Zone5HttpHeader.tpNoDecorate.rawValue)
+		}
 		
 		// Sign the request with the access token if required
 		if let requiresAccessToken = request.getMeta(key: .requiresAccessToken) as? Bool, requiresAccessToken, let zone5 = zone5, let token = zone5.accessToken {
 			mutableRequest.setValue("Bearer \(token.rawValue)", forHTTPHeaderField: Zone5HttpHeader.authorization.rawValue)
 		}
 		
-		if let clientID = zone5?.clientID {
+		if isZone5Endpoint, let clientID = zone5?.clientID {
 			mutableRequest.setValue(clientID, forHTTPHeaderField: Zone5HttpHeader.apiKey.rawValue)
 		}
 		
-		if let clientSecret = zone5?.clientSecret {
+		if isZone5Endpoint, let clientSecret = zone5?.clientSecret {
 			mutableRequest.setValue(clientSecret, forHTTPHeaderField: Zone5HttpHeader.apiSecret.rawValue)
 		}
 		
@@ -126,11 +143,16 @@ internal class URLRequestInterceptor: URLProtocol {
 	
 	/// We have finished with intercepting this request. Send the request for real with the real url session
 	internal func sendRequest(_ request: URLRequest) {
+		let url = request.getMeta(key: .fileURL) as? URL
+		
+		// now we are finished with the request meta. Clear it before we continue
+		let request = request.clearMeta()
+		
 		switch request.taskType {
 		case .data:
 			self.currentTask = session.dataTask(with: request, completionHandler: onComplete)
 		case .upload:
-			if let url = URLProtocol.property(forKey: "fileURL", in: request) as? URL {
+			if let url = url {
 				self.currentTask = session.uploadTask(with: request, fromFile: url, completionHandler: onComplete)
 			} else {
 				onComplete(data: nil, response: nil, error: Zone5.Error.invalidParameters)
@@ -141,6 +163,7 @@ internal class URLRequestInterceptor: URLProtocol {
 			}
 		}
 	
+		
 		currentTask?.resume()
 	}
 	
@@ -191,5 +214,13 @@ extension URLRequest {
 	
 	internal var taskType: URLSessionTaskType {
 		return getMeta(key: .taskType) as? URLSessionTaskType ?? .data
+	}
+	
+	internal func clearMeta() -> URLRequest{
+		let mutatingRequest = (self as NSURLRequest).mutableCopy() as! NSMutableURLRequest
+		for property in URLProtocolProperty.allCases {
+			URLProtocol.removeProperty(forKey: property.rawValue, in: mutatingRequest)
+		}
+		return mutatingRequest as URLRequest
 	}
 }

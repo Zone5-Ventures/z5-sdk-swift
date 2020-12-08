@@ -2,7 +2,7 @@ import Foundation
 
 public class OAuthView: APIView {
 
-	private enum Endpoints: String, RequestEndpoint {
+	private enum Endpoints: String, InternalRequestEndpoint {
 		case accessToken = "/rest/oauth/access_token"
 		case adhocAccessToken = "/rest/oauth/newtoken/{clientID}"
 

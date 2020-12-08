@@ -9,7 +9,7 @@ final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 		configuration.clientID = nil
 		configuration.clientSecret = nil
 
-		let methods: [Request.Method] = [
+		let methods: [Zone5.Method] = [
 			.get,
 			.post,
 		]
@@ -38,7 +38,7 @@ final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 		var configuration = ConfigurationForTesting()
 		configuration.accessToken = nil
 
-		let methods: [Request.Method] = [
+		let methods: [Zone5.Method] = [
 			.get,
 			.post,
 		]
@@ -65,8 +65,7 @@ final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 
 	func testUnexpectedRequestBody() {
 		execute { zone5, httpClient, urlSession in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: .get)
-			request.body = SearchInputReport.forInstance(activityType: .workout, identifier: 12345)
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: .get, body: SearchInputReport.forInstance(activityType: .workout, identifier: 12345))
 
 			urlSession.dataTaskHandler = { urlRequest in
 				XCTFail("Request should never be performed when encountering an unexpected request body.")
@@ -95,14 +94,13 @@ final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 		XCTAssertEqual(111, error.errors![0].code)
 		XCTAssertEqual("a message", error.errors![0].message)
 		
-		let parameters: [(method: Request.Method, body: RequestBody?)] = [
+		let parameters: [(method: Zone5.Method, body: RequestBody?)] = [
 			(.get, nil),
 			(.post, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
-			request.body = parameters.body
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
 
 			var serverMessage = Zone5.Error.ServerMessage(message: "this is an error", statusCode: 401)
 			serverMessage.errors = [Zone5.Error.ServerMessage.ServerError(field: "a field", message: "a message", code: 111)]
@@ -128,14 +126,13 @@ final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 	}
 
 	func testServerFailure() {
-		let parameters: [(method: Request.Method, body: RequestBody?)] = [
+		let parameters: [(method: Zone5.Method, body: RequestBody?)] = [
 			(.get, nil),
 			(.post, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
-			request.body = parameters.body
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
 
 			let serverMessage = Zone5.Error.ServerMessage(message: "A server error occurred.", statusCode: 500)
 
@@ -160,14 +157,13 @@ final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 	}
 
 	func testTransportFailure() {
-		let parameters: [(method: Request.Method, body: RequestBody?)] = [
+		let parameters: [(method: Zone5.Method, body: RequestBody?)] = [
 			(.get, nil),
 			(.post, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
-			request.body = parameters.body
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
 
 			let transportError = Zone5.Error.unknown
 
@@ -193,7 +189,7 @@ final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 	}
 
 	func testSuccessfulRequest() {
-		let parameters: [(method: Request.Method, params: URLEncodedBody?, body: RequestBody?)] = [
+		let parameters: [(method: Zone5.Method, params: URLEncodedBody?, body: RequestBody?)] = [
 			(.get, nil, nil),
 			(.get, ["string": "hello world", "integer": 1234567890] as URLEncodedBody, nil),
 			(.post, ["string": "hello world", "integer": 1234567890] as URLEncodedBody, nil),

@@ -23,12 +23,12 @@ final class RequestTests: XCTestCase {
 		let request = Request(endpoint: Endpoints.test, method: .post, body: body)
 
 		do {
-			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .data)
+			let urlRequest = try request.urlRequest(zone5: zone5, taskType: .data)
 
 			XCTAssertNotNil(urlRequest.httpBody)
 			XCTAssertNil(urlRequest.value(forHTTPHeaderField: "User-Agent"))
 			
-			let urlRequest2 = URLRequestInterceptor.decorate(request: try request.urlRequest(with: baseURL, zone5: zone5, taskType: .download))
+			let urlRequest2 = URLRequestInterceptor.decorate(request: try request.urlRequest(zone5: zone5, taskType: .download))
 
 			XCTAssertNotNil(urlRequest2.httpBody)
 			XCTAssertEqual("testagent/1.1.1 (222)", urlRequest2.value(forHTTPHeaderField: "User-Agent"))
@@ -53,7 +53,7 @@ final class RequestTests: XCTestCase {
 		let request = Request(endpoint: Endpoints.test, method: .post, body: body)
 		
 		do {
-			let urlRequest = try request.urlRequest(with: baseURL, zone5: zone5, taskType: .data)
+			let urlRequest = try request.urlRequest(zone5: zone5, taskType: .data)
 			
 			XCTAssertNotNil(urlRequest.httpBody)
 			

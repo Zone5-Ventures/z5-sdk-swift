@@ -124,7 +124,7 @@ struct ContentView: View {
 							completion(.failure(.unknown))
 						}
 					}
-					EndpointLink<VoidReply>("Delete last registered Account (if any)") { client, completion in
+					EndpointLink<Zone5.VoidReply>("Delete last registered Account (if any)") { client, completion in
 						if let id = self.lastRegisteredId {
 							client.users.deleteAccount(userID: id, completion: completion)
 						} else {
@@ -132,14 +132,14 @@ struct ContentView: View {
 						}
 					}
 				}
-				Section(header: Text("Auth"), footer: Text("Note that Register New User on TP servers makes an immediately usable user but on Specialized servers it requires a second auth step of going to the email for the user and clicking confirm email")) {
+				Section(header: Text("Auth"), footer: Text("Note that Register New User with Cognito makes an immediately usable user but with Gigya it requires a second auth step of going to the email for the user and clicking confirm email")) {
 					EndpointLink<Bool>("Check User Exists") { client, completion in
 						client.users.isEmailRegistered(email: keyValueStore.userEmail, completion: completion)
 					}
 					EndpointLink<Bool>("Reset Password") { client, completion in
 						client.users.resetPassword(email: keyValueStore.userEmail, completion: completion)
 					}
-					EndpointLink<VoidReply>("Change password") { client, completion in
+					EndpointLink<Zone5.VoidReply>("Change password") { client, completion in
 						if let oldpass = self.me.password {
 							let newpass = "MyNewP@ssword\(Date().milliseconds)"
 							client.users.changePassword(oldPassword: oldpass, newPassword: newpass) { result in
@@ -337,7 +337,7 @@ struct ContentView: View {
 						let rego = PushRegistration(token: "1234", platform: "strava", deviceId: "gwjh4")
 						client.thirdPartyConnections.registerDeviceWithThirdParty(registration: rego, completion: completion)
 					}
-					EndpointLink<VoidReply>("Deregister Device") { client, completion in
+					EndpointLink<Zone5.VoidReply>("Deregister Device") { client, completion in
 						client.thirdPartyConnections.deregisterDeviceWithThirdParty(token: "1234", completion: completion)
 					}
 				}
