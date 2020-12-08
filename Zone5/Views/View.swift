@@ -11,7 +11,7 @@ public class APIView {
 	public typealias Completion<T: Decodable> = (_ result: Result<T, Zone5.Error>) -> Void
 
 	/// Executes the given `block`, calling the `completionHandler` if an error is thrown.
-	internal func perform<T>(with completionHandler: @escaping Completion<T>, _ block: (_ zone5: Zone5) throws -> PendingRequest?) -> PendingRequest? {
+    internal func perform<T: Decodable>(with completionHandler: @escaping Completion<T>, _ block: (_ zone5: Zone5) throws -> PendingRequest?) -> PendingRequest? {
 		do {
 			guard let zone5 = zone5 else {
 				throw Zone5.Error.unknown

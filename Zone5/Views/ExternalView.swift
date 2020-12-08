@@ -17,11 +17,10 @@ public class ExternalView: APIView {
 	///
 	/// Note that if you pass a body with a method that does not support a body you will get an unexpectedRequestBody exception
 	@discardableResult
-	public func request<T>(_ endpoint: RequestEndpoint, method: Zone5.Method, headers: [String: String]? = nil, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys, parameters queryParams: URLEncodedBody? = nil, body: RequestBody? = nil, completion completionHandler: @escaping Completion<T>) -> PendingRequest? {
-
+    public func requestDecode<T>(_ endpoint: RequestEndpoint, method: Zone5.Method, headers: [String: String]? = nil, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys, parameters queryParams: URLEncodedBody? = nil, body: RequestBody? = nil, type: T.Type = T.self, completion completionHandler: @escaping Completion<T>) -> PendingRequest? {
 		return perform(with: completionHandler) { zone5 in
 			let request = Request(endpoint: endpoint, method: method, headers: headers, queryParams: queryParams, body: body)
-			return zone5.httpClient.perform(request, keyDecodingStrategy: keyDecodingStrategy, expectedType: T.self, completion: completionHandler)
+			return zone5.httpClient.perform(request, keyDecodingStrategy: keyDecodingStrategy, expectedType: type, completion: completionHandler)
 		}
 		
 	}
