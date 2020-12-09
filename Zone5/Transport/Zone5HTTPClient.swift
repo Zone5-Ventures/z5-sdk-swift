@@ -156,7 +156,7 @@ final public class Zone5HTTPClient {
 	///   - fileURL: The URL for the file to be uploaded.
 	///   - request: A request that defines the endpoint, method and body used.
 	///   - expectedType: The expected, `Decodable` type that is used to decode the response data.
-	///   - completion: Function called with the result of the download. If successful, the response data is returned,
+	///   - completion: Function called with the result of the upload. If successful, the response data is returned,
 	///   		decoded as the given `expectedType`, otherwise the error that was encountered.
 	func upload<T: Decodable>(_ fileURL: URL, with request: Request, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys, expectedType: T.Type, completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5 in
@@ -200,14 +200,22 @@ final public class Zone5HTTPClient {
 	///   - request: A request that defines the endpoint, method and body used.
 	///   - completion: Function called with the result of the download. If successful, the location of the downloaded
 	///			file on disk is returned, otherwise the error that was encountered.
-	func download(_ request: Request, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
+	func download(_ request: Request, progress onProgress: ( (_ progress: Progress) -> Void )? = nil, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: completion) { zone5 in
 			let urlRequest = try request.urlRequest(zone5: zone5, taskType: .download)
 
 			let decoder = self.decoder
 			decoder.keyDecodingStrategy = .useDefaultKeys
 			
+			var observer: NSKeyValueObservation? = nil;
+			
 			let task = urlSession.downloadTask(with: urlRequest) { location, response, error in
+				// deregister the observer
+				if let observer = observer {
+					observer.invalidate()
+				}
+				observer = nil
+				
 				if let error = error {
 					completion(.failure(.transportFailure(error)))
 				}
@@ -235,8 +243,13 @@ final public class Zone5HTTPClient {
 					completion(.failure(.unknown))
 				}
 			}
-
+			
+			observer = task.progress.observe(\.fractionCompleted) { progress, _ in
+				onProgress?(progress)
+			}
+			
 			task.resume()
+			
 			return PendingRequest(task)
 		}
 	}

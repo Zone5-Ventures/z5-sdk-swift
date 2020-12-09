@@ -22,7 +22,7 @@ public protocol RequestEndpoint: InternalRequestEndpoint {
 	var url: URL? { get }
 }
 
-extension RequestEndpoint {
+public extension RequestEndpoint {
 	/// Default implementation assumes the uri is a well formed URL
 	/// Override this func to apply additional logic such as adding a baseURL
 	var url: URL? {
@@ -30,13 +30,15 @@ extension RequestEndpoint {
 	}
 }
 
-extension InternalRequestEndpoint {
+public extension InternalRequestEndpoint {
 
 	/// Default implementation that always indicates that the endpoint requires the user's access token.
 	var requiresAccessToken: Bool {
 		return true
 	}
+}
 
+internal extension InternalRequestEndpoint {
 	/// Returns a detokenized version of the endpoint.
 	///
 	/// Tokens in the `endpoint` URI are replaced with a value from the dictionary where the key matches occurrences of
@@ -53,7 +55,7 @@ extension InternalRequestEndpoint {
 
 /// An extension on `InternalRequestEndpoint` which allows it to return the `rawValue` as its `uri` when the conforming
 /// implementation also conforms to `RawRepresentable`.
-extension InternalRequestEndpoint where Self: RawRepresentable, Self.RawValue == String {
+public extension InternalRequestEndpoint where Self: RawRepresentable, Self.RawValue == String {
 
 	var uri: String {
 		return rawValue
