@@ -64,7 +64,7 @@ struct Request {
 				throw Zone5.Error.unexpectedRequestBody
 			}
 
-        default:
+		default:
 			// body is optional
 			if let body = body {
 				do {
