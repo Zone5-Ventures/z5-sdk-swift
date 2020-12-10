@@ -320,7 +320,6 @@ final public class Zone5HTTPClient {
 extension JSONDecoder {
 
 	func decode<T: Decodable>(_ data: Data, response: URLResponse?, from request: Request, as expectedType: T.Type) -> Result<T, Zone5.Error> {
-		#if DEBUG
 		var debugMessage = ""
 		defer {
 			if let requestData = try? request.body?.encodedData(), let requestString = String(data: requestData, encoding: .utf8) {
@@ -329,15 +328,13 @@ extension JSONDecoder {
 			if let responseString = String(data: data, encoding: .utf8) {
 				debugMessage += "\n\t- Response: \(responseString)"
 			}
-			print("DEBUG ONLY PRINT: " + debugMessage)
+			z5DebugLog("DEBUG ONLY PRINT: \(debugMessage)")
 		}
-		#endif
 
 		if let httpResponse = response as? HTTPURLResponse {
 			guard (200..<400).contains(httpResponse.statusCode) else {
-				#if DEBUG
                 debugMessage = "Server responded with status code of \(httpResponse.statusCode) to \(request.endpoint.uri). (headers were \(request.headers ?? [:]))"
-				#endif
+                z5DebugLog(debugMessage)
 
 				do {
 					var decodedMessage = try decode(Zone5.Error.ServerMessage.self, from: data)

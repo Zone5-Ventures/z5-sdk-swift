@@ -40,7 +40,7 @@ struct Request {
 		// if there are queryParams, set them in the request. This is valid on all types.
 		if let queryParams = queryParams {
 			guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
-				print("Request URL could not be converted to URLComponents: \(url)")
+				z5Log("Request URL could not be converted to URLComponents: \(url)")
 				throw Zone5.Error.failedEncodingRequestBody
 			}
 
@@ -60,7 +60,7 @@ struct Request {
 		case .get, .head, .trace:
 			// no body allowed
 			if let body = body {
-				print("\(method.rawValue) request for endpoint `\(endpoint)` has body content of type `\(type(of: body))`. Is this intended to be a POST request?")
+				z5Log("\(method.rawValue) request for endpoint `\(endpoint)` has body content of type `\(type(of: body))`. Is this intended to be a POST request?")
 				throw Zone5.Error.unexpectedRequestBody
 			}
 
@@ -72,7 +72,7 @@ struct Request {
 					request.httpBody = try body.encodedData()
 				}
 				catch {
-					print("An error was thrown while encoding the request body: \(error)")
+					z5Log("An error was thrown while encoding the request body: \(error)")
 					throw Zone5.Error.failedEncodingRequestBody
 				}
 			}

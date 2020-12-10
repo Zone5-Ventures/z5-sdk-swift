@@ -40,6 +40,7 @@
 		0FE9E2D6257DDCFE0036B44A /* UserAgentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9E2D5257DDCFE0036B44A /* UserAgentView.swift */; };
 		0FE9E2EE257F0CF90036B44A /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9E2ED257F0CF90036B44A /* Method.swift */; };
 		0FE9E2F2257F1FB10036B44A /* ExternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9E2F1257F1FB10036B44A /* ExternalView.swift */; };
+		21EEE872258271D30022F6A0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EEE871258271D30022F6A0 /* Logger.swift */; };
 		801D9721253A377900A20433 /* ThirdPartyViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801D9720253A377900A20433 /* ThirdPartyViewTests.swift */; };
 		80D51FD625366CA7000BEC54 /* PushRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51FD525366CA7000BEC54 /* PushRegistration.swift */; };
 		80D51FDA25378E4D000BEC54 /* ThirdPartyConnectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D51FD925378E4C000BEC54 /* ThirdPartyConnectionsView.swift */; };
@@ -221,6 +222,7 @@
 		0FE9E2D5257DDCFE0036B44A /* UserAgentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgentView.swift; sourceTree = "<group>"; };
 		0FE9E2ED257F0CF90036B44A /* Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
 		0FE9E2F1257F1FB10036B44A /* ExternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalView.swift; sourceTree = "<group>"; };
+		21EEE871258271D30022F6A0 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		801D9720253A377900A20433 /* ThirdPartyViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyViewTests.swift; sourceTree = "<group>"; };
 		80D51FD525366CA7000BEC54 /* PushRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushRegistration.swift; sourceTree = "<group>"; };
 		80D51FD925378E4C000BEC54 /* ThirdPartyConnectionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyConnectionsView.swift; sourceTree = "<group>"; };
@@ -691,6 +693,7 @@
 			children = (
 				A1F0590C2372A9850034C7D0 /* README.md */,
 				A1F0590B2372A97A0034C7D0 /* Package.swift */,
+				21EEE871258271D30022F6A0 /* Logger.swift */,
 				A1F058E52372A3840034C7D0 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -909,6 +912,7 @@
 				0FB27F442406389C00D7991B /* Company.swift in Sources */,
 				A196033123794AE100CEB121 /* DataAccessRequest.swift in Sources */,
 				0F7D4732253E66E7005B21A9 /* ThirdPartyResponse.swift in Sources */,
+				21EEE872258271D30022F6A0 /* Logger.swift in Sources */,
 				A196035723794DD200CEB121 /* MappedFieldType.swift in Sources */,
 				A182D1D62372AB0F00112501 /* OAuthView.swift in Sources */,
 				A182D1DF2372AB0F00112501 /* DateRange.swift in Sources */,

@@ -98,9 +98,7 @@ internal class URLRequestInterceptor: URLProtocol {
 		// decorate headers. This needs to be after the refresh code as the token may change
 		let request = URLRequestInterceptor.decorate(request: self.request)
 		
-        #if DEBUG
-        print("DEBUG ONLY PRINT: Decorated for \(request.url?.absoluteString ?? ""): \(request.allHTTPHeaderFields ?? [:])")
-        #endif
+        z5DebugLog("Decorated for \(request.url?.absoluteString ?? ""): \(request.allHTTPHeaderFields ?? [:])")
 		
 		// send
 		sendRequest(request)
