@@ -390,18 +390,16 @@ extension JSONDecoder {
 				}
 			}
 			
-			#if DEBUG
             debugMessage = "Successfully decoded server response from \(response?.url?.absoluteString ?? "") as `\(expectedType)`."
-			#endif
+            z5DebugLog(debugMessage)
 
 			return .success(decodedValue)
 		}
 		catch {
 			let originalError = error
 
-			#if DEBUG
 			debugMessage = "Failed to decode server response as `\(expectedType)`.\n\t- Error: \(originalError)"
-			#endif
+			z5DebugLog(debugMessage)
 
 			do {
 				// Decoding as `expectedType` failed, so lets try to decode as a `ServerMessage` instead, in the hopes
