@@ -48,7 +48,7 @@ struct Request {
 			request.url = components.url
 		}
         
-        // if there are headers, add it to the request
+		// if there are headers, add it to the request
 		if let headers = headers {
 			for header in headers {
 				request.addValue(header.value, forHTTPHeaderField: header.key)
