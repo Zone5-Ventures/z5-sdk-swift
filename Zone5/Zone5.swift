@@ -39,6 +39,8 @@ final public class Zone5 {
 			}
 		}
 	}
+    
+    public var debugLogging: Bool = false
 
 	/// The root URL for the server that we want to communicate with.
 	/// - Note: This value can be set using the `configure(for:clientID:clientSecret:)` method.

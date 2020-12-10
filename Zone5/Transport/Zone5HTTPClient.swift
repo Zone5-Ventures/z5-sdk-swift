@@ -328,7 +328,7 @@ extension JSONDecoder {
 			if let responseString = String(data: data, encoding: .utf8) {
 				debugMessage += "\n\t- Response: \(responseString)"
 			}
-			z5DebugLog("DEBUG ONLY PRINT: \(debugMessage)")
+			z5DebugLog(debugMessage)
 		}
 
 		if let httpResponse = response as? HTTPURLResponse {
