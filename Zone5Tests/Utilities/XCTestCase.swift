@@ -43,11 +43,20 @@ extension XCTestCase {
 			}
 		}
 	}
+	
+	func createNewZone5() -> Zone5 {
+		let urlSession = TestHTTPClientURLSession()
+		let httpClient = Zone5HTTPClient(urlSession: urlSession)
+		urlSession.downloadDelegate = httpClient.urlSessionDelegate
+		return Zone5(httpClient: httpClient)
+	}
+	
 
 	func execute(configuration: ConfigurationForTesting = .init(), _ tests: (_ zone5: Zone5, _ httpClient: Zone5HTTPClient, _ urlSession: TestHTTPClientURLSession) throws -> Void) rethrows {
 		let urlSession = TestHTTPClientURLSession()
 		let httpClient = Zone5HTTPClient(urlSession: urlSession)
-
+		urlSession.downloadDelegate = httpClient.urlSessionDelegate
+		
 		let zone5 = Zone5(httpClient: httpClient)
 		zone5.configure(with: configuration)
 

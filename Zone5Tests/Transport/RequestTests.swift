@@ -7,11 +7,13 @@ final class RequestTests: XCTestCase {
 		case test = "endpoint/uri"
 	}
 
-	let zone5 = Zone5(httpClient: Zone5HTTPClient(urlSession: TestHTTPClientURLSession()))
+	var zone5: Zone5!
+	
 	let baseURL = URL(string: "https://localhost")!
 
 	override func setUpWithError() throws {
 		// configure auth token
+		zone5 = createNewZone5()
 		zone5.configure(for: baseURL, userAgent: "testagent/1.1.1 (222)", accessToken: OAuthToken(rawValue: UUID().uuidString))
 	}
 	

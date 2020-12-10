@@ -105,7 +105,7 @@ final class Zone5HTTPClientDownloadRequestTests: XCTestCase {
 				return .message(serverMessage.message, statusCode: 500)
 			}
 
-			_ = httpClient.download(request) { result in
+			_ = httpClient.download(request, completion: { result in
 				if case .failure(let error) = result,
 					case .serverError(let message) = error,
 					message == serverMessage {
@@ -113,7 +113,7 @@ final class Zone5HTTPClientDownloadRequestTests: XCTestCase {
 				}
 
 				XCTFail("\(parameters.method.rawValue) request unexpectedly completed with \(result).")
-			}
+			})
 		}
 	}
 

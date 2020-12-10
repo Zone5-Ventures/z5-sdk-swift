@@ -99,7 +99,7 @@ internal class URLRequestInterceptor: URLProtocol {
 		let request = URLRequestInterceptor.decorate(request: self.request)
 		
         #if DEBUG
-        print("Decorated for \(request.url?.absoluteString ?? ""): \(request.allHTTPHeaderFields ?? [:])")
+        print("DEBUG ONLY PRINT: Decorated for \(request.url?.absoluteString ?? ""): \(request.allHTTPHeaderFields ?? [:])")
         #endif
 		
 		// send

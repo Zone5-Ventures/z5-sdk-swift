@@ -70,7 +70,7 @@ public class ExternalView: APIView {
 
 	/// Download a file with the given endpoint. This is a get request so may contain query parameters but no body
 	@discardableResult
-	public func download(_ endpoint: RequestEndpoint, headers: [String: String], queryParams: URLEncodedBody? = nil, progressHandler: ( (_ progress: Progress) -> Void )? = nil, completionHandler: @escaping Completion<URL>) -> PendingRequest? {
+	public func download(_ endpoint: RequestEndpoint, headers: [String: String], queryParams: URLEncodedBody? = nil, progressHandler: ( (_ bytesWritten: Int64, _ totalBytesWritten: Int64, _ totalBytesExpectedToWrite: Int64) -> Void )? = nil, completionHandler: @escaping Completion<URL>) -> PendingRequest? {
 		
 		return perform(with: completionHandler) { zone5 in
 			let request = Request(endpoint: endpoint, method: .get, headers: headers, queryParams: queryParams)

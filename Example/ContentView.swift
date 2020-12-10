@@ -9,6 +9,26 @@
 import SwiftUI
 import Zone5
 
+private class Endpoint: RequestEndpoint {
+	var url: URL?
+	var uri: String
+	var requiresAccessToken: Bool
+	
+	init(_ endpoint: RequestEndpoint, replace: String, with: String) {
+		requiresAccessToken = true
+		uri = endpoint.uri.replacingOccurrences(of: "{\(replace)}", with: with)
+		url = URL(string: uri)
+	}
+}
+
+private enum ExternalEndpoints: String, InternalRequestEndpoint, RequestEndpoint {
+	case download = "https://api-sp-staging.todaysplan.com.au/rest/files/download/{fileID}"
+	
+	func tokenized(replace: String, with: String) -> RequestEndpoint {
+		return Endpoint(self, replace: replace, with: with)
+	}
+}
+
 struct ContentView: View {
 
 	let apiClient: Zone5
@@ -265,9 +285,23 @@ struct ContentView: View {
 								completion(.failure(error))
 
 							case .success(let activity):
-								client.activities.downloadOriginal(activity.fileID!) { result in
+								client.activities.downloadOriginal(activity.fileID!, completion: completion)
+							}
+						}
+					}
+					EndpointLink<URL>("Download Latest File EXTERNAL") { client, completion in
+						self.retrieveFileIdentifier(client) { result in
+							switch result {
+							case .failure(let error):
+								completion(.failure(error))
+
+							case .success(let activity):
+								client.external.download(ExternalEndpoints.download.tokenized(replace: "fileID", with: "\(activity.fileID!)"), headers: ["tp-nodecorate":"true"], progressHandler: { bytes, totalBytes, expectedBytes in
+									print("progress: bytes: \(bytes), total bytes: \(totalBytes), expected bytes: \(expectedBytes)")
+								}, completionHandler: { result in
+									print("download complete")
 									completion(result)
-								}
+								})
 							}
 						}
 					}
