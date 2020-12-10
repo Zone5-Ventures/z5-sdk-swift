@@ -49,11 +49,11 @@ struct Request {
 		}
         
         // if there are headers, add it to the request
-        if let headers = headers {
-            for header in headers {
-                request.addValue(header.value, forHTTPHeaderField: header.key)
-            }
-        }
+		if let headers = headers {
+			for header in headers {
+				request.addValue(header.value, forHTTPHeaderField: header.key)
+			}
+		}
         
 		// process body of request
 		switch method {
