@@ -49,17 +49,17 @@ public class ExternalView: APIView {
 
 	/// Upload the given file via a POST request with the given endpoint.
 	@discardableResult
-	public func postUpload<T>(_ endpoint: RequestEndpoint, file fileURL: URL, headers: [String: String], keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys, parameters queryParams: URLEncodedBody? = nil, body: RequestBody? = nil, completion completionHandler: @escaping Completion<T>) -> PendingRequest? {
+	public func postUpload<T>(_ endpoint: RequestEndpoint, file fileURL: URL, headers: [String: String]? = nil, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys, parameters queryParams: URLEncodedBody? = nil, body: RequestBody? = nil, type: T.Type = T.self, completion completionHandler: @escaping Completion<T>) -> PendingRequest? {
 		return upload(endpoint, method: .post, file: fileURL, headers: headers, keyDecodingStrategy: keyDecodingStrategy, parameters: queryParams, body: body, completion: completionHandler)
 	}
 	
 	/// Upload the given file via a PUT request with the geiven endpoint.
 	@discardableResult
-	public func putUpload<T>(_ endpoint: RequestEndpoint, file fileURL: URL, headers: [String: String], keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys, parameters queryParams: URLEncodedBody? = nil, body: RequestBody? = nil, completion completionHandler: @escaping Completion<T>) -> PendingRequest? {
+	public func putUpload<T>(_ endpoint: RequestEndpoint, file fileURL: URL, headers: [String: String]? = nil, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys, parameters queryParams: URLEncodedBody? = nil, body: RequestBody? = nil, type: T.Type = T.self, completion completionHandler: @escaping Completion<T>) -> PendingRequest? {
 		return upload(endpoint, method: .put, file: fileURL, headers: headers, keyDecodingStrategy: keyDecodingStrategy, parameters: queryParams, body: body, completion: completionHandler)
 	}
 	
-	private func upload<T>(_ endpoint: RequestEndpoint, method: Zone5.Method, file fileURL: URL, headers: [String: String], keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys, parameters queryParams: URLEncodedBody? = nil, body: RequestBody? = nil, completion completionHandler: @escaping Completion<T>) -> PendingRequest? {
+	private func upload<T>(_ endpoint: RequestEndpoint, method: Zone5.Method, file fileURL: URL, headers: [String: String]? = nil, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys, parameters queryParams: URLEncodedBody? = nil, body: RequestBody? = nil, completion completionHandler: @escaping Completion<T>) -> PendingRequest? {
 		
 		return perform(with: completionHandler) { zone5 in
 			let request = Request(endpoint: endpoint, method: method, headers: headers, queryParams: queryParams, body: body)
@@ -70,7 +70,7 @@ public class ExternalView: APIView {
 
 	/// Download a file with the given endpoint. This is a get request so may contain query parameters but no body
 	@discardableResult
-	public func download(_ endpoint: RequestEndpoint, headers: [String: String], queryParams: URLEncodedBody? = nil, progressHandler: ( (_ bytesWritten: Int64, _ totalBytesWritten: Int64, _ totalBytesExpectedToWrite: Int64) -> Void )? = nil, completionHandler: @escaping Completion<URL>) -> PendingRequest? {
+	public func download(_ endpoint: RequestEndpoint, headers: [String: String]? = nil, queryParams: URLEncodedBody? = nil, progressHandler: ( (_ bytesWritten: Int64, _ totalBytesWritten: Int64, _ totalBytesExpectedToWrite: Int64) -> Void )? = nil, completionHandler: @escaping Completion<URL>) -> PendingRequest? {
 		
 		return perform(with: completionHandler) { zone5 in
 			let request = Request(endpoint: endpoint, method: .get, headers: headers, queryParams: queryParams)
