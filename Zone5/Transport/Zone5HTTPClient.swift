@@ -2,19 +2,15 @@ import Foundation
 
 final public class Zone5HTTPClient {
 
-	private static let downloadProgressNotification = Notification.Name("downloadProgressNotification")
-	private static let downloadCompleteNotification = Notification.Name("downloadCompleteNotification")
-	
 	/// The parent instance of the `Zone5` SDK.
 	weak var zone5: Zone5?
 
 	/// The `URLSession` used to perform requests.
 	/// - Note: This is defined as a custom protocol to allow injection of a mock instance used in unit testing.
 	private let urlSession: HTTPClientURLSession
+	internal let interceptorUrlSession: URLSession
+	private let downloadDelegate: Zone5DownloadDelegate
 
-	/// Object used for managing the various delegate calls made by our `urlSession`.
-	internal let urlSessionDelegate: Zone5DownloadDelegate = Zone5DownloadDelegate()
-	
 	/// Initializes a new instance of the `HTTPClient` that uses the URLRequestInterceptor to process requests
 	public init() {
 		
@@ -22,9 +18,10 @@ final public class Zone5HTTPClient {
 		let configuration: URLSessionConfiguration = .default
 		configuration.protocolClasses = [ URLRequestInterceptor.self ]
 		
-		self.urlSession = URLSession(configuration: configuration, delegate: urlSessionDelegate, delegateQueue: nil)
+		self.urlSession = URLSession(configuration: configuration)
+		self.downloadDelegate = Zone5DownloadDelegate()
+		self.interceptorUrlSession = URLSession(configuration: .default, delegate: downloadDelegate, delegateQueue: nil)
 		
-		urlSessionDelegate.httpClient = self
 	}
 
 	/// Initializes a new instance of the `HTTPClient` with the given URLSession
@@ -33,65 +30,9 @@ final public class Zone5HTTPClient {
 	/// - Note: For testing purposes _only_.
 	init(urlSession: HTTPClientURLSession) {
 		self.urlSession = urlSession
-		urlSessionDelegate.httpClient = self
-	}
-
-	/// Delegate class used for managing the various calls made by our `urlSession`. Delegate is only used by downloads. Upload and Data tasks use completion handler which automatically disables delegates.
-	/// Used by downloads to capture progress
-	final internal class Zone5DownloadDelegate: NSObject, URLSessionDownloadDelegate {
-		weak var httpClient: Zone5HTTPClient?
 		
-		func postCompleteNotification(response: URLResponse?, downloadTask: URLSessionDownloadTask, location: URL) {
-			var userInfo: [String:Any] = ["location": location]
-			if let response = response {
-				userInfo["response"] = response
-			}
-			
-			httpClient?.zone5?.notificationCenter.post(name: downloadCompleteNotification, object: downloadTask, userInfo: userInfo)
-		}
-		
-		func postCompleteErrorNotification(response: URLResponse?, downloadTask: URLSessionDownloadTask, error: Swift.Error) {
-			var userInfo: [String:Any] = ["error": error]
-			if let response = response {
-				userInfo["response"] = response
-			}
-			
-			httpClient?.zone5?.notificationCenter.post(name: downloadCompleteNotification, object: downloadTask, userInfo: userInfo)
-		}
-		
-		func postProgressNotification(downloadTask: URLSessionDownloadTask, bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-			httpClient?.zone5?.notificationCenter.post(name: Zone5HTTPClient.downloadProgressNotification, object: downloadTask, userInfo: [
-				"bytesWritten": bytesWritten,
-				"totalBytesWritten" : totalBytesWritten,
-				"totalBytesExpectedToWrite" : totalBytesExpectedToWrite
-			   ])
-		}
-		
-		/// MARK: URLSessionDownloadDelegate
-		
-		// URLSessionDownloadDelegate: download complete. Call complete
-		public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-			postCompleteNotification(response: downloadTask.response, downloadTask: downloadTask, location: location)
-		}
-
-		// URLSessionDownloadDelegate: download progress. Call progress
-		public func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-			postProgressNotification(downloadTask: downloadTask, bytesWritten: bytesWritten, totalBytesWritten: totalBytesWritten, totalBytesExpectedToWrite: totalBytesExpectedToWrite)
-		}
-		
-		// URLSessionTaskDelegate: on success we would've called from urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL).
-		public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Swift.Error?) {
-			if let downloadTask = task as? URLSessionDownloadTask {
-				if let error = error {
-					postCompleteErrorNotification(response: downloadTask.response, downloadTask: downloadTask, error: error)
-				} else {
-					// if the file download was successful then urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL)
-					// would've been called and the notification would've been posted and handled and the observer deregistered so this post will go unheard.
-					// this is just a catch all to make sure there is no scenario that a completion handler is not called
-					postCompleteErrorNotification(response: downloadTask.response, downloadTask: downloadTask, error: Zone5.Error.unknown)
-				}
-			}
-		}
+		self.downloadDelegate = Zone5DownloadDelegate()
+		self.interceptorUrlSession = URLSession(configuration: .default, delegate: downloadDelegate, delegateQueue: nil)
 	}
 
 	// MARK: Cache directories
@@ -254,37 +195,24 @@ final public class Zone5HTTPClient {
 	///			file on disk is returned, otherwise the error that was encountered.
 	func download(_ request: Request, progress onProgress: ( (_ bytesWritten: Int64, _ totalBytesWritten: Int64, _ totalBytesExpectedToWrite: Int64) -> Void )? = nil, completion onCompletion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: onCompletion) { zone5 in
-			let urlRequest = try request.urlRequest(zone5: zone5, taskType: .download)
+			var urlRequest = try request.urlRequest(zone5: zone5, taskType: .download)
+			
+			if let onProgress = onProgress {
+				urlRequest = urlRequest.setMeta(key: .progressHandler, value: onProgress)
+			}
 
 			let decoder = self.decoder
 			decoder.keyDecodingStrategy = .useDefaultKeys
 			
 			// create with no completion handler. This will force delegate to be used so that we can capture progress
-			let task = urlSession.downloadTask(with: urlRequest)
-			
-			// observe the URLDownloadDelegate callbacks. Note that queue here is intentionally nil so that "the block runs synchronously on the posting thread", which is the serial URLSession delegate/callback thread
-			let progressObserver: NSObjectProtocol = zone5.notificationCenter.addObserver(forName: Zone5HTTPClient.downloadProgressNotification, object: task, queue: nil) { notification in
-				if let bytesWritten = notification.userInfo?["bytesWritten"] as? Int64,
-				   let totalBytesWritten = notification.userInfo?["totalBytesWritten"] as? Int64,
-				   let totalBytesExpectedToWrite = notification.userInfo?["totalBytesExpectedToWrite"] as? Int64 {
-					onProgress?(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)
-				}
-			}
-			
-			var completeObserver: NSObjectProtocol? = nil
-			completeObserver = zone5.notificationCenter.addObserver(forName: Zone5HTTPClient.downloadCompleteNotification, object: task, queue: nil) { notification in
-				// remove observers.
-				zone5.notificationCenter.removeObserver(progressObserver, name: Zone5HTTPClient.downloadProgressNotification, object: task)
-				if let completeObserver = completeObserver {
-					zone5.notificationCenter.removeObserver(completeObserver, name: Zone5HTTPClient.downloadCompleteNotification, object: task)
-				}
+			let task = urlSession.downloadTask(with: urlRequest) { (location, response, error) in
 				
-				if let error = notification.userInfo?["error"] as? Error {
+				if let error = error {
 					onCompletion(.failure(.transportFailure(error)))
 				}
-				else if let response = notification.userInfo?["response"] as? HTTPURLResponse,
+				else if let response = response as? HTTPURLResponse,
 						(200..<400).contains(response.statusCode),
-						let location = notification.userInfo?["location"] as? URL,
+						let location = location,
 						let filename = response.suggestedFilename {
 					do {
 						let cacheURL = Zone5HTTPClient.downloadsDirectory.appendingPathComponent(filename)
@@ -300,7 +228,7 @@ final public class Zone5HTTPClient {
 						onCompletion(.failure(.transportFailure(error)))
 					}
 				}
-				else if let response = notification.userInfo?["response"] as? URLResponse, let location = notification.userInfo?["location"] as? URL, let data = try? Data(contentsOf: location) {
+				else if let response = response, let location = location, let data = try? Data(contentsOf: location) {
 					onCompletion(decoder.decode(data, response: response, from: request, as: URL.self, debugLogging: zone5.debugLogging))
 				}
 				else {
@@ -426,7 +354,7 @@ internal protocol HTTPClientURLSession: class {
 
 	func uploadTask(with request: URLRequest, fromFile fileURL: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionUploadTask
 
-	func downloadTask(with: URLRequest) -> URLSessionDownloadTask
+	func downloadTask(with: URLRequest, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask
 }
 
 extension URLSession: HTTPClientURLSession { }

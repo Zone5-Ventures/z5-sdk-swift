@@ -11,8 +11,6 @@ import Foundation
 internal class URLRequestInterceptor: URLProtocol {
 	static private let refreshExpiresInThreshold = 30.0
 	
-	// shared session that all requests ultimately go out on. The one in httpClient funnels all requests to this interceptor which then get routed out this one
-	static private let urlSession = URLSession(configuration: .default)
 	// synchronize auto refresh so that only 1 request at a time can issue a refresh
 	static private let refreshDispatchQueue = DispatchQueue(label: "URLRequestInterceptor.refreshDispatchQueue")
 	static private let refreshDispatchSemaphore = DispatchSemaphore(value: 1) // allow 1 through at a time
@@ -21,7 +19,7 @@ internal class URLRequestInterceptor: URLProtocol {
 	private var currentTask: URLSessionTask? = nil
 	
 	override init(request: URLRequest, cachedResponse: CachedURLResponse?, client: URLProtocolClient?) {
-		session = URLRequestInterceptor.urlSession
+		session = Zone5.shared.httpClient.interceptorUrlSession
 		super.init(request: request, cachedResponse: cachedResponse, client: client)
 	}
 	
@@ -143,6 +141,7 @@ internal class URLRequestInterceptor: URLProtocol {
 	internal func sendRequest(_ request: URLRequest) {
 		let url = request.getMeta(key: .fileURL) as? URL
 		let type = request.taskType
+		let onProgress = request.getMeta(key: .progressHandler) as? (_ bytesWritten: Int64, _ totalBytesWritten: Int64, _ totalBytesExpectedToWrite: Int64) -> Void
 		
 		// now we are finished with the request meta. Clear it before we continue
 		let request = request.clearMeta()
@@ -157,9 +156,34 @@ internal class URLRequestInterceptor: URLProtocol {
 				onComplete(data: nil, response: nil, error: Zone5.Error.invalidParameters)
 			}
 		case .download:
-			self.currentTask = session.downloadTask(with: request) { url, response, error in
-				self.onComplete(data: nil, response: response, error: error)
+			let currentTask = session.downloadTask(with: request)
+		
+			let progressObserver: NSObjectProtocol? = NotificationCenter.default.addObserver(forName: Zone5DownloadDelegate.downloadProgressNotification, object: currentTask, queue: nil) { notification in
+				if let bytesWritten = notification.userInfo?["bytesWritten"] as? Int64,
+				   let totalBytesWritten = notification.userInfo?["totalBytesWritten"] as? Int64,
+				   let totalBytesExpectedToWrite = notification.userInfo?["totalBytesExpectedToWrite"] as? Int64 {
+					onProgress?(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)
+				}
 			}
+			
+			var completionObserver : NSObjectProtocol? = nil
+			completionObserver = NotificationCenter.default.addObserver(forName: Zone5DownloadDelegate.downloadCompleteNotification, object: currentTask, queue: nil) { [ weak self ] notification in
+				// remove observers.
+				if let progressObserver = progressObserver {
+					NotificationCenter.default.removeObserver(progressObserver, name: Zone5DownloadDelegate.downloadProgressNotification, object: currentTask)
+				}
+				if let completionObserver = completionObserver {
+					NotificationCenter.default.removeObserver(completionObserver, name: Zone5DownloadDelegate.downloadCompleteNotification, object: currentTask)
+				}
+				
+				//url, response, error in
+				let error = notification.userInfo?["error"] as? Error
+				let response = notification.userInfo?["response"] as? URLResponse
+				
+				self?.onComplete(data: nil, response: response, error: error)
+			}
+			
+			self.currentTask = currentTask
 		}
 	
 		
@@ -223,3 +247,4 @@ extension URLRequest {
 		return mutatingRequest as URLRequest
 	}
 }
+

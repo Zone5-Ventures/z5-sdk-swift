@@ -18,8 +18,6 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 		case failure(String, statusCode: Int)
 	}
 
-	internal var downloadDelegate: Zone5HTTPClient.Zone5DownloadDelegate?
-	
 	// MARK: Data tasks
 
 	/// - Returns: Result enumeration containing either a JSON string or an error.
@@ -135,9 +133,8 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 	/// - Returns: Result enumeration containing either a file URL or an error.
 	var downloadTaskHandler: ((_ request: URLRequest) -> Result<URL>)?
 
-	func downloadTask(with request: URLRequest) -> URLSessionDownloadTask {
-		var downloadTask: DownloadTask? = nil
-		downloadTask = DownloadTask {
+	func downloadTask(with request: URLRequest, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask {
+		return DownloadTask {
 			let result = self.downloadTaskHandler?(URLRequestInterceptor.decorate(request: request))
 
 			switch result {
@@ -152,7 +149,7 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 					"Content-Type": "application/json",
 				])
 
-				self.downloadDelegate?.postCompleteNotification(response: response, downloadTask: downloadTask!, location: tempURL)
+				completionHandler(tempURL, response!, nil)
 			case .failure(let json, let statusCode):
 				let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("dataResponse.tmp")
 				try! json.write(to: tempURL, atomically: true, encoding: .utf8)
@@ -160,25 +157,22 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 					"Content-Type": "application/json",
 				])
 
-				self.downloadDelegate?.postCompleteNotification(response: response, downloadTask: downloadTask!, location: tempURL)
+				completionHandler(tempURL, response!, nil)
 			case .error(let error):
 				let response = HTTPURLResponse.init(url: request.url!, statusCode: 500, httpVersion: "HTTP/1.1", headerFields: [
 					"Content-Type": "application/json",
 				])
 
-				self.downloadDelegate?.postCompleteErrorNotification(response: response, downloadTask: downloadTask!, error: error)
+				completionHandler(nil, response!, error)
 			case .success(let url):
 				let response = HTTPURLResponse.init(url: request.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: [
 					"Content-Disposition": "attachment; filename=\"\(url.lastPathComponent)\"",
 					"Content-Type": "application/octet-stream",
 				])
 
-				
-				self.downloadDelegate?.postCompleteNotification(response: response, downloadTask: downloadTask!, location: url)
+				completionHandler(url, response!, nil)
 			}
 		}
-		
-		return downloadTask!
 	}
 
 	final class DownloadTask: URLSessionDownloadTask {
