@@ -23,6 +23,7 @@ private class Endpoint: RequestEndpoint {
 
 private enum ExternalEndpoints: String, InternalRequestEndpoint, RequestEndpoint {
 	case download = "https://api-sp-staging.todaysplan.com.au/rest/files/download/{fileID}"
+	case downloadNonZone5 = "https://developer.apple.com/augmented-reality/quick-look/models/gramophone/gramophone.usdz"
 	case me = "https://api-sp-staging.todaysplan.com.au/rest/users/me"
 	case upload = "https://api-sp-staging.todaysplan.com.au/rest/files/upload"
 	
@@ -45,6 +46,7 @@ struct ContentView: View {
 	init(apiClient: Zone5 = .shared, keyValueStore: KeyValueStore = .shared) {
 		self.apiClient = apiClient
 		self.keyValueStore = keyValueStore
+		apiClient.debugLogging = true
 
 		let baseURL = keyValueStore.baseURL
 		if !keyValueStore.clientID.isEmpty, !keyValueStore.clientSecret.isEmpty {
@@ -333,6 +335,14 @@ struct ContentView: View {
 							}
 						}
 					}
+					EndpointLink<URL>("Download file from Apple EXTERNAL") { client, completion in
+						client.external.download(ExternalEndpoints.downloadNonZone5, progressHandler: { bytes, totalBytes, expectedBytes in
+							print("progress: bytes: \(bytes), total bytes: \(totalBytes), expected bytes: \(expectedBytes)")
+							  }, completionHandler: { result in
+								  print("download complete")
+								  completion(result)
+							  })
+					}
 					EndpointLink<URL>("Download Latest File as Raw3") { client, completion in
 						self.retrieveFileIdentifier(client) { result in
 							switch result {
@@ -455,7 +465,7 @@ struct ContentView: View {
 
 	private func retrieveFileIdentifier(_ client: Zone5, _ completion: @escaping (_ result: Result<UserWorkoutResult, Zone5.Error>) -> Void) {
 		var criteria = UserWorkoutFileSearch()
-		criteria.name = "2013-12-22-10-30-12.fit"
+		//criteria.name = "2013-12-22-10-30-12.fit"
 		criteria.dateRanges = [DateRange(component: .month, value: -3)!]
 		criteria.order = [.descending("ts")]
 

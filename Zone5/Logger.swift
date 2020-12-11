@@ -19,9 +19,12 @@ func z5Log(_ message: String, level: OSLogType = .default) {
 }
 
 func z5DebugLog(_ message: String, level: OSLogType = .default) {
-    if Zone5.shared.debugLogging {
-        log(message, level: level, log: OSLog.z5DebugLog)
-    }
+	// only log if attached to an xcode debugger AND explicitly set
+	#if DEBUG
+		if Zone5.shared.debugLogging {
+			log(message, level: level, log: OSLog.z5DebugLog)
+		}
+	#endif
 }
 
 // swiftlint:disable:next private_functions

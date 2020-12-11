@@ -161,7 +161,7 @@ final public class Zone5HTTPClient {
 					completion(.failure(.transportFailure(error)))
 				}
 				else if let data = data {
-					completion(decoder.decode(data, response: response, from: request, as: expectedType))
+					completion(decoder.decode(data, response: response, from: request, as: expectedType, debugLogging: zone5.debugLogging))
 				}
 				else {
 					completion(.failure(.unknown))
@@ -235,7 +235,7 @@ final public class Zone5HTTPClient {
 					completion(.failure(.transportFailure(error)))
 				}
 				else if let data = data {
-					completion(decoder.decode(data, response: response, from: request, as: expectedType))
+					completion(decoder.decode(data, response: response, from: request, as: expectedType, debugLogging: zone5.debugLogging))
 				}
 				else {
 					completion(.failure(.unknown))
@@ -283,8 +283,7 @@ final public class Zone5HTTPClient {
 					onCompletion(.failure(.transportFailure(error)))
 				}
 				else if let response = notification.userInfo?["response"] as? HTTPURLResponse,
-						let contentDisposition = response.allHeaderFields["Content-Disposition"] as? String,
-						contentDisposition.hasPrefix("attachment"),
+						(200..<400).contains(response.statusCode),
 						let location = notification.userInfo?["location"] as? URL,
 						let filename = response.suggestedFilename {
 					do {
@@ -302,7 +301,7 @@ final public class Zone5HTTPClient {
 					}
 				}
 				else if let response = notification.userInfo?["response"] as? URLResponse, let location = notification.userInfo?["location"] as? URL, let data = try? Data(contentsOf: location) {
-					onCompletion(decoder.decode(data, response: response, from: request, as: URL.self))
+					onCompletion(decoder.decode(data, response: response, from: request, as: URL.self, debugLogging: zone5.debugLogging))
 				}
 				else {
 					onCompletion(.failure(.unknown))
@@ -319,22 +318,24 @@ final public class Zone5HTTPClient {
 
 extension JSONDecoder {
 
-	func decode<T: Decodable>(_ data: Data, response: URLResponse?, from request: Request, as expectedType: T.Type) -> Result<T, Zone5.Error> {
-		var debugMessage = ""
+	func decode<T: Decodable>(_ data: Data, response: URLResponse?, from request: Request, as expectedType: T.Type, debugLogging: Bool = false) -> Result<T, Zone5.Error> {
 		defer {
-			if let requestData = try? request.body?.encodedData(), let requestString = String(data: requestData, encoding: .utf8) {
-				debugMessage += "\n\t- Request to \(request.endpoint.uri): \(requestString)"
+			if debugLogging {
+				// don't unecessarily construct log lines unless debugLogging is explicitly set
+				var debugMessage = ""
+				if let requestData = try? request.body?.encodedData(), let requestString = String(data: requestData, encoding: .utf8) {
+					debugMessage += "\n\t- Request to \(request.endpoint.uri): \(requestString)"
+				}
+				if let responseString = String(data: data, encoding: .utf8) {
+					debugMessage += "\n\t- Response: \(responseString)"
+				}
+				z5DebugLog(debugMessage)
 			}
-			if let responseString = String(data: data, encoding: .utf8) {
-				debugMessage += "\n\t- Response: \(responseString)"
-			}
-			z5DebugLog(debugMessage)
 		}
 
 		if let httpResponse = response as? HTTPURLResponse {
 			guard (200..<400).contains(httpResponse.statusCode) else {
-                debugMessage = "Server responded with status code of \(httpResponse.statusCode) to \(request.endpoint.uri). (headers were \(request.headers ?? [:]))"
-                z5DebugLog(debugMessage)
+                z5DebugLog("Server responded with status code of \(httpResponse.statusCode) to \(request.endpoint.uri). (headers were \(request.headers ?? [:]))")
 
 				do {
 					var decodedMessage = try decode(Zone5.Error.ServerMessage.self, from: data)
@@ -354,7 +355,8 @@ extension JSONDecoder {
 			if expectedType == Zone5.VoidReply.self {
 				// special handling required for Void types. Enforce enpty data. Create NoReply object.
 				if data.count > 0 {
-					return .failure(.failedDecodingResponse(Zone5.Error.unknown))
+					z5Log("Failed to decode server response as `\(expectedType)`. Error: Non Void response")
+					return .failure(.failedDecodingResponse(Zone5.Error.failedDecodingResponse(Zone5.Error.unknown)))
 				} else {
 					return .success(Zone5.VoidReply() as! T)
 				}
@@ -383,6 +385,7 @@ extension JSONDecoder {
 					if let value = jsonObject as? T {
 						decodedValue = value
 					} else if let value = jsonObject as? Zone5.Error.ServerMessage {
+						z5Log("Failed to decode server response as `\(expectedType)`. Error: \(error)")
 						return .failure(.serverError(value))
 					} else {
 						throw error
@@ -390,16 +393,14 @@ extension JSONDecoder {
 				}
 			}
 			
-            debugMessage = "Successfully decoded server response from \(response?.url?.absoluteString ?? "") as `\(expectedType)`."
-            z5DebugLog(debugMessage)
+            z5DebugLog("Successfully decoded server response from \(response?.url?.absoluteString ?? "") as `\(expectedType)`.")
 
 			return .success(decodedValue)
 		}
 		catch {
 			let originalError = error
 
-			debugMessage = "Failed to decode server response as `\(expectedType)`.\n\t- Error: \(originalError)"
-			z5DebugLog(debugMessage)
+			z5Log("Failed to decode server response as `\(expectedType)`. Error: \(originalError)")
 
 			do {
 				// Decoding as `expectedType` failed, so lets try to decode as a `ServerMessage` instead, in the hopes
