@@ -5,35 +5,53 @@ final public class Zone5HTTPClient {
 	/// The parent instance of the `Zone5` SDK.
 	weak var zone5: Zone5?
 
+	static let clientHandlerQueue = DispatchQueue(label: "Zone5HttpClient.callback.queue", qos: .userInitiated, attributes: .concurrent)
+	
 	/// The `URLSession` used to perform requests.
 	/// - Note: This is defined as a custom protocol to allow injection of a mock instance used in unit testing.
+	private let urlSessionOperationQueue: OperationQueue
+	private let clientCallbackOperationQueue: OperationQueue
 	private let urlSession: HTTPClientURLSession
 	internal let interceptorUrlSession: URLSession
-	private let downloadDelegate: Zone5DownloadDelegate
-
+	internal let interceptorUrlSessionFiles: URLSession
+	
 	/// Initializes a new instance of the `HTTPClient` that uses the URLRequestInterceptor to process requests
-	public init() {
-		
-		// create a URLSession which routes all requests into the interceptor
-		let configuration: URLSessionConfiguration = .default
-		configuration.protocolClasses = [ URLRequestInterceptor.self ]
-		
-		self.urlSession = URLSession(configuration: configuration)
-		self.downloadDelegate = Zone5DownloadDelegate()
-		self.interceptorUrlSession = URLSession(configuration: .default, delegate: downloadDelegate, delegateQueue: nil)
-		
+	public convenience init() {
+		self.init(urlSession: nil)
 	}
 
 	/// Initializes a new instance of the `HTTPClient` with the given URLSession
 	/// This is used in unit tests to mock a URLSesson
 	/// - Parameter urlSession: A custom `HTTPClientURLSession` instance to use for handling calls.
 	/// - Note: For testing purposes _only_.
-	init(urlSession: HTTPClientURLSession) {
-		self.urlSession = urlSession
+	init(urlSession: HTTPClientURLSession?) {
+		self.urlSessionOperationQueue = OperationQueue()
+		self.urlSessionOperationQueue.qualityOfService = .userInitiated
 		
-		self.downloadDelegate = Zone5DownloadDelegate()
-		self.interceptorUrlSession = URLSession(configuration: .default, delegate: downloadDelegate, delegateQueue: nil)
+		self.clientCallbackOperationQueue = OperationQueue()
+		self.clientCallbackOperationQueue.qualityOfService = .userInitiated
+		self.clientCallbackOperationQueue.underlyingQueue = Zone5HTTPClient.clientHandlerQueue
+		
+		if let urlSession = urlSession {
+			self.urlSession = urlSession
+		} else {
+			// create a URLSession which routes all requests into the interceptor
+			// no need for a delegate, or calls use completion handlers
+			// use the clientcallbackoperationqueue
+			let configuration: URLSessionConfiguration = .default
+			configuration.protocolClasses = [ URLRequestInterceptor.self ]
+			self.urlSession = URLSession(configuration: configuration, delegate: nil, delegateQueue: clientCallbackOperationQueue)
+		}
+		
+		// for the interceptor, separate into tasks into file opertions and other. Limit the file operations to 1.
+		// use a delegate for file operations so that we can track progress callbacks
+		// these 2 sessions can share the same operationqueue
+		self.interceptorUrlSession = URLSession(configuration: .default, delegate: nil, delegateQueue: urlSessionOperationQueue)
+		let fileConfiguration: URLSessionConfiguration = .default
+		fileConfiguration.httpMaximumConnectionsPerHost = 1
+		self.interceptorUrlSessionFiles = URLSession(configuration: fileConfiguration, delegate: Zone5DownloadDelegate(), delegateQueue: urlSessionOperationQueue)
 	}
+	
 
 	// MARK: Cache directories
 
@@ -46,7 +64,7 @@ final public class Zone5HTTPClient {
 	}()
 
 	/// Cache directory used for storing downloads.
-	private static let downloadsDirectory: URL = {
+	internal static let downloadsDirectory: URL = {
 		let sharedURL = try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
 		let downloadURL = sharedURL.appendingPathComponent("com.zone5ventures.Zone5SDK/downloads")
 		try! FileManager.default.createDirectory(at: downloadURL, withIntermediateDirectories: true, attributes: nil)
@@ -195,7 +213,7 @@ final public class Zone5HTTPClient {
 	///			file on disk is returned, otherwise the error that was encountered.
 	func download(_ request: Request, progress onProgress: ( (_ bytesWritten: Int64, _ totalBytesWritten: Int64, _ totalBytesExpectedToWrite: Int64) -> Void )? = nil, completion onCompletion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
 		return execute(with: onCompletion) { zone5 in
-			var urlRequest = try request.urlRequest(zone5: zone5, taskType: .download)
+			var urlRequest = try request.urlRequest(zone5: zone5, taskType: .download).setMeta(key: .downloadHandler, value: onCompletion)
 			
 			if let onProgress = onProgress {
 				urlRequest = urlRequest.setMeta(key: .progressHandler, value: onProgress)
@@ -212,21 +230,9 @@ final public class Zone5HTTPClient {
 				}
 				else if let response = response as? HTTPURLResponse,
 						(200..<400).contains(response.statusCode),
-						let location = location,
-						let filename = response.suggestedFilename {
-					do {
-						let cacheURL = Zone5HTTPClient.downloadsDirectory.appendingPathComponent(filename)
-						try? FileManager.default.removeItem(at: cacheURL)
-						
-						try FileManager.default.copyItem(at: location, to: cacheURL)
-
-						onCompletion(.success(cacheURL))
-
-						try? FileManager.default.removeItem(at: cacheURL)
-					}
-					catch {
-						onCompletion(.failure(.transportFailure(error)))
-					}
+						let _ = location,
+						let _ = response.suggestedFilename {
+					// this will already have been handled_
 				}
 				else if let response = response, let location = location, let data = try? Data(contentsOf: location) {
 					onCompletion(decoder.decode(data, response: response, from: request, as: URL.self, debugLogging: zone5.debugLogging))

@@ -15,6 +15,7 @@ internal enum URLProtocolProperty: String, CaseIterable {
 	case taskType
 	case isZone5Endpoint
 	case progressHandler
+	case downloadHandler
 }
 
 internal enum URLSessionTaskType {
