@@ -7,49 +7,50 @@ final public class Zone5HTTPClient {
 
 	static let clientHandlerQueue = DispatchQueue(label: "Zone5HttpClient.callback.queue", qos: .userInitiated, attributes: .concurrent)
 	
-	/// The `URLSession` used to perform requests.
+	/// The `URLSession` used to perform requests. It is configured to send all requests to the interceptor
 	/// - Note: This is defined as a custom protocol to allow injection of a mock instance used in unit testing.
-	private let urlSessionOperationQueue: OperationQueue
-	private let clientCallbackOperationQueue: OperationQueue
 	private let urlSession: HTTPClientURLSession
+	
+	/// URLSessions used by the interceptor - this is where the requests are sent out to the server
 	internal let interceptorUrlSession: URLSession
 	internal let interceptorUrlSessionFiles: URLSession
 	
 	/// Initializes a new instance of the `HTTPClient` that uses the URLRequestInterceptor to process requests
 	public convenience init() {
-		self.init(urlSession: nil)
+		let configuration: URLSessionConfiguration = .default
+		configuration.protocolClasses = [ URLRequestInterceptor.self ]
+		self.init(urlSession: URLSession(configuration: configuration, delegate: nil, delegateQueue: Zone5HTTPClient.operationQueue()))
 	}
 
 	/// Initializes a new instance of the `HTTPClient` with the given URLSession
 	/// This is used in unit tests to mock a URLSesson
 	/// - Parameter urlSession: A custom `HTTPClientURLSession` instance to use for handling calls.
 	/// - Note: For testing purposes _only_.
-	init(urlSession: HTTPClientURLSession?) {
-		self.urlSessionOperationQueue = OperationQueue()
-		self.urlSessionOperationQueue.qualityOfService = .userInitiated
+	init(urlSession: HTTPClientURLSession) {
+		self.urlSession = urlSession
 		
-		self.clientCallbackOperationQueue = OperationQueue()
-		self.clientCallbackOperationQueue.qualityOfService = .userInitiated
-		self.clientCallbackOperationQueue.underlyingQueue = Zone5HTTPClient.clientHandlerQueue
-		
-		if let urlSession = urlSession {
-			self.urlSession = urlSession
-		} else {
-			// create a URLSession which routes all requests into the interceptor
-			// no need for a delegate, or calls use completion handlers
-			// use the clientcallbackoperationqueue
-			let configuration: URLSessionConfiguration = .default
-			configuration.protocolClasses = [ URLRequestInterceptor.self ]
-			self.urlSession = URLSession(configuration: configuration, delegate: nil, delegateQueue: clientCallbackOperationQueue)
-		}
-		
-		// for the interceptor, separate into tasks into file opertions and other. Limit the file operations to 1.
+		// for the interceptor, seperate tasks into file opertions and other. Limit the file operations to 1. Other is default (4)
 		// use a delegate for file operations so that we can track progress callbacks
-		// these 2 sessions can share the same operationqueue
-		self.interceptorUrlSession = URLSession(configuration: .default, delegate: nil, delegateQueue: urlSessionOperationQueue)
+		self.interceptorUrlSession = URLSession(configuration: .default, delegate: nil, delegateQueue: Zone5HTTPClient.operationQueue())
 		let fileConfiguration: URLSessionConfiguration = .default
 		fileConfiguration.httpMaximumConnectionsPerHost = 1
-		self.interceptorUrlSessionFiles = URLSession(configuration: fileConfiguration, delegate: Zone5DownloadDelegate(), delegateQueue: urlSessionOperationQueue)
+		self.interceptorUrlSessionFiles = URLSession(configuration: fileConfiguration, delegate: Zone5DownloadDelegate(), delegateQueue: Zone5HTTPClient.operationQueue())
+	}
+	
+	/// Default operation queues have a qos of utility. This can result in poor performance for user initiated requests like ours. Increase the qos.
+	/// Also the doco for URLSession() states that the operation queue must be serial.
+	/// - Returns: a serial, user-initiated OperationQueue
+	private class func operationQueue() -> OperationQueue {
+		let opQ = OperationQueue()
+		opQ.qualityOfService = .userInitiated
+		opQ.maxConcurrentOperationCount = 1
+		return opQ
+	}
+	
+	private func complete<T>(_ completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void, with result: Result<T, Zone5.Error>) {
+		Zone5HTTPClient.clientHandlerQueue.async {
+			completion(result)
+		}
 	}
 	
 
@@ -115,15 +116,15 @@ final public class Zone5HTTPClient {
 			let decoder = self.decoder
             decoder.keyDecodingStrategy = keyDecodingStrategy
             
-			let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+			let task = urlSession.dataTask(with: urlRequest) { [ weak self ] data, response, error in
 				if let error = error {
-					completion(.failure(.transportFailure(error)))
+					self?.complete(completion, with: .failure(.transportFailure(error)))
 				}
 				else if let data = data {
-					completion(decoder.decode(data, response: response, from: request, as: expectedType, debugLogging: zone5.debugLogging))
+					self?.complete(completion, with: decoder.decode(data, response: response, from: request, as: expectedType, debugLogging: zone5.debugLogging))
 				}
 				else {
-					completion(.failure(.unknown))
+					self?.complete(completion, with: .failure(.unknown))
 				}
 			}
 			
@@ -141,15 +142,15 @@ final public class Zone5HTTPClient {
         return execute(with: completion) { zone5 in
             let urlRequest = try request.urlRequest(zone5: zone5, taskType: .data)
             
-            let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+            let task = urlSession.dataTask(with: urlRequest) { [ weak self ] data, response, error in
                 if let error = error {
-                    completion(.failure(.transportFailure(error)))
+					self?.complete(completion, with: .failure(.transportFailure(error)))
                 }
 				else if let response = response {
-					completion(.success((data, response)))
+					self?.complete(completion, with: .success((data, response)))
 				}
                 else {
-					completion(.failure(.failedDecodingResponse(Zone5.Error.unknown)))
+					self?.complete(completion, with: .failure(.failedDecodingResponse(Zone5.Error.unknown)))
                 }
             }
             task.resume()
@@ -187,17 +188,17 @@ final public class Zone5HTTPClient {
 			let decoder = self.decoder
             decoder.keyDecodingStrategy = keyDecodingStrategy
 			
-			let task = urlSession.uploadTask(with: urlRequest, fromFile: cacheURL) { data, response, error in
+			let task = urlSession.uploadTask(with: urlRequest, fromFile: cacheURL) { [ weak self ] data, response, error in
 				defer { try? FileManager.default.removeItem(at: cacheURL) }
 
 				if let error = error {
-					completion(.failure(.transportFailure(error)))
+					self?.complete(completion, with: .failure(.transportFailure(error)))
 				}
 				else if let data = data {
-					completion(decoder.decode(data, response: response, from: request, as: expectedType, debugLogging: zone5.debugLogging))
+					self?.complete(completion, with: decoder.decode(data, response: response, from: request, as: expectedType, debugLogging: zone5.debugLogging))
 				}
 				else {
-					completion(.failure(.unknown))
+					self?.complete(completion, with: .failure(.unknown))
 				}
 			}
 
@@ -211,36 +212,49 @@ final public class Zone5HTTPClient {
 	///   - request: A request that defines the endpoint, method and body used.
 	///   - completion: Function called with the result of the download. If successful, the location of the downloaded
 	///			file on disk is returned, otherwise the error that was encountered.
-	func download(_ request: Request, progress onProgress: ( (_ bytesWritten: Int64, _ totalBytesWritten: Int64, _ totalBytesExpectedToWrite: Int64) -> Void )? = nil, completion onCompletion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
-		return execute(with: onCompletion) { zone5 in
-			var urlRequest = try request.urlRequest(zone5: zone5, taskType: .download).setMeta(key: .downloadHandler, value: onCompletion)
+	func download(_ request: Request, progress: ( (_ bytesWritten: Int64, _ totalBytesWritten: Int64, _ totalBytesExpectedToWrite: Int64) -> Void )? = nil, completion: @escaping (_ result: Result<URL, Zone5.Error>) -> Void) -> PendingRequest? {
+		return execute(with: completion) { zone5 in
+			var urlRequest = try request.urlRequest(zone5: zone5, taskType: .download)
 			
-			if let onProgress = onProgress {
-				urlRequest = urlRequest.setMeta(key: .progressHandler, value: onProgress)
+			if let progress = progress {
+				urlRequest = urlRequest.setMeta(key: .progressHandler, value: progress)
 			}
 
 			let decoder = self.decoder
 			decoder.keyDecodingStrategy = .useDefaultKeys
 			
 			// create with no completion handler. This will force delegate to be used so that we can capture progress
-			let task = urlSession.downloadTask(with: urlRequest) { (location, response, error) in
+			let task = urlSession.downloadTask(with: urlRequest) { [ weak self ] (location, response, error) in
 				
 				if let error = error {
-					onCompletion(.failure(.transportFailure(error)))
+					self?.complete(completion, with: .failure(.transportFailure(error)))
+					return
 				}
-				else if let response = response as? HTTPURLResponse,
-						(200..<400).contains(response.statusCode),
-						let _ = location,
-						let _ = response.suggestedFilename {
-					// this will already have been handled_
+				
+				guard let response = response as? HTTPURLResponse, let filename = response.suggestedFilename else {
+					self?.complete(completion, with: .failure(.unknown))
+					return
 				}
-				else if let response = response, let location = location, let data = try? Data(contentsOf: location) {
-					onCompletion(decoder.decode(data, response: response, from: request, as: URL.self, debugLogging: zone5.debugLogging))
+				
+				let cacheURL = Zone5HTTPClient.downloadsDirectory.appendingPathComponent(filename)
+				
+				if let resources = try? cacheURL.resourceValues(forKeys:[.fileSizeKey]), resources.fileSize! > 0 {
+					if (200..<400).contains(response.statusCode) {
+						// success case - the file is the download
+						Zone5HTTPClient.clientHandlerQueue.async {
+							defer { try? FileManager.default.removeItem(at: cacheURL) }
+							self?.complete(completion, with: .success(cacheURL))
+						}
+						return
+					} else if let data = try? Data(contentsOf: cacheURL) {
+						// server error case - the file is an error description
+						self?.complete(completion, with: decoder.decode(data, response: response, from: request, as: URL.self, debugLogging: zone5.debugLogging))
+						return
+					}
 				}
-				else {
-					onCompletion(.failure(.unknown))
-				}
-
+				
+				// if we make it to here, something went wrong
+				self?.complete(completion, with: .failure(.unknown))
 			}
 			
 			task.resume()

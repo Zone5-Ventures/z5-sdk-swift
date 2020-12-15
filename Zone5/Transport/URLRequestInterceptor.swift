@@ -151,7 +151,6 @@ internal class URLRequestInterceptor: URLProtocol {
 		let url = request.getMeta(key: .fileURL) as? URL
 		let type = request.taskType
 		let onProgress = request.getMeta(key: .progressHandler) as? (_ bytesWritten: Int64, _ totalBytesWritten: Int64, _ totalBytesExpectedToWrite: Int64) -> Void
-		let onDownloadComplete = request.getMeta(key: .downloadHandler) as? (_ result: Result<URL, Zone5.Error>) -> Void
 		
 		// now we are finished with the request meta. Clear it before we continue
 		let request = request.clearMeta()
@@ -190,28 +189,12 @@ internal class URLRequestInterceptor: URLProtocol {
 				let error = notification.userInfo?["error"] as? Error
 				let response = notification.userInfo?["response"] as? URLResponse
 				
-				if let response = response as? HTTPURLResponse,
-				   let location = notification.userInfo?["location"] as? URL,
-				   (200..<400).contains(response.statusCode),
-				   let filename = response.suggestedFilename,
-				   let onCompletion = onDownloadComplete {
-					
-					do {
-						let cacheURL = Zone5HTTPClient.downloadsDirectory.appendingPathComponent(filename)
-						// copy this file to another location because it will be deleted on return of function
-						try? FileManager.default.removeItem(at: cacheURL)
-						try FileManager.default.copyItem(at: location, to: cacheURL)
-
-						Zone5HTTPClient.clientHandlerQueue.async {
-							// call client callback with our copied file
-							defer { try? FileManager.default.removeItem(at: cacheURL) }
-							onCompletion(.success(cacheURL))
-							
-						}
-					}
-					catch {
-						onCompletion(.failure(.transportFailure(error)))
-					}
+				if let location = notification.userInfo?["location"] as? URL,
+				   let filename = (response as? HTTPURLResponse)?.suggestedFilename {
+					// attempt to copy this file to another location because it will be deleted on return of this function
+					let cacheURL = Zone5HTTPClient.downloadsDirectory.appendingPathComponent(filename)
+					try? FileManager.default.removeItem(at: cacheURL)
+					try? FileManager.default.copyItem(at: location, to: cacheURL)
 				}
 				
 				self?.onComplete(data: nil, response: response, error: error)
