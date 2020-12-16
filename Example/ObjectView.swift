@@ -47,6 +47,13 @@ struct ObjectView: View {
 		else if let b = object as? Bool {
 			properties.append(property(for: b, label: "result"))
 		}
+		else if let s = object as? String{
+			properties.append(property(for: s, label: "result"))
+		}
+		else if let url = object as? URL {
+			properties.append(property(for: url, label: "url"))
+			properties.append(property(for: (try? url.resourceValues(forKeys:[.fileSizeKey]).fileSize) ?? 0, label: "filesize"))
+		}
 		else if let object = object {
 			for child in Mirror(reflecting: object).children {
 				guard let label = child.label else {

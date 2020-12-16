@@ -210,7 +210,10 @@ struct ContentView: View {
 						client.oAuth.accessToken(username: keyValueStore.userEmail, password: self.password.password, completion: completion)
 					}
 					EndpointLink<OAuthToken>("Get Adhoc Access Token") { client, completion in
-						_ = client.oAuth.adhocAccessToken(for: "wahooride", completion: completion)
+						client.oAuth.adhocAccessToken(for: "wahooride", completion: completion)
+					}
+					EndpointLink<String>("Get Password Complexity Regex") { client, completion in
+						client.oAuth.passwordComplexity(completion: completion)
 					}
 				}
 				Section(header: Text("Activities"), footer: Text("Attempting to view \"Next Page\" before performing a legitimate search request—such as by opening the \"Last 30 days\" screen—will return an empty result.")) {

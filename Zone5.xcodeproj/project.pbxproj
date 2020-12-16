@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F1C9F8725898C89000C12FD /* ResponseDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C9F8625898C89000C12FD /* ResponseDecodingTests.swift */; };
 		0F4A88CA2564A1ED005C20A2 /* URLProtocolProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A88C92564A1ED005C20A2 /* URLProtocolProperty.swift */; };
 		0F4A88CE2564ADC4005C20A2 /* URLRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A88CD2564ADC4005C20A2 /* URLRequestInterceptor.swift */; };
 		0F7C8E5A256C9743005CF025 /* URLRequestInterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7C8E59256C9743005CF025 /* URLRequestInterceptorTests.swift */; };
@@ -190,6 +191,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F1C9F8625898C89000C12FD /* ResponseDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDecodingTests.swift; sourceTree = "<group>"; };
 		0F4A88C92564A1ED005C20A2 /* URLProtocolProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolProperty.swift; sourceTree = "<group>"; };
 		0F4A88CD2564ADC4005C20A2 /* URLRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestInterceptor.swift; sourceTree = "<group>"; };
 		0F7C8E59256C9743005CF025 /* URLRequestInterceptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestInterceptorTests.swift; sourceTree = "<group>"; };
@@ -632,6 +634,7 @@
 				A1713CBE238642C40084BDDC /* URLEncodedBodyTests.swift */,
 				A1EBDAD8237A21DD00834B21 /* MultipartEncodedBodyTests.swift */,
 				0F7C8E59256C9743005CF025 /* URLRequestInterceptorTests.swift */,
+				0F1C9F8625898C89000C12FD /* ResponseDecodingTests.swift */,
 			);
 			path = Transport;
 			sourceTree = "<group>";
@@ -1017,6 +1020,7 @@
 				A1F059062372A4B60034C7D0 /* XCTestManifests.swift in Sources */,
 				A124B0D92373E33A0000919C /* TestHTTPClientURLSession.swift in Sources */,
 				A124B0D62373D9470000919C /* UsersViewTests.swift in Sources */,
+				0F1C9F8725898C89000C12FD /* ResponseDecodingTests.swift in Sources */,
 				A1BF294E2387883E00CFC458 /* MillisecondsTests.swift in Sources */,
 				A1C42B6623850CF2004E33B9 /* HTTPClientDownloadRequestTests.swift in Sources */,
 				0F9D710224458EBD0053C6FD /* MetricsViewTests.swift in Sources */,

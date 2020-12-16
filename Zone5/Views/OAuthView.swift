@@ -5,10 +5,12 @@ public class OAuthView: APIView {
 	private enum Endpoints: String, InternalRequestEndpoint {
 		case accessToken = "/rest/oauth/access_token"
 		case adhocAccessToken = "/rest/oauth/newtoken/{clientID}"
+		case passwordComplexity = "/rest/auth/password-complexity"
 
 		var requiresAccessToken: Bool {
 			switch self {
 			case .accessToken: return false
+			case .passwordComplexity: return false
 			case .adhocAccessToken: return true
 			}
 		}
@@ -120,9 +122,14 @@ public class OAuthView: APIView {
 		}
 	}
 	
+	@discardableResult
 	public func adhocAccessToken(for clientID: String, completion: @escaping (_ result: Result<OAuthToken, Zone5.Error>) -> Void) -> PendingRequest? {
 		let endpoint = Endpoints.adhocAccessToken.replacingTokens(["clientID": clientID])
 		return get(endpoint, with: completion)
 	}
 
+	@discardableResult
+	public func passwordComplexity(completion: @escaping (_ result: Result<String, Zone5.Error>) -> Void) -> PendingRequest? {
+		return get(Endpoints.passwordComplexity, with: completion)
+	}
 }

@@ -81,7 +81,7 @@ final public class Zone5HTTPClient {
 	/// - Parameters:
 	///   - completion: Function called with errors that are thrown in the `block`.
 	///   - block: The function containing the work to perform. It receives a strong copy of the parent `Zone5` class, and the configured `baseURL`.
-	private func execute<T>(with completion: (_ result: Result<T, Zone5.Error>) -> Void, _ block: (_ zone5: Zone5) throws -> PendingRequest) -> PendingRequest? {
+	private func execute<T>(with completion: @escaping (_ result: Result<T, Zone5.Error>) -> Void, _ block: (_ zone5: Zone5) throws -> PendingRequest) -> PendingRequest? {
 		do {
 			guard let zone5 = zone5, zone5.isConfigured else {
 				throw Zone5.Error.invalidConfiguration
@@ -91,10 +91,10 @@ final public class Zone5HTTPClient {
 		}
 		catch {
 			if let error = error as? Zone5.Error {
-				completion(.failure(error))
+				complete(completion, with: (.failure(error)))
 			}
 			else {
-				completion(.failure(.unknown))
+				complete(completion, with: (.failure(.unknown)))
 			}
 			return nil
 		}
@@ -240,10 +240,11 @@ final public class Zone5HTTPClient {
 				
 				if let resources = try? cacheURL.resourceValues(forKeys:[.fileSizeKey]), resources.fileSize! > 0 {
 					if (200..<400).contains(response.statusCode) {
-						// success case - the file is the download
+						// success case - the file is the download. Pass this through the async queue directly
+						// because we want to delete the file afterwards
 						Zone5HTTPClient.clientHandlerQueue.async {
 							defer { try? FileManager.default.removeItem(at: cacheURL) }
-							self?.complete(completion, with: .success(cacheURL))
+							completion(.success(cacheURL))
 						}
 						return
 					} else if let data = try? Data(contentsOf: cacheURL) {
@@ -358,6 +359,11 @@ extension JSONDecoder {
 				return .failure(.serverError(decodedMessage))
 			}
 			catch {
+				// maybe it is a raw (non json compliant) string. Try decoding it ourselves
+				if expectedType == String.self, let decodedValue = String(data: data, encoding: .utf8) {
+					return .success(decodedValue as! T)
+				}
+				
 				// Decoding as a `ServerMessage` also failed, so we should pass on the original error.
 				// Getting this far typically means there's a problem in the SDK.
 				return .failure(.failedDecodingResponse(originalError))
