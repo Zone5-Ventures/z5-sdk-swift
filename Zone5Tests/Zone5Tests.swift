@@ -70,6 +70,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(rawValue: "123"))
 		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenOnChanged() {
@@ -81,6 +82,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(token: "123", refresh: "zxc", tokenExp: 4))
 		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenOnChanged2() {
@@ -92,6 +94,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(token: "123", refresh: "zxc", tokenExp: 5))
 		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenOnChanged3() {
@@ -103,6 +106,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(token: "123", refresh: "zxc1", tokenExp: 4))
 		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenUpdatedOnNil() {
@@ -114,6 +118,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: nil)
 		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertNil(z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenUpdatedOnNil2() {
@@ -125,6 +130,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(token: "123", refresh: "zxc", tokenExp: 4))
 		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenNotUpdatedWhenSame() {
@@ -135,6 +141,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(rawValue: "123"))
 		waitForExpectations(timeout: 1, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenNotUpdatedWhenSame2() {
@@ -145,6 +152,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(token: "123", refresh: "zxc", tokenExp: 4))
 		waitForExpectations(timeout: 1, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenNotUpdatedWhenSameNil() {
@@ -155,6 +163,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: nil)
 		waitForExpectations(timeout: 1, handler: nil)
+		XCTAssertNil(z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenOnChangedAlt() {
@@ -166,6 +175,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthTokenAlt(rawValue: "123"))
 		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenOnChangedAlt2() {
@@ -177,6 +187,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(rawValue: "123"))
 		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenOnChangedAlt3() {
@@ -188,6 +199,7 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthTokenAlt(rawValue: "1234"))
 		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertEqual("1234", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenOnChangedAlt4() {
@@ -201,6 +213,7 @@ class Zone5Tests: XCTestCase {
 		oauth.tokenExp = 6
 		z5.configure(for: URL(string: "http://test")!, accessToken: oauth)
 		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenOnChangedAlt5() {
@@ -214,6 +227,7 @@ class Zone5Tests: XCTestCase {
 		oauth.tokenExp = 6
 		z5.configure(for: URL(string: "http://test")!, accessToken: oauth)
 		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
 	}
 	
 	func testAccessTokenNotChangedAlt() {
@@ -224,5 +238,30 @@ class Zone5Tests: XCTestCase {
 		
 		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthTokenAlt(rawValue: "123"))
 		waitForExpectations(timeout: 1, handler: nil)
+		XCTAssertEqual("123", z5.accessToken?.rawValue)
+	}
+	
+	func testAccessTokenUsername() {
+		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(token: "123", refresh: "zxc", tokenExp: 4, username: "testuser@gmail.com"))
+		
+		self.expectation(forNotification: Zone5.authTokenChangedNotification, object: z5, handler: nil)
+		
+		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(token: "1234", refresh: "zxc", tokenExp: 4))
+		waitForExpectations(timeout: 1, handler: nil)
+		
+		XCTAssertEqual("testuser@gmail.com", z5.accessToken?.username)
+		XCTAssertEqual("1234", z5.accessToken?.rawValue)
+	}
+	
+	func testAccessTokenNewUsername() {
+		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(token: "123", refresh: "zxc", tokenExp: 4, username: "testuser@gmail.com"))
+		
+		self.expectation(forNotification: Zone5.authTokenChangedNotification, object: z5, handler: nil)
+		
+		z5.configure(for: URL(string: "http://test")!, accessToken: OAuthToken(token: "1234", refresh: "zxc", tokenExp: 4, username: "newuser"))
+		waitForExpectations(timeout: 1, handler: nil)
+		
+		XCTAssertEqual("newuser", z5.accessToken?.username)
+		XCTAssertEqual("1234", z5.accessToken?.rawValue)
 	}
 }

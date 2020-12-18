@@ -50,7 +50,7 @@ struct ContentView: View {
 
 		let baseURL = keyValueStore.baseURL
 		if !keyValueStore.clientID.isEmpty, !keyValueStore.clientSecret.isEmpty {
-			apiClient.configure(for: baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret, accessToken: OAuthToken(token: keyValueStore.token, refresh: keyValueStore.refresh, tokenExp: keyValueStore.tokenExp))
+			apiClient.configure(for: baseURL, clientID: keyValueStore.clientID, clientSecret: keyValueStore.clientSecret, accessToken: OAuthToken(token: keyValueStore.token, refresh: keyValueStore.refresh, tokenExp: keyValueStore.tokenExp, username: keyValueStore.userEmail))
 		}
 		else {
 			apiClient.configure(for: baseURL, accessToken: OAuthToken(token: keyValueStore.token, refresh: keyValueStore.refresh, tokenExp: keyValueStore.tokenExp))

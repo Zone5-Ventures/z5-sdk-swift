@@ -60,7 +60,7 @@ internal class URLRequestInterceptor: URLProtocol {
 				// recheck TTL once inside mutex block, cos it might have been updated by another refresh while we were waiting for mutex
 				if let token = zone5.accessToken as? OAuthToken, let refresh = token.refreshToken, !refresh.isEmpty,
                    let expiresAt = token.tokenExp,
-                   let username = self.extractUsername(from: token.accessToken),
+				   let username = token.username ?? self.extractUsername(from: token.accessToken),
 				   expiresAt < Date().addingTimeInterval(URLRequestInterceptor.refreshExpiresInThreshold).milliseconds.rawValue {
 					zone5.oAuth.refreshAccessToken(username: username) { result in
 						// note that refresh does not require auth so it will not cyclicly enter this path

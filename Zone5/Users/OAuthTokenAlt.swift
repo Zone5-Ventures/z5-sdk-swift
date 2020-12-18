@@ -16,7 +16,9 @@ public struct OAuthTokenAlt: Codable, AccessToken {
 	public var token: String
 	
 	/// timestamp of when this token expires, ms since epoch
-	public var tokenExp: Int? 
+	public var tokenExp: Int?
+	
+	public var username: String?
 	
 	public init(rawValue: String) {
 		token = rawValue

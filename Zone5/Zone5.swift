@@ -30,7 +30,11 @@ final public class Zone5 {
 	/// during a previous session.
 	public internal(set) var accessToken: AccessToken? {
 		didSet {
-			if let token = accessToken, !token.equals(oldValue) {
+			if var token = accessToken, !token.equals(oldValue) {
+				if token.username == nil {
+					token.username = oldValue?.username
+					accessToken = token
+				}
 				notificationCenter.post(name: Zone5.authTokenChangedNotification, object: self, userInfo: [
 					"accessToken": token
 				])
