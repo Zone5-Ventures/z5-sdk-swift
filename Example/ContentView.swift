@@ -100,6 +100,9 @@ struct ContentView: View {
 							completion(.failure(.requiresAccessToken))
 						}
 					}
+					EndpointLink<Bool>("Check User Exists") { client, completion in
+						client.users.isEmailRegistered(email: keyValueStore.userEmail, completion: completion)
+					}
 					EndpointLink<User>("Me") { client, completion in
 						client.users.me { value in
 							switch value {
@@ -148,7 +151,7 @@ struct ContentView: View {
 								completion(value)
 							}
 						} else {
-							completion(.failure(.unknown))
+							completion(.failure(.invalidConfiguration))
 						}
 					}
 					EndpointLink<Zone5.VoidReply>("Delete last registered Account (if any)") { client, completion in
@@ -160,9 +163,6 @@ struct ContentView: View {
 					}
 				}
 				Section(header: Text("Auth"), footer: Text("Note that Register New User with Cognito makes an immediately usable user but with Gigya it requires a second auth step of going to the email for the user and clicking confirm email")) {
-					EndpointLink<Bool>("Check User Exists") { client, completion in
-						client.users.isEmailRegistered(email: keyValueStore.userEmail, completion: completion)
-					}
 					EndpointLink<Bool>("Reset Password") { client, completion in
 						client.users.resetPassword(email: keyValueStore.userEmail, completion: completion)
 					}
@@ -180,7 +180,7 @@ struct ContentView: View {
 								}
 							}
 						} else {
-							completion(.failure(.requiresAccessToken))
+							completion(.failure(.invalidConfiguration))
 						}
 					}
 					EndpointLink<OAuthTokenAlt>("Refresh Gigya Token") { client, completion in
@@ -212,8 +212,16 @@ struct ContentView: View {
 					EndpointLink<OAuthToken>("Get Adhoc Access Token") { client, completion in
 						client.oAuth.adhocAccessToken(for: "wahooride", completion: completion)
 					}
+					EndpointLink<Zone5.VoidReply>("Resend email confirmation") { client, completion in
+						let email = keyValueStore.userEmail
+						if !email.isEmpty {
+							client.users.reconfirmEmail(email: email, completion: completion)
+						} else {
+							completion(.failure(.invalidConfiguration))
+						}
+					}
 					EndpointLink<String>("Get Password Complexity Regex") { client, completion in
-						client.oAuth.passwordComplexity(completion: completion)
+						client.users.passwordComplexity(completion: completion)
 					}
 				}
 				Section(header: Text("Activities"), footer: Text("Attempting to view \"Next Page\" before performing a legitimate search request—such as by opening the \"Last 30 days\" screen—will return an empty result.")) {

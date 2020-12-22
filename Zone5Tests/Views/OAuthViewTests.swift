@@ -93,31 +93,4 @@ class OAuthViewTests: XCTestCase {
 			}
 		}
 	}
-	
-	func testPasswordComplexity() {
-		let expected = #"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"#
-		
-		let tests = [expected]
-		execute(with: tests) { client, _, urlSession, expected in
-			
-			urlSession.dataTaskHandler = { request in
-				XCTAssertEqual(request.url?.path, "/rest/auth/password-complexity")
-				XCTAssertNil(request.allHTTPHeaderFields?["Authorization"])
-
-				return .success(expected)
-			}
-
-			client.oAuth.passwordComplexity() { result in
-				switch result {
-				case .success(let regex):
-					XCTAssertEqual(regex, expected)
-					XCTAssertEqual(regex, expected)
-					XCTAssertEqual(regex, expected)
-					
-				default:
-					XCTFail()
-				}
-			}
-		}
-	}
 }

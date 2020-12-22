@@ -17,6 +17,8 @@ public class UsersView: APIView {
 		case setPreferences = "/rest/users/set/UserPreferences"
 		case getPreferences = "/rest/users/prefs/{userID}"
 		case getEmailStatus = "/rest/auth/status"
+		case passwordComplexity = "/rest/auth/password-complexity"
+		case reconfirmEmail = "/rest/auth/reconfirm"
 
 		var requiresAccessToken: Bool {
 			switch self {
@@ -25,6 +27,8 @@ public class UsersView: APIView {
 			case .registerUser: return false
 			case .passwordReset: return false
 			case .getEmailStatus: return false
+			case .passwordComplexity: return false
+			case .reconfirmEmail: return false
 			default: return true
 			}
 		}
@@ -178,5 +182,19 @@ public class UsersView: APIView {
 		]
 		
 		return get(Endpoints.getEmailStatus, parameters: params, with: completion)
+	}
+	
+	@discardableResult
+	public func passwordComplexity(completion: @escaping (_ result: Result<String, Zone5.Error>) -> Void) -> PendingRequest? {
+		return get(Endpoints.passwordComplexity, with: completion)
+	}
+	
+	@discardableResult
+	public func reconfirmEmail(email: String, completion: @escaping (_ result: Result<Zone5.VoidReply, Zone5.Error>) -> Void) -> PendingRequest? {
+		let params: URLEncodedBody = [
+			"email": email,
+		]
+		
+		return get(Endpoints.reconfirmEmail, parameters: params, with: completion)
 	}
 }

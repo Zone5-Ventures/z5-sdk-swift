@@ -45,7 +45,10 @@ struct Request {
 			}
 
 			components.queryItems = queryParams.queryItems
+			// URLComponents does not encode "+". Need to do manually
+			components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
 			request.url = components.url
+	
 		}
         
 		// if there are headers, add it to the request
