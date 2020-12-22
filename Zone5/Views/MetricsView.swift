@@ -9,7 +9,7 @@
 import Foundation
 
 public class MetricsView: APIView {
-	private enum Endpoints: String, RequestEndpoint {
+	private enum Endpoints: String, InternalRequestEndpoint {
 		case metrics = "/rest/reports/metrics/summary/get";
 	}
 

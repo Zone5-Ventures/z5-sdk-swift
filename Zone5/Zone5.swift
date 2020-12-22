@@ -30,7 +30,11 @@ final public class Zone5 {
 	/// during a previous session.
 	public internal(set) var accessToken: AccessToken? {
 		didSet {
-			if let token = accessToken, !token.equals(oldValue) {
+			if var token = accessToken, !token.equals(oldValue) {
+				if token.username == nil {
+					token.username = oldValue?.username
+					accessToken = token
+				}
 				notificationCenter.post(name: Zone5.authTokenChangedNotification, object: self, userInfo: [
 					"accessToken": token
 				])
@@ -39,6 +43,8 @@ final public class Zone5 {
 			}
 		}
 	}
+    
+    public var debugLogging: Bool = false
 
 	/// The root URL for the server that we want to communicate with.
 	/// - Note: This value can be set using the `configure(for:clientID:clientSecret:)` method.
@@ -169,6 +175,11 @@ final public class Zone5 {
 	/// A collection of API endpoints related to payments.
 	public lazy var payments: PaymentsView = {
 		return PaymentsView(zone5: self)
+	}()
+	
+	/// A collection of functions to call API endpoints to a server external to Zone5
+	public lazy var external: ExternalView = {
+		return ExternalView(zone5: self)
 	}()
 
 	// MARK: Errors

@@ -2,7 +2,7 @@ import Foundation
 
 public class RoutesView: APIView {
 
-	private enum Endpoints: String, RequestEndpoint {
+	private enum Endpoints: String, InternalRequestEndpoint {
 		case search = "/rest/users/route/search/{offset}/{count}";
 		case next = "/rest/users/route/page/{offset}/{count}";
 		case summary = "/rest/users/route/get/{routeID}/0";

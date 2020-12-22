@@ -10,7 +10,7 @@ import Foundation
 
 public class PaymentsView: APIView {
 
-	private enum Endpoints: String, RequestEndpoint {
+	private enum Endpoints: String, InternalRequestEndpoint {
 		case iapProductIds = "/rest/apps/products{app}"
 		case iapTransactionVerify = "/rest/payments/verification/verify{app}";
 	}

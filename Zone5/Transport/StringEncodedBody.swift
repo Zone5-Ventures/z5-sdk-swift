@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StringEncodedBody: JSONEncodedBody {
+public struct StringEncodedBody: JSONEncodedBody {
 	
 	private let textBody: String
 	
@@ -18,7 +18,7 @@ struct StringEncodedBody: JSONEncodedBody {
 	
 	// MARK: RequestBody
 
-	func encodedData() throws -> Data {
+	public func encodedData() throws -> Data {
 		guard let data = textBody.data(using: .utf8) else {
 			throw Error.requiresLossyConversion
 		}

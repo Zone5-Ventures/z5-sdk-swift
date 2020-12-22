@@ -10,6 +10,7 @@ import Foundation
 @testable import Zone5
 
 class TestHTTPClientURLSession: HTTPClientURLSession {
+	
 	enum Result<Success> {
 		case success(Success)
 		case message(String, statusCode: Int)
@@ -140,15 +141,17 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 			case .none:
 				fatalError("Expected an `downloadTaskHandler` to be defined.")
 			case .message(let message, let statusCode):
-				let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("dataResponse.tmp")
+				
+				let response = HTTPURLResponse.init(url: request.url!, statusCode: statusCode, httpVersion: "HTTP/1.1", headerFields: [
+					"Content-Type": "application/json",
+				])!
+				
+				let tempURL = Zone5HTTPClient.downloadsDirectory.appendingPathComponent(response.suggestedFilename!)
 				let json = "{\"message\": \"\(message)\"}"
 				try! json.write(to: tempURL, atomically: true, encoding: .utf8)
 
-				let response = HTTPURLResponse.init(url: request.url!, statusCode: statusCode, httpVersion: "HTTP/1.1", headerFields: [
-					"Content-Type": "application/json",
-				])
 
-				completionHandler(tempURL, response!, nil)
+				completionHandler(tempURL, response, nil)
 			case .failure(let json, let statusCode):
 				let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("dataResponse.tmp")
 				try! json.write(to: tempURL, atomically: true, encoding: .utf8)
@@ -167,9 +170,12 @@ class TestHTTPClientURLSession: HTTPClientURLSession {
 				let response = HTTPURLResponse.init(url: request.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: [
 					"Content-Disposition": "attachment; filename=\"\(url.lastPathComponent)\"",
 					"Content-Type": "application/octet-stream",
-				])
+				])!
+				
+				let copy = Zone5HTTPClient.downloadsDirectory.appendingPathComponent(response.suggestedFilename!)
+				try? FileManager.default.copyItem(at: url, to: copy)
 
-				completionHandler(url, response!, nil)
+				completionHandler(url, response, nil)
 			}
 		}
 	}

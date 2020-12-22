@@ -262,7 +262,7 @@ class UsersViewTests: XCTestCase {
 	}
 	
 	func testDelete() {
-		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<VoidReply, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
 				// delete requires a token, so this will fail authentication
 				token: nil,
@@ -289,7 +289,7 @@ class UsersViewTests: XCTestCase {
 				secret: nil,
 				json: "",
 				expectedResult: .success {
-					return VoidReply()
+					return Zone5.VoidReply()
 				}
 			)
 		]
@@ -517,7 +517,7 @@ class UsersViewTests: XCTestCase {
 	}
 	
 	func testChangePassword() {
-		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<VoidReply, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
 				// changepassword requires a token, so this will fail authentication
 				token: nil,
@@ -535,7 +535,7 @@ class UsersViewTests: XCTestCase {
 				secret: nil,
 				json: "true",
 				expectedResult: .success {
-					return VoidReply()
+					return Zone5.VoidReply()
 				}
 			),
 			(
@@ -575,7 +575,7 @@ class UsersViewTests: XCTestCase {
 	}
 	
 	func testChangePasswordSpecialized() {
-		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<VoidReply, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
 				// changepassword requires a token, so this will fail authentication
 				token: nil,
@@ -593,7 +593,7 @@ class UsersViewTests: XCTestCase {
 				secret: nil,
 				json: "",
 				expectedResult: .success {
-					return VoidReply()
+					return Zone5.VoidReply()
 				}
 			),
 			(
@@ -869,6 +869,54 @@ class UsersViewTests: XCTestCase {
 					XCTAssertEqual(client.accessToken?.rawValue, "1234567890")
 				default:
 					print(result, test.expectedResult)
+					XCTFail()
+				}
+			}
+		}
+	}
+	
+	func testPasswordComplexity() {
+		let expected = #"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"#
+		
+		let tests = [expected]
+		execute(with: tests) { client, _, urlSession, expected in
+			
+			urlSession.dataTaskHandler = { request in
+				XCTAssertEqual(request.url?.path, "/rest/auth/password-complexity")
+				XCTAssertNil(request.allHTTPHeaderFields?["Authorization"])
+
+				return .success(expected)
+			}
+
+			client.users.passwordComplexity() { result in
+				switch result {
+				case .success(let regex):
+					XCTAssertEqual(regex, expected)
+					
+				default:
+					XCTFail()
+				}
+			}
+		}
+	}
+	
+	func testReconfirm() {
+		let tests = [""]
+		execute(with: tests) { client, _, urlSession, expected in
+			
+			urlSession.dataTaskHandler = { request in
+				XCTAssertEqual(request.url?.path, "/rest/auth/reconfirm")
+				XCTAssertNil(request.allHTTPHeaderFields?["Authorization"])
+				XCTAssertEqual(request.url?.query, "email=test%2Bplus@gmail.com")
+
+				return .success("")
+			}
+
+			client.users.reconfirmEmail(email: "test+plus@gmail.com") { result in
+				switch result {
+				case .success(_):
+					XCTAssertTrue(true)
+				default:
 					XCTFail()
 				}
 			}

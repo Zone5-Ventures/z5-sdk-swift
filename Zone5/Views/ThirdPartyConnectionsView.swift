@@ -9,7 +9,7 @@
 import Foundation
 
 public class ThirdPartyConnectionsView: APIView {
-	private enum Endpoints: String, RequestEndpoint {
+	private enum Endpoints: String, InternalRequestEndpoint {
 		case setThirdPartyConnection = "/rest/users/connections/api/v1/live_activities/set_third_party_token"
 		case hasThirdPartyConnection = "/rest/users/connections/api/v1/live_activities/has_third_party_token"
 		case removeThirdPartyConnection = "/rest/users/connections/api/v1/live_activities/delete_third_party_token"
@@ -35,7 +35,7 @@ public class ThirdPartyConnectionsView: APIView {
 	/// - Parameters:
 	/// - token: 3rd party push token to deregister
 	@discardableResult
-	public func deregisterDeviceWithThirdParty(token: String, completion: @escaping Zone5.ResultHandler<VoidReply>) -> PendingRequest? {
+	public func deregisterDeviceWithThirdParty(token: String, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
 		let endpoint = Endpoints.deregisterDeviceWithThirdParty.replacingTokens(["token": token])
 		return delete(endpoint, with: completion)
 	}

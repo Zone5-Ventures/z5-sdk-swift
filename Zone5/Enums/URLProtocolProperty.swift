@@ -8,11 +8,13 @@
 
 import Foundation
 
-internal enum URLProtocolProperty: String {
+internal enum URLProtocolProperty: String, CaseIterable {
 	case fileURL
 	case requiresAccessToken
 	case zone5
 	case taskType
+	case isZone5Endpoint
+	case progressHandler
 }
 
 internal enum URLSessionTaskType {

@@ -2,7 +2,7 @@ import Foundation
 
 public class UsersView: APIView {
 
-	internal enum Endpoints: String, RequestEndpoint {
+	internal enum Endpoints: String, InternalRequestEndpoint {
 		case me = "/rest/users/me"
 		case deleteUser = "/rest/users/delete/{userID}"
 		case setUser = "/rest/users/set/User"
@@ -17,6 +17,8 @@ public class UsersView: APIView {
 		case setPreferences = "/rest/users/set/UserPreferences"
 		case getPreferences = "/rest/users/prefs/{userID}"
 		case getEmailStatus = "/rest/auth/status"
+		case passwordComplexity = "/rest/auth/password-complexity"
+		case reconfirmEmail = "/rest/auth/reconfirm"
 
 		var requiresAccessToken: Bool {
 			switch self {
@@ -25,6 +27,8 @@ public class UsersView: APIView {
 			case .registerUser: return false
 			case .passwordReset: return false
 			case .getEmailStatus: return false
+			case .passwordComplexity: return false
+			case .reconfirmEmail: return false
 			default: return true
 			}
 		}
@@ -44,7 +48,7 @@ public class UsersView: APIView {
 	
 	/// Delete a user account
 	@discardableResult
-	public func deleteAccount(userID: Int, completion: @escaping Zone5.ResultHandler<VoidReply>) -> PendingRequest? {
+	public func deleteAccount(userID: Int, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
 		let endpoint = Endpoints.deleteUser.replacingTokens(["userID": userID])
 		return get(endpoint, with: completion)
 	}
@@ -112,7 +116,7 @@ public class UsersView: APIView {
 	}
 	
 	/// Change a user's password - oldPassword is only required in Specialized environment
-	public func changePassword(oldPassword: String?, newPassword: String, completion: @escaping Zone5.ResultHandler<VoidReply>) {
+	public func changePassword(oldPassword: String?, newPassword: String, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) {
 		guard let zone5 = zone5 else {
 			completion(.failure(.invalidConfiguration))
 			return
@@ -129,7 +133,7 @@ public class UsersView: APIView {
 					completion(.failure(error))
 				case .success(let result):
 					if result {
-						completion(.success(VoidReply()))
+						completion(.success(Zone5.VoidReply()))
 					} else {
 						completion(.failure(Zone5.Error.unknown))
 					}
@@ -178,5 +182,19 @@ public class UsersView: APIView {
 		]
 		
 		return get(Endpoints.getEmailStatus, parameters: params, with: completion)
+	}
+	
+	@discardableResult
+	public func passwordComplexity(completion: @escaping (_ result: Result<String, Zone5.Error>) -> Void) -> PendingRequest? {
+		return get(Endpoints.passwordComplexity, with: completion)
+	}
+	
+	@discardableResult
+	public func reconfirmEmail(email: String, completion: @escaping (_ result: Result<Zone5.VoidReply, Zone5.Error>) -> Void) -> PendingRequest? {
+		let params: URLEncodedBody = [
+			"email": email,
+		]
+		
+		return get(Endpoints.reconfirmEmail, parameters: params, with: completion)
 	}
 }
