@@ -65,6 +65,9 @@ class UsersViewTests: XCTestCase {
 	}
 	
 	func testLogin() {
+		var serverMessage = Zone5.Error.ServerMessage(message: "this is an error", statusCode: 401)
+		serverMessage.errors = [Zone5.Error.ServerMessage.ServerError(field: "a field", message: "a message", code: 111)]
+		
 		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, accept: [String]?, json: String, expectedResult: Result<LoginResponse, Zone5.Error>)] = [
 			(
 				// this test is for a host that requires client and secret, which is not set, so this should fail
@@ -75,6 +78,16 @@ class UsersViewTests: XCTestCase {
 				accept: nil,
 				json: "{\"user\": {\"id\": 12345678, \"email\": \"jame.smith@example.com\", \"firstname\": \"Jane\", \"lastname\": \"Smith\"}, \"token\": \"1234567890\"}",
 				expectedResult: .failure(.invalidConfiguration)
+			),
+			(
+				// simulate a server error
+				token: nil,
+				host: "http://google.com",
+				clientId: "FAIL",
+				secret: "FAIL",
+				accept: nil,
+				json: "{\"message\": \"this is an error\", \"statusCode\": 401, \"errors\": [{\"field\": \"a field\", \"code\":111, \"message\":\"a message\"}]}",
+				expectedResult: .failure(.serverError(serverMessage))
 			),
 			(
 				// this test is for a host that does NOT require client and secret, which is not set, and should pass without them
@@ -145,6 +158,10 @@ class UsersViewTests: XCTestCase {
 			
 			urlSession.dataTaskHandler = { request in
 				XCTAssertEqual(request.url?.path, UsersView.Endpoints.login.rawValue)
+				if test.clientId == "FAIL" {
+					return .failure(test.json, statusCode: 401)
+				}
+				
 				return .success(test.json)
 			}
 
@@ -154,6 +171,19 @@ class UsersViewTests: XCTestCase {
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
 					XCTAssertNil(client.accessToken)
+					
+					if case let Zone5.Error.serverError(message1) = lhs, case let Zone5.Error.serverError(message2) = rhs {
+						XCTAssertEqual(message1, message2)
+						XCTAssertEqual(message1.error, message2.error)
+						XCTAssertEqual(message1.statusCode, message2.statusCode)
+						XCTAssertEqual(message1.reason, message2.reason)
+						XCTAssertEqual(message1.errors, message2.errors)
+					} else if case Zone5.Error.invalidConfiguration = lhs, case Zone5.Error.invalidConfiguration = rhs {
+						break;
+					} else {
+						XCTFail()
+					}
+					
 				case (.success(let lhs), .success(let rhs)):
 					XCTAssertEqual(lhs.user!.id, rhs.user!.id)
 					XCTAssertEqual(lhs.user!.uuid, rhs.user!.uuid)
@@ -232,7 +262,7 @@ class UsersViewTests: XCTestCase {
 	}
 	
 	func testDelete() {
-		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<VoidReply, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
 				// delete requires a token, so this will fail authentication
 				token: nil,
@@ -259,7 +289,7 @@ class UsersViewTests: XCTestCase {
 				secret: nil,
 				json: "",
 				expectedResult: .success {
-					return VoidReply()
+					return Zone5.VoidReply()
 				}
 			)
 		]
@@ -487,7 +517,7 @@ class UsersViewTests: XCTestCase {
 	}
 	
 	func testChangePassword() {
-		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<VoidReply, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
 				// changepassword requires a token, so this will fail authentication
 				token: nil,
@@ -505,7 +535,7 @@ class UsersViewTests: XCTestCase {
 				secret: nil,
 				json: "true",
 				expectedResult: .success {
-					return VoidReply()
+					return Zone5.VoidReply()
 				}
 			),
 			(
@@ -545,7 +575,7 @@ class UsersViewTests: XCTestCase {
 	}
 	
 	func testChangePasswordSpecialized() {
-		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<VoidReply, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, host: String, clientId: String?, secret: String?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
 				// changepassword requires a token, so this will fail authentication
 				token: nil,
@@ -563,7 +593,7 @@ class UsersViewTests: XCTestCase {
 				secret: nil,
 				json: "",
 				expectedResult: .success {
-					return VoidReply()
+					return Zone5.VoidReply()
 				}
 			),
 			(
@@ -839,6 +869,54 @@ class UsersViewTests: XCTestCase {
 					XCTAssertEqual(client.accessToken?.rawValue, "1234567890")
 				default:
 					print(result, test.expectedResult)
+					XCTFail()
+				}
+			}
+		}
+	}
+	
+	func testPasswordComplexity() {
+		let expected = #"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"#
+		
+		let tests = [expected]
+		execute(with: tests) { client, _, urlSession, expected in
+			
+			urlSession.dataTaskHandler = { request in
+				XCTAssertEqual(request.url?.path, "/rest/auth/password-complexity")
+				XCTAssertNil(request.allHTTPHeaderFields?["Authorization"])
+
+				return .success(expected)
+			}
+
+			client.users.passwordComplexity() { result in
+				switch result {
+				case .success(let regex):
+					XCTAssertEqual(regex, expected)
+					
+				default:
+					XCTFail()
+				}
+			}
+		}
+	}
+	
+	func testReconfirm() {
+		let tests = [""]
+		execute(with: tests) { client, _, urlSession, expected in
+			
+			urlSession.dataTaskHandler = { request in
+				XCTAssertEqual(request.url?.path, "/rest/auth/reconfirm")
+				XCTAssertNil(request.allHTTPHeaderFields?["Authorization"])
+				XCTAssertEqual(request.url?.query, "email=test%2Bplus@gmail.com")
+
+				return .success("")
+			}
+
+			client.users.reconfirmEmail(email: "test+plus@gmail.com") { result in
+				switch result {
+				case .success(_):
+					XCTAssertTrue(true)
+				default:
 					XCTFail()
 				}
 			}

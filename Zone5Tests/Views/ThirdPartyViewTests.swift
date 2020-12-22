@@ -243,7 +243,7 @@ class ThirdPartyViewTests: XCTestCase {
 	}
 	
 	func testDeregisterDeviceWithThirdParty() {
-		let tests: [(token: AccessToken?, json: String, expectedResult: Result<VoidReply, Zone5.Error>)] = [
+		let tests: [(token: AccessToken?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
 				token: nil,
 				json: "{}",
@@ -253,7 +253,7 @@ class ThirdPartyViewTests: XCTestCase {
 				token: OAuthToken(rawValue: UUID().uuidString),
 				json: "{}",
 				expectedResult: .success {
-					return VoidReply()
+					return Zone5.VoidReply()
 				}
 			),
 		]
@@ -308,7 +308,7 @@ class ThirdPartyViewTests: XCTestCase {
 				return .success(test.json)
 			}
 
-			let _ = client.thirdPartyConnections.getDeprecated() { result in
+			let _ = client.userAgents.getDeprecated() { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)

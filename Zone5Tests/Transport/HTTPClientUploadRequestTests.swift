@@ -1,7 +1,7 @@
 import XCTest
 @testable import Zone5
 
-final class HTTPClientUploadRequestTests: XCTestCase {
+final class Zone5HTTPClientUploadRequestTests: XCTestCase {
 
 	private let developmentAssets = Bundle.tests.urlsForDevelopmentAssets()!.filter { $0.pathExtension != "multipart" }
 
@@ -11,7 +11,7 @@ final class HTTPClientUploadRequestTests: XCTestCase {
 		configuration.clientID = nil
 		configuration.clientSecret = nil
 
-		let methods: [Request.Method] = [
+		let methods: [Zone5.Method] = [
 			.get,
 			.post,
 		]
@@ -43,7 +43,7 @@ final class HTTPClientUploadRequestTests: XCTestCase {
 		var configuration = ConfigurationForTesting()
 		configuration.accessToken = nil
 
-		let methods: [Request.Method] = [
+		let methods: [Zone5.Method] = [
 			.get,
 			.post,
 		]
@@ -71,7 +71,7 @@ final class HTTPClientUploadRequestTests: XCTestCase {
 	}
 
 	func testUnexpectedRequestBody() {
-		let parameters: [(method: Request.Method, body: RequestBody?)] = [
+		let parameters: [(method: Zone5.Method, body: RequestBody?)] = [
 			(.get, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
 			(.post, ["string": "hello world", "integer": 1234567890] as URLEncodedBody),
 		]
@@ -99,14 +99,13 @@ final class HTTPClientUploadRequestTests: XCTestCase {
 	}
 
 	func testServerFailure() {
-		let parameters: [(method: Request.Method, body: JSONEncodedBody?)] = [
+		let parameters: [(method: Zone5.Method, body: JSONEncodedBody?)] = [
 			(.get, nil),
 			(.post, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
-			request.body = parameters.body
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
 
 			let fileURL = developmentAssets.randomElement()!
 			XCTAssertNotNil(fileURL)
@@ -150,14 +149,13 @@ final class HTTPClientUploadRequestTests: XCTestCase {
 	}
 
 	func testTransportFailure() {
-		let parameters: [(method: Request.Method, body: JSONEncodedBody?)] = [
+		let parameters: [(method: Zone5.Method, body: JSONEncodedBody?)] = [
 			(.get, nil),
 			(.post, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
-			request.body = parameters.body
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
 
 			let fileURL = developmentAssets.randomElement()!
 			let transportError = Zone5.Error.unknown
@@ -200,14 +198,13 @@ final class HTTPClientUploadRequestTests: XCTestCase {
 	}
 
 	func testSuccessfulRequest() {
-		let parameters: [(method: Request.Method, body: JSONEncodedBody?)] = [
+		let parameters: [(method: Zone5.Method, body: JSONEncodedBody?)] = [
 			(.get, nil),
 			(.post, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
-			request.body = parameters.body
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
 
 			let fileURL = developmentAssets.randomElement()!
 

@@ -11,11 +11,11 @@ extension JSONEncodedBody {
 
 	// MARK: RequestBody
 
-	var contentType: String {
-		return "application/json"
+    public var contentType: String {
+        return "application/json"
 	}
 
-	func encodedData() throws -> Data {
+    public func encodedData() throws -> Data {
 		return try JSONEncoder().encode(self)
 	}
 

@@ -19,6 +19,8 @@ public struct OAuthToken: Codable, Equatable, AccessToken {
 	public var tokenType: String?
 	public var expiresIn: Int? // seconds til expiry
 	public var tokenExp: Int? // timestamp of expiry, ms since epoch
+	public var scope: String?
+	public var username: String?
 	
 	public init(rawValue: String) {
 		accessToken = rawValue
@@ -28,6 +30,7 @@ public struct OAuthToken: Codable, Equatable, AccessToken {
 	public init(loginResponse: LoginResponse) {
 		self.accessToken = loginResponse.token ?? ""
 		self.refreshToken = loginResponse.refresh
+		self.username = loginResponse.user?.email
 		self.expiresIn = loginResponse.expiresIn
 		if expiresIn == nil {
 			// only use tokenExp if expiresIn was not given.
@@ -38,17 +41,19 @@ public struct OAuthToken: Codable, Equatable, AccessToken {
 		calculateExpiry()
 	}
 	
-	public init(token: String, refresh: String? = nil, tokenExp: Int? = nil) {
+	public init(token: String, refresh: String? = nil, tokenExp: Int? = nil, username: String? = nil) {
 		self.accessToken = token
 		self.refreshToken = refresh
 		self.tokenExp = tokenExp
+		self.username = username
 		calculateExpiry()
 	}
 	
-	public init(token: String, refresh: String? = nil, expiresIn: Int) {
+	public init(token: String, refresh: String? = nil, expiresIn: Int, username: String? = nil) {
 		self.accessToken = token
 		self.refreshToken = refresh
 		self.expiresIn = expiresIn
+		self.username = username
 		calculateExpiry()
 	}
 	
@@ -79,5 +84,6 @@ public struct OAuthToken: Codable, Equatable, AccessToken {
 		case refreshToken = "refresh_token"
 		case tokenType = "token_type"
 		case expiresIn = "expires_in"
+		case scope = "scope"
 	}
 }

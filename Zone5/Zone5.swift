@@ -8,14 +8,14 @@ final public class Zone5 {
 	public static let shared = Zone5()
 
 	/// A light wrapper of the URLSession API, which enables communication with the server endpoints.
-	internal let httpClient: HTTPClient
+	internal let httpClient: Zone5HTTPClient
 
 	internal static let specializedServer: String = "api-sp.todaysplan.com.au"
 	internal static let specializedStagingServer: String = "api-sp-staging.todaysplan.com.au"
 	
 	public static let authTokenChangedNotification = Notification.Name("authTokenChangedNotification")
 	
-	init(httpClient: HTTPClient = .init()) {
+	init(httpClient: Zone5HTTPClient = .init()) {
 		self.httpClient = httpClient
 
 		httpClient.zone5 = self
@@ -30,7 +30,11 @@ final public class Zone5 {
 	/// during a previous session.
 	public internal(set) var accessToken: AccessToken? {
 		didSet {
-			if let token = accessToken, !token.equals(oldValue) {
+			if var token = accessToken, !token.equals(oldValue) {
+				if token.username == nil {
+					token.username = oldValue?.username
+					accessToken = token
+				}
 				notificationCenter.post(name: Zone5.authTokenChangedNotification, object: self, userInfo: [
 					"accessToken": token
 				])
@@ -39,6 +43,8 @@ final public class Zone5 {
 			}
 		}
 	}
+    
+    public var debugLogging: Bool = false
 
 	/// The root URL for the server that we want to communicate with.
 	/// - Note: This value can be set using the `configure(for:clientID:clientSecret:)` method.
@@ -161,9 +167,19 @@ final public class Zone5 {
 		return ThirdPartyConnectionsView(zone5: self)
 	}()
 	
+	/// A collection of API endpoints related to the calling UserAgent
+	public lazy var userAgents: UserAgentView = {
+		return UserAgentView(zone5: self)
+	}()
+	
 	/// A collection of API endpoints related to payments.
 	public lazy var payments: PaymentsView = {
 		return PaymentsView(zone5: self)
+	}()
+	
+	/// A collection of functions to call API endpoints to a server external to Zone5
+	public lazy var external: ExternalView = {
+		return ExternalView(zone5: self)
 	}()
 
 	// MARK: Errors
@@ -234,6 +250,12 @@ final public class Zone5 {
 		/// Structure that represents a message produced by the server when an error occurs.
 		public struct ServerMessage: Swift.Error, Codable, Equatable {
 
+			public struct ServerError: Codable, Equatable {
+				public var field: String?
+				public var message: String?
+				public var code: Int?
+			}
+			
 			internal init(message: String, statusCode: Int? = nil) {
 				self.message = message
 				self.statusCode = statusCode
@@ -243,6 +265,7 @@ final public class Zone5 {
 			public var reason: String?
 			public var error: String?
 			public var statusCode: Int?
+			public var errors: [ServerError]?
 
 		}
 

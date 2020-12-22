@@ -5,7 +5,7 @@ import Foundation
 /// This structure can be used all request types. For requests that can take a request body (i.e. POST), the output of
 /// the `encodedData()` method is used. In instances where this is not the case, the `description` is appended to the
 /// endpoint URL as a query string.
-struct URLEncodedBody: RequestBody, CustomStringConvertible, ExpressibleByArrayLiteral, ExpressibleByDictionaryLiteral {
+public struct URLEncodedBody: RequestBody, CustomStringConvertible, ExpressibleByArrayLiteral, ExpressibleByDictionaryLiteral {
 
 	private(set) var queryItems: [URLQueryItem]
 
@@ -15,10 +15,10 @@ struct URLEncodedBody: RequestBody, CustomStringConvertible, ExpressibleByArrayL
 
 	// MARK Custom string convertible
 
-	var description: String {
+    public var description: String {
 		return queryItems.map { item in
 			guard let encodedName = item.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-				return description
+				return item.name
 			}
 
 			if let encodedValue = item.value?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
@@ -32,13 +32,13 @@ struct URLEncodedBody: RequestBody, CustomStringConvertible, ExpressibleByArrayL
 
 	// MARK: Expressible by array literal
 
-	init(arrayLiteral elements: URLQueryItem...) {
+	public init(arrayLiteral elements: URLQueryItem...) {
 		self.init(queryItems: elements)
 	}
 
 	// MARK: Expressibly by dictionary literal
 
-	init(dictionaryLiteral elements: (String, CustomStringConvertible?)...) {
+    public init(dictionaryLiteral elements: (String, CustomStringConvertible?)...) {
         var queryItems: [URLQueryItem] = []
 
 		for (key, value) in elements {
@@ -50,9 +50,9 @@ struct URLEncodedBody: RequestBody, CustomStringConvertible, ExpressibleByArrayL
 
 	// MARK: Request parameters
 
-	let contentType = "application/x-www-form-urlencoded"
+    public let contentType = "application/x-www-form-urlencoded"
 
-	func encodedData() throws -> Data {
+    public func encodedData() throws -> Data {
 		guard let data = description.data(using: .utf8) else {
 			throw Error.requiresLossyConversion
 		}

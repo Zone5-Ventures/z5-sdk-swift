@@ -1,7 +1,7 @@
 import XCTest
 @testable import Zone5
 
-final class HTTPClientPerformRequestTests: XCTestCase {
+final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 
 	func testInvalidConfiguration() {
 		var configuration = ConfigurationForTesting()
@@ -9,7 +9,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 		configuration.clientID = nil
 		configuration.clientSecret = nil
 
-		let methods: [Request.Method] = [
+		let methods: [Zone5.Method] = [
 			.get,
 			.post,
 		]
@@ -38,7 +38,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 		var configuration = ConfigurationForTesting()
 		configuration.accessToken = nil
 
-		let methods: [Request.Method] = [
+		let methods: [Zone5.Method] = [
 			.get,
 			.post,
 		]
@@ -65,8 +65,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 
 	func testUnexpectedRequestBody() {
 		execute { zone5, httpClient, urlSession in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: .get)
-			request.body = SearchInputReport.forInstance(activityType: .workout, identifier: 12345)
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: .get, body: SearchInputReport.forInstance(activityType: .workout, identifier: 12345))
 
 			urlSession.dataTaskHandler = { urlRequest in
 				XCTFail("Request should never be performed when encountering an unexpected request body.")
@@ -84,16 +83,56 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 			}
 		}
 	}
-
-	func testServerFailure() {
-		let parameters: [(method: Request.Method, body: RequestBody?)] = [
+	
+	func testError() throws {
+		let json = "{\"message\": \"this is an error\", \"statusCode\": 401, \"errors\": [{\"field\": \"a field\", \"code\": 111, \"message\": \"a message\"}]}"
+		let error = try decode(json: json, as: Zone5.Error.ServerMessage.self)
+		XCTAssertEqual("this is an error", error.message)
+		XCTAssertEqual(401, error.statusCode)
+		XCTAssertEqual(1, error.errors?.count)
+		XCTAssertEqual("a field", error.errors![0].field)
+		XCTAssertEqual(111, error.errors![0].code)
+		XCTAssertEqual("a message", error.errors![0].message)
+		
+		let parameters: [(method: Zone5.Method, body: RequestBody?)] = [
 			(.get, nil),
 			(.post, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
-			request.body = parameters.body
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
+
+			var serverMessage = Zone5.Error.ServerMessage(message: "this is an error", statusCode: 401)
+			serverMessage.errors = [Zone5.Error.ServerMessage.ServerError(field: "a field", message: "a message", code: 111)]
+			
+			urlSession.dataTaskHandler = { urlRequest in
+				XCTAssertEqual(urlRequest.url?.path, request.endpoint.uri)
+				XCTAssertEqual(urlRequest.httpMethod, parameters.method.rawValue)
+				XCTAssertEqual(urlRequest.allHTTPHeaderFields?["Authorization"], "Bearer \(zone5.accessToken!)")
+
+				return .failure(json, statusCode: 401)
+			}
+
+			_ = httpClient.perform(request, expectedType: User.self) { result in
+				if case .failure(let error) = result,
+					case .serverError(let message) = error,
+					message == serverMessage {
+						return // Success!
+				}
+
+				XCTFail("\(parameters.method.rawValue) request unexpectedly completed with \(result).")
+			}
+		}
+	}
+
+	func testServerFailure() {
+		let parameters: [(method: Zone5.Method, body: RequestBody?)] = [
+			(.get, nil),
+			(.post, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
+		]
+
+		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
 
 			let serverMessage = Zone5.Error.ServerMessage(message: "A server error occurred.", statusCode: 500)
 
@@ -118,14 +157,13 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 	}
 
 	func testTransportFailure() {
-		let parameters: [(method: Request.Method, body: RequestBody?)] = [
+		let parameters: [(method: Zone5.Method, body: RequestBody?)] = [
 			(.get, nil),
 			(.post, SearchInputReport.forInstance(activityType: .workout, identifier: 12345)),
 		]
 
 		execute(with: parameters) { zone5, httpClient, urlSession, parameters in
-			var request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method)
-			request.body = parameters.body
+			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: parameters.method, body: parameters.body)
 
 			let transportError = Zone5.Error.unknown
 
@@ -151,7 +189,7 @@ final class HTTPClientPerformRequestTests: XCTestCase {
 	}
 
 	func testSuccessfulRequest() {
-		let parameters: [(method: Request.Method, params: URLEncodedBody?, body: RequestBody?)] = [
+		let parameters: [(method: Zone5.Method, params: URLEncodedBody?, body: RequestBody?)] = [
 			(.get, nil, nil),
 			(.get, ["string": "hello world", "integer": 1234567890] as URLEncodedBody, nil),
 			(.post, ["string": "hello world", "integer": 1234567890] as URLEncodedBody, nil),

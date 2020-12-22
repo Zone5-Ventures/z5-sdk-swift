@@ -2,12 +2,14 @@ import Foundation
 
 public class OAuthView: APIView {
 
-	private enum Endpoints: String, RequestEndpoint {
+	private enum Endpoints: String, InternalRequestEndpoint {
 		case accessToken = "/rest/oauth/access_token"
-
+		case adhocAccessToken = "/rest/oauth/newtoken/{clientID}"
+		
 		var requiresAccessToken: Bool {
 			switch self {
 			case .accessToken: return false
+			case .adhocAccessToken: return true
 			}
 		}
 	}
@@ -117,5 +119,10 @@ public class OAuthView: APIView {
 			}
 		}
 	}
-
+	
+	@discardableResult
+	public func adhocAccessToken(for clientID: String, completion: @escaping (_ result: Result<OAuthToken, Zone5.Error>) -> Void) -> PendingRequest? {
+		let endpoint = Endpoints.adhocAccessToken.replacingTokens(["clientID": clientID])
+		return get(endpoint, with: completion)
+	}
 }
