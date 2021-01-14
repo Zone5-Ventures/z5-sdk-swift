@@ -9,7 +9,7 @@
 import os.log
 
 extension OSLog {
-    private static var subsystem = Bundle.main.bundleIdentifier!
+    private static var subsystem = "com.zone5cloud.Zone5SDK"
     static let z5Log = OSLog(subsystem: subsystem, category: "Zone5SDK")
     static let z5DebugLog = OSLog(subsystem: subsystem, category: "Zone5SDK-Debug")
 }
