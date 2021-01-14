@@ -91,6 +91,13 @@ public class UsersView: APIView {
 			if let zone5 = self?.zone5, case .success(let loggedOut) = result, loggedOut {
 				// if we successfully logged out, invalidate the token
 				zone5.accessToken = nil
+				if let url = zone5.baseURL {
+					let cookieStore = HTTPCookieStorage.shared
+					for cookie in cookieStore.cookies(for: url) ?? [] {
+						z5DebugLog("logout: Deleting cookie \(cookie.name)", level: .debug)
+						cookieStore.deleteCookie(cookie)
+					}
+				}
 			}
 		}
 	}
