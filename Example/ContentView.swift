@@ -191,7 +191,7 @@ struct ContentView: View {
 					}
 					EndpointLink<LoginResponse>("Login") { client, completion in
 						let userPassword: String = self.password.password
-						client.users.login(email: keyValueStore.userEmail, password: userPassword, clientID: self.apiClient.clientID, clientSecret: self.apiClient.clientSecret) { value in
+						client.users.login(email: keyValueStore.userEmail, password: userPassword, clientID: self.apiClient.clientID, clientSecret: self.apiClient.clientSecret, accept: ["Specialized_Terms_Apps", "Specialized_Terms"]) { value in
 							switch(value) {
 								case .success(let response):
 									if let user = response.user, let id = user.id, id > 0 {
