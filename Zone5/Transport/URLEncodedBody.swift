@@ -17,11 +17,14 @@ public struct URLEncodedBody: RequestBody, CustomStringConvertible, ExpressibleB
 
     public var description: String {
 		return queryItems.map { item in
-			guard let encodedName = item.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+			var allowedCharacters: CharacterSet = .urlQueryAllowed
+			allowedCharacters.remove("+")
+			
+			guard let encodedName = item.name.addingPercentEncoding(withAllowedCharacters: allowedCharacters) else {
 				return item.name
 			}
 
-			if let encodedValue = item.value?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+			if let encodedValue = item.value?.addingPercentEncoding(withAllowedCharacters: allowedCharacters) {
 				return String(format: "%@=%@", encodedName, encodedValue)
 			}
 			else {
