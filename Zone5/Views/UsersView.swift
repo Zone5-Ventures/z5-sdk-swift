@@ -24,10 +24,9 @@ public class UsersView: APIView {
 			switch self {
 			case .login: return false
 			case .exists: return false
-			case .registerUser: return false
+			case .registerUser: return true // register can optionally accept bearer token
 			case .passwordReset: return false
 			case .getEmailStatus: return false
-			case .passwordComplexity: return false
 			case .reconfirmEmail: return false
 			default: return true
 			}

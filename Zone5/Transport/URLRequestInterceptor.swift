@@ -131,7 +131,7 @@ internal class URLRequestInterceptor: URLProtocol {
 		}
 		
 		// Sign the request with the access token if required
-		if let requiresAccessToken = request.getMeta(key: .requiresAccessToken) as? Bool, requiresAccessToken, let zone5 = zone5, let token = zone5.accessToken {
+		if let requiresAccessToken = request.getMeta(key: .requiresAccessToken) as? Bool, requiresAccessToken, let zone5 = zone5, let token = zone5.accessToken, !token.rawValue.isEmpty {
 			mutableRequest.setValue("Bearer \(token.rawValue)", forHTTPHeaderField: Zone5HttpHeader.authorization.rawValue)
 		}
 		

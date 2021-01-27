@@ -30,11 +30,8 @@ struct Request {
 		request.httpMethod = method.rawValue
 
 		// mark if token auth is required for the request
-		if endpoint.requiresAccessToken, zone5.accessToken != nil {
+		if endpoint.requiresAccessToken {
 			request = request.setMeta(key: .requiresAccessToken, value: true)
-		}
-		else if endpoint.requiresAccessToken {
-			throw Zone5.Error.requiresAccessToken
 		}
 		
 		// if there are queryParams, set them in the request. This is valid on all types.
