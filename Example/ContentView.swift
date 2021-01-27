@@ -283,7 +283,6 @@ struct ContentView: View {
 						var context = DataFileUploadContext()
 						context.equipment = .gravel
 						context.name = "Epic Ride"
-						context.startTime = .now
 						//context.bikeID = "d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c"
 
 						client.activities.upload(fileURL, context: context) { result in
