@@ -87,15 +87,22 @@ struct Request {
 		request.httpBody = nil
 
 		do {
-			var multipart = MultipartEncodedBody()
-			try multipart.appendPart(name: "filename", content: fileURL.lastPathComponent)
-			try multipart.appendPart(name: "attachment", contentsOf: fileURL)
-
-			if let body = body as? JSONEncodedBody {
-				try multipart.appendPart(name: "json", content: body)
-			}
-			else if body != nil {
-				throw Zone5.Error.unexpectedRequestBody
+			var multipart: MultipartEncodedBody
+			
+			// We may have been passed an already formed MultipartEncodedBody to use.
+			// If not, create one and attach the file.
+			if let body = body as? MultipartEncodedBody {
+				multipart = body
+			} else {
+				multipart = MultipartEncodedBody()
+				try multipart.appendPart(name: "filename", content: fileURL.lastPathComponent)
+				try multipart.appendPart(name: "attachment", contentsOf: fileURL)
+				
+				if let body = body as? JSONEncodedBody {
+					try multipart.appendPart(name: "json", content: body)
+				} else if body != nil {
+					throw Zone5.Error.unexpectedRequestBody
+				}
 			}
 
 			request.setValue(multipart.contentType, forHTTPHeaderField: "Content-Type")

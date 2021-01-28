@@ -2,7 +2,7 @@ import Foundation
 
 /// Structure used to encode multipart data for upload requests.
 /// - Note: Parts are encoded in the order that they are appended.
-struct MultipartEncodedBody: RequestBody {
+public struct MultipartEncodedBody: RequestBody {
 
 	/// Character set that can be used to generate a random `boundary` string on a per-instance basis
 	private static let boundaryCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -10,7 +10,7 @@ struct MultipartEncodedBody: RequestBody {
 	/// Boundary string used as the basis for separating the parts within the encoded multipart data.
 	var boundary: String
 
-	init() {
+	public init() {
 		boundary = "Zone5Multipart-" + (0..<15).compactMap { _ in MultipartEncodedBody.boundaryCharacters.randomElement() }
 	}
 
@@ -36,17 +36,17 @@ struct MultipartEncodedBody: RequestBody {
 		parts.append(part)
 	}
 
-	mutating func appendPart(name: String, content: MultipartDataConvertible) throws {
+	public mutating func appendPart(name: String, content: MultipartDataConvertible) throws {
 		let part = try Part(name: name, content: content)
 		append(part)
 	}
 
-	mutating func appendPart(name: String, filename: String, content: MultipartDataConvertible) throws {
+	public mutating func appendPart(name: String, filename: String, content: MultipartDataConvertible) throws {
 		let part = try Part(name: name, filename: filename, content: content)
 		append(part)
 	}
 
-	mutating func appendPart(name: String, contentsOf fileURL: URL) throws {
+	public mutating func appendPart(name: String, contentsOf fileURL: URL) throws {
 		let content = try Data(contentsOf: fileURL)
 		try appendPart(name: name, filename: fileURL.lastPathComponent, content: content)
 	}
@@ -82,11 +82,11 @@ struct MultipartEncodedBody: RequestBody {
 
 	// MARK: Request body
 
-	var contentType: String {
+	public var contentType: String {
 		return "multipart/form-data; boundary=\(boundary)"
 	}
 
-	func encodedData() throws -> Data {
+	public func encodedData() throws -> Data {
 		var output = Data()
 
 		guard let boundary = boundary.data(using: .utf8) else {
