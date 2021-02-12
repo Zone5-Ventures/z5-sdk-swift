@@ -1,6 +1,6 @@
 import Foundation
 
-public struct UserWorkoutResultChannel: Codable {
+public struct UserWorkoutResultChannel: Searchable {
 
 	/// A nice field display name
 	public var name: String?
@@ -29,7 +29,7 @@ public struct UserWorkoutResultChannel: Codable {
 		case avg
 	}
 
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }

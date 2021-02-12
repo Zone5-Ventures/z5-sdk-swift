@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct DataFileUploadIndex: Codable {
+public struct DataFileUploadIndex: Searchable {
 
 	public var id: Int
 
@@ -32,7 +32,7 @@ public struct DataFileUploadIndex: Codable {
 
 	// MARK: Encodable
 
-	private enum CodingKeys: String, CodingKey {
+	public enum CodingKeys: String, CodingKey, CaseIterable {
 		case id
 		case resultID = "resultId"
 		case timestamp = "ts"
@@ -45,4 +45,7 @@ public struct DataFileUploadIndex: Codable {
 		case qTs
 	}
 
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
+	}
 }

@@ -231,8 +231,7 @@ struct ContentView: View {
 						criteria.order = [.descending("ts")]
 
 						var parameters = SearchInput(criteria: criteria)
-						parameters.fields = ["name", "distance", "ascent", "peak3minWatts", "peak20minWatts", "channels", "sum.turboExt.battery1DecayWh", "sum.distance"]
-						parameters.fields += UserHeadunit.fields([.manufacturer, .name], prefix: "headunit")
+						parameters.fields = UserWorkoutResult.fields()
 						parameters.fields += UserWorkoutResultTurboExt.fields(prefix: "turboExt")
 						parameters.fields += UserWorkoutResultBike.fields(prefix: "bike")
 						parameters.fields += UserWorkoutResultTurbo.fields(prefix: "turbo")
@@ -254,8 +253,7 @@ struct ContentView: View {
 						let bikeIDJean1Prod = "7aaf952e-e213-42c3-aee7-e4231fdb1ff4"
 						let bikeIDJean2Prod = "71fea48c-a1c4-4477-b5f4-cbc313420f9c"
 						// jean+turbo's Specialized staging bikes
-						let bikeIDJean1Staging = "01cf97af-880b-4869-bf36-a7d7e438203d" // bikeUUid
-						let bikeIDJean2Staging = "004ac351-baff-4640-90f5-882ea2c1718e" // bikeUUid
+						let bikeIDJean1Staging = "eaa6a925-9e6e-4121-ab35-d04381f51ff4" // bikeUUid
 						// jean+turbo's prod bike
 						let bikeIDJean3Prod = "389994ba-464e-4bdd-b24e-cdb0172a6f28"
 						let dates = DateRange(name: "last 60 days", floor: Date(Date().timeIntervalSince1970.milliseconds - (60*24*60*60*1000)), ceiling: Date() + 10)
@@ -269,7 +267,7 @@ struct ContentView: View {
 						fields += UserWorkoutResultTurboExt.fields(prefix: "min.turboExt")
 						fields += UserWorkoutResultTurboExt.fields(prefix: "sum.turboExt")
 						
-						client.metrics.getBikeMetrics(ranges: [dates], fields: fields, bikeUids: [bikeIDJean1Prod, bikeIDJean2Prod, bikeIDJean3Prod, bikeIDJean2Staging, bikeIDJean1Staging, bikeIDAndrewStaging], completion: completion)
+						client.metrics.getBikeMetrics(ranges: [dates], fields: fields, bikeUids: [bikeIDJean1Prod, bikeIDJean2Prod, bikeIDJean3Prod, bikeIDJean1Staging, bikeIDAndrewStaging], completion: completion)
 					}
 				}
 				Section {
@@ -283,7 +281,7 @@ struct ContentView: View {
 						var context = DataFileUploadContext()
 						context.equipment = .gravel
 						context.name = "Epic Ride"
-						//context.bikeID = "d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c"
+						//context.bikeID = "eaa6a925-9e6e-4121-ab35-d04381f51ff4"
 
 						client.activities.upload(fileURL, context: context) { result in
 							switch result {

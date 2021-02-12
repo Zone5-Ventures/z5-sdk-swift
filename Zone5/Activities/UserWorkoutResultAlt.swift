@@ -1,7 +1,7 @@
 import Foundation
 
 /// Altitude adjusted power
-public struct UserWorkoutResultAlt: Codable {
+public struct UserWorkoutResultAlt: Searchable {
 
 	public var averageWatts: Int?
 	public var maximumWatts: Int?
@@ -21,7 +21,7 @@ public struct UserWorkoutResultAlt: Codable {
 		case kj
 	}
 
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }

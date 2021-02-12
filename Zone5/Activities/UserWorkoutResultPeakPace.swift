@@ -1,7 +1,7 @@
 import Foundation
 
 /// Peak pace
-public struct UserWorkoutResultPeakPace: Codable {
+public struct UserWorkoutResultPeakPace: Searchable {
 
 	public var peak3SecondPace: Int?
 	public var peak4SecondPace: Int?
@@ -53,7 +53,7 @@ public struct UserWorkoutResultPeakPace: Codable {
 		case peak180MinutePace = "peak180minPace"
 	}
 
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }

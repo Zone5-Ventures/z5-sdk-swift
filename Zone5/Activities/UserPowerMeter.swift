@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct UserPowerMeter: Codable {
+public struct UserPowerMeter: Searchable {
 
 	public var id: Int?
 
@@ -86,8 +86,8 @@ public struct UserPowerMeter: Codable {
 		case isRetired = "retired"
 	}
 	
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 
 }

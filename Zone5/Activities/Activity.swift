@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Activity: Codable, Hashable {
+public struct Activity: Searchable, Hashable {
 
 	/// The unique activity id.
 	public var id: Int
@@ -20,10 +20,13 @@ public struct Activity: Codable, Hashable {
 
 	// MARK: Codable
 
-	private enum CodingKeys: String, Codable, CodingKey {
+	public enum CodingKeys: String, Codable, CodingKey, CaseIterable {
 		case id
 		case activity
 		case type
 	}
 
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
+	}
 }

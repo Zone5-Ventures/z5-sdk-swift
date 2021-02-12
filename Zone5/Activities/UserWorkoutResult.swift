@@ -4,7 +4,7 @@ import Foundation
 /// specific field is requested via the Activities API.
 ///
 /// Some fields are also sport specific - and will only be set on activities of the relevant sport type.
-public struct UserWorkoutResult: Codable {
+public struct UserWorkoutResult: Searchable {
 
 	/// UserWorkoutResult.id
 	public var id: Int?
@@ -914,7 +914,7 @@ public struct UserWorkoutResult: Codable {
 		case weightedAverage = "wavg"
 	}
 
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }
