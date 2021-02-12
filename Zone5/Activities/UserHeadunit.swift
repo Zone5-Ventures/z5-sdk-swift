@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct UserHeadunit: Codable {
+public struct UserHeadunit: Searchable {
 
 	public var name: String?
 
@@ -51,7 +51,7 @@ public struct UserHeadunit: Codable {
 		case isRetired = "retired"
 	}
 	
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }

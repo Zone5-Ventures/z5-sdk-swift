@@ -1,7 +1,7 @@
 import Foundation
 
 /// By hour averages
-public struct UserWorkoutResultByHour: Codable {
+public struct UserWorkoutResultByHour: Searchable {
 
 	/// Average watts in hour 1
 	public var avgW1: Int?
@@ -95,7 +95,7 @@ public struct UserWorkoutResultByHour: Codable {
 		case kjhkg12
 	}
 
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct UserIntensityZone: Codable {
+public struct UserIntensityZone: Searchable {
 
 	public var id: Int?
 
@@ -30,7 +30,7 @@ public struct UserIntensityZone: Codable {
 		case zones
 	}
 
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }

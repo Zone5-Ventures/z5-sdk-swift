@@ -1,6 +1,6 @@
 import Foundation
 
-public struct UserWorkoutResultTurbo: Codable {
+public struct UserWorkoutResultTurbo: Searchable {
 
 	public var productName: String? // ie file_id.product_name --> SPECIALIZED_WSBC601160149N
 	public var averageMotorPower: Int?
@@ -113,8 +113,8 @@ public struct UserWorkoutResultTurbo: Codable {
 		//case bat2DecayAssist6P
 	}
 	
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 
 }

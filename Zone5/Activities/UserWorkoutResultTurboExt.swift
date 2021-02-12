@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct UserWorkoutResultTurboExt: Codable {
+public struct UserWorkoutResultTurboExt: Searchable {
 	public var minimumBattery1Temperature: Int? // celsius
 	public var averageBattery1Temperature: Int? // celsius
 	public var maximumBattery1Temperature: Int? // celsius
@@ -85,7 +85,9 @@ public struct UserWorkoutResultTurboExt: Codable {
 		case averageGPSSpeed = "avgGPSSpeed"
 	}
 	
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }
+
+

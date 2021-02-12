@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct UserIntensityZoneRange: Codable {
+public struct UserIntensityZoneRange: Searchable {
 
 	/// For zones which are relative to a percentage (ie % threshold), this is the min % for the range. For non-relative
 	/// zones (wkg, nm) this is an absolute value.
@@ -45,7 +45,7 @@ public struct UserIntensityZoneRange: Codable {
 		case zoneUnits
 	}
 
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }

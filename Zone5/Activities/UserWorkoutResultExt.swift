@@ -1,7 +1,7 @@
 import Foundation
 
 /// Extended result set
-public struct UserWorkoutResultExt: Codable {
+public struct UserWorkoutResultExt: Searchable {
 
 	public var aerobicDec: Double?
 
@@ -156,7 +156,7 @@ public struct UserWorkoutResultExt: Codable {
 		case rearTireAverage = "rearTireAvg"
 	}
 
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }

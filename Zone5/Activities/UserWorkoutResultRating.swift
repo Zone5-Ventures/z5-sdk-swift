@@ -1,7 +1,7 @@
 import Foundation
 
 /// Rating of a prescribed workout
-public struct UserWorkoutResultRating: Codable {
+public struct UserWorkoutResultRating: Searchable {
 
 	public var user: User?
 
@@ -28,7 +28,7 @@ public struct UserWorkoutResultRating: Codable {
 		case intensity
 	}
 
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }
