@@ -207,7 +207,9 @@ internal class URLRequestInterceptor: URLProtocol {
 		currentTask?.resume()
 	}
 	
-	/// Decode the Cognito token to get the username out of it. It is required (for some reason) for the cognito refresh
+	/// Decode the Cognito token to get the username out of it. It is required for the cognito refresh
+	/// note: We are now saving the username with the OAuthToken so we don't need to pull it out of
+	/// the cognito token. But if for some reason it is missing in the OAuthToken then we can try here
 	internal func extractUsername(from jwt: String) -> String? {
 		
 		enum DecodeErrors: Error {

@@ -88,7 +88,7 @@ struct ContentView: View {
 								}
 							}
 						} else {
-							completion(.failure(.requiresAccessToken))
+							completion(.failure(.invalidConfiguration))
 						}
 					}
 					EndpointLink<Bool>("Set User Preferences") { client, completion in
@@ -97,7 +97,7 @@ struct ContentView: View {
 							prefs.metric = self.metric
 							client.users.setPreferences(preferences: prefs, completion: completion)
 						} else {
-							completion(.failure(.requiresAccessToken))
+							completion(.failure(.invalidConfiguration))
 						}
 					}
 					EndpointLink<Bool>("Check User Exists") { client, completion in
@@ -162,7 +162,7 @@ struct ContentView: View {
 						}
 					}
 				}
-				Section(header: Text("Auth"), footer: Text("Note that Register New User with Cognito makes an immediately usable user but with Gigya it requires a second auth step of going to the email for the user and clicking confirm email")) {
+				Section(header: Text("Auth"), footer: Text("Note that Register New User may requires a second auth step of going to the email for the user and clicking confirm email - depends on Cognito Client Key configuration")) {
 					EndpointLink<Bool>("Reset Password") { client, completion in
 						client.users.resetPassword(email: keyValueStore.userEmail, completion: completion)
 					}

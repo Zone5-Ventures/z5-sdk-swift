@@ -161,7 +161,6 @@ public class UsersView: APIView {
 			
 			if let zone5 = self?.zone5, case .success(let token) = result {
 				// if we successfully refreshed, update the token
-				//zone5.accessToken = AccessToken(rawValue: token.token)
 				zone5.accessToken = token
 			}
 		}

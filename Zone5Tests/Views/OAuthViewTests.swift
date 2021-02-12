@@ -67,10 +67,13 @@ class OAuthViewTests: XCTestCase {
 	}
 	
 	func testAdhocToken() {
-		var expected = OAuthToken(token: "test token", expiresIn: 123)
-		expected.scope = "things"
+		var expectedAuthToken = OAuthToken(token: "test token", expiresIn: 123)
+		expectedAuthToken.scope = "things"
 		
-		let tests = [expected]
+		let tests: [(token: OAuthToken?, json: String, expectedResult: Zone5.Result<OAuthToken>)] = [
+			(token:expectedAuthToken, json:"{\"access_token\": \"test token\", \"scope\": \"things\", \"expires_in\":123}", expectedResult:.success(expectedAuthToken))
+		]
+		
 		execute(with: tests) { client, _, urlSession, expected in
 			
 			urlSession.dataTaskHandler = { request in
@@ -83,9 +86,9 @@ class OAuthViewTests: XCTestCase {
 			client.oAuth.accessToken(username: "username", password: "password") { result in
 				switch result {
 				case .success(let token):
-					XCTAssertEqual(token.accessToken, expected.accessToken)
-					XCTAssertEqual(token.expiresIn, expected.expiresIn)
-					XCTAssertEqual(token.scope, expected.scope)
+					XCTAssertEqual(token.accessToken, expectedAuthToken.accessToken)
+					XCTAssertEqual(token.expiresIn, expectedAuthToken.expiresIn)
+					XCTAssertEqual(token.scope, expectedAuthToken.scope)
 					
 				default:
 					XCTFail()

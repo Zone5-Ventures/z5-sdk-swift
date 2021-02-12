@@ -206,10 +206,6 @@ final public class Zone5 {
 		/// with your client details, which are included in calls to the Zone5 API.
 		case invalidConfiguration
 
-		/// The method called requires a user's access token for authorization, you will need to use one of the
-		/// provided methods of authentication to retrieve one, or provide a previously gathered token.
-		case requiresAccessToken
-
 		/// A request body was provided to a request that doesn't take a request body.
 		///
 		/// Typically this means that the request itself is a HTTP GET request, whereas the request body suggests that
@@ -275,7 +271,6 @@ final public class Zone5 {
 			case .unknown: return ".unknown"
 			case .invalidParameters: return ".invalidParameters"
 			case .invalidConfiguration: return ".invalidConfiguration"
-			case .requiresAccessToken: return ".requiresAccessToken"
 			case .serverError(let serverMessage): return ".serverError(message: \(serverMessage.message))"
 			case .unexpectedRequestBody: return ".unexpectedRequestBody"
 			case .missingRequestBody: return ".missingRequestBody"

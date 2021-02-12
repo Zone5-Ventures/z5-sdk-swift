@@ -9,27 +9,18 @@ final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 		configuration.clientID = nil
 		configuration.clientSecret = nil
 
-		let methods: [Zone5.Method] = [
-			.get,
-			.post,
-		]
+		for method:Zone5.Method in [.get, .post] {
+			execute(configuration: configuration) { zone5, httpClient, urlSession in
+				let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
 
-		execute(with: methods, configuration: configuration) { zone5, httpClient, urlSession, method in
-			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
+				_ = httpClient.perform(request, expectedType: User.self) { result in
+					if case .failure(let error) = result,
+						case .invalidConfiguration = error {
+							return // Success!
+					}
 
-			urlSession.dataTaskHandler = { urlRequest in
-				XCTFail("Request should never be performed when invalidly configured.")
-
-				return .error(Zone5.Error.unknown)
-			}
-
-			_ = httpClient.perform(request, expectedType: User.self) { result in
-				if case .failure(let error) = result,
-					case .invalidConfiguration = error {
-						return // Success!
+					XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
 				}
-
-				XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
 			}
 		}
 	}
@@ -38,27 +29,21 @@ final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 		var configuration = ConfigurationForTesting()
 		configuration.accessToken = nil
 
-		let methods: [Zone5.Method] = [
-			.get,
-			.post,
+		let tests: [(token: OAuthToken?, json: String, expectedResult: Zone5.Result<String>)] = [
+			(token: nil, json: "", expectedResult: .failure(.serverError(Zone5.Error.ServerMessage(message: "Unauthorized", statusCode: 401))))
 		]
 
-		execute(with: methods, configuration: configuration) { zone5, httpClient, urlSession, method in
-			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
+		for method: Zone5.Method in [.get, .post] {
+			execute(with: tests, configuration: configuration) { zone5, httpClient, urlSession, test in
+				let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
 
-			urlSession.dataTaskHandler = { urlRequest in
-				XCTFail("Request should never be performed when missing a required access token.")
+				_ = httpClient.perform(request, expectedType: User.self) { result in
+					if case .failure(let error) = result, case .serverError(let message) = error, message.statusCode == 401 {
+							return // Success!
+					}
 
-				return .error(Zone5.Error.unknown)
-			}
-
-			_ = httpClient.perform(request, expectedType: User.self) { result in
-				if case .failure(let error) = result,
-					case .requiresAccessToken = error {
-						return // Success!
+					XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
 				}
-
-				XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
 			}
 		}
 	}
@@ -66,12 +51,6 @@ final class Zone5HTTPClientPerformRequestTests: XCTestCase {
 	func testUnexpectedRequestBody() {
 		execute { zone5, httpClient, urlSession in
 			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: .get, body: SearchInputReport.forInstance(activityType: .workout, identifier: 12345))
-
-			urlSession.dataTaskHandler = { urlRequest in
-				XCTFail("Request should never be performed when encountering an unexpected request body.")
-
-				return .error(Zone5.Error.unknown)
-			}
 
 			_ = httpClient.perform(request, expectedType: User.self) { result in
 				if case .failure(let error) = result,

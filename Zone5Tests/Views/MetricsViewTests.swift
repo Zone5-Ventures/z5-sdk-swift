@@ -15,8 +15,8 @@ class MetricsViewTests: XCTestCase {
 		let tests: [(token: AccessToken?, json: String, expectedResult: Result<MappedResult<UserWorkoutResult>, Zone5.Error>)] = [
 			(
 				token: nil,
-				json: "{}",
-				expectedResult: .failure(.requiresAccessToken)
+				json: "n/a",
+				expectedResult: .failure(authFailure)
 			),
 			(
 				token: OAuthToken(rawValue: UUID().uuidString),
@@ -50,12 +50,6 @@ class MetricsViewTests: XCTestCase {
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
-			client.accessToken = test.token
-
-			urlSession.dataTaskHandler = { request in
-				XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer \(test.token?.rawValue ?? "UNKNOWN")")
-				return .success(test.json)
-			}
 
 			client.metrics.getBikeMetrics(ranges: [], fields: ["fields"], bikeUids: ["d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c"]) { result in
 				switch (result, test.expectedResult) {
@@ -80,5 +74,4 @@ class MetricsViewTests: XCTestCase {
 			}
 		}
 	}
-
 }
