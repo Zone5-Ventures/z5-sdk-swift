@@ -281,7 +281,7 @@ struct ContentView: View {
 						var context = DataFileUploadContext()
 						context.equipment = .gravel
 						context.name = "Epic Ride"
-						//context.bikeID = "eaa6a925-9e6e-4121-ab35-d04381f51ff4"
+						//context.bikeID = bikeIDJean1Staging
 
 						client.activities.upload(fileURL, context: context) { result in
 							switch result {
