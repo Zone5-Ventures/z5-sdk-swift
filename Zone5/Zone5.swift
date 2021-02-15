@@ -271,7 +271,7 @@ final public class Zone5 {
 			case .unknown: return ".unknown"
 			case .invalidParameters: return ".invalidParameters"
 			case .invalidConfiguration: return ".invalidConfiguration"
-			case .serverError(let serverMessage): return ".serverError(message: \(serverMessage.message))"
+			case .serverError(let serverMessage): return ".serverError(statusCode: \(serverMessage.statusCode ?? 0), message: \(serverMessage.message))"
 			case .unexpectedRequestBody: return ".unexpectedRequestBody"
 			case .missingRequestBody: return ".missingRequestBody"
 			case .failedEncodingRequestBody: return ".failedEncodingParameters"

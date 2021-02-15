@@ -48,7 +48,7 @@ final class Zone5HTTPClientDownloadRequestTests: XCTestCase {
 				
 				_ = httpClient.download(request) { result in
 					if case .failure(let error) = result, case .serverError(let message) = error, message.statusCode == 401 {
-							return // Success!
+						return // Success!
 					}
 
 					XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")

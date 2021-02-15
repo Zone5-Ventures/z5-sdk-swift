@@ -238,8 +238,8 @@ final public class Zone5HTTPClient {
 				
 				let cacheURL = Zone5HTTPClient.downloadsDirectory.appendingPathComponent(filename)
 				
-				if let resources = try? cacheURL.resourceValues(forKeys:[.fileSizeKey]), resources.fileSize! > 0 {
-					if (200..<400).contains(response.statusCode) {
+				if (200..<400).contains(response.statusCode) {
+					if let resources = try? cacheURL.resourceValues(forKeys:[.fileSizeKey]), resources.fileSize! > 0 {
 						// success case - the file is the download. Pass this through the async queue directly
 						// because we want to delete the file afterwards
 						Zone5HTTPClient.clientHandlerQueue.async {
@@ -247,11 +247,18 @@ final public class Zone5HTTPClient {
 							completion(.success(cacheURL))
 						}
 						return
-					} else if let data = try? Data(contentsOf: cacheURL) {
-						// server error case - the file is an error description
-						self?.complete(completion, with: decoder.decode(data, response: response, from: request, as: URL.self, debugLogging: zone5.debugLogging))
-						return
+					} else {
+						// supposed to be success but can't find file
+						self?.complete(completion, with: .failure(.unknown))
 					}
+				} else if let resources = try? cacheURL.resourceValues(forKeys:[.fileSizeKey]), resources.fileSize! > 0, let data = try? Data(contentsOf: cacheURL) {
+					// server error case - the file is an error description
+					self?.complete(completion, with: decoder.decode(data, response: response, from: request, as: URL.self, debugLogging: zone5.debugLogging))
+					return
+				} else {
+					// error case - no file to decode - use default error for statusCode
+					let message = Zone5.Error.ServerMessage(message: HTTPURLResponse.localizedString(forStatusCode: response.statusCode), statusCode: response.statusCode)
+					self?.complete(completion, with: .failure(.serverError(message)))
 				}
 				
 				// if we make it to here, something went wrong
