@@ -250,6 +250,7 @@ final public class Zone5HTTPClient {
 					} else {
 						// supposed to be success but can't find file
 						self?.complete(completion, with: .failure(.unknown))
+						return
 					}
 				} else if let resources = try? cacheURL.resourceValues(forKeys:[.fileSizeKey]), resources.fileSize! > 0, let data = try? Data(contentsOf: cacheURL) {
 					// server error case - the file is an error description
@@ -259,10 +260,8 @@ final public class Zone5HTTPClient {
 					// error case - no file to decode - use default error for statusCode
 					let message = Zone5.Error.ServerMessage(message: HTTPURLResponse.localizedString(forStatusCode: response.statusCode), statusCode: response.statusCode)
 					self?.complete(completion, with: .failure(.serverError(message)))
+					return
 				}
-				
-				// if we make it to here, something went wrong
-				self?.complete(completion, with: .failure(.unknown))
 			}
 			
 			task.resume()
