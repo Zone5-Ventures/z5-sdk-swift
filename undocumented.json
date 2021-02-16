@@ -8,6 +8,41 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 23,
+      "symbol": "Activity.CodingKeys",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 24,
+      "symbol": "Activity.CodingKeys.id",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 25,
+      "symbol": "Activity.CodingKeys.activity",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 26,
+      "symbol": "Activity.CodingKeys.type",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/Activity.swift",
+      "line": 29,
+      "symbol": "Activity.fields(_:prefix:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadContext.swift",
       "line": 11,
       "symbol": "DataFileUploadContext",
@@ -96,6 +131,90 @@
       "line": 31,
       "symbol": "DataFileUploadIndex.qTs",
       "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 35,
+      "symbol": "DataFileUploadIndex.CodingKeys",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 36,
+      "symbol": "DataFileUploadIndex.CodingKeys.id",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 37,
+      "symbol": "DataFileUploadIndex.CodingKeys.resultID",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 38,
+      "symbol": "DataFileUploadIndex.CodingKeys.timestamp",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 39,
+      "symbol": "DataFileUploadIndex.CodingKeys.filename",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 40,
+      "symbol": "DataFileUploadIndex.CodingKeys.state",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 41,
+      "symbol": "DataFileUploadIndex.CodingKeys.message",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 42,
+      "symbol": "DataFileUploadIndex.CodingKeys.result",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 43,
+      "symbol": "DataFileUploadIndex.CodingKeys.user",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 44,
+      "symbol": "DataFileUploadIndex.CodingKeys.createdTime",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 45,
+      "symbol": "DataFileUploadIndex.CodingKeys.qTs",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/DataFileUploadIndex.swift",
+      "line": 48,
+      "symbol": "DataFileUploadIndex.fields(_:prefix:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
@@ -7736,6 +7855,20 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/CodingKey+Prefix.swift",
+      "line": 15,
+      "symbol": "CodingKey.searchString(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/CodingKey+Prefix.swift",
+      "line": 25,
+      "symbol": "Searchable.mapFieldsToSearchStrings(fields:prefix:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Company/Company.swift",
       "line": 11,
       "symbol": "Company",
@@ -10110,7 +10243,7 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Transport/Zone5HTTPClient.swift",
-      "line": 270,
+      "line": 276,
       "symbol": "JSONDecoder.decode(_:response:from:as:debugLogging:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -10410,6 +10543,41 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdHeart.swift",
+      "line": 18,
+      "symbol": "UserThresholdHeart.CodingKeys",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdHeart.swift",
+      "line": 19,
+      "symbol": "UserThresholdHeart.CodingKeys.maxHr",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdHeart.swift",
+      "line": 20,
+      "symbol": "UserThresholdHeart.CodingKeys.testDate",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdHeart.swift",
+      "line": 21,
+      "symbol": "UserThresholdHeart.CodingKeys.threshold",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdHeart.swift",
+      "line": 24,
+      "symbol": "UserThresholdHeart.fields(_:prefix:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPace.swift",
       "line": 11,
       "symbol": "UserThresholdPace",
@@ -10438,6 +10606,34 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPace.swift",
+      "line": 17,
+      "symbol": "UserThresholdPace.CodingKeys",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPace.swift",
+      "line": 18,
+      "symbol": "UserThresholdPace.CodingKeys.testDate",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPace.swift",
+      "line": 19,
+      "symbol": "UserThresholdPace.CodingKeys.threshold",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPace.swift",
+      "line": 22,
+      "symbol": "UserThresholdPace.fields(_:prefix:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPower.swift",
       "line": 11,
       "symbol": "UserThresholdPower",
@@ -10463,6 +10659,34 @@
       "line": 15,
       "symbol": "UserThresholdPower.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPower.swift",
+      "line": 17,
+      "symbol": "UserThresholdPower.CodingKeys",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPower.swift",
+      "line": 18,
+      "symbol": "UserThresholdPower.CodingKeys.testDate",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPower.swift",
+      "line": 19,
+      "symbol": "UserThresholdPower.CodingKeys.threshold",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Users/UserThresholdPower.swift",
+      "line": 22,
+      "symbol": "UserThresholdPower.fields(_:prefix:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
@@ -10579,14 +10803,14 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Views/UsersView.swift",
-      "line": 195,
+      "line": 193,
       "symbol": "UsersView.passwordComplexity(completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Views/UsersView.swift",
-      "line": 200,
+      "line": 198,
       "symbol": "UsersView.reconfirmEmail(email:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -10635,63 +10859,63 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 253,
+      "line": 249,
       "symbol": "Zone5.Error.ServerMessage.ServerError",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 254,
+      "line": 250,
       "symbol": "Zone5.Error.ServerMessage.ServerError.field",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 255,
+      "line": 251,
       "symbol": "Zone5.Error.ServerMessage.ServerError.message",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 256,
+      "line": 252,
       "symbol": "Zone5.Error.ServerMessage.ServerError.code",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 264,
+      "line": 260,
       "symbol": "Zone5.Error.ServerMessage.message",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 265,
+      "line": 261,
       "symbol": "Zone5.Error.ServerMessage.reason",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 266,
+      "line": 262,
       "symbol": "Zone5.Error.ServerMessage.error",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 267,
+      "line": 263,
       "symbol": "Zone5.Error.ServerMessage.statusCode",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Zone5.swift",
-      "line": 268,
+      "line": 264,
       "symbol": "Zone5.Error.ServerMessage.errors",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
