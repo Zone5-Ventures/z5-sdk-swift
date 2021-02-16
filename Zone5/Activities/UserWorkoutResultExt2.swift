@@ -1,6 +1,6 @@
 import Foundation
 
-public struct UserWorkoutResultExt2: Codable {
+public struct UserWorkoutResultExt2: Searchable {
 
 	/// Respiration - breaths/minute
 	public var averageRespiration: Int?
@@ -57,7 +57,7 @@ public struct UserWorkoutResultExt2: Codable {
 		case fluidDifference = "fluidDiff"
 	}
 
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }

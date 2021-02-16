@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct UserWorkoutDetails: Codable {
+public struct UserWorkoutDetails: Searchable {
 
 	/// A workout ID
 	public var id: Int?
@@ -126,8 +126,8 @@ public struct UserWorkoutDetails: Codable {
 		case paceZoneCount = "zonePaceSize"
 	}
 	
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 
 }

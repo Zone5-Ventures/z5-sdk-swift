@@ -3,7 +3,7 @@ import Foundation
 /// Protocol that allows a route's ID or UUID values to be used interchangeably when accessing API endpoints.
 public protocol UserRouteServerIdentifier: CustomStringConvertible {}
 
-public struct UserRoute: Codable, JSONEncodedBody {
+public struct UserRoute: Searchable, JSONEncodedBody {
 
 	public typealias Identifier = Int
 	public typealias UUID = String
@@ -188,8 +188,8 @@ public struct UserRoute: Codable, JSONEncodedBody {
 			case publicRatingCount = "publicRatingCnt"
 	}
 
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }
 

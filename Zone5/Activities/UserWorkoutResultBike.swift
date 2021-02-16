@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct UserWorkoutResultBike: Codable {
+public struct UserWorkoutResultBike: Searchable {
 	/** Display name for the bike */
 	public var name: String?
 	
@@ -42,7 +42,7 @@ public struct UserWorkoutResultBike: Codable {
 		case registrationId = "registrationId"
 	}
 	
-	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String) -> [String] {
-		return fields.map { "\(prefix).\($0.rawValue)" }
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
 	}
 }

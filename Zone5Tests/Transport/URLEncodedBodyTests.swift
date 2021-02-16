@@ -9,6 +9,7 @@ final class URLEncodedBodyTests: XCTestCase {
 				"booleanFalse": false,
 				"booleanTrue": true,
 				"email": "test@gmail.com",
+				"email+": "test+1@gmail.com",
 				"empty": nil,
 				"floatingPoint": 9876.54321,
 				"integer": 1234567890,
@@ -18,6 +19,7 @@ final class URLEncodedBodyTests: XCTestCase {
 				URLQueryItem(name: "booleanFalse", value: "false"),
 				URLQueryItem(name: "booleanTrue", value: "true"),
 				URLQueryItem(name: "email", value: "test@gmail.com"),
+				URLQueryItem(name: "email+", value: "test+1@gmail.com"),
 				URLQueryItem(name: "empty", value: nil),
 				URLQueryItem(name: "floatingPoint", value: "9876.54321"),
 				URLQueryItem(name: "integer", value: "1234567890"),
@@ -25,7 +27,7 @@ final class URLEncodedBodyTests: XCTestCase {
 			],
 		]
 
-		let expectedString = "booleanFalse=false&booleanTrue=true&email=test@gmail.com&empty&floatingPoint=9876.54321&integer=1234567890&string=hello%20world"
+		let expectedString = "booleanFalse=false&booleanTrue=true&email=test@gmail.com&email%2B=test%2B1@gmail.com&empty&floatingPoint=9876.54321&integer=1234567890&string=hello%20world"
 		let expectedData = expectedString.data(using: .utf8)
 
 		for test in tests {

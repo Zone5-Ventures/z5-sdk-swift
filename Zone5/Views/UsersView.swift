@@ -24,10 +24,9 @@ public class UsersView: APIView {
 			switch self {
 			case .login: return false
 			case .exists: return false
-			case .registerUser: return false
+			case .registerUser: return true // register can optionally accept bearer token
 			case .passwordReset: return false
 			case .getEmailStatus: return false
-			case .passwordComplexity: return false
 			case .reconfirmEmail: return false
 			default: return true
 			}
@@ -162,7 +161,6 @@ public class UsersView: APIView {
 			
 			if let zone5 = self?.zone5, case .success(let token) = result {
 				// if we successfully refreshed, update the token
-				//zone5.accessToken = AccessToken(rawValue: token.token)
 				zone5.accessToken = token
 			}
 		}

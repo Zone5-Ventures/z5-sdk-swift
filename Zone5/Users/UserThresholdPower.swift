@@ -8,9 +8,18 @@
 
 import Foundation
 
-public struct UserThresholdPower: Codable {
+public struct UserThresholdPower: Searchable {
 	public var testDate: Int?
 	public var threshold: Int?
 	
 	public init() { }
+	
+	public enum CodingKeys: String, CodingKey, CaseIterable {
+		case testDate
+		case threshold
+	}
+	
+	public static func fields(_ fields: [CodingKeys] = CodingKeys.allCases, prefix: String? = nil) -> [String] {
+		mapFieldsToSearchStrings(fields: fields, prefix: prefix)
+	}
 }

@@ -6,32 +6,29 @@ final class Zone5HTTPClientDownloadRequestTests: XCTestCase {
 	private let developmentAssets = Bundle.tests.urlsForDevelopmentAssets()!.filter { $0.pathExtension != "multipart" }
 
 	func testInvalidConfiguration() {
+		// explicitly set baseURL to nil. This will cause the request to fail early with invalid configuration
+		// the request should never be executed
 		var configuration = ConfigurationForTesting()
 		configuration.baseURL = nil
-		configuration.clientID = nil
-		configuration.clientSecret = nil
 
-		let methods: [Zone5.Method] = [
-			.get,
-			.post,
-		]
+		for method: Zone5.Method in [.get, .post] {
+			execute(configuration: configuration) { zone5, httpClient, urlSession in
+				let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
 
-		execute(with: methods, configuration: configuration) { zone5, httpClient, urlSession, method in
-			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
+				urlSession.downloadTaskHandler = { urlRequest in
+					XCTFail("Request should never be performed when invalidly configured.")
 
-			urlSession.downloadTaskHandler = { urlRequest in
-				XCTFail("Request should never be performed when invalidly configured.")
-
-				return .error(Zone5.Error.unknown)
-			}
-
-			_ = httpClient.download(request) { result in
-				if case .failure(let error) = result,
-					case .invalidConfiguration = error {
-						return // Success!
+					return .error(Zone5.Error.unknown)
 				}
 
-				XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
+				_ = httpClient.download(request) { result in
+					if case .failure(let error) = result,
+						case .invalidConfiguration = error {
+							return // Success!
+					}
+
+					XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
+				}
 			}
 		}
 	}
@@ -40,27 +37,22 @@ final class Zone5HTTPClientDownloadRequestTests: XCTestCase {
 		var configuration = ConfigurationForTesting()
 		configuration.accessToken = nil
 
-		let methods: [Zone5.Method] = [
-			.get,
-			.post,
-		]
+		for method: Zone5.Method in [.get, .post] {
+			execute(configuration: configuration) { zone5, httpClient, urlSession in
+				let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
 
-		execute(with: methods, configuration: configuration) { zone5, httpClient, urlSession, method in
-			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
-
-			urlSession.downloadTaskHandler = { urlRequest in
-				XCTFail("Request should never be performed when missing a required access token.")
-
-				return .error(Zone5.Error.unknown)
-			}
-
-			_ = httpClient.download(request) { result in
-				if case .failure(let error) = result,
-					case .requiresAccessToken = error {
-						return // Success!
+				urlSession.downloadTaskHandler = { urlRequest in
+					XCTAssertNil(urlRequest.allHTTPHeaderFields?["Authorization"])
+					return .failure("Unauthorized", statusCode: 401)
 				}
+				
+				_ = httpClient.download(request) { result in
+					if case .failure(let error) = result, case .serverError(let message) = error, message.statusCode == 401 {
+						return // Success!
+					}
 
-				XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
+					XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
+				}
 			}
 		}
 	}
