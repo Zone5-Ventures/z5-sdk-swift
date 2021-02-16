@@ -11,30 +11,25 @@ final class Zone5HTTPClientUploadRequestTests: XCTestCase {
 		configuration.clientID = nil
 		configuration.clientSecret = nil
 
-		let methods: [Zone5.Method] = [
-			.get,
-			.post,
+		let tests: [(token: OAuthToken?, json: String, expectedResult: Zone5.Result<String>)] = [
+			(token: nil, json: "", expectedResult: .failure(.serverError(Zone5.Error.ServerMessage(message: "Unauthorized", statusCode: 401))))
 		]
+		
+		for method:Zone5.Method in [.get, .post] {
+			execute(with: tests, configuration: configuration) { zone5, httpClient, urlSession, test in
+				let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
 
-		execute(with: methods, configuration: configuration) { zone5, httpClient, urlSession, method in
-			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
+				let fileURL = developmentAssets.randomElement()
+				XCTAssertNotNil(fileURL)
 
-			let fileURL = developmentAssets.randomElement()
-			XCTAssertNotNil(fileURL)
+				_ = httpClient.upload(fileURL!, with: request, expectedType: User.self) { result in
+					if case .failure(let error) = result,
+						case .invalidConfiguration = error {
+							return // Success!
+					}
 
-			urlSession.uploadTaskHandler = { urlRequest, uploadedURL in
-				XCTFail("Request should never be performed when invalidly configured.")
-
-				return .error(Zone5.Error.unknown)
-			}
-
-			_ = httpClient.upload(fileURL!, with: request, expectedType: User.self) { result in
-				if case .failure(let error) = result,
-					case .invalidConfiguration = error {
-						return // Success!
+					XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
 				}
-
-				XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
 			}
 		}
 	}
@@ -43,29 +38,23 @@ final class Zone5HTTPClientUploadRequestTests: XCTestCase {
 		var configuration = ConfigurationForTesting()
 		configuration.accessToken = nil
 
-		let methods: [Zone5.Method] = [
-			.get,
-			.post,
+		let tests: [(token: OAuthToken?, json: String, expectedResult: Zone5.Result<String>)] = [
+			(token: nil, json: "", expectedResult: .failure(.serverError(Zone5.Error.ServerMessage(message: "Unauthorized", statusCode: 401))))
 		]
+		
+		for method:Zone5.Method in [.get, .post] {
+			execute(with: tests, configuration: configuration) { zone5, httpClient, urlSession, test in
+				let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
 
-		execute(with: methods, configuration: configuration) { zone5, httpClient, urlSession, method in
-			let request = Request(endpoint: EndpointsForTesting.requiresAccessToken, method: method)
+				let fileURL = developmentAssets.randomElement()!
 
-			let fileURL = developmentAssets.randomElement()!
-
-			urlSession.uploadTaskHandler = { urlRequest, uploadedURL in
-				XCTFail("Request should never be performed when missing a required access token.")
-
-				return .error(Zone5.Error.unknown)
-			}
-
-			_ = httpClient.upload(fileURL, with: request, expectedType: User.self) { result in
-				if case .failure(let error) = result,
-					case .requiresAccessToken = error {
+				_ = httpClient.upload(fileURL, with: request, expectedType: User.self) { result in
+					if case .failure(let error) = result, case .serverError(let message) = error, message.statusCode == 401 {
 						return // Success!
-				}
+					}
 
-				XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
+					XCTFail("\(method.rawValue) request unexpectedly completed with \(result).")
+				}
 			}
 		}
 	}

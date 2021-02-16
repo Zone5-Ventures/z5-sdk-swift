@@ -44,6 +44,8 @@ extension XCTestCase {
 		}
 	}
 	
+	var authFailure: Zone5.Error { return Zone5.Error.serverError(Zone5.Error.ServerMessage(message: "Unauthorized", statusCode: 401)) }
+	
 	func createNewZone5() -> Zone5 {
 		let urlSession = TestHTTPClientURLSession()
 		let httpClient = Zone5HTTPClient(urlSession: urlSession)
@@ -61,10 +63,41 @@ extension XCTestCase {
 		try tests(zone5, httpClient, urlSession)
 	}
 
-	func execute<T>(with parameters: [T], configuration: ConfigurationForTesting = .init(), _ tests: (_ zone5: Zone5, _ httpClient: Zone5HTTPClient, _ urlSession: TestHTTPClientURLSession, _ parameters: T) throws -> Void) rethrows {
-		try parameters.forEach { parameters in
+	typealias P<T:Decodable> = (token:AccessToken?, json:String, expectedResult:Zone5.Result<T>)
+	
+	func execute<T>(with parameters: [P<T>], configuration: ConfigurationForTesting = .init(), _ tests: (_ zone5: Zone5, _ httpClient: Zone5HTTPClient, _ urlSession: TestHTTPClientURLSession, _ parameters: P<T>) throws -> Void) rethrows {
+		try parameters.forEach { parameter in
 			try execute(configuration: configuration) { zone5, httpClient, urlSession in
-				try tests(zone5, httpClient, urlSession, parameters)
+				zone5.accessToken = parameter.token
+				urlSession.dataTaskHandler = { request in
+					if let token = parameter.token, let required = request.getMeta(key: .requiresAccessToken) as? Bool, required {
+						// auth header present
+						XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer \(token.rawValue)")
+						return .success(parameter.json)
+					} else if let required = request.getMeta(key: .requiresAccessToken) as? Bool, required {
+						// missing required auth header
+						XCTAssertNil(request.allHTTPHeaderFields?["Authorization"])
+						return .failure("Unauthorized", statusCode: 401)
+					} else {
+						// auth header not required
+						XCTAssertNil(request.allHTTPHeaderFields?["Authorization"])
+						return .success(parameter.json)
+					}
+				}
+				
+				urlSession.uploadTaskHandler = { request, fileURL in
+					return urlSession.dataTaskHandler!(request)
+				}
+				
+				try tests(zone5, httpClient, urlSession, parameter)
+			}
+		}
+	}
+	
+	func execute<T>(with parameters: [T], configuration: ConfigurationForTesting = .init(), _ tests: (_ zone5: Zone5, _ httpClient: Zone5HTTPClient, _ urlSession: TestHTTPClientURLSession, _ parameters: T) throws -> Void) rethrows {
+		try parameters.forEach { parameter in
+			try execute(configuration: configuration) { zone5, httpClient, urlSession in
+				try tests(zone5, httpClient, urlSession, parameter)
 			}
 		}
 	}

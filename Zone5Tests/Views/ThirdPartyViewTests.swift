@@ -19,7 +19,7 @@ class ThirdPartyViewTests: XCTestCase {
 			(
 				token: nil,
 				json: "{\"success\":true}",
-				expectedResult: .failure(.requiresAccessToken)
+				expectedResult: .failure(authFailure)
 			),
 			(
 				token: OAuthToken(rawValue: UUID().uuidString),
@@ -44,13 +44,6 @@ class ThirdPartyViewTests: XCTestCase {
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
-			client.accessToken = test.token
-
-			urlSession.dataTaskHandler = { request in
-				XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer \(test.token?.rawValue ?? "UNKNOWN")")
-				return .success(test.json)
-			}
-
 			let _ = client.thirdPartyConnections.setThirdPartyToken(type: UserConnectionsType.strava, connection: token1) { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
@@ -74,7 +67,7 @@ class ThirdPartyViewTests: XCTestCase {
 				// this endpoint requires auth
 				token: nil,
 				json: "{\"available\":false}",
-				expectedResult: .failure(.requiresAccessToken)
+				expectedResult: .failure(authFailure)
 			),
 			(
 				// successful request, result is false
@@ -109,12 +102,6 @@ class ThirdPartyViewTests: XCTestCase {
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
-			client.accessToken = test.token
-
-			urlSession.dataTaskHandler = { request in
-				XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer \(test.token?.rawValue ?? "UNKNOWN")")
-				return .success(test.json)
-			}
 
 			let _ = client.thirdPartyConnections.hasThirdPartyToken(type: UserConnectionsType.strava) { result in
 				switch (result, test.expectedResult) {
@@ -144,7 +131,7 @@ class ThirdPartyViewTests: XCTestCase {
 				// endpoint requires auth
 				token: nil,
 				json: "{\"success\":true}",
-				expectedResult: .failure(.requiresAccessToken)
+				expectedResult: .failure(authFailure)
 			),
 			(
 				// successful response, with false result
@@ -167,13 +154,6 @@ class ThirdPartyViewTests: XCTestCase {
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
-			client.accessToken = test.token
-
-			urlSession.dataTaskHandler = { request in
-				XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer \(test.token?.rawValue ?? "UNKNOWN")")
-				return .success(test.json)
-			}
-
 			let _ = client.thirdPartyConnections.removeThirdPartyToken(type: UserConnectionsType.strava) { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
@@ -199,7 +179,7 @@ class ThirdPartyViewTests: XCTestCase {
 				// endpoint requires auth
 				token: nil,
 				json: "{\"token\": 12345}",
-				expectedResult: .failure(.requiresAccessToken)
+				expectedResult: .failure(authFailure)
 			),
 			(
 				// success
@@ -218,13 +198,6 @@ class ThirdPartyViewTests: XCTestCase {
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
-			client.accessToken = test.token
-
-			urlSession.dataTaskHandler = { request in
-				XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer \(test.token?.rawValue ?? "UNKNOWN")")
-				return .success(test.json)
-			}
-
 			let _ = client.thirdPartyConnections.registerDeviceWithThirdParty(registration: pushRegistration1) { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
@@ -247,7 +220,7 @@ class ThirdPartyViewTests: XCTestCase {
 			(
 				token: nil,
 				json: "{}",
-				expectedResult: .failure(.requiresAccessToken)
+				expectedResult: .failure(authFailure)
 			),
 			(
 				token: OAuthToken(rawValue: UUID().uuidString),
@@ -259,13 +232,7 @@ class ThirdPartyViewTests: XCTestCase {
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
-			client.accessToken = test.token
-
-			urlSession.dataTaskHandler = { request in
-				XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer \(test.token?.rawValue ?? "UNKNOWN")")
-				return .success(test.json)
-			}
-
+			
 			let _ = client.thirdPartyConnections.deregisterDeviceWithThirdParty(token: "12345") { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
@@ -289,7 +256,7 @@ class ThirdPartyViewTests: XCTestCase {
 			(
 				token: nil,
 				json: "{}",
-				expectedResult: .failure(.requiresAccessToken)
+				expectedResult: .failure(authFailure)
 			),
 			(
 				token: OAuthToken(rawValue: UUID().uuidString),
@@ -301,12 +268,6 @@ class ThirdPartyViewTests: XCTestCase {
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
-			client.accessToken = test.token
-
-			urlSession.dataTaskHandler = { request in
-				XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer \(test.token?.rawValue ?? "UNKNOWN")")
-				return .success(test.json)
-			}
 
 			let _ = client.userAgents.getDeprecated() { result in
 				switch (result, test.expectedResult) {
