@@ -7030,6 +7030,13 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
+      "line": 40,
+      "symbol": "UserWorkoutResultTurbo.timeInAssist5P",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 42,
       "symbol": "UserWorkoutResultTurbo.bat1DecayAssist0P",
       "symbol_kind": "source.lang.swift.decl.var.instance",
@@ -7065,6 +7072,13 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
+      "line": 47,
+      "symbol": "UserWorkoutResultTurbo.bat1DecayAssist5P",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 49,
       "symbol": "UserWorkoutResultTurbo.bat2DecayAssist0P",
       "symbol_kind": "source.lang.swift.decl.var.instance",
@@ -7095,6 +7109,13 @@
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 53,
       "symbol": "UserWorkoutResultTurbo.bat2DecayAssist4P",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
+      "line": 54,
+      "symbol": "UserWorkoutResultTurbo.bat2DecayAssist5P",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -7359,6 +7380,13 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
+      "line": 98,
+      "symbol": "UserWorkoutResultTurbo.CodingKeys.timeInAssist5P",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 100,
       "symbol": "UserWorkoutResultTurbo.CodingKeys.bat1DecayAssist0P",
       "symbol_kind": "source.lang.swift.decl.enumelement",
@@ -7394,6 +7422,13 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
+      "line": 105,
+      "symbol": "UserWorkoutResultTurbo.CodingKeys.bat1DecayAssist5P",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 107,
       "symbol": "UserWorkoutResultTurbo.CodingKeys.bat2DecayAssist0P",
       "symbol_kind": "source.lang.swift.decl.enumelement",
@@ -7424,6 +7459,13 @@
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
       "line": 111,
       "symbol": "UserWorkoutResultTurbo.CodingKeys.bat2DecayAssist4P",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurbo.swift",
+      "line": 112,
+      "symbol": "UserWorkoutResultTurbo.CodingKeys.bat2DecayAssist5P",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -7562,6 +7604,13 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
+      "line": 29,
+      "symbol": "UserWorkoutResultTurboExt.bat1DecayAssist5Wh",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
       "line": 31,
       "symbol": "UserWorkoutResultTurboExt.bat2DecayAssist0Wh",
       "symbol_kind": "source.lang.swift.decl.var.instance",
@@ -7597,6 +7646,13 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
+      "line": 36,
+      "symbol": "UserWorkoutResultTurboExt.bat2DecayAssist5Wh",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
       "line": 38,
       "symbol": "UserWorkoutResultTurboExt.supportFactorAssist0",
       "symbol_kind": "source.lang.swift.decl.var.instance",
@@ -7627,6 +7683,13 @@
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
       "line": 42,
       "symbol": "UserWorkoutResultTurboExt.supportFactorAssist4",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
+      "line": 43,
+      "symbol": "UserWorkoutResultTurboExt.supportFactorAssist5",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -7772,6 +7835,13 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
+      "line": 69,
+      "symbol": "UserWorkoutResultTurboExt.CodingKeys.bat1DecayAssist5Wh",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
       "line": 71,
       "symbol": "UserWorkoutResultTurboExt.CodingKeys.bat2DecayAssist0Wh",
       "symbol_kind": "source.lang.swift.decl.enumelement",
@@ -7807,6 +7877,13 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
+      "line": 76,
+      "symbol": "UserWorkoutResultTurboExt.CodingKeys.bat2DecayAssist5Wh",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
       "line": 78,
       "symbol": "UserWorkoutResultTurboExt.CodingKeys.supportFactorAssist0",
       "symbol_kind": "source.lang.swift.decl.enumelement",
@@ -7837,6 +7914,13 @@
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
       "line": 82,
       "symbol": "UserWorkoutResultTurboExt.CodingKeys.supportFactorAssist4",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Activities/UserWorkoutResultTurboExt.swift",
+      "line": 83,
+      "symbol": "UserWorkoutResultTurboExt.CodingKeys.supportFactorAssist5",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
