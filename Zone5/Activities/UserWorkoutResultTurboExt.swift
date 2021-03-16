@@ -26,21 +26,21 @@ public struct UserWorkoutResultTurboExt: Searchable {
 	public var bat1DecayAssist2Wh: Int? // Watt hours
 	public var bat1DecayAssist3Wh: Int? // Watt hours
 	public var bat1DecayAssist4Wh: Int? // Watt hours
-	//public var bat1DecayAssist5Wh: Int? // Watt hours
+	public var bat1DecayAssist5Wh: Int? // Watt hours
 	//public var bat1DecayAssist6Wh: Int? // Watt hours
 	public var bat2DecayAssist0Wh: Int? // Watt hours
 	public var bat2DecayAssist1Wh: Int? // Watt hours
 	public var bat2DecayAssist2Wh: Int? // Watt hours
 	public var bat2DecayAssist3Wh: Int? // Watt hours
 	public var bat2DecayAssist4Wh: Int? // Watt hours
-	//public var bat2DecayAssist5Wh: Int? // Watt hours
+	public var bat2DecayAssist5Wh: Int? // Watt hours
 	//public var bat2DecayAssist6Wh: Int? // Watt hours
 	public var supportFactorAssist0: Double? // ratio
 	public var supportFactorAssist1: Double? // ratio
 	public var supportFactorAssist2: Double? // ratio
 	public var supportFactorAssist3: Double? // ratio
 	public var supportFactorAssist4: Double? // ratio
-	//public var supportFactorAssist5: Double? // ratio // future proof
+	public var supportFactorAssist5: Double? // ratio // future proof
 	//public var supportFactorAssist6: Double? // ratio // future proof
 	public var averageGPSSpeed: Double?
 	
@@ -66,21 +66,21 @@ public struct UserWorkoutResultTurboExt: Searchable {
 		case bat1DecayAssist2Wh
 		case bat1DecayAssist3Wh
 		case bat1DecayAssist4Wh
-		//case bat1DecayAssist5Wh
+		case bat1DecayAssist5Wh
 		//case bat1DecayAssist6Wh
 		case bat2DecayAssist0Wh
 		case bat2DecayAssist1Wh
 		case bat2DecayAssist2Wh
 		case bat2DecayAssist3Wh
 		case bat2DecayAssist4Wh
-		//case bat2DecayAssist5Wh
+		case bat2DecayAssist5Wh
 		//case bat2DecayAssist6Wh
 		case supportFactorAssist0
 		case supportFactorAssist1
 		case supportFactorAssist2
 		case supportFactorAssist3
 		case supportFactorAssist4
-		//case supportFactorAssist5
+		case supportFactorAssist5
 		//case supportFactorAssist6
 		case averageGPSSpeed = "avgGPSSpeed"
 	}
