@@ -87,8 +87,8 @@ public class UsersView: APIView {
 		_ = get(Endpoints.logout, parameters: nil, expectedType: Bool.self)  { [weak self] result in
 			defer { completion(result) }
 			
-			if let zone5 = self?.zone5, case .success(let loggedOut) = result, loggedOut {
-				// if we successfully logged out, invalidate the token
+			if let zone5 = self?.zone5 {
+				// invalidate the token and clear cookies
 				zone5.accessToken = nil
 				if let url = zone5.baseURL {
 					let cookieStore = HTTPCookieStorage.shared
