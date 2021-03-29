@@ -217,14 +217,15 @@ class UsersViewTests: XCTestCase {
 		execute(with: tests) { client, _, urlSession, test in
 
 			client.users.logout { result in
+				// token should always be cleared, regardless of outcome
+				XCTAssertNil(client.accessToken)
+				
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
-					XCTAssertNil(client.accessToken)
 				case (.success(let lhs), .success(let rhs)):
 					XCTAssertEqual(lhs, rhs);
-					XCTAssertEqual(client.accessToken?.rawValue, lhs ? nil : "1234567890")
 				default:
 					print("unexpected response: \(result)", "expected: \(test.expectedResult)")
 					XCTFail()
