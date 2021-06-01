@@ -9017,86 +9017,121 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 9,
-      "symbol": "UserConnectionsType",
+      "symbol": "UserConnectionType",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 11,
-      "symbol": "UserConnectionsType.garminConnect",
+      "symbol": "UserConnectionType.garminconnect",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 13,
-      "symbol": "UserConnectionsType.fitbit",
+      "symbol": "UserConnectionType.fitbit",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 15,
-      "symbol": "UserConnectionsType.withings",
+      "symbol": "UserConnectionType.withings",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 17,
-      "symbol": "UserConnectionsType.myFitnessPal",
+      "symbol": "UserConnectionType.myfitnesspal",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 19,
-      "symbol": "UserConnectionsType.underarmour",
+      "symbol": "UserConnectionType.underarmour",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 21,
-      "symbol": "UserConnectionsType.garminWellness",
+      "symbol": "UserConnectionType.garminwellness",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 23,
-      "symbol": "UserConnectionsType.trainingPeaks",
+      "symbol": "UserConnectionType.trainingpeaks",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 25,
-      "symbol": "UserConnectionsType.strava",
+      "symbol": "UserConnectionType.strava",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 27,
-      "symbol": "UserConnectionsType.polar",
+      "symbol": "UserConnectionType.polar",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 29,
-      "symbol": "UserConnectionsType.rideWithGPS",
+      "symbol": "UserConnectionType.ridewithgps",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionsType.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
       "line": 31,
-      "symbol": "UserConnectionsType.todaysPlan",
+      "symbol": "UserConnectionType.todaysplan",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
+      "line": 33,
+      "symbol": "UserConnectionType.suunto",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
+      "line": 35,
+      "symbol": "UserConnectionType.garmintraining",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
+      "line": 37,
+      "symbol": "UserConnectionType.turbo",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
+      "line": 40,
+      "symbol": "UserConnectionType.specialized",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Enums/UserConnectionType.swift",
+      "line": 42,
+      "symbol": "UserConnectionType.nike",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -10803,14 +10838,14 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 55,
+      "line": 56,
       "symbol": "ActivitiesView.upload(_:context:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Views/ActivitiesView.swift",
-      "line": 136,
+      "line": 137,
       "symbol": "ActivitiesView.timeInZones(type:id:zoneType:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
