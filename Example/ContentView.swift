@@ -42,6 +42,7 @@ struct ContentView: View {
 	@State var metric: UnitMeasurement = .metric
 	@State var me: User = User() // currently logged in user
 	@State var lastRegisteredId: Int? // last registered user, this is also who you can delete
+	@State var isEbike: Bool = false
 
 	init(apiClient: Zone5 = .shared, keyValueStore: KeyValueStore = .shared) {
 		self.apiClient = apiClient
@@ -246,6 +247,10 @@ struct ContentView: View {
 						// for jean+turbo on Specialized Staging
 						client.activities.setBike(type: .file, id: 120647, bikeID: "01cf97af-880b-4869-bf36-a7d7e438203d", completion: completion)
 					}
+					EndpointLink<Bool>("toggle eBike") { client, completion in
+						client.activities.setIsEbike(type: .file, id: 12007901, isEbike: isEbike, completion: completion)
+						isEbike = !isEbike
+					}
 					EndpointLink<MappedResult<UserWorkoutResult>>("Search by Bike") { client, completion in
 						// andrew's sepcialized staging bike.
 						let bikeIDAndrewStaging = "d584c5cb-e81f-4fbe-bc0d-667e9bcd2c4c"
@@ -403,15 +408,15 @@ struct ContentView: View {
 					}
 				}
 				Section(header: Text("Third Party Connections"), footer: Text("")) {
-					EndpointLink<ThirdPartyTokenResponse>("Has Strava Connection") { client, completion in
-						client.thirdPartyConnections.hasThirdPartyToken(type: .strava, completion: completion)
+					EndpointLink<ThirdPartyTokenResponse>("Has GC Connection") { client, completion in
+						client.thirdPartyConnections.hasThirdPartyToken(type: .garminconnect, completion: completion)
 					}
-					EndpointLink<ThirdPartyResponse>("Set Strava Connection") { client, completion in
+					EndpointLink<ThirdPartyResponse>("Set GC Connection") { client, completion in
 						let token = ThirdPartyToken(token: "0faf113fed3a1c7b9db1c567cfd65fb992b9d4f5", refreshToken: "d92923e388d25f3c2d2fcc1d6caf56b9a4e462e5")
-						client.thirdPartyConnections.setThirdPartyToken(type: .strava, connection: token, completion: completion)
+						client.thirdPartyConnections.setThirdPartyToken(type: .garminconnect, connection: token, completion: completion)
 					}
-					EndpointLink<ThirdPartyResponse>("Remove Strava Connection") { client, completion in
-						client.thirdPartyConnections.removeThirdPartyToken(type: .strava, completion: completion)
+					EndpointLink<ThirdPartyResponse>("Remove GC Connection") { client, completion in
+						client.thirdPartyConnections.removeThirdPartyToken(type: .garminconnect, completion: completion)
 					}
 					EndpointLink<PushRegistrationResponse>("Register Device") { client, completion in
 						let rego = PushRegistration(token: "1234", platform: "strava", deviceId: "gwjh4")
