@@ -1,5 +1,5 @@
 //
-//  UserConnectionsType.swift
+//  UserConnectionType.swift
 //  Zone5
 //
 //  Created by Daniel Farrelly on 11/11/19.
