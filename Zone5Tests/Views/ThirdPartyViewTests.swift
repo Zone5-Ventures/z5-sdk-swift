@@ -14,6 +14,19 @@ class ThirdPartyViewTests: XCTestCase {
 	let response1 = ThirdPartyTokenResponse(available: true, token: ThirdPartyToken(token: "12345", expiresIn: 100, refreshToken: "54321", scope: "???"))
 	let pushRegistration1 = PushRegistration(token: "12345", platform: "ios", deviceId: "johhny")
 
+	func testBuildQuery() {
+		let client = ThirdPartyConnectionsView(zone5: Zone5())
+		// the server is case sensitive. This needs to be all lower case
+		XCTAssertEqual("service_name=garminconnect", client.queryParams(.garminconnect).description)
+		XCTAssertEqual("service_name=garminwellness", client.queryParams(.garminwellness).description)
+		XCTAssertEqual("service_name=garmintraining", client.queryParams(.garmintraining).description)
+		XCTAssertEqual("service_name=todaysplan", client.queryParams(.todaysplan).description)
+		XCTAssertEqual("service_name=trainingpeaks", client.queryParams(.trainingpeaks).description)
+		XCTAssertEqual("service_name=myfitnesspal", client.queryParams(.myfitnesspal).description)
+		XCTAssertEqual("service_name=underarmour", client.queryParams(.underarmour).description)
+		XCTAssertEqual("service_name=ridewithgps", client.queryParams(.ridewithgps).description)
+	}
+	
 	func testSetThirdPartyToken() {
 		let tests: [(token: AccessToken?, json: String, expectedResult: Result<ThirdPartyResponse, Zone5.Error>)] = [
 			(
@@ -44,7 +57,7 @@ class ThirdPartyViewTests: XCTestCase {
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
-			let _ = client.thirdPartyConnections.setThirdPartyToken(type: UserConnectionsType.strava, connection: token1) { result in
+			let _ = client.thirdPartyConnections.setThirdPartyToken(type: UserConnectionType.strava, connection: token1) { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
@@ -103,7 +116,7 @@ class ThirdPartyViewTests: XCTestCase {
 
 		execute(with: tests) { client, _, urlSession, test in
 
-			let _ = client.thirdPartyConnections.hasThirdPartyToken(type: UserConnectionsType.strava) { result in
+			let _ = client.thirdPartyConnections.hasThirdPartyToken(type: UserConnectionType.strava) { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
@@ -154,7 +167,7 @@ class ThirdPartyViewTests: XCTestCase {
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
-			let _ = client.thirdPartyConnections.removeThirdPartyToken(type: UserConnectionsType.strava) { result in
+			let _ = client.thirdPartyConnections.removeThirdPartyToken(type: UserConnectionType.strava) { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)

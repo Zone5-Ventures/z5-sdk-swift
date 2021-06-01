@@ -18,7 +18,7 @@ public class ThirdPartyConnectionsView: APIView {
 	}
 	
 	private let serviceKey: String = "service_name"
-	private func queryParams(_ serviceType: UserConnectionsType) -> URLEncodedBody {
+	internal func queryParams(_ serviceType: UserConnectionType) -> URLEncodedBody {
 		let queryParams: URLEncodedBody = [ serviceKey : "\(serviceType)" ]
 		return queryParams
 	}
@@ -44,17 +44,17 @@ public class ThirdPartyConnectionsView: APIView {
 	/// - Parameters
 	
 	@discardableResult
-	public func setThirdPartyToken(type: UserConnectionsType, connection: ThirdPartyToken, completion: @escaping Zone5.ResultHandler<ThirdPartyResponse>) -> PendingRequest? {
+	public func setThirdPartyToken(type: UserConnectionType, connection: ThirdPartyToken, completion: @escaping Zone5.ResultHandler<ThirdPartyResponse>) -> PendingRequest? {
 		return post(Endpoints.setThirdPartyConnection, parameters: queryParams(type), body: connection, with: completion)
 	}
 
 	@discardableResult
-	public func hasThirdPartyToken(type: UserConnectionsType, completion: @escaping Zone5.ResultHandler<ThirdPartyTokenResponse>) -> PendingRequest? {
+	public func hasThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<ThirdPartyTokenResponse>) -> PendingRequest? {
 		return get(Endpoints.hasThirdPartyConnection, parameters: queryParams(type), with: completion)
 	}
 
 	@discardableResult
-	public func removeThirdPartyToken(type: UserConnectionsType, completion: @escaping Zone5.ResultHandler<ThirdPartyResponse>) -> PendingRequest? {
+	public func removeThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<ThirdPartyResponse>) -> PendingRequest? {
 		return post(Endpoints.removeThirdPartyConnection, parameters: queryParams(type), body: nil, with: completion)
 	}
 }
