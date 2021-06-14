@@ -290,7 +290,7 @@ extension JSONDecoder {
 
 		if let httpResponse = response as? HTTPURLResponse {
 			guard (200..<400).contains(httpResponse.statusCode) else {
-                z5DebugLog("Server responded with status code of \(httpResponse.statusCode) to \(request.endpoint.uri). (headers were \(request.headers ?? [:]))")
+                z5DebugLog("Server responded with status code of \(httpResponse.statusCode) to \(response?.url?.absoluteString ?? request.endpoint.uri). (headers were \(request.headers ?? [:]))")
 
 				do {
 					var decodedMessage = try decode(Zone5.Error.ServerMessage.self, from: data)

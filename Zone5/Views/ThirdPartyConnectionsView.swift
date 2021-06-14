@@ -15,6 +15,7 @@ public class ThirdPartyConnectionsView: APIView {
 		case removeThirdPartyConnection = "/rest/users/connections/api/v1/live_activities/delete_third_party_token"
 		case registerDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations"
 		case deregisterDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations/{token}"
+        case setThirdPartyConnectionGarmin = "/rest/files/garminconnect/confirm"
 	}
 	
 	private let serviceKey: String = "service_name"
@@ -45,12 +46,18 @@ public class ThirdPartyConnectionsView: APIView {
 	
 	@discardableResult
 	public func setThirdPartyToken(type: UserConnectionType, connection: ThirdPartyToken, completion: @escaping Zone5.ResultHandler<ThirdPartyResponse>) -> PendingRequest? {
-		return post(Endpoints.setThirdPartyConnection, parameters: queryParams(type), body: connection, with: completion)
+        guard type != .garminconnect else { fatalError("use setThirdPartyGarminToken") }
+        return post(Endpoints.setThirdPartyConnection, parameters: queryParams(type), body: connection, with: completion)
 	}
+    
+    @discardableResult
+    public func setThirdPartyGarminToken(connection: ThirdPartyToken, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
+        return get(Endpoints.setThirdPartyConnectionGarmin, parameters: ["oauth_token": connection.oauthToken, "oauth_verifier": connection.oauthVerifier], expectedType: Zone5.VoidReply.self, with: completion)
+    }
 
 	@discardableResult
 	public func hasThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<ThirdPartyTokenResponse>) -> PendingRequest? {
-		return get(Endpoints.hasThirdPartyConnection, parameters: queryParams(type), with: completion)
+        return get(Endpoints.hasThirdPartyConnection, parameters: queryParams(type), with: completion)
 	}
 
 	@discardableResult
