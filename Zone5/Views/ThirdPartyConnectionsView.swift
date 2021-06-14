@@ -52,7 +52,7 @@ public class ThirdPartyConnectionsView: APIView {
     
     @discardableResult
     public func setThirdPartyGarminToken(connection: ThirdPartyToken, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
-        return get(Endpoints.setThirdPartyConnectionGarmin, parameters: ["oauth_token": connection.oauthToken, "oauth_verifier": connection.oauthVerifier], expectedType: Zone5.VoidReply.self, with: completion)
+        return get(Endpoints.setThirdPartyConnectionGarmin, parameters: ["oauth_token": connection.token, "oauth_verifier": connection.oauthVerifier], expectedType: Zone5.VoidReply.self, with: completion)
     }
 
 	@discardableResult

@@ -7,7 +7,7 @@ public struct ThirdPartyToken: Codable, JSONEncodedBody {
 	public var scope: String?
     public var oauthVerifier: String?
 	
-    public init(token: String, expiresIn: Int? = nil, refreshToken: String? = nil, scope: String? = nil, oauthVerifier: String? = nil, oauthToken: String? = nil) {
+    public init(token: String, expiresIn: Int? = nil, refreshToken: String? = nil, scope: String? = nil, oauthVerifier: String? = nil) {
 		self.token = token
 		self.expiresIn = expiresIn;
 		self.refreshToken = refreshToken

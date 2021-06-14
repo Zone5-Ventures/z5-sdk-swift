@@ -10,5 +10,5 @@ import Foundation
 
 /// Response from ThirdPartyConnectionsView.setThirdPartyToken and removeThirdPartyToken
 public struct ThirdPartyResponse: Codable {
-    public let success: Bool?
+    public let success: Bool
 }
