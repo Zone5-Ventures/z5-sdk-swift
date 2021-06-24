@@ -54,7 +54,7 @@ public class ThirdPartyConnectionsView: APIView {
     @discardableResult
     public func initializeThirdPartyConnection(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<ThirdPartyInitializeResponse>) -> PendingRequest? {
         let endpoint = ThirdPartyEndpoint(uri: Endpoints.initializePairing.rawValue + type.connectionName)
-        return post(endpoint, body: EmptyBody(), with: completion)
+        return post(endpoint, body: nil, with: completion)
     }
 
 	/// Set an access token for the current user for the given 3rd party type

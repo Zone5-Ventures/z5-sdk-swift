@@ -157,7 +157,6 @@
 		A1F058F82372A3840034C7D0 /* Zone5.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1F058E22372A3840034C7D0 /* Zone5.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A1F059062372A4B60034C7D0 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F059032372A4B60034C7D0 /* XCTestManifests.swift */; };
 		F3505A872681D69F00BD094E /* ThirdPartyInitializeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3505A862681D69F00BD094E /* ThirdPartyInitializeResponse.swift */; };
-		F3505A8B2681D8A300BD094E /* EmptyBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3505A8A2681D8A300BD094E /* EmptyBody.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -347,7 +346,6 @@
 		A1F0590B2372A97A0034C7D0 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
 		A1F0590C2372A9850034C7D0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		F3505A862681D69F00BD094E /* ThirdPartyInitializeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyInitializeResponse.swift; sourceTree = "<group>"; };
-		F3505A8A2681D8A300BD094E /* EmptyBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBody.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,7 +392,6 @@
 				0F7D4721253D4998005B21A9 /* PushRegistrationResponse.swift */,
 				0F7D4731253E66E7005B21A9 /* ThirdPartyResponse.swift */,
 				F3505A862681D69F00BD094E /* ThirdPartyInitializeResponse.swift */,
-				F3505A8A2681D8A300BD094E /* EmptyBody.swift */,
 			);
 			path = ThirdPartyConnections;
 			sourceTree = "<group>";
@@ -911,7 +908,6 @@
 				0F7D4722253D4998005B21A9 /* PushRegistrationResponse.swift in Sources */,
 				0FAA7566240CA34300CB3C73 /* LoginRequest.swift in Sources */,
 				A182D1CE2372AB0F00112501 /* JSONEncodedBody.swift in Sources */,
-				F3505A8B2681D8A300BD094E /* EmptyBody.swift in Sources */,
 				A1EBDAD7237A1DE800834B21 /* MultipartEncodedBody.swift in Sources */,
 				0FB27F3F2406324900D7991B /* LoginResponse.swift in Sources */,
 				0F95EB5724637DD2000B859D /* PendingRequest.swift in Sources */,

@@ -110,7 +110,7 @@ class ThirdPartyViewTests: XCTestCase {
 				expectedResult: .failure(authFailure)
 			),
             (
-                json: "{}",
+                json: "",
                 expectedResult: .success(Zone5.VoidReply())
             )
 		]
