@@ -6,28 +6,28 @@
 //  Copyright © 2019 Zone5 Ventures. All rights reserved.
 //
 
-public enum UserConnectionsType: Int, Codable {
+public enum UserConnectionsType: String, Codable {
 	
-	case garminConnect = 0
+	case garminConnect
 	
-	case fitbit = 1
+	case fitbit
 	
-	case withings = 2
+	case withings
 
-	case myFitnessPal = 3
+	case myFitnessPal
 	
-	case underarmour = 4
+	case underarmour
 	
-	case garminWellness = 5
+	case garminWellness
 	
-	case trainingPeaks = 6
+	case trainingPeaks
 	
-	case strava = 7
+	case strava
 	
-	case polar = 8
+	case polar
 	
-	case rideWithGPS = 9
+	case rideWithGPS
 	
-	case todaysPlan = 10
+	case todaysPlan
 
 }

@@ -10,95 +10,91 @@ import XCTest
 @testable import Zone5
 
 class ThirdPartyViewTests: XCTestCase {
-	let token1 = ThirdPartyToken(token: "12345", expiresIn: 100, refreshToken: "54321", scope: "???")
-	let response1 = ThirdPartyTokenResponse(available: true, token: ThirdPartyToken(token: "12345", expiresIn: 100, refreshToken: "54321", scope: "???"))
+
 	let pushRegistration1 = PushRegistration(token: "12345", platform: "ios", deviceId: "johhny")
 
 	func testSetThirdPartyToken() {
-		let tests: [(token: AccessToken?, json: String, expectedResult: Result<ThirdPartyResponse, Zone5.Error>)] = [
+        let tests: [(parameters: URLEncodedBody?, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
-				token: nil,
-				json: "{\"success\":true}",
+                parameters: ["oauth_token": "token", "oauth_verifier": "verifier"],
 				expectedResult: .failure(authFailure)
 			),
 			(
-				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"success\":true}",
-				expectedResult: .success {
-					return ThirdPartyResponse(success: true)
-				}
-			),
-			(
-				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"success\":false}",
-				expectedResult: .success {
-					return ThirdPartyResponse(success: false)
-				}
-			),
-			(
-				// incorrect response
-				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"available\":true,\"token\":{\"token\":\"12345\", \"scope\":\"???\", \"expires_in\":100, \"refresh_token\":\"54321\"}}",
-				expectedResult: .failure(.failedDecodingResponse(Zone5.Error.unknown))
-			),
+                parameters: ["oauth_token": "token", "oauth_verifier": "verifier"],
+                expectedResult: .success(Zone5.VoidReply())
+			)
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
-			let _ = client.thirdPartyConnections.setThirdPartyToken(type: UserConnectionsType.strava, connection: token1) { result in
-				switch (result, test.expectedResult) {
-				case (.failure(let lhs), .failure(let rhs)):
-					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
-					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
+            let _ = client.thirdPartyConnections.setThirdPartyToken(type: .garminConnect, parameters: test.parameters) { result in
+                switch (result, test.expectedResult) {
+                case (.failure(let lhs), .failure(let rhs)):
+                    XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
+                    XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
 
-				case (.success(let lhs), .success(let rhs)):
-					XCTAssertEqual(lhs.success, rhs.success)
+                case (.success(let lhs), .success(let rhs)):
+                    XCTAssertNotNil(lhs)
+                    XCTAssertNotNil(rhs)
 
-				default:
-					print(result, test.expectedResult)
-					XCTFail()
-				}
-			}
+                default:
+                    print(result, test.expectedResult)
+                    XCTFail()
+                }
+            }
 		}
 	}
 	
 	func testHasThirdPartyToken() {
-		let tests: [(token: AccessToken?, json: String, expectedResult: Result<ThirdPartyTokenResponse, Zone5.Error>)] = [
-			(
-				// this endpoint requires auth
-				token: nil,
-				json: "{\"available\":false}",
-				expectedResult: .failure(authFailure)
-			),
-			(
-				// successful request, result is false
-				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"available\":false}",
-				expectedResult: .success {
-					return ThirdPartyTokenResponse(available:false)
-				}
-			),
-			(
-				// successful request, result contains full info
-				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"available\":true,\"token\":{\"token\":\"12345\", \"scope\":\"???\", \"expires_in\":100, \"refresh_token\":\"54321\"}}",
-				expectedResult: .success {
-					return ThirdPartyTokenResponse(available:true, token: ThirdPartyToken(token:"12345", expiresIn: 100,  refreshToken: "54321", scope:"???"))
-				}
-			),
-			(
-				// successful request, result contrains minimal allowed info
-				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"available\":true,\"token\":{\"token\":\"12345\"}}",
-				expectedResult: .success {
-					return ThirdPartyTokenResponse(available:true, token: ThirdPartyToken(token:"12345"))
-				}
-			),
-			(
-				// incorrect payload
-				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"success\":true}",
-				expectedResult: .failure(.failedDecodingResponse(Zone5.Error.unknown))
-			)
+		let tests: [(json: String, expectedResult: Result<Bool, Zone5.Error>)] = [
+            (
+                json: "[{\"type\": \"garminconnect\",\"enabled\": false}]",
+                expectedResult: .success {
+                    return false
+                }
+            ),
+            (
+                json: "[{\"type\": \"garminconnect\",\"enabled\": false}]",
+                expectedResult: .success {
+                    return false
+                }
+            )
+
+//			(
+//				// this endpoint requires auth
+//				token: nil,
+//				json: "{\"available\":false}",
+//				expectedResult: .failure(authFailure)
+//			),
+//			(
+//				// successful request, result is false
+//				token: OAuthToken(rawValue: UUID().uuidString),
+//				json: "{\"available\":false}",
+//				expectedResult: .success {
+//					return ThirdPartyTokenResponse(available:false)
+//				}
+//			),
+//			(
+//				// successful request, result contains full info
+//				token: OAuthToken(rawValue: UUID().uuidString),
+//				json: "{\"available\":true,\"token\":{\"token\":\"12345\", \"scope\":\"???\", \"expires_in\":100, \"refresh_token\":\"54321\"}}",
+//				expectedResult: .success {
+//					return ThirdPartyTokenResponse(available:true, token: ThirdPartyToken(token:"12345", expiresIn: 100,  refreshToken: "54321", scope:"???"))
+//				}
+//			),
+//			(
+//				// successful request, result contrains minimal allowed info
+//				token: OAuthToken(rawValue: UUID().uuidString),
+//				json: "{\"available\":true,\"token\":{\"token\":\"12345\"}}",
+//				expectedResult: .success {
+//					return ThirdPartyTokenResponse(available:true, token: ThirdPartyToken(token:"12345"))
+//				}
+//			),
+//			(
+//				// incorrect payload
+//				token: OAuthToken(rawValue: UUID().uuidString),
+//				json: "{\"success\":true}",
+//				expectedResult: .failure(.failedDecodingResponse(Zone5.Error.unknown))
+//			)
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
@@ -110,11 +106,7 @@ class ThirdPartyViewTests: XCTestCase {
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
 
 				case (.success(let lhs), .success(let rhs)):
-					XCTAssertEqual(lhs.available, rhs.available)
-					XCTAssertEqual(lhs.token?.token, rhs.token?.token)
-					XCTAssertEqual(lhs.token?.scope, rhs.token?.scope)
-					XCTAssertEqual(lhs.token?.expiresIn, rhs.token?.expiresIn)
-					XCTAssertEqual(lhs.token?.refreshToken, rhs.token?.refreshToken)
+					XCTAssertEqual(lhs, rhs)
 
 				default:
 					print(result, test.expectedResult)
@@ -126,31 +118,15 @@ class ThirdPartyViewTests: XCTestCase {
 
 	
 	func testRemoveThirdPartyToken() {
-		let tests: [(token: AccessToken?, json: String, expectedResult: Result<ThirdPartyResponse, Zone5.Error>)] = [
+        let tests: [(json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
-				// endpoint requires auth
-				token: nil,
-				json: "{\"success\":true}",
+                json: "{}",
 				expectedResult: .failure(authFailure)
 			),
-			(
-				// successful response, with false result
-				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"success\":false}",
-				expectedResult: .success { return ThirdPartyResponse(success: false)}
-			),
-			(
-				// successful response, with true result
-				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"success\":true}",
-				expectedResult: .success { return ThirdPartyResponse(success: true)}
-			),
-			(
-				// incorrect payload
-				token: OAuthToken(rawValue: UUID().uuidString),
-				json: "{\"available\":true,\"token\":{\"token\":\"12345\", \"scope\":\"???\", \"expiresIn\":100, \"refreshToken\":\"54321\"}}",
-				expectedResult: .failure(.failedDecodingResponse(Zone5.Error.unknown))
-			),
+            (
+                json: "{}",
+                expectedResult: .success(Zone5.VoidReply())
+            )
 		]
 
 		execute(with: tests) { client, _, urlSession, test in
@@ -161,7 +137,8 @@ class ThirdPartyViewTests: XCTestCase {
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
 
 				case (.success(let lhs), .success(let rhs)):
-					XCTAssertEqual(lhs.success, rhs.success)
+                    XCTAssertNotNil(lhs)
+                    XCTAssertNotNil(rhs)
 
 				default:
 					print(result, test.expectedResult)
