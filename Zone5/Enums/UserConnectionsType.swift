@@ -6,7 +6,7 @@
 //  Copyright © 2019 Zone5 Ventures. All rights reserved.
 //
 
-public enum UserConnectionsType: String, Codable {
+public enum UserConnectionsType: String, Codable, CaseIterable {
 	
 	case garminConnect
 	
