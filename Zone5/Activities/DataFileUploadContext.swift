@@ -40,7 +40,7 @@ public struct DataFileUploadContext: JSONEncodedBody {
 	/// A HTTP/HTTPS URL we will call back when the file has been processed
 	public var callbackURL: String?
 
-	/// A bit mask of UserConnectionsType.java ordinals - which 3rd party sites should be try to upload this file to
+	/// A bit mask of UserConnectionType.java ordinals - which 3rd party sites should be try to upload this file to
 	public var pushMask: Int?
 
     /// An external bike UUID - used for component tracking

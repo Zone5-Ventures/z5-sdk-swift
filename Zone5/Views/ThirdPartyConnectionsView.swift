@@ -26,7 +26,7 @@ public class ThirdPartyConnectionsView: APIView {
 	}
 	
 	private let serviceKey: String = "service_name"
-	private func queryParams(_ serviceType: UserConnectionsType) -> URLEncodedBody {
+	internal func queryParams(_ serviceType: UserConnectionType) -> URLEncodedBody {
 		let queryParams: URLEncodedBody = [ serviceKey : "\(serviceType)" ]
 		return queryParams
 	}
@@ -52,8 +52,8 @@ public class ThirdPartyConnectionsView: APIView {
     /// - Parameters
 
     @discardableResult
-    public func initializeThirdPartyConnection(type: UserConnectionsType, completion: @escaping Zone5.ResultHandler<ThirdPartyInitializeResponse>) -> PendingRequest? {
-        let endpoint = ThirdPartyEndpoint(uri: Endpoints.initializePairing.rawValue + type.rawValue)
+    public func initializeThirdPartyConnection(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<ThirdPartyInitializeResponse>) -> PendingRequest? {
+        let endpoint = ThirdPartyEndpoint(uri: Endpoints.initializePairing.rawValue + type.connectionName)
         return post(endpoint, body: EmptyBody(), with: completion)
     }
 
@@ -61,17 +61,17 @@ public class ThirdPartyConnectionsView: APIView {
 	/// - Parameters
 
 	@discardableResult
-    public func setThirdPartyToken(type: UserConnectionsType, parameters: URLEncodedBody?, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
-        let endpoint = ThirdPartyEndpoint(uri: Endpoints.files.rawValue + type.rawValue + "/confirm")
+    public func setThirdPartyToken(type: UserConnectionType, parameters: URLEncodedBody?, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
+        let endpoint = ThirdPartyEndpoint(uri: Endpoints.files.rawValue + type.connectionName + "/confirm")
         return get(endpoint, parameters: parameters, expectedType: Zone5.VoidReply.self, with: completion)
 	}
 
 	@discardableResult
-	public func hasThirdPartyToken(type: UserConnectionsType, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
+	public func hasThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
         return get(Endpoints.userConnections, parameters: queryParams(type), expectedType: [ThirdPartyResponse].self) { result in
             switch result {
             case .success(let connections):
-                guard connections.first(where: { $0.type == type.rawValue && $0.enabled == true }) != nil else {
+                guard connections.first(where: { $0.type == type.connectionName && $0.enabled == true }) != nil else {
                     completion(.success(false))
                     return
                 }
@@ -84,8 +84,8 @@ public class ThirdPartyConnectionsView: APIView {
 	}
 
 	@discardableResult
-	public func removeThirdPartyToken(type: UserConnectionsType, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
-        let endpoint = ThirdPartyEndpoint(uri: Endpoints.removeThirdPartyConnection.rawValue + type.rawValue)
+	public func removeThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
+        let endpoint = ThirdPartyEndpoint(uri: Endpoints.removeThirdPartyConnection.rawValue + type.connectionName)
 		return get(endpoint, with: completion)
 	}
 }

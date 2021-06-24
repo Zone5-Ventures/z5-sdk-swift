@@ -122,7 +122,7 @@
 		A196035123794DD200CEB121 /* IntensityZoneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196033D23794DD000CEB121 /* IntensityZoneType.swift */; };
 		A196035223794DD200CEB121 /* RunType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196033E23794DD000CEB121 /* RunType.swift */; };
 		A196035323794DD200CEB121 /* LapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196033F23794DD000CEB121 /* LapType.swift */; };
-		A196035423794DD200CEB121 /* UserConnectionsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196034023794DD000CEB121 /* UserConnectionsType.swift */; };
+		A196035423794DD200CEB121 /* UserConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196034023794DD000CEB121 /* UserConnectionType.swift */; };
 		A196035523794DD200CEB121 /* PowerThresholdType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196034123794DD000CEB121 /* PowerThresholdType.swift */; };
 		A196035723794DD200CEB121 /* MappedFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196034323794DD000CEB121 /* MappedFieldType.swift */; };
 		A196035823794DD200CEB121 /* RelativePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A196034423794DD100CEB121 /* RelativePeriod.swift */; };
@@ -309,7 +309,7 @@
 		A196033D23794DD000CEB121 /* IntensityZoneType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntensityZoneType.swift; sourceTree = "<group>"; };
 		A196033E23794DD000CEB121 /* RunType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunType.swift; sourceTree = "<group>"; };
 		A196033F23794DD000CEB121 /* LapType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LapType.swift; sourceTree = "<group>"; };
-		A196034023794DD000CEB121 /* UserConnectionsType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserConnectionsType.swift; sourceTree = "<group>"; };
+		A196034023794DD000CEB121 /* UserConnectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserConnectionType.swift; sourceTree = "<group>"; };
 		A196034123794DD000CEB121 /* PowerThresholdType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerThresholdType.swift; sourceTree = "<group>"; };
 		A196034323794DD000CEB121 /* MappedFieldType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappedFieldType.swift; sourceTree = "<group>"; };
 		A196034423794DD100CEB121 /* RelativePeriod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativePeriod.swift; sourceTree = "<group>"; };
@@ -582,7 +582,7 @@
 				A196034B23794DD100CEB121 /* TimeOfDay.swift */,
 				A196034923794DD100CEB121 /* TScoreType.swift */,
 				A196034723794DD100CEB121 /* UnitMeasurement.swift */,
-				A196034023794DD000CEB121 /* UserConnectionsType.swift */,
+				A196034023794DD000CEB121 /* UserConnectionType.swift */,
 				A196034E23794DD100CEB121 /* UserDelegateRelationship.swift */,
 				A196034823794DD100CEB121 /* UserDelegateState.swift */,
 				A10AB227237D341900EBAC66 /* UserRouteOutputType.swift */,
@@ -958,7 +958,7 @@
 				A10AB213237D0B5100EBAC66 /* UserHeadunit.swift in Sources */,
 				0FE9E2D0257DD6520036B44A /* Zone5HttpHeader.swift in Sources */,
 				A10AB22C237D341900EBAC66 /* UserRouteVisibilityMask.swift in Sources */,
-				A196035423794DD200CEB121 /* UserConnectionsType.swift in Sources */,
+				A196035423794DD200CEB121 /* UserConnectionType.swift in Sources */,
 				A182D1D72372AB0F00112501 /* SearchInput.swift in Sources */,
 				A1BF294B2387612500CFC458 /* Milliseconds.swift in Sources */,
 				0FB27F41240634B900D7991B /* Roles.swift in Sources */,
@@ -1235,11 +1235,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 31;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = ZSK35JGVHZ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 30;
+				DYLIB_CURRENT_VERSION = 31;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Zone5/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1267,11 +1267,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 31;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = ZSK35JGVHZ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 30;
+				DYLIB_CURRENT_VERSION = 31;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Zone5/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

@@ -4,25 +4,26 @@ public class ActivitiesView: APIView {
 
 	private enum Endpoints: String, InternalRequestEndpoint {
 		case search = "/rest/users/activities/search/{offset}/{count}"
-		case next = "/rest/users/activities/page/{offset}/{count}";
-		case upload = "/rest/files/upload";
-		case uploadStatus = "/rest/v2/files/get/{indexID}";
-		case delete = "/rest/users/activities/rem/{activityType}/{activityID}/false";
-		case downloadOriginal = "/rest/files/download/{fileID}";
-		case downloadRaw = "/rest/users/activities/download/files/{fileID}/raw3";
-		case downloadCSV = "/rest/plans/files/csv/{fileID}";
-		case downloadPNG = "/rest/users/activities/map/{fileID}";
-		case timeInZones = "/rest/reports/activity/{zoneType}/get";
-		case peakPowerCurve = "/rest/reports/activity/maxpeaks/get";
-		case peakHeartRateCurve = "/rest/reports/activity/maxpeaksbpm/get";
-		case peakWKgCurve = "/rest/reports/activity/peakwkg/get";
-		case peakPaceCurve = "/rest/reports/activity/peakspace/get";
-		case peakLSSCurve = "/rest/reports/activity/peakslss/get";
-		case peakLSSKgCurve = "/rest/reports/activity/peakslsskg/get";
+		case next = "/rest/users/activities/page/{offset}/{count}"
+		case upload = "/rest/files/upload"
+		case uploadStatus = "/rest/v2/files/get/{indexID}"
+		case delete = "/rest/users/activities/rem/{activityType}/{activityID}/false"
+		case downloadOriginal = "/rest/files/download/{fileID}"
+		case downloadRaw = "/rest/users/activities/download/files/{fileID}/raw3"
+		case downloadCSV = "/rest/plans/files/csv/{fileID}"
+		case downloadPNG = "/rest/users/activities/map/{fileID}"
+		case timeInZones = "/rest/reports/activity/{zoneType}/get"
+		case peakPowerCurve = "/rest/reports/activity/maxpeaks/get"
+		case peakHeartRateCurve = "/rest/reports/activity/maxpeaksbpm/get"
+		case peakWKgCurve = "/rest/reports/activity/peakwkg/get"
+		case peakPaceCurve = "/rest/reports/activity/peakspace/get"
+		case peakLSSCurve = "/rest/reports/activity/peakslss/get"
+		case peakLSSKgCurve = "/rest/reports/activity/peakslsskg/get"
 
 		// Specialized only
-		case setBike = "/rest/users/activities/set/bike/{activityType}/{activityID}/{bikeID}";
-		case removeBike = "/rest/users/activities/rem/bike/{activityType}/{activityID}";
+		case setBike = "/rest/users/activities/set/bike/{activityType}/{activityID}/{bikeID}"
+		case removeBike = "/rest/users/activities/rem/bike/{activityType}/{activityID}"
+		case toggleEBike = "/rest/users/activities/ebike/{activityType}/{activityID}/{isEbike}"
 	}
 
 	// MARK: Browsing activities
@@ -237,6 +238,19 @@ public class ActivitiesView: APIView {
 	@discardableResult
 	public func removeBike(type: ActivityResultType, id: Int, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
 		let endpoint = Endpoints.removeBike.replacingTokens(["activityType": type, "activityID": id])
+		return get(endpoint, with: completion)
+	}
+	
+	/// Toggle ebike flag for a completed activity
+	/// - Parameters:
+	///   - type: The result type of the activity to remove the bike from.
+	///   - id: The identifier for the activity to remove the bike from.
+	///   - isEbike: true to set this activity as an E-Bike activity, false to set it as not as E-Bike activity.
+	///   - completion: Function called with the result of the call
+	/// - Warning: Specialized feature set only.
+	@discardableResult
+	public func setIsEbike(type: ActivityResultType, id: Int, isEbike: Bool, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
+		let endpoint = Endpoints.toggleEBike.replacingTokens(["activityType": type, "activityID": id, "isEbike": isEbike])
 		return get(endpoint, with: completion)
 	}
 
