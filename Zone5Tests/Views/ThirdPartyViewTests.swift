@@ -104,14 +104,14 @@ class ThirdPartyViewTests: XCTestCase {
 
 	
 	func testRemoveThirdPartyToken() {
-        let tests: [(json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
+        let tests: [(json: String, expectedResult: Result<Bool, Zone5.Error>)] = [
 			(
                 json: "{}",
 				expectedResult: .failure(authFailure)
 			),
             (
-                json: "",
-                expectedResult: .success(Zone5.VoidReply())
+                json: "true",
+                expectedResult: .success(true)
             )
 		]
 
@@ -127,8 +127,7 @@ class ThirdPartyViewTests: XCTestCase {
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
 
 				case (.success(let lhs), .success(let rhs)):
-                    XCTAssertNotNil(lhs)
-                    XCTAssertNotNil(rhs)
+                    XCTAssertEqual(lhs, rhs)
 
 				default:
                     XCTFail("\(result) != \(test.expectedResult)")
