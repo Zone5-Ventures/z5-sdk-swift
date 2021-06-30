@@ -9,37 +9,37 @@
 import Foundation
 
 public class ThirdPartyConnectionsView: APIView {
-	private enum Endpoints: String, InternalRequestEndpoint {
+    private enum Endpoints: String, InternalRequestEndpoint {
         case initializePairing = "/rest/users/connections/pair/{connectionType}"
         case confirmConnection = "/rest/files/{connectionType}/confirm"
         case userConnections = "/rest/users/connections"
         case removeThirdPartyConnection = "/rest/users/connections/rem/{connectionType}"
         case registerDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations"
         case deregisterDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations/{token}"
-	}
-	
-	private let serviceKey: String = "service_name"
-	internal func queryParams(_ serviceType: UserConnectionType) -> URLEncodedBody {
-		let queryParams: URLEncodedBody = [ serviceKey : "\(serviceType)" ]
-		return queryParams
-	}
+    }
 
-	/// Register a push token for a device with a 3rd party
-	///- Parameters:
-	/// - PushRegistration (token, platform, deviceId): Push registration for a device with a third party
-	@discardableResult
-	public func registerDeviceWithThirdParty(registration: PushRegistration, completion: @escaping Zone5.ResultHandler<PushRegistrationResponse>) -> PendingRequest? {
-		return post(Endpoints.registerDeviceWithThirdParty, body: registration, with: completion)
-	}
-	
-	/// Deregister a push token for a device with a 3rd party
-	/// - Parameters:
-	/// - token: 3rd party push token to deregister
-	@discardableResult
-	public func deregisterDeviceWithThirdParty(token: String, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
-		let endpoint = Endpoints.deregisterDeviceWithThirdParty.replacingTokens(["token": token])
-		return delete(endpoint, with: completion)
-	}
+    private let serviceKey: String = "service_name"
+    internal func queryParams(_ serviceType: UserConnectionType) -> URLEncodedBody {
+        let queryParams: URLEncodedBody = [ serviceKey : "\(serviceType)" ]
+        return queryParams
+    }
+
+    /// Register a push token for a device with a 3rd party
+    ///- Parameters:
+    /// - PushRegistration (token, platform, deviceId): Push registration for a device with a third party
+    @discardableResult
+    public func registerDeviceWithThirdParty(registration: PushRegistration, completion: @escaping Zone5.ResultHandler<PushRegistrationResponse>) -> PendingRequest? {
+        return post(Endpoints.registerDeviceWithThirdParty, body: registration, with: completion)
+    }
+
+    /// Deregister a push token for a device with a 3rd party
+    /// - Parameters:
+    /// - token: 3rd party push token to deregister
+    @discardableResult
+    public func deregisterDeviceWithThirdParty(token: String, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
+        let endpoint = Endpoints.deregisterDeviceWithThirdParty.replacingTokens(["token": token])
+        return delete(endpoint, with: completion)
+    }
 
     /// Initialize a connection for the current user for the given 3rd party type
     /// - Parameters
@@ -49,13 +49,13 @@ public class ThirdPartyConnectionsView: APIView {
         return post(endpoint, body: EmptyBody(), with: completion)
     }
 
-	/// Set an access token for the current user for the given 3rd party type
-	/// - Parameters
-	@discardableResult
+    /// Set an access token for the current user for the given 3rd party type
+    /// - Parameters
+    @discardableResult
     public func setThirdPartyToken(type: UserConnectionType, parameters: URLEncodedBody?, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
         let endpoint = Endpoints.confirmConnection.replacingTokens(["connectionType": type.connectionName])
         return get(endpoint, parameters: parameters, expectedType: Zone5.VoidReply.self, with: completion)
-	}
+    }
 
     /// Checks if a connection type is enabled or not
     /// - Parameters
