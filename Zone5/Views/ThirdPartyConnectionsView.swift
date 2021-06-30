@@ -9,18 +9,11 @@
 import Foundation
 
 public class ThirdPartyConnectionsView: APIView {
-    private class ThirdPartyEndpoint: InternalRequestEndpoint {
-        let uri: String
-
-        init(uri: String) {
-            self.uri = uri
-        }
-    }
 	private enum Endpoints: String, InternalRequestEndpoint {
-        case initializePairing = "/rest/users/connections/pair/"
-		case files = "/rest/files/"
+        case initializePairing = "/rest/users/connections/pair/{connectionType}"
+        case confirmConnection = "/rest/files/{connectionType}/confirm"
         case userConnections = "/rest/users/connections"
-		case removeThirdPartyConnection = "/rest/users/connections/rem/"
+		case removeThirdPartyConnection = "/rest/users/connections/rem/{connectionType}"
 		case registerDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations"
 		case deregisterDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations/{token}"
 	}
@@ -53,7 +46,7 @@ public class ThirdPartyConnectionsView: APIView {
 
     @discardableResult
     public func initializeThirdPartyConnection(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<ThirdPartyInitializeResponse>) -> PendingRequest? {
-        let endpoint = ThirdPartyEndpoint(uri: Endpoints.initializePairing.rawValue + type.connectionName)
+        let endpoint = Endpoints.initializePairing.replacingTokens(["connectionType": type.connectionName])
         return post(endpoint, body: EmptyBody(), with: completion)
     }
 
@@ -62,7 +55,7 @@ public class ThirdPartyConnectionsView: APIView {
 
 	@discardableResult
     public func setThirdPartyToken(type: UserConnectionType, parameters: URLEncodedBody?, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
-        let endpoint = ThirdPartyEndpoint(uri: Endpoints.files.rawValue + type.connectionName + "/confirm")
+        let endpoint = Endpoints.confirmConnection.replacingTokens(["connectionType": type.connectionName])
         return get(endpoint, parameters: parameters, expectedType: Zone5.VoidReply.self, with: completion)
 	}
 
@@ -85,7 +78,7 @@ public class ThirdPartyConnectionsView: APIView {
 
 	@discardableResult
 	public func removeThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
-        let endpoint = ThirdPartyEndpoint(uri: Endpoints.removeThirdPartyConnection.rawValue + type.connectionName)
+        let endpoint = Endpoints.removeThirdPartyConnection.replacingTokens(["connectionType": type.connectionName])
 		return get(endpoint, with: completion)
 	}
 }
