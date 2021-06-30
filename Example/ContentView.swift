@@ -408,14 +408,16 @@ struct ContentView: View {
 					}
 				}
 				Section(header: Text("Third Party Connections"), footer: Text("")) {
-					EndpointLink<ThirdPartyTokenResponse>("Has GC Connection") { client, completion in
+                    EndpointLink<ThirdPartyInitializeResponse>("Init GC Connection") { client, completion in
+                        client.thirdPartyConnections.initializeThirdPartyConnection(type: .garminconnect, completion: completion)
+                    }
+					EndpointLink<Bool>("Has GC Connection") { client, completion in
 						client.thirdPartyConnections.hasThirdPartyToken(type: .garminconnect, completion: completion)
 					}
-					EndpointLink<ThirdPartyResponse>("Set GC Connection") { client, completion in
-						let token = ThirdPartyToken(token: "0faf113fed3a1c7b9db1c567cfd65fb992b9d4f5", refreshToken: "d92923e388d25f3c2d2fcc1d6caf56b9a4e462e5")
-						client.thirdPartyConnections.setThirdPartyToken(type: .garminconnect, connection: token, completion: completion)
+					EndpointLink<Zone5.VoidReply>("Set GC Connection") { client, completion in
+                        client.thirdPartyConnections.setThirdPartyToken(type: .garminconnect, parameters: ["oauthToken": "1234", "oauthVerifier": "1234"], completion: completion)
 					}
-					EndpointLink<ThirdPartyResponse>("Remove GC Connection") { client, completion in
+					EndpointLink<Bool>("Remove GC Connection") { client, completion in
 						client.thirdPartyConnections.removeThirdPartyToken(type: .garminconnect, completion: completion)
 					}
 					EndpointLink<PushRegistrationResponse>("Register Device") { client, completion in
