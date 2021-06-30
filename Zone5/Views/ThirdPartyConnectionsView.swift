@@ -13,9 +13,9 @@ public class ThirdPartyConnectionsView: APIView {
         case initializePairing = "/rest/users/connections/pair/{connectionType}"
         case confirmConnection = "/rest/files/{connectionType}/confirm"
         case userConnections = "/rest/users/connections"
-		case removeThirdPartyConnection = "/rest/users/connections/rem/{connectionType}"
-		case registerDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations"
-		case deregisterDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations/{token}"
+        case removeThirdPartyConnection = "/rest/users/connections/rem/{connectionType}"
+        case registerDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations"
+        case deregisterDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations/{token}"
 	}
 	
 	private let serviceKey: String = "service_name"
@@ -59,8 +59,8 @@ public class ThirdPartyConnectionsView: APIView {
 
     /// Checks if a connection type is enabled or not
     /// - Parameters
-	@discardableResult
-	public func hasThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
+    @discardableResult
+    public func hasThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
         return get(Endpoints.userConnections, parameters: queryParams(type), expectedType: [ThirdPartyResponse].self) { result in
             switch result {
             case .success(let connections):
@@ -74,11 +74,11 @@ public class ThirdPartyConnectionsView: APIView {
                 completion(.failure(error))
             }
         }
-	}
+    }
 
-	@discardableResult
-	public func removeThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
+    @discardableResult
+    public func removeThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
         let endpoint = Endpoints.removeThirdPartyConnection.replacingTokens(["connectionType": type.connectionName])
-		return get(endpoint, with: completion)
-	}
+        return get(endpoint, with: completion)
+    }
 }
