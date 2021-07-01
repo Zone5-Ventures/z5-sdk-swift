@@ -18,8 +18,6 @@ public class ThirdPartyConnectionsView: APIView {
         case deregisterDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations/{token}"
     }
 
-    private let serviceKey: String = "service_name"
-
     /// Register a push token for a device with a 3rd party
     ///- Parameters:
     /// - PushRegistration (token, platform, deviceId): Push registration for a device with a third party
