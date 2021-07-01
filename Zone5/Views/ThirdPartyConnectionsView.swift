@@ -19,10 +19,6 @@ public class ThirdPartyConnectionsView: APIView {
     }
 
     private let serviceKey: String = "service_name"
-    internal func queryParams(_ serviceType: UserConnectionType) -> URLEncodedBody {
-        let queryParams: URLEncodedBody = [ serviceKey : "\(serviceType)" ]
-        return queryParams
-    }
 
     /// Register a push token for a device with a 3rd party
     ///- Parameters:
@@ -61,7 +57,7 @@ public class ThirdPartyConnectionsView: APIView {
     /// - Parameters
     @discardableResult
     public func hasThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
-        return get(Endpoints.userConnections, parameters: queryParams(type), expectedType: [ThirdPartyResponse].self) { result in
+        return get(Endpoints.userConnections, parameters: nil, expectedType: [ThirdPartyResponse].self) { result in
             switch result {
             case .success(let connections):
                 guard connections.first(where: { $0.type == type.connectionName && $0.enabled == true }) != nil else {
