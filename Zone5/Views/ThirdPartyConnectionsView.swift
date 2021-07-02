@@ -34,7 +34,7 @@ public class ThirdPartyConnectionsView: APIView {
 		let endpoint = Endpoints.deregisterDeviceWithThirdParty.replacingTokens(["token": token])
 		return delete(endpoint, with: completion)
 	}
-	
+
 	/// Initialize a connection for the current user for the given 3rd party type
 	/// - Parameters
 	@discardableResult
@@ -69,7 +69,7 @@ public class ThirdPartyConnectionsView: APIView {
 			}
 		}
 	}
-	
+
 	@discardableResult
 	public func removeThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
 		let endpoint = Endpoints.removeThirdPartyConnection.replacingTokens(["connectionType": type.connectionName])

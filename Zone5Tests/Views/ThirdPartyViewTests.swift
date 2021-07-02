@@ -87,7 +87,7 @@ class ThirdPartyViewTests: XCTestCase {
 			}
 		}
 	}
-	
+
 	
 	func testRemoveThirdPartyToken() {
 		let tests: [(json: String, expectedResult: Result<Bool, Zone5.Error>)] = [
@@ -100,7 +100,7 @@ class ThirdPartyViewTests: XCTestCase {
 				expectedResult: .success(true)
 			)
 		]
-		
+
 		execute(with: tests) { client, _, urlSession, test in
 			urlSession.dataTaskHandler = { request in
 				XCTAssertEqual(request.url?.path, "/rest/users/connections/rem/strava")
@@ -111,19 +111,19 @@ class ThirdPartyViewTests: XCTestCase {
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
-					
+
 				case (.success(let lhs), .success(let rhs)):
 					XCTAssertEqual(lhs, rhs)
-					
+
 				default:
 					XCTFail("\(result) != \(test.expectedResult)")
 				}
 			}
 		}
 	}
-	
-	
-	
+
+
+
 	func testRegisterDeviceWithThirdParty() {
 		let tests: [(token: AccessToken?, json: String, expectedResult: Result<PushRegistrationResponse, Zone5.Error>)] = [
 			(
@@ -147,24 +147,25 @@ class ThirdPartyViewTests: XCTestCase {
 				expectedResult: .failure(.failedDecodingResponse(Zone5.Error.unknown))
 			)
 		]
-		
+
 		execute(with: tests) { client, _, urlSession, test in
 			let _ = client.thirdPartyConnections.registerDeviceWithThirdParty(registration: pushRegistration1) { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
-					
+
 				case (.success(let lhs), .success(let rhs)):
 					XCTAssertEqual(lhs.token, rhs.token)
-					
+	
 				default:
 					XCTFail("\(result) != \(test.expectedResult)")
 				}
 			}
 		}
 	}
-	
+
+
 	func testDeregisterDeviceWithThirdParty() {
 		let tests: [(token: AccessToken?, json: String, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = [
 			(
@@ -180,7 +181,7 @@ class ThirdPartyViewTests: XCTestCase {
 				}
 			),
 		]
-		
+
 		execute(with: tests) { client, _, urlSession, test in
 			
 			let _ = client.thirdPartyConnections.deregisterDeviceWithThirdParty(token: "12345") { result in
@@ -188,18 +189,17 @@ class ThirdPartyViewTests: XCTestCase {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
-					
+
 				//case (.success(let lhs), .success(let rhs)):
 				//XCTAssertEqual(lhs, rhs)  //TODO: how to test for success?
-				
+
 				default:
 					XCTFail("\(result) != \(test.expectedResult)")
 				}
 			}
 		}
 	}
-	
-	
+
 	func testGetDeprecated() {
 		let tests: [(token: AccessToken?, json: String, expectedResult: Result<UpgradeAvailableResponse, Zone5.Error>)] = [
 			(
@@ -215,18 +215,18 @@ class ThirdPartyViewTests: XCTestCase {
 				}
 			),
 		]
-		
+
 		execute(with: tests) { client, _, urlSession, test in
-			
+
 			let _ = client.userAgents.getDeprecated() { result in
 				switch (result, test.expectedResult) {
 				case (.failure(let lhs), .failure(let rhs)):
 					XCTAssertEqual((lhs as NSError).domain, (rhs as NSError).domain)
 					XCTAssertEqual((lhs as NSError).code, (rhs as NSError).code)
-					
+
 				case (.success(let lhs), .success(let rhs)):
 					XCTAssertEqual(lhs.isUpgradeAvailable, rhs.isUpgradeAvailable)
-					
+
 				default:
 					print(result, test.expectedResult)
 					XCTFail("\(result) != \(test.expectedResult)")
