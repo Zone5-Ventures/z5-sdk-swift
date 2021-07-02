@@ -10,6 +10,6 @@ import Foundation
 
 /// Response from ThirdPartyConnectionsView.hasThirdPartyToken
 struct ThirdPartyResponse: Codable {
-    let type: String
-    let enabled: Bool
+	let type: String
+	let enabled: Bool
 }
