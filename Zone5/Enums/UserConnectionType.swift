@@ -8,7 +8,7 @@
 
 public enum UserConnectionType: Int, Codable, CaseIterable {
 
-      case garminconnect = 0
+  case garminconnect = 0
 
     case fitbit = 1
 
