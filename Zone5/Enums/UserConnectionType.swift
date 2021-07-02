@@ -8,57 +8,57 @@
 
 public enum UserConnectionType: Int, Codable, CaseIterable {
 
-  case garminconnect = 0
+	case garminconnect = 0
 
-    case fitbit = 1
+	case fitbit = 1
 
-    case withings = 2
-    
-    case myfitnesspal = 3
+	case withings = 2
 
-    case underarmour = 4
+	case myfitnesspal = 3
 
-    case garminwellness = 5
+	case underarmour = 4
 
-    case trainingpeaks = 6
+	case garminwellness = 5
 
-    case strava = 7
+	case trainingpeaks = 6
 
-    case polar = 8
+	case strava = 7
 
-    case ridewithgps = 9
+	case polar = 8
 
-    case todaysplan = 10
+	case ridewithgps = 9
 
-    case suunto = 11
+	case todaysplan = 10
 
-    case garmintraining = 12
+	case suunto = 11
 
-    case turbo = 13
+	case garmintraining = 12
 
-    // Specialized Ride
-    case specialized = 14
+	case turbo = 13
 
-    case nike = 15
+	// Specialized Ride
+	case specialized = 14
 
-    var connectionName: String {
-        switch self {
-        case .garminconnect: return "garminconnect"
-        case .fitbit: return "fitbit"
-        case .withings: return "withings"
-        case .myfitnesspal: return "myfitnesspal"
-        case .underarmour: return "underarmour"
-        case .garminwellness: return "garminwellness"
-        case .trainingpeaks: return "trainingpeaks"
-        case .strava: return "strava"
-        case .polar: return "polar"
-        case .ridewithgps: return "ridewithgps"
-        case .todaysplan: return "todaysplan"
-        case .suunto: return "suunto"
-        case .garmintraining: return "garmintraining"
-        case .turbo: return "turbo"
-        case .specialized: return "specialized"
-        case .nike: return "nike"
-        }
-    }
+	case nike = 15
+
+	var connectionName: String {
+		switch self {
+		case .garminconnect: return "garminconnect"
+		case .fitbit: return "fitbit"
+		case .withings: return "withings"
+		case .myfitnesspal: return "myfitnesspal"
+		case .underarmour: return "underarmour"
+		case .garminwellness: return "garminwellness"
+		case .trainingpeaks: return "trainingpeaks"
+		case .strava: return "strava"
+		case .polar: return "polar"
+		case .ridewithgps: return "ridewithgps"
+		case .todaysplan: return "todaysplan"
+		case .suunto: return "suunto"
+		case .garmintraining: return "garmintraining"
+		case .turbo: return "turbo"
+		case .specialized: return "specialized"
+		case .nike: return "nike"
+		}
+	}
 }
