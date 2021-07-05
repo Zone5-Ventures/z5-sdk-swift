@@ -10,19 +10,14 @@ import Foundation
 
 public class ThirdPartyConnectionsView: APIView {
 	private enum Endpoints: String, InternalRequestEndpoint {
-		case setThirdPartyConnection = "/rest/users/connections/api/v1/live_activities/set_third_party_token"
-		case hasThirdPartyConnection = "/rest/users/connections/api/v1/live_activities/has_third_party_token"
-		case removeThirdPartyConnection = "/rest/users/connections/api/v1/live_activities/delete_third_party_token"
+		case initializePairing = "/rest/users/connections/pair/{connectionType}"
+		case confirmConnection = "/rest/files/{connectionType}/confirm"
+		case userConnections = "/rest/users/connections"
+		case removeThirdPartyConnection = "/rest/users/connections/rem/{connectionType}"
 		case registerDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations"
 		case deregisterDeviceWithThirdParty = "/rest/users/scheduled/activities/api/v1/push_registrations/{token}"
 	}
 	
-	private let serviceKey: String = "service_name"
-	private func queryParams(_ serviceType: UserConnectionsType) -> URLEncodedBody {
-		let queryParams: URLEncodedBody = [ serviceKey : "\(serviceType)" ]
-		return queryParams
-	}
-
 	/// Register a push token for a device with a 3rd party
 	///- Parameters:
 	/// - PushRegistration (token, platform, deviceId): Push registration for a device with a third party
@@ -40,21 +35,44 @@ public class ThirdPartyConnectionsView: APIView {
 		return delete(endpoint, with: completion)
 	}
 
+	/// Initialize a connection for the current user for the given 3rd party type
+	/// - Parameters
+	@discardableResult
+	public func initializeThirdPartyConnection(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<ThirdPartyInitializeResponse>) -> PendingRequest? {
+		let endpoint = Endpoints.initializePairing.replacingTokens(["connectionType": type.connectionName])
+		return post(endpoint, body: EmptyBody(), with: completion)
+	}
+	
 	/// Set an access token for the current user for the given 3rd party type
 	/// - Parameters
+	@discardableResult
+	public func setThirdPartyToken(type: UserConnectionType, parameters: URLEncodedBody?, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
+		let endpoint = Endpoints.confirmConnection.replacingTokens(["connectionType": type.connectionName])
+		return get(endpoint, parameters: parameters, expectedType: Zone5.VoidReply.self, with: completion)
+	}
 	
+	/// Checks if a connection type is enabled or not
+	/// - Parameters
 	@discardableResult
-	public func setThirdPartyToken(type: UserConnectionsType, connection: ThirdPartyToken, completion: @escaping Zone5.ResultHandler<ThirdPartyResponse>) -> PendingRequest? {
-		return post(Endpoints.setThirdPartyConnection, parameters: queryParams(type), body: connection, with: completion)
+	public func hasThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
+		return get(Endpoints.userConnections, parameters: nil, expectedType: [ThirdPartyResponse].self) { result in
+			switch result {
+			case .success(let connections):
+				guard connections.first(where: { $0.type == type.connectionName && $0.enabled == true }) != nil else {
+					completion(.success(false))
+					return
+				}
+				
+				completion(.success(true))
+			case .failure(let error):
+				completion(.failure(error))
+			}
+		}
 	}
 
 	@discardableResult
-	public func hasThirdPartyToken(type: UserConnectionsType, completion: @escaping Zone5.ResultHandler<ThirdPartyTokenResponse>) -> PendingRequest? {
-		return get(Endpoints.hasThirdPartyConnection, parameters: queryParams(type), with: completion)
-	}
-
-	@discardableResult
-	public func removeThirdPartyToken(type: UserConnectionsType, completion: @escaping Zone5.ResultHandler<ThirdPartyResponse>) -> PendingRequest? {
-		return post(Endpoints.removeThirdPartyConnection, parameters: queryParams(type), body: nil, with: completion)
+	public func removeThirdPartyToken(type: UserConnectionType, completion: @escaping Zone5.ResultHandler<Bool>) -> PendingRequest? {
+		let endpoint = Endpoints.removeThirdPartyConnection.replacingTokens(["connectionType": type.connectionName])
+		return get(endpoint, with: completion)
 	}
 }

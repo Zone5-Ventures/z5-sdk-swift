@@ -1,0 +1,2 @@
+struct EmptyBody: Codable, JSONEncodedBody {
+}
