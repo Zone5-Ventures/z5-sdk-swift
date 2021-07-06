@@ -27,7 +27,7 @@ class ThirdPartyViewTests: XCTestCase {
 		execute(with: tests) { client, _, urlSession, test in
 			urlSession.dataTaskHandler = { request in
 				XCTAssertEqual(request.url?.path, "/rest/files/\(test.type.connectionName)/confirm")
-				XCTAssertEqual(request.url?.query, "oauth_token=token&oauth_verifier=verifier")
+				XCTAssertEqual(request.url?.query, "oauth_token=token&oauth_verifier=verifier&noredirect=true")
 				return .success("")
 			}
 			
