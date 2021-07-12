@@ -14,7 +14,7 @@ class ThirdPartyViewTests: XCTestCase {
 	let pushRegistration1 = PushRegistration(token: "12345", platform: "ios", deviceId: "johhny")
 	
 	func testSetThirdPartyToken() {
-		var tests: [(type: UserConnectionType, parameters: URLEncodedBody?, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = []
+		var tests: [(type: UserConnectionType, parameters: URLEncodedBody, expectedResult: Result<Zone5.VoidReply, Zone5.Error>)] = []
 		
 		for type in UserConnectionType.allCases {
 			tests.append((
@@ -22,12 +22,22 @@ class ThirdPartyViewTests: XCTestCase {
 				parameters: ["oauth_token": "token", "oauth_verifier": "verifier"],
 				expectedResult: .success(Zone5.VoidReply())
 			))
+			tests.append((
+				type: type,
+				parameters: [],
+				expectedResult: .success(Zone5.VoidReply())
+			))
 		}
 		
 		execute(with: tests) { client, _, urlSession, test in
 			urlSession.dataTaskHandler = { request in
 				XCTAssertEqual(request.url?.path, "/rest/files/\(test.type.connectionName)/confirm")
-				XCTAssertEqual(request.url?.query, "oauth_token=token&oauth_verifier=verifier&noredirect=true")
+				if test.parameters.queryItems.count > 0 {
+					XCTAssertEqual(request.url?.query, "\(test.parameters.description)&noredirect=true")
+				} else {
+					XCTAssertEqual(request.url?.query, "noredirect=true")
+				}
+				
 				return .success("")
 			}
 			
