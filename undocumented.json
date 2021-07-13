@@ -10179,65 +10179,9 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/ThirdPartyConnections/ThirdPartyResponse.swift",
-      "line": 13,
-      "symbol": "ThirdPartyResponse.success",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/ThirdPartyConnections/ThirdPartyToken.swift",
-      "line": 3,
-      "symbol": "ThirdPartyToken",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/ThirdPartyConnections/ThirdPartyToken.swift",
-      "line": 4,
-      "symbol": "ThirdPartyToken.token",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/ThirdPartyConnections/ThirdPartyToken.swift",
+      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/ThirdPartyConnections/ThirdPartyInitializeResponse.swift",
       "line": 5,
-      "symbol": "ThirdPartyToken.expiresIn",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/ThirdPartyConnections/ThirdPartyToken.swift",
-      "line": 6,
-      "symbol": "ThirdPartyToken.refreshToken",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/ThirdPartyConnections/ThirdPartyToken.swift",
-      "line": 7,
-      "symbol": "ThirdPartyToken.scope",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/ThirdPartyConnections/ThirdPartyToken.swift",
-      "line": 9,
-      "symbol": "ThirdPartyToken.init(token:expiresIn:refreshToken:scope:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/ThirdPartyConnections/ThirdPartyTokenRepsonse.swift",
-      "line": 13,
-      "symbol": "ThirdPartyTokenResponse.available",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/ThirdPartyConnections/ThirdPartyTokenRepsonse.swift",
-      "line": 14,
-      "symbol": "ThirdPartyTokenResponse.token",
+      "symbol": "ThirdPartyInitializeResponse.url",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
@@ -10894,14 +10838,7 @@
     },
     {
       "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Views/ThirdPartyConnectionsView.swift",
-      "line": 52,
-      "symbol": "ThirdPartyConnectionsView.hasThirdPartyToken(type:completion:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/z5-sdk-swift/z5-sdk-swift/Zone5/Views/ThirdPartyConnectionsView.swift",
-      "line": 57,
+      "line": 79,
       "symbol": "ThirdPartyConnectionsView.removeThirdPartyToken(type:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
