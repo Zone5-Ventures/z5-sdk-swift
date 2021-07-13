@@ -8,7 +8,8 @@
 
 import Foundation
 
-/// Response from ThirdPartyConnectionsView.setThirdPartyToken and removeThirdPartyToken
-public struct ThirdPartyResponse: Codable {
-	public let success: Bool
+/// Response from ThirdPartyConnectionsView.hasThirdPartyToken
+struct ThirdPartyResponse: Codable {
+	let type: String
+	let enabled: Bool
 }
