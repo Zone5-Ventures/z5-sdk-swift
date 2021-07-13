@@ -46,9 +46,14 @@ public class ThirdPartyConnectionsView: APIView {
 	/// Set an access token for the current user for the given 3rd party type
 	/// - Parameters
 	@discardableResult
-	public func setThirdPartyToken(type: UserConnectionType, parameters: URLEncodedBody?, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
+	public func setThirdPartyToken(type: UserConnectionType, parameters: URLEncodedBody, completion: @escaping Zone5.ResultHandler<Zone5.VoidReply>) -> PendingRequest? {
 		let endpoint = Endpoints.confirmConnection.replacingTokens(["connectionType": type.connectionName])
-		return get(endpoint, parameters: parameters, expectedType: Zone5.VoidReply.self, with: completion)
+		
+		var queryItems: [URLQueryItem] = parameters.queryItems
+		queryItems.append(URLQueryItem(name: "noredirect", value: "true"))
+		
+		let encodedParameters = URLEncodedBody(queryItems: queryItems)
+		return get(endpoint, parameters: encodedParameters, expectedType: Zone5.VoidReply.self, with: completion)
 	}
 	
 	/// Checks if a connection type is enabled or not
